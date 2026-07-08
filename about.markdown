@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-**Bionic Coding** is a publication about a single, load-bearing idea: *code is not the asset — intent is.*
+**Bionic Coding** is a publication about a single, simpleidea: *code is not the asset — intent is.*
 
 For fifty years we treated source code as the thing worth preserving — versioning it, guarding it, mourning it when it rots. This site starts from the opposite premise. Code is an *intermediary*: a lossy, disposable projection of intent onto a machine. The durable artifacts are the **invariants** — the things that must survive regeneration — plus the ability to rebuild a faithful implementation from them, on demand, cheaply, and provably.
 
@@ -17,7 +17,7 @@ The name is deliberate. *Bionic*, not automatic. The human is not removed from t
 
 ## The stance in one paragraph
 
-You do not maintain code; you maintain a set of pinned, executable invariants and regenerate the implementation as freely as you recompile. Data, structure, behavior, contracts, and experience are the load-bearing walls a regeneration must never move. Disposability extends exactly as far as verification reaches — so the highest-leverage work is making one more invariant testable. And on the far shore, where most software actually lives, unpinned does not mean free; it means *unsurveyed*.
+You do not maintain code; you maintain a set of pinned, executable invariants and regenerate the implementation as freely as you recompile. Data, structure, behavior, contracts, and experience are the invariants. Disposability extends exactly as far as verification reaches — so the highest-leverage work is making one more invariant testable. And on the far shore, where most software actually lives, unpinned does not mean free; it means *unsurveyed*.
 
 ---
 

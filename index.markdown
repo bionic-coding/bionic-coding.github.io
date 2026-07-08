@@ -4,10 +4,6 @@ title: "The Bionic Coding Manifesto"
 description: "Durable intent, disposable code."
 ---
 
-### Durable intent, disposable code.
-
----
-
 ## Introduction
 
 For fifty years we have treated source code as the asset. We version it, review it, refactor it, and mourn it when it rots. We hire around it. We let it define the shape of our teams.

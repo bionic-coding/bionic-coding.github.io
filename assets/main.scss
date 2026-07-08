@@ -1,0 +1,272 @@
+---
+# Custom stylesheet for Bionic Coding. Overrides Minima's assets/main.scss,
+# so none of Minima's theme CSS (or its Sass deprecation warnings) is used.
+---
+
+/* ============================================================
+   Design tokens
+   ============================================================ */
+:root {
+  --bg:        #f4f1ea;   /* warm paper            */
+  --surface:   #fffdf7;
+  --ink:       #1b1a16;   /* near-black, warm      */
+  --muted:     #6c6558;   /* deks, meta, labels    */
+  --rule:      #ddd7c8;   /* hairlines             */
+  --accent:    #b1442b;   /* rust                  */
+  --accent-2:  #8f3521;   /* hover                 */
+  --code-bg:   rgba(27, 26, 22, 0.06);
+  --measure:   42rem;     /* reading width         */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:       #131311;
+    --surface:  #1a1a17;
+    --ink:      #e9e5db;
+    --muted:    #9a9384;
+    --rule:     #2c2b26;
+    --accent:   #e2795a;
+    --accent-2: #f0906f;
+    --code-bg:  rgba(233, 229, 219, 0.08);
+  }
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-optical-sizing: auto;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; height: auto; }
+
+::selection { background: var(--accent); color: var(--bg); }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-2); }
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Mono utility voice — used for the masthead, labels, and taglines. */
+.site-title, .site-nav a, .page-subtitle, .post-meta,
+.footer-inner, .prose thead th {
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+.site-header { border-bottom: 1px solid var(--rule); }
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.15rem;
+  padding-bottom: 1.15rem;
+}
+
+.site-title {
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+.site-title:hover { color: var(--accent); }
+
+.site-nav a {
+  color: var(--muted);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-left: 1.25rem;
+}
+.site-nav a:hover { color: var(--accent); }
+
+/* ============================================================
+   Page masthead
+   ============================================================ */
+.page-header { margin: 3.25rem 0 2.5rem; }
+
+.page-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: clamp(2.1rem, 6vw, 3.1rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.page-subtitle {
+  margin: 1.1rem 0 0;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.post-meta {
+  margin: 0.9rem 0 0;
+  color: var(--muted);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ============================================================
+   Prose
+   ============================================================ */
+.prose { padding-bottom: 1rem; }
+
+.prose > :first-child { margin-top: 0; }
+
+.prose p { margin: 0 0 1.3rem; }
+
+.prose strong { font-weight: 600; }
+
+/* Movement dividers (single #) — big centered part-breaks. */
+.prose h1 {
+  margin: 4.5rem 0 2.25rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--rule);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 5vw, 2.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  text-align: center;
+}
+
+/* Section / factor headings (##). */
+.prose h2 {
+  margin: 2.9rem 0 0.6rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* The principle line under each factor (###) — an italic dek. */
+.prose h3 {
+  margin: 0.1rem 0 1.15rem;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.22rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.prose ul, .prose ol { margin: 0 0 1.3rem; padding-left: 1.3rem; }
+.prose li { margin: 0.35rem 0; }
+.prose li::marker { color: var(--accent); }
+
+.prose blockquote {
+  margin: 1.6rem 0;
+  padding: 0.1rem 0 0.1rem 1.15rem;
+  border-left: 2px solid var(--accent);
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Thin, centered section rules (the manifesto's --- dividers). */
+.prose hr {
+  border: 0;
+  width: 4.5rem;
+  height: 0;
+  border-top: 1px solid var(--rule);
+  margin: 3rem auto;
+}
+
+.prose code {
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.86em;
+  background: var(--code-bg);
+  padding: 0.12em 0.36em;
+  border-radius: 3px;
+}
+.prose pre {
+  overflow-x: auto;
+  padding: 1rem 1.15rem;
+  background: var(--code-bg);
+  border-radius: 6px;
+  line-height: 1.55;
+}
+.prose pre code { background: none; padding: 0; font-size: 0.82em; }
+
+/* Comparison table (Traditional / Vibe / Bionic). */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.9rem 0;
+  font-size: 0.98rem;
+}
+.prose th, .prose td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.62rem 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+.prose thead th {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.prose tbody td:first-child { color: var(--muted); }
+
+/* Links inside prose get a subtle underline. */
+.prose a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.prose a:hover { text-decoration-color: var(--accent); }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.site-footer { border-top: 1px solid var(--rule); margin-top: 4rem; }
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+  color: var(--muted);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.footer-inner .tagline { color: var(--accent); }
+.footer-inner a { color: var(--muted); }
+.footer-inner a:hover { color: var(--accent); }
+
+/* ============================================================
+   Small screens
+   ============================================================ */
+@media (max-width: 34rem) {
+  body { font-size: 1.08rem; }
+  .site-nav a { margin-left: 0.9rem; }
+  .footer-inner { flex-direction: column; }
+}

@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-**Bionic Coding** is a publication about a single, simpleidea: *code is not the asset — intent is.*
+**Bionic Coding** is a publication about a single, simple idea: *code is not the asset — intent is.*
 
 For fifty years we treated source code as the thing worth preserving — versioning it, guarding it, mourning it when it rots. This site starts from the opposite premise. Code is an *intermediary*: a lossy, disposable projection of intent onto a machine. The durable artifacts are the **invariants** — the things that must survive regeneration — plus the ability to rebuild a faithful implementation from them, on demand, cheaply, and provably.
 

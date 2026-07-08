@@ -46,7 +46,7 @@ research:
 # ADR allocation. propose-adr reads adr.next_number, allocates it, writes the
 # new ADR, and increments this field atomically. Numbers are NEVER reused.
 adr:
-  next_number: 1
+  next_number: 5
 
 # Promptbook allocation. Same contract as adr.next_number — monotonic, never
 # reused. Forks always allocate a fresh id.

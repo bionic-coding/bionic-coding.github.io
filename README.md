@@ -138,7 +138,7 @@ When intent is lost, the code becomes an archaeological dig — the introduction
 
 ### On legacy code, the default inverts
 
-This is the single most important correction to Movement I. In the Steady State, everything unpinned is free to regenerate. On the far shore, **unpinned does not mean free — it means unsurveyed.** Most load-bearing intent in old code is unpinned precisely because nobody wrote it down. To treat unpinned as disposable there is to license deleting the exact truth you have not recovered yet. Until a region is surveyed, unpinned code is unexplored territory to map, never licensed to delete.
+This is the single most important correction to Movement I. In the Steady State, everything unpinned is free to regenerate. On the far shore, **unpinned does not mean free — it means unsurveyed.** Most intent in old code is unpinned precisely because nobody wrote it down. To treat unpinned as disposable there is to license deleting the exact truth you have not recovered yet. Until a region is surveyed, unpinned code is unexplored territory to map, never licensed to delete.
 
 ## iv. Observed is not ratified
 

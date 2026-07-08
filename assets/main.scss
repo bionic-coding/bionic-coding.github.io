@@ -7,27 +7,27 @@
    Design tokens
    ============================================================ */
 :root {
-  --bg: #f4f1ea; /* warm paper            */
-  --surface: #fffdf7;
-  --ink: #1b1a16; /* near-black, warm      */
-  --muted: #6c6558; /* deks, meta, labels    */
-  --rule: #ddd7c8; /* hairlines             */
-  --accent: #b1442b; /* rust                  */
-  --accent-2: #8f3521; /* hover                 */
-  --code-bg: rgba(27, 26, 22, 0.06);
+  --bg: #eceff3; /* cool blue-grey paper  */
+  --surface: #ffffff;
+  --ink: #14171c; /* cool near-black       */
+  --muted: #59606e; /* deks, meta, labels    */
+  --rule: #d3d8e0; /* hairlines             */
+  --accent: #0f6cbb; /* popsicle blue (AA)    */
+  --accent-2: #0a5596; /* hover                 */
+  --code-bg: rgba(20, 23, 28, 0.06);
   --measure: 46rem; /* reading width         */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #131311;
-    --surface: #1a1a17;
-    --ink: #e9e5db;
-    --muted: #9a9384;
-    --rule: #2c2b26;
-    --accent: #e2795a;
-    --accent-2: #f0906f;
-    --code-bg: rgba(233, 229, 219, 0.08);
+    --bg: #0e1116; /* cool charcoal (logo)  */
+    --surface: #161b22;
+    --ink: #e6e9ef;
+    --muted: #97a1b0;
+    --rule: #232a33;
+    --accent: #3fa4ee; /* bright logo blue      */
+    --accent-2: #63b6f2;
+    --code-bg: rgba(230, 233, 239, 0.08);
   }
 }
 

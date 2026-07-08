@@ -2,6 +2,22 @@
 
 _Append-only. Newest first._
 
+## [2026-07-08] adr | ADR-0004: accept (accepted)
+
+Single-source the manifesto homepage from research. Proposed → Accepted.
+
+## [2026-07-08] adr | ADR-0003: accept (accepted)
+
+Ship a custom presentation layer over Minima. Proposed → Accepted.
+
+## [2026-07-08] adr | ADR-0002: accept (accepted)
+
+Deploy to GitHub Pages via GitHub Actions. Proposed → Accepted.
+
+## [2026-07-08] adr | ADR-0001: accept (accepted)
+
+Use Jekyll 4.4 with Ruby pinned to 4.0.5. Proposed → Accepted.
+
 ## [2026-07-07] adr | ADR-0004: Single-source the manifesto homepage from research
 
 Proposed. File `docs/adrs/ADR-0004-single-source-the-manifesto-homepage-from-research.md`.

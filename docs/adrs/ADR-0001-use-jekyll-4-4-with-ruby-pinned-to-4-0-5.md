@@ -1,10 +1,10 @@
 ---
 id: ADR-0001
 title: "Use Jekyll 4.4 with Ruby pinned to 4.0.5"
-status: Proposed
-date: 2026-07-07
+status: Accepted
+date: 2026-07-08
 proposed_date: 2026-07-07
-accepted_date: null
+accepted_date: 2026-07-08
 deprecated_date: null
 superseded_date: null
 supersedes: []

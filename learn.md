@@ -1,6 +1,6 @@
 ---
 layout: page
-title: AI Literacy
+title: Lessons
 permalink: /learn/
 description: "A plain-language field guide to the ideas and tools behind modern AI."
 ---

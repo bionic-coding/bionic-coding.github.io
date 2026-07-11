@@ -4,6 +4,38 @@
 ---
 
 /* ============================================================
+   Fonts
+   ============================================================ */
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url("/fonts/dm-sans-variable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/fraunces-variable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/fraunces-variable-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/jetbrains-mono-variable.woff2") format("woff2");
+}
+
+/* ============================================================
    Design tokens
    ============================================================ */
 :root {
@@ -14,8 +46,10 @@
   --rule: #d3d8e0; /* hairlines             */
   --accent: #094a80; /* popsicle blue (AAA 7.9) */
   --accent-2: #083f6e; /* hover                 */
-  --code-bg: rgba(20, 23, 28, 0.06);
-  --measure: 46rem; /* reading width         */
+  --code-bg: #ffffff; /* code: white on the light theme */
+  --measure: 48rem; /* reading width         */
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,7 +61,7 @@
     --rule: #232a33;
     --accent: #3fa4ee; /* bright logo blue      */
     --accent-2: #63b6f2;
-    --code-bg: rgba(230, 233, 239, 0.08);
+    --code-bg: #0d1117; /* code: dark blue-black on the dark theme */
   }
 }
 
@@ -48,7 +82,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-family: var(--font-body);
   font-optical-sizing: auto;
   font-size: 1.15rem;
   line-height: 1.75;
@@ -88,6 +122,22 @@ a:hover {
 .footer-inner,
 .prose thead th {
   font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+/* Display voice — Fraunces stays on headings, titles, quotes, and the hero lede;
+   body/paragraph/list text falls through to DM Sans (var(--font-body)). */
+.hero-title,
+.hero-lede,
+.page-title,
+.pull-quote,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose blockquote,
+.index-list a,
+.home-list a {
+  font-family: var(--font-display);
 }
 
 /* ============================================================
@@ -138,8 +188,8 @@ a:hover {
 .page-title {
   margin: 0;
   font-weight: 600;
-  font-size: clamp(2.1rem, 6vw, 3.1rem);
-  line-height: 1.05;
+  font-size: clamp(2.0rem, 6vw, 3.0rem);
+  line-height: 1.00;
   letter-spacing: -0.02em;
 }
 
@@ -210,6 +260,15 @@ a:hover {
   color: var(--muted);
 }
 
+/* Minor headings (####). */
+.prose h4 {
+  margin: 1.75rem 0 0.5rem;
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
 .prose ul,
 .prose ol {
   margin: 0 0 1.3rem;
@@ -243,18 +302,24 @@ a:hover {
   font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   font-size: 0.86em;
   background: var(--code-bg);
-  padding: 0.12em 0.36em;
+  border: 1px solid var(--rule);
+  padding: 0.1em 0.34em;
   border-radius: 3px;
+  /* Show literal characters in code samples — no `-->` → ⟶ ligatures. */
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
 }
 .prose pre {
   overflow-x: auto;
   padding: 1rem 1.15rem;
   background: var(--code-bg);
+  border: 1px solid var(--rule);
   border-radius: 6px;
   line-height: 1.55;
 }
 .prose pre code {
   background: none;
+  border: 0;
   padding: 0;
   font-size: 0.82em;
 }
@@ -293,6 +358,255 @@ a:hover {
 }
 .prose a:hover {
   text-decoration-color: var(--accent);
+}
+
+/* ============================================================
+   Section index lists (Articles, Learn)
+   ============================================================ */
+.prose .index-list {
+  list-style: none;
+  margin: 2.25rem 0;
+  padding: 0;
+}
+.prose .index-list > li {
+  margin: 0 0 1.6rem;
+  padding: 0;
+}
+.prose .index-list a {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  text-decoration: none;
+}
+.prose .index-list a:hover {
+  color: var(--accent);
+}
+.index-meta {
+  display: block;
+  margin-top: 0.3rem;
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.index-summary {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   Home / landing
+   ============================================================ */
+.home section {
+  margin: 0 0 3.5rem;
+}
+.hero {
+  padding-top: 3.5rem;
+}
+.hero-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: clamp(2.0rem, 6.5vw, 3.0rem);
+  line-height: 1.00;
+  letter-spacing: -0.02em;
+}
+.hero-lede {
+  margin: 1.1rem 0 0;
+  max-width: 34rem;
+  color: var(--muted);
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+.home-actions {
+  margin: 1.6rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.manifesto-callout {
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.pull-quote {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+  line-height: 1.25;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.callout-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.block-head {
+  margin: 0 0 1.25rem;
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+.home-list {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+.home-list > li {
+  margin: 0 0 1.4rem;
+}
+.home-list a {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  text-decoration: none;
+}
+.home-list a:hover {
+  color: var(--accent);
+}
+.item-meta {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.item-summary {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+.block-more,
+.home-empty a {
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.home-empty {
+  color: var(--muted);
+}
+
+/* ============================================================
+   Mermaid diagrams
+   ============================================================ */
+.mermaid {
+  margin: 1.9rem 0;
+  text-align: center;
+  line-height: normal;
+}
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+   Callouts  ( > [!TIP] / [!NOTE] / [!IMPORTANT] / [!WARNING] / [!CAUTION] )
+   ============================================================ */
+.prose .callout {
+  --callout-color: var(--accent);
+  margin: 1.6rem 0;
+  padding: 0.85rem 1.1rem;
+  border-left: 3px solid var(--callout-color);
+  border-radius: 0 5px 5px 0;
+  background: color-mix(in srgb, var(--callout-color) 9%, var(--surface));
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 0.98rem;
+}
+.prose .callout > p {
+  margin: 0.5rem 0 0;
+  font-style: normal;
+}
+.prose .callout > p:first-of-type {
+  margin-top: 0;
+}
+.callout-label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--callout-color);
+}
+.prose .callout-tip {
+  --callout-color: var(--accent);
+}
+.prose .callout-note {
+  --callout-color: var(--accent);
+}
+.prose .callout-important {
+  --callout-color: var(--accent);
+}
+.prose .callout-warning {
+  --callout-color: #b45309;
+}
+.prose .callout-caution {
+  --callout-color: #be123c;
+}
+@media (prefers-color-scheme: dark) {
+  .prose .callout-warning {
+    --callout-color: #fbbf24;
+  }
+  .prose .callout-caution {
+    --callout-color: #fb7185;
+  }
+}
+
+/* ============================================================
+   "Coming soon" lessons + index "soon" tags
+   ============================================================ */
+.lesson-soon {
+  margin-top: 1.5rem;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+.lesson-soon strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+.soon-tag {
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  vertical-align: middle;
+  margin-left: 0.4rem;
 }
 
 /* ============================================================

@@ -1,0 +1,29 @@
+---
+layout: default
+---
+{%- comment -%}
+Show full content when the lesson is published, OR in any non-production build
+(local `jekyll serve` = development) so drafts-in-progress are previewable. In
+production, an unfinished lesson renders a clean "coming soon" card instead of
+its raw outline — links to it stay alive, no TODOs leak to the live site.
+{%- endcomment -%}
+{%- assign show_full = false -%}
+{%- if page.status == "published" or jekyll.environment != "production" -%}{%- assign show_full = true -%}{%- endif -%}
+<article class="page lesson">
+  <header class="page-header">
+    <h1 class="page-title">{{ page.title }}</h1>
+    {%- if show_full and page.updated -%}
+    <p class="post-meta">Last reviewed {{ page.updated | date: "%B %-d, %Y" }}</p>
+    {%- endif -%}
+  </header>
+  {%- if show_full -%}
+  <div class="prose">
+    {{ content }}
+  </div>
+  {%- else -%}
+  <div class="prose">
+    {%- if page.summary -%}<p>{{ page.summary }}</p>{%- endif -%}
+    <p class="lesson-soon"><strong>Coming soon.</strong> This lesson is still being written — check back before long.</p>
+  </div>
+  {%- endif -%}
+</article>

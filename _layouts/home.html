@@ -1,0 +1,57 @@
+---
+layout: default
+---
+<div class="home">
+  <section class="hero">
+    <h1 class="hero-title">{{ page.hero_title | default: site.description | strip_newlines }}</h1>
+    {%- if page.hero_lede -%}<p class="hero-lede">{{ page.hero_lede }}</p>{%- endif -%}
+    <p class="home-actions">
+      <a href="{{ '/learn/' | relative_url }}">Start learning →</a>
+      <a href="{{ '/articles/' | relative_url }}">Read the articles →</a>
+    </p>
+  </section>
+
+  {%- if page.manifesto_quote -%}
+  <section class="manifesto-callout">
+    <blockquote class="pull-quote">{{ page.manifesto_quote }}</blockquote>
+    <a class="callout-link" href="{{ '/manifesto/' | relative_url }}">Read the manifesto →</a>
+  </section>
+  {%- endif -%}
+
+  {%- if page.featured_lessons -%}
+  <section class="home-block">
+    <h2 class="block-head">Start here</h2>
+    <ul class="home-list">
+      {%- for slug in page.featured_lessons -%}
+        {%- assign target = slug | prepend: '/learn/' | append: '/' -%}
+        {%- assign lesson = site.lessons | where: "url", target | first -%}
+        {%- if lesson -%}
+        <li>
+          <a href="{{ lesson.url | relative_url }}">{{ lesson.title }}</a>
+          {%- if lesson.summary -%}<span class="item-summary">{{ lesson.summary }}</span>{%- endif -%}
+        </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+    <a class="block-more" href="{{ '/learn/' | relative_url }}">All lessons →</a>
+  </section>
+  {%- endif -%}
+
+  <section class="home-block">
+    <h2 class="block-head">Latest articles</h2>
+    {%- if site.posts.size > 0 -%}
+    <ul class="home-list">
+      {%- for post in site.posts limit: 3 -%}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="item-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        {%- if post.description -%}<span class="item-summary">{{ post.description }}</span>{%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+    <a class="block-more" href="{{ '/articles/' | relative_url }}">All articles →</a>
+    {%- else -%}
+    <p class="home-empty">New articles are on the way. <a href="{{ '/articles/' | relative_url }}">See what's coming →</a></p>
+    {%- endif -%}
+  </section>
+</div>

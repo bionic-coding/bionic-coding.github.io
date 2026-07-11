@@ -1,0 +1,11 @@
+# Production overlay — merged on top of _config.yml for the deployed build only:
+#   bundle exec jekyll build --config _config.yml,_config_production.yml
+# Its only job is to hide work-in-progress lesson drafts from the live site.
+# Draft lessons still render in local `jekyll serve` (base config) so you can
+# preview them; move a lesson from _lesson_drafts/ to _lessons/ to publish it.
+collections:
+  lessons:
+    output: true
+    permalink: /learn/:name/
+  lesson_drafts:
+    output: false

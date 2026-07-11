@@ -2,6 +2,15 @@
 
 _Append-only. Newest first._
 
+## [2026-07-11] brief | BRIEF-teaching-regular-people-ai-content-plan: draft → published
+
+Transitioned BRIEF-teaching-regular-people-ai-content-plan from `draft` to `published`. Body unchanged.
+
+## [2026-07-11] brief | scaffolded BRIEF-teaching-regular-people-ai-content-plan
+
+Teaching regular people AI: content plan for Articles and the Learn section.
+File `docs/briefs/BRIEF-teaching-regular-people-ai-content-plan.md`, status: draft. Body human-authored next.
+
 ## [2026-07-08] adr | ADR-0004: accept (accepted)
 
 Single-source the manifesto homepage from research. Proposed → Accepted.

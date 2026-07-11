@@ -12,7 +12,7 @@ The name is deliberate. *Bionic*, not automatic. The human is not removed from t
 
 ## What you'll find here
 
-- **[The Manifesto]({{ "/" | relative_url }})** — the foundational statement: durable intent, disposable code. It's written in two movements — *the Steady State* (how you work once your invariants are pinned and your code is disposable) and *the Crossing* (the harder, more honest discipline of getting there from a legacy codebase whose intent was never written down).
+- **[The Manifesto]({{ "/manifesto/" | relative_url }})** — the foundational statement: durable intent, disposable code. It's written in two movements — *the Steady State* (how you work once your invariants are pinned and your code is disposable) and *the Crossing* (the harder, more honest discipline of getting there from a legacy codebase whose intent was never written down).
 - **Essays** working the idea into practice — pinning invariants, verifying against them, and earning disposability one module at a time.
 
 ## The stance in one paragraph

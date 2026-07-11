@@ -30,9 +30,43 @@ theme: minima
 plugins:
   - jekyll-feed
 
-# Top-nav pages. The manifesto is the homepage (linked via the site title),
-# so the nav lists only About. Add page paths here to surface more.
+# Markdown: GitHub-flavored (tables, strikethrough, task lists), with
+# hard_wrap off so hand-wrapped paragraphs don't become <br> tags.
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Collections. "lessons" is the AI Literacy section — ordered reference pages
+# served at /learn/<name>/. "lesson_drafts" mirrors _drafts for posts:
+# work-in-progress lessons that render in local dev but are excluded from the
+# production build (see _config_production.yml, used by the deploy workflow).
+collections:
+  lessons:
+    output: true
+    permalink: /learn/:name/
+  lesson_drafts:
+    output: true
+    permalink: /learn/:name/
+
+# Default layout for lessons (renders the "Last reviewed" date).
+defaults:
+  - scope:
+      path: ""
+      type: lessons
+    values:
+      layout: lesson
+  - scope:
+      path: ""
+      type: lesson_drafts
+    values:
+      layout: lesson
+
+# Top-nav pages. The manifesto is the homepage (linked via the site title).
 header_pages:
+  - manifesto.md
+  - articles.md
+  - learn.md
   - about.markdown
 
 # Exclude from processing.

@@ -11,30 +11,11 @@ schema_version: "3"
 # Concerns this project has opted into. Skills no-op against a concern that
 # isn't enabled. Order is irrelevant.
 concerns_enabled:
-  - code
   - research
   - adrs
   - briefs
   - journal
   - promptbooks
-
-# Per-language code-doc extractors. Each entry maps a language name to one
-# extractor plugin under scripts/extractors/<name>.py, plus the glob(s) that
-# decide which files in this repo belong to that language and arbitrary
-# per-language options.
-code:
-  extractors:
-    # Example — uncomment and adjust to your project:
-    # elixir:
-    #   extractor: elixir          # matches scripts/extractors/elixir.py
-    #   glob: "lib/**/*.ex"        # or a list of globs
-    #   options:
-    #     include_private: false
-    # typescript:
-    #   extractor: typedoc
-    #   glob: ["packages/*/src/**/*.ts", "packages/*/src/**/*.tsx"]
-    #   options:
-    #     entry_points: ["packages/core/src/index.ts"]
 
 # Research concern.
 research:

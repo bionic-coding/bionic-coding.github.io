@@ -1,8 +1,12 @@
 # docs/bionic-coding
 
-_Last updated: 2026-07-11_
+_Last updated: 2026-07-13_
 
-## Research (1 sources, 1 synthesis pages)
+## What's next (5)
+
+_5 open suggestions (P1: 0, P2: 5, P3: 0) — see [[whats_next]]._
+
+## Research (6 sources, 2 synthesis pages)
 
 See [[research/index]].
 
@@ -27,7 +31,3 @@ See [[journal/index]].
 ## Promptbooks (0 active, 0 archived)
 
 See [[promptbooks/index]].
-
-## Code (regenerated: never)
-
-_No pages yet. Run `extract-code-docs` to populate. See [[code/index]] once present._

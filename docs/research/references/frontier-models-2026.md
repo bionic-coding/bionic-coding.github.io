@@ -3,8 +3,8 @@ title: "Frontier AI Models — 2026 Landscape"
 slug: frontier-models-2026
 type: references
 tags: [models, anthropic, openai, pricing, benchmarks]
-sources: [claude-opus-4-8, claude-fable, simon-willison-claude-opus-4-8, gpt-5-6-system-card, gpt-5-6-pricing]
-last_reviewed: 2026-07-13
+sources: [claude-opus-4-8, claude-fable, simon-willison-claude-opus-4-8, gpt-5-6-system-card, gpt-5-6-pricing, anthropic-redeploying-fable-5, artificial-analysis-gpt-5-6]
+last_reviewed: 2026-07-14
 ---
 
 # Frontier AI Models — 2026 Landscape
@@ -30,7 +30,7 @@ Source: [[research/sources/claude-opus-4-8]] (Anthropic announcement, captured 2
 Source: [[research/sources/claude-fable]] (Anthropic product page, captured 2026-07-12).
 
 - **Fable 5 is Anthropic's "5th model generation," a "Mythos-level" model** above the Opus class, built for days-long, complex, asynchronous work. API id `claude-fable-5`.
-- **Timeline (verified on the page):** announced **Jun 9, 2026** → **access unavailable Jun 12, 2026** → **access restored Jul 1, 2026**. The redeployment is tied to "enhanced safeguards."
+- **Timeline (verified):** announced **Jun 9, 2026** → **access unavailable Jun 12, 2026** (a US export-control directive) → **access restored Jul 1, 2026** with a new safety classifier. The cause and the "enhanced safeguards" fix are both confirmed by [[research/sources/anthropic-redeploying-fable-5]] — see the resolved note under _Open / verified_ below.
 - **Pricing (verified):** **$10 / MTok input, $50 / MTok output**, with a 90% input-token discount for prompt caching. US-only inference available at **1.1× pricing**. Available to Pro/Max/Team/Enterprise and via AWS, Google Cloud, Microsoft Foundry.
 - **Safeguards / fallback:** cybersecurity and biology queries flagged by safeguards are auto-routed to **Opus 4.8** (not charged at Fable prices); API customers configure this via a new Fallback API. **Mythos 5** is the gated, higher tier for vetted cyber/bio research partners.
 - **Data retention:** using Fable requires 30-day data retention for safety monitoring.
@@ -64,5 +64,5 @@ These come from the night gardener's suggestion memo (`_dispatched/` after proce
 
 - **GPT-5.6 date, tiers, and pricing are now verified** and moved to the section above ([[research/sources/gpt-5-6-system-card]] for the date/tiers, [[research/sources/gpt-5-6-pricing]] for pricing). One provenance caveat: the pricing source is a user paste whose canonical URL wasn't captured — supply the URL so it can be re-verified on refresh. _(Simon Willison's 9 July 2026 GPT-5.6 writeup — `simonwillison.net/2026/Jul/9/gpt-5-6/` — remains available as independent corroboration if an outside voice is wanted.)_
 - **Fable 5's reported specs — 1M-token context, 128K output, "always-on adaptive thinking."** The Fable product page (now captured) confirms the June 9 announcement and pricing but states **none** of these numbers. Still unverified — capture the `/news/claude-fable-5-mythos-5` launch post or the system card.
-- **⚠️ Contradiction — the *cause* of the Fable suspension ("Fable, Relaunched").** The memo attributes the Jun 12 → Jul 1 outage to "a US export-control directive." The Anthropic product page ([[research/sources/claude-fable]]) **confirms the dates** but gives **no cause**, and frames the redeployment around **enhanced safeguards** — which is inconsistent with an export-control explanation. **Do not publish "export controls" as the reason** until a primary source (the linked `/news/fable-mythos-access` and `/news/redeploying-fable-5` posts, or a major-outlet/government report) actually says so. The dates are now safe to cite; the *why* is not.
-- **Head-to-head benchmarks** (e.g. Artificial Analysis Intelligence Index; Terminal-Bench 2.1 Sol vs. Opus). Benchmarks mislead and the numbers in the memo are unverified — cite primary methodology pages, and hedge, before using any figure.
+- **✅ Resolved — the *cause* of the Fable suspension.** Anthropic's [[research/sources/anthropic-redeploying-fable-5]] (Jun 30) reconciles both accounts, which were never actually in conflict: the Jun 12 outage **was** a US export-control directive, **and** the return was gated on **enhanced safeguards** — cause and fix, both true. Trigger: a report from **Amazon researchers** who bypassed Fable 5's safeguards to identify software vulnerabilities (and, in one case, produced exploit-demo code). Controls lifted Jun 30; Fable 5 restored Jul 1 with a new safety classifier (blocks the technique >99%; blocked requests route to Opus 4.8). **The export-control cause is now safe to cite to the primary source.** Honesty nuance worth keeping: Anthropic frames it as a *borderline* safeguards case, not a unique capability — Opus 4.8 and GPT-5.5 "could identify the same vulnerabilities."
+- **✅ Resolved (but hedge) — head-to-head benchmarks.** Now sourced to [[research/sources/artificial-analysis-gpt-5-6]] (Intelligence Index v4.1): Sol (max) **59**, one point below Fable 5, at ~⅓ the cost; Sol **leads AA's Coding Agent Index at 80** (Codex harness). But AA-Briefcase and the separate SWE-Bench Pro suite give Fable the edge on analytical/rubric quality — **the suites disagree, and that split is the point.** Cite the methodology page, date every figure, lead with the disagreement — there is no single "best."

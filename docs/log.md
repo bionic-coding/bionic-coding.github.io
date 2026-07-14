@@ -2,6 +2,18 @@
 
 _Append-only. Newest first._
 
+## [2026-07-14] ingest | fable-redeploy + gpt-5-6-benchmarks (2)
+
+Processed the inbox — dispatched the night gardener's `gardener-model-news-followup-2026-07-14` suggestion by capturing the two primary sources it flagged. `anthropic-redeploying-fable-5` (Anthropic, Jun 30) and `artificial-analysis-gpt-5-6` (AA Intelligence Index v4.1). Raw: `research/raw/2026-07-14/{anthropic-redeploying-fable-5,artificial-analysis-gpt-5-6}/`. Synthesis: `research/references/frontier-models-2026.md` (sources 5→7) — **resolved both remaining flags**: the Fable suspension *cause* (export controls + Amazon jailbreak, safeguards fix — contradiction dissolved) and the head-to-head benchmarks (AA numbers; suites disagree). Sources 8→10. Only Fable's context/output specs remain open.
+
+## [2026-07-14] ingest | llm-evaluation sources (2)
+
+Ingested the two Evals sources the Prompting & Evals lesson needed: `judging-llm-as-a-judge-mt-bench` (Zheng et al. 2023, the canonical LLM-as-judge paper + position/verbosity/self-enhancement biases) and `llm-as-a-judge-evidently-guide` (Evidently AI practical guide). Raw: `research/raw/2026-07-14/{judging-llm-as-a-judge-mt-bench,llm-as-a-judge-evidently-guide}/` (fetched via web-to-markdown). Synthesis: new `research/concepts/llm-evaluation.md` (sources 0→2) consolidating LLM-as-judge, the three judge biases, and the jury/council mitigation — backs the lesson's Evals section + council note. Sources 6→8, synthesis 2→3.
+
+## [2026-07-14] garden | morning note 2026-07-14 (3 headlines, 1 artifact)
+
+Reviewed the delta since 2026-07-12 (commits `078e719` model-news pipeline + `4574762` cleanup, and an uncommitted *My AI Kit* polish). Night's news sweep resolved both _Open/unverified_ items in `frontier-models-2026` (Fable suspension cause; head-to-head benchmarks) — dropped `[[inbox/gardener-model-news-followup-2026-07-14]]` for morning dispatch. See [[garden/2026-07-14]].
+
 ## [2026-07-13] cleanup-campsite | 5 open (0 P1, 5 P2, 0 P3), 5 closed, 0 dismissed
 
 Top-3 P1 ids: none (all P1s discharged). Closed since last run: `cleanup-CLN-AUD-1-recency` (audit ran) + `cleanup-CLN-JR-1-ADR-0001..0004` (launch retrospective journaled). Remaining 5 are all CLN-ADR-1 "ADR not linked from README/USER_GUIDE" — optional for a content site. See [[whats_next]].

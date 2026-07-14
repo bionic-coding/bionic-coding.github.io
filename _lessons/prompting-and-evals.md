@@ -41,7 +41,7 @@ Name: Insulated Travel Mug
 Tagline: Your coffee's still hot three meetings later.
 
 Name: Noise-Cancelling Earbuds
-Tagline:
+Tagline: ...
 ```
 
 Two examples are enough to pin down the length, tone, and shape; the model completes the last line to match. A good example teaches faster than a paragraph of adjectives describing what you want.

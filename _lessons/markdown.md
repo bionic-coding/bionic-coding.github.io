@@ -6,8 +6,9 @@ status: published
 updated: 2026-07-11
 ---
 
-Formatting of text conveys meaning and structure. In everything from web pages to word documents, 
-we use formatting like **bold** and *italic* to emphasize text.
+Formatting of text conveys meaning and structure. In everything from web pages to word documents, we use formatting like **bold** and *italic* to emphasize text.
+
+Markdown is the sweet spot of something that is easy to read and write by both humans and AI, is extremely efficient in its token usage and yet still conveys the structure and formatting you need to convey meaning. Thus allowing you to share documents with LLMs in a way that minimizes token usage while preserving the original intent.
 
 ## What is Markdown
 

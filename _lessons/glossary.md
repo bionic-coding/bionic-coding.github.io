@@ -1,6 +1,6 @@
 ---
 title: Glossary
-order: 10
+order: 11
 summary: "Plain-language definitions of the words AI people throw around."
 status: published
 updated: 2026-07-11

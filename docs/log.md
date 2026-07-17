@@ -2,6 +2,14 @@
 
 _Append-only. Newest first._
 
+## [2026-07-17] journal | processed the 2026-07-17 gardener inbox — order fix + link-checker merge
+
+Dispatched both gardener drops (work notes) → `docs/inbox/_dispatched/2026-07-17/`. Fixed the `order: 4` collision: `_lessons/leveraging-ai.md` → 10, `_lessons/glossary.md` → 11 (Glossary stays last). Council-merged the two link-checker branches into one two-pass checker on `garden/link-check-lessons` (`7e115e9`); deleted `garden/lesson-link-check`. Narrative: [[journal/2026-07]].
+
+## [2026-07-17] garden | morning note 2026-07-17 (3 headlines, 3 artifacts)
+
+Reviewed the delta since 2026-07-15 (commit `fdc917f` buildout — 7 lessons filled to published (10/11 now live), the first weekly "This Week in AI" post, Fable/Kimi research ingests, and the three model-news drafts *deleted*, not shipped — plus `c38d596` standardizing the weekly-post format via `_templates/this-week-in-ai.md` + [[briefs/BRIEF-this-week-in-ai-format]]). News sweep fed the new weekly cadence: dropped [[inbox/gardener-next-issue-candidates-2026-07-17]] (Kimi K3 receipts + Jul 27 weights; MCP spec RC Jul 28) and [[inbox/gardener-lesson-freshness-2026-07-17]] (MCP lesson vs the Jul 28 RC; the skills/leveraging-ai `order: 4` collision). Drafted branch `garden/link-check-lessons` — internal-link checker, resolving the thrice-offered link-checker in a scope that respects the perishable-post design. See [[garden/2026-07-17]].
+
 ## [2026-07-17] cleanup-campsite | 5 open (0 P1, 5 P2, 0 P3), 0 closed, 0 dismissed
 
 Top-3 P1 ids: none (no P1s). All 5 open are CLN-ADR-1 "ADR not linked from README/USER_GUIDE" — unchanged from 2026-07-13, optional for a content site. Everything else clean: audit ran 4 days ago (< 14), no Proposed ADRs, no promptbooks, no phantom/drifted ADR-body paths, no journal gaps in the last 7 days, no forged skills, retro not due. See [[whats_next]].

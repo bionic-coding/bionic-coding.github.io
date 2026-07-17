@@ -4,6 +4,8 @@ _One row per ingested research source. Newest first._
 
 | slug | title | source_url | captured_at | last_source_check | last_update | static | raw_path | wiki_path |
 |------|-------|------------|-------------|-------------------|-------------|--------|----------|-----------|
+| kimi-k3-docs | Introducing Kimi K3 (platform docs) | — | 2026-07-15 | 2026-07-15 | — | false | research/raw/2026-07-15/kimi-k3-docs/ | research/sources/kimi-k3-docs.md |
+| anthropic-introducing-fable-5-mythos-5 | Introducing Claude Fable 5 and Claude Mythos 5 | https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5 | 2026-07-15 | 2026-07-15 | — | false | research/raw/2026-07-15/anthropic-introducing-fable-5-mythos-5/ | research/sources/anthropic-introducing-fable-5-mythos-5.md |
 | anthropic-redeploying-fable-5 | Redeploying Claude Fable 5 | https://www.anthropic.com/news/redeploying-fable-5 | 2026-07-14 | 2026-07-14 | — | true | research/raw/2026-07-14/anthropic-redeploying-fable-5/ | research/sources/anthropic-redeploying-fable-5.md |
 | artificial-analysis-gpt-5-6 | GPT-5.6 benchmarks across Intelligence, Speed and Cost | https://artificialanalysis.ai/articles/gpt-5-6-has-landed | 2026-07-14 | 2026-07-14 | — | false | research/raw/2026-07-14/artificial-analysis-gpt-5-6/ | research/sources/artificial-analysis-gpt-5-6.md |
 | judging-llm-as-a-judge-mt-bench | Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena | https://arxiv.org/abs/2306.05685 | 2026-07-14 | 2026-07-14 | — | true | research/raw/2026-07-14/judging-llm-as-a-judge-mt-bench/ | research/sources/judging-llm-as-a-judge-mt-bench.md |

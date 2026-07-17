@@ -81,4 +81,4 @@ The vocabulary of modern AI, one or two sentences each, no math required. Terms 
 **Training data** – The material a model learns from. Its quality and coverage shape what the model knows and where it's weak, and a model generally knows nothing about events after its data was collected (its "cutoff"), unless the app feeds it newer information through browsing, tools, or **RAG**.
 
 ## References
-These are standard definitions; spot-check the fast-moving ones against a current source. Good anchors: the vendor glossaries (OpenAI, Anthropic, and the Google Machine Learning Glossary), one stable ML reference for the core terms, and product docs for the newer entries (**MCP**, tool calling). Route any source through crux and cite its `docs/research/sources/<slug>` page.
+These are standard definitions; spot-check the fast-moving ones against a current source. Good anchors: the vendor glossaries (OpenAI, Anthropic, and the Google Machine Learning Glossary), one stable ML reference for the core terms, and product docs for the newer entries (**MCP**, tool calling).

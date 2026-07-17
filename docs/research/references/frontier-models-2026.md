@@ -3,13 +3,13 @@ title: "Frontier AI Models — 2026 Landscape"
 slug: frontier-models-2026
 type: references
 tags: [models, anthropic, openai, pricing, benchmarks]
-sources: [claude-opus-4-8, claude-fable, simon-willison-claude-opus-4-8, gpt-5-6-system-card, gpt-5-6-pricing, anthropic-redeploying-fable-5, artificial-analysis-gpt-5-6]
-last_reviewed: 2026-07-14
+sources: [claude-opus-4-8, claude-fable, simon-willison-claude-opus-4-8, gpt-5-6-system-card, gpt-5-6-pricing, anthropic-redeploying-fable-5, artificial-analysis-gpt-5-6, anthropic-introducing-fable-5-mythos-5, kimi-k3-docs]
+last_reviewed: 2026-07-15
 ---
 
 # Frontier AI Models — 2026 Landscape
 
-A running reference for the current frontier-model landscape, built to back the Articles queue (the GPT-5.6/Opus/Fable comparison, "Fable, Relaunched", "The New Codex") and the model-tier lesson. **Facts are dated and cited to their `docs/research/sources/` capture.** Treat anything in _Open / unverified_ as not-yet-citable until a primary source is captured — do not publish those as fact.
+A running reference for the current frontier-model landscape, built to back the Articles queue (the GPT-5.6/Opus/Fable comparison, "Fable, Relaunched", "The New Codex") and the model-tier lesson. **Facts are dated and cited to their `docs/research/sources/` capture.** The **Verification log** at the end records how each formerly-open claim was checked; as of 2026-07-15 every claim here is backed by a captured primary source — no open flags.
 
 ## Anthropic — Claude Opus 4.8
 
@@ -30,6 +30,7 @@ Source: [[research/sources/claude-opus-4-8]] (Anthropic announcement, captured 2
 Source: [[research/sources/claude-fable]] (Anthropic product page, captured 2026-07-12).
 
 - **Fable 5 is Anthropic's "5th model generation," a "Mythos-level" model** above the Opus class, built for days-long, complex, asynchronous work. API id `claude-fable-5`.
+- **Specs (verified — [[research/sources/anthropic-introducing-fable-5-mythos-5]]):** **1M-token context window**, **up to 128K output tokens**, **always-on adaptive thinking** (steered by the `effort` parameter, not a toggle). Vision, tool use, prompt caching, Batch API. Uses the Opus 4.7 tokenizer (~30% more tokens per the same text). Mythos 5 shares these specs but drops the safety classifiers (Glasswing-only).
 - **Timeline (verified):** announced **Jun 9, 2026** → **access unavailable Jun 12, 2026** (a US export-control directive) → **access restored Jul 1, 2026** with a new safety classifier. The cause and the "enhanced safeguards" fix are both confirmed by [[research/sources/anthropic-redeploying-fable-5]] — see the resolved note under _Open / verified_ below.
 - **Pricing (verified):** **$10 / MTok input, $50 / MTok output**, with a 90% input-token discount for prompt caching. US-only inference available at **1.1× pricing**. Available to Pro/Max/Team/Enterprise and via AWS, Google Cloud, Microsoft Foundry.
 - **Safeguards / fallback:** cybersecurity and biology queries flagged by safeguards are auto-routed to **Opus 4.8** (not charged at Fable prices); API customers configure this via a new Fallback API. **Mythos 5** is the gated, higher tier for vetted cyber/bio research partners.
@@ -38,7 +39,7 @@ Source: [[research/sources/claude-fable]] (Anthropic product page, captured 2026
 
 ## OpenAI — GPT-5.6 (Sol / Terra / Luna)
 
-Sources: [[research/sources/gpt-5-6-system-card]] (OpenAI "GPT-5.6 Preview System Card," dated 2026-07-09, captured 2026-07-13) — the primary source that closes the earlier OpenAI-403 gap — plus [[research/sources/gpt-5-6-pricing]] for API pricing (the system card itself is a safety document with no pricing). **The card carries no competitor benchmark leaderboard; treat head-to-head benchmark numbers as still-open (see _Open / unverified_).**
+Sources: [[research/sources/gpt-5-6-system-card]] (OpenAI "GPT-5.6 Preview System Card," dated 2026-07-09, captured 2026-07-13) — the primary source that closes the earlier OpenAI-403 gap — plus [[research/sources/gpt-5-6-pricing]] for API pricing (the system card itself is a safety document with no pricing). **The card carries no competitor benchmark leaderboard; head-to-head numbers are sourced separately to [[research/sources/artificial-analysis-gpt-5-6]].**
 
 - **GPT-5.6 is a family of three models:** **Sol** (flagship, model id `gpt-5.6-sol`, alias `gpt-5.6`), **Terra** (capable lower-cost, `gpt-5.6-terra`), **Luna** (fastest / most cost-efficient, `gpt-5.6-luna`). This confirms the memo's tier names and the **July 9, 2026** date (the card's own date).
 - **Pricing (verified, from [[research/sources/gpt-5-6-pricing]]):** per MTok input / output — **Sol $5 / $30**, **Terra $2.50 / $15**, **Luna $1 / $6**. Sol's figure confirms the gardener memo's "~$5 / $30" exactly. For comparison, Anthropic's **Opus 4.8 is $5 / $25** — so Sol matches Opus on input and is dearer on output, while Terra/Luna undercut both. All three tiers expose the same reasoning-effort levels: **none / low / medium / high / xhigh / max** (the same ladder Anthropic uses for Opus).
@@ -49,20 +50,31 @@ Sources: [[research/sources/gpt-5-6-system-card]] (OpenAI "GPT-5.6 Preview Syste
 - **Health:** GPT-5.6 Sol's length-adjusted **HealthBench Professional score is 60.5 (+8.7 vs GPT-5.5)** — the largest gain since GPT-5.
 - **Access controls:** the most sensitive cyber/bio capabilities are gated behind **trust-based access and actor-level enforcement**, reserved for "trusted defenders."
 
+## Kimi K3 (open-weights) — announced, weights by Jul 27
+
+Source: [[research/sources/kimi-k3-docs]] (Kimi platform docs, user paste 2026-07-15). **Vendor marketing — verify the self-claims; no benchmarks or pricing numbers are captured yet, and the technical blog was unreachable at capture.** Backs the Kimi K3 draft in the Articles queue.
+
+- **The open/closed contrast this landscape was missing.** Opus 4.8, Fable 5, and GPT-5.6 are all **API-only** (rent access). Kimi K3 is **open-weights** — Kimi says the full weights ship **by July 27, 2026**. As of now it's an announcement plus a hosted API.
+- **Scale (verify):** 2.8T total parameters — Kimi claims "the world's first open-source model in the 3-trillion-parameter class." It's **Mixture-of-Experts, activating 16 of 896 experts**, so *active* params per token are a small fraction of the total. New attention (KDA + Attention Residuals); claimed ~2.5× K2 scaling efficiency.
+- **Specs:** 1M-token context, native vision (images + video). OpenAI-compatible API (`kimi-k3` @ `api.moonshot.ai/v1`); thinking always on (`reasoning_effort: max` only for now).
+- **Pricing:** flat pay-as-you-go, no context-length tiering, separate cache-hit/miss rates — **numbers not captured.** Cite Kimi's pricing page and *independent* benchmarks (not the vendor blog) before publishing anything comparative.
+
 ## Naming note (important for a lay audience)
 
 The ecosystem uses overlapping tier names, which the "My AI Kit" post rightly calls confusing:
 
-- **Anthropic Claude:** Haiku / Sonnet / Opus (and, above Opus, the **Mythos** class — currently `Mythos Preview`). The "Fable" family also appears in this repo's drafts and the model-tier discussion (see _Open / unverified_).
+- **Anthropic Claude:** Haiku / Sonnet / Opus, and above Opus the **Mythos** class — the widely-released tier is **Fable 5** (`claude-fable-5`); **Mythos 5** is the same model without safety classifiers, limited to Project Glasswing (see the **Claude Fable 5** section above).
 - **OpenAI GPT-5.6:** three tiers **Sol** (flagship) / **Terra** (lower-cost) / **Luna** (fastest) — now confirmed by the [[research/sources/gpt-5-6-system-card]].
 
 This tier tangle is itself a candidate lesson (see the night-gardener morning note, `docs/garden/2026-07-12.md`).
 
-## Open / unverified — needs a primary source before it goes on the site
+## Verification log — all items resolved (no open flags as of 2026-07-15)
 
-These come from the night gardener's suggestion memo (`_dispatched/` after processing). They are **plausible but not yet backed by a captured primary source** — flagged here so they are not published as fact:
+These started as the night gardener's unverified suggestions and were checked against captured primary sources. **Every item below is now resolved** — kept as an audit trail of what was verified and how:
 
 - **GPT-5.6 date, tiers, and pricing are now verified** and moved to the section above ([[research/sources/gpt-5-6-system-card]] for the date/tiers, [[research/sources/gpt-5-6-pricing]] for pricing). One provenance caveat: the pricing source is a user paste whose canonical URL wasn't captured — supply the URL so it can be re-verified on refresh. _(Simon Willison's 9 July 2026 GPT-5.6 writeup — `simonwillison.net/2026/Jul/9/gpt-5-6/` — remains available as independent corroboration if an outside voice is wanted.)_
-- **Fable 5's reported specs — 1M-token context, 128K output, "always-on adaptive thinking."** The Fable product page (now captured) confirms the June 9 announcement and pricing but states **none** of these numbers. Still unverified — capture the `/news/claude-fable-5-mythos-5` launch post or the system card.
+- **✅ Resolved — Fable 5's specs.** Anthropic's model docs ([[research/sources/anthropic-introducing-fable-5-mythos-5]]) confirm all three: **1M-token context window**, **up to 128K output tokens**, and **always-on adaptive thinking** (steered by the `effort` parameter). Safe to cite. Footnote for cost comparisons: Fable uses the Opus 4.7 tokenizer (~30% more tokens per the same text).
+
+_All items in this section are now resolved — the frontier-models reference carries no open flags as of 2026-07-15._
 - **✅ Resolved — the *cause* of the Fable suspension.** Anthropic's [[research/sources/anthropic-redeploying-fable-5]] (Jun 30) reconciles both accounts, which were never actually in conflict: the Jun 12 outage **was** a US export-control directive, **and** the return was gated on **enhanced safeguards** — cause and fix, both true. Trigger: a report from **Amazon researchers** who bypassed Fable 5's safeguards to identify software vulnerabilities (and, in one case, produced exploit-demo code). Controls lifted Jun 30; Fable 5 restored Jul 1 with a new safety classifier (blocks the technique >99%; blocked requests route to Opus 4.8). **The export-control cause is now safe to cite to the primary source.** Honesty nuance worth keeping: Anthropic frames it as a *borderline* safeguards case, not a unique capability — Opus 4.8 and GPT-5.5 "could identify the same vulnerabilities."
 - **✅ Resolved (but hedge) — head-to-head benchmarks.** Now sourced to [[research/sources/artificial-analysis-gpt-5-6]] (Intelligence Index v4.1): Sol (max) **59**, one point below Fable 5, at ~⅓ the cost; Sol **leads AA's Coding Agent Index at 80** (Codex harness). But AA-Briefcase and the separate SWE-Bench Pro suite give Fable the edge on analytical/rubric quality — **the suites disagree, and that split is the point.** Cite the methodology page, date every figure, lead with the disagreement — there is no single "best."

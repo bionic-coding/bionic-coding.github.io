@@ -2,6 +2,22 @@
 
 _Append-only. Newest first._
 
+## [2026-07-17] cleanup-campsite | 5 open (0 P1, 5 P2, 0 P3), 0 closed, 0 dismissed
+
+Top-3 P1 ids: none (no P1s). All 5 open are CLN-ADR-1 "ADR not linked from README/USER_GUIDE" — unchanged from 2026-07-13, optional for a content site. Everything else clean: audit ran 4 days ago (< 14), no Proposed ADRs, no promptbooks, no phantom/drifted ADR-body paths, no journal gaps in the last 7 days, no forged skills, retro not due. See [[whats_next]].
+
+## [2026-07-15] ingest | kimi-k3-docs
+
+Captured Kimi's K3 platform docs (user paste) to back the new `_drafts/kimi-k3.md` article. Raw: `research/raw/2026-07-15/kimi-k3-docs/` (paste; canonical URL unverified, technical blog `kimi.com/blog/kimi-k3` was unreachable). Synthesis: added a **Kimi K3 (open-weights)** section to `research/references/frontier-models-2026.md` (sources 8→9) — the open/closed contrast the landscape lacked. Vendor claims (2.8T "world's first," 2.5× K2, benchmarks, pricing numbers) flagged unverified. Sources 11→12.
+
+## [2026-07-15] ingest | anthropic-introducing-fable-5-mythos-5
+
+Processed the inbox — dispatched the night gardener's `gardener-fable-specs-2026-07-15` suggestion. Captured Anthropic's Fable 5 model docs page. Raw: `research/raw/2026-07-15/anthropic-introducing-fable-5-mythos-5/`. Synthesis: `research/references/frontier-models-2026.md` (sources 7→8) — **resolved the last open flag**: Fable's specs (1M context / 128K output / always-on adaptive thinking, all confirmed). The frontier-models reference now carries **no open flags**. Sources 10→11.
+
+## [2026-07-15] garden | morning note 2026-07-15 (3 headlines, 1 artifact)
+
+Reviewed the delta since 2026-07-14 (commit `6beae98` — the published Prompting & Evals lesson + the research backing it + the two model-news flags resolved from my last suggestion — plus a `4315e73` cleanup). News sweep closed the last frontier-models gap (Fable specs); dropped `[[inbox/gardener-fable-specs-2026-07-15]]`. Lead nudge: ship an article — the runway is fully built. See [[garden/2026-07-15]].
+
 ## [2026-07-14] ingest | fable-redeploy + gpt-5-6-benchmarks (2)
 
 Processed the inbox — dispatched the night gardener's `gardener-model-news-followup-2026-07-14` suggestion by capturing the two primary sources it flagged. `anthropic-redeploying-fable-5` (Anthropic, Jun 30) and `artificial-analysis-gpt-5-6` (AA Intelligence Index v4.1). Raw: `research/raw/2026-07-14/{anthropic-redeploying-fable-5,artificial-analysis-gpt-5-6}/`. Synthesis: `research/references/frontier-models-2026.md` (sources 5→7) — **resolved both remaining flags**: the Fable suspension *cause* (export controls + Amazon jailbreak, safeguards fix — contradiction dissolved) and the head-to-head benchmarks (AA numbers; suites disagree). Sources 8→10. Only Fable's context/output specs remain open.

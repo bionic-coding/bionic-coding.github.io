@@ -1,7 +1,7 @@
 ---
-generated_at: 2026-07-13T19:32:08Z
+generated_at: 2026-07-17T20:02:27Z
 generator: cleanup
-generator_version: "1.3.3"
+generator_version: "1.4.2"
 scan_findings: 5
 suggestions_open: 5
 suggestions_dismissed_carried: 0
@@ -10,7 +10,7 @@ dismissed: []
 
 # What's next
 
-_Generated 2026-07-13 19:32 by `cleanup-campsite` v1.3.3. **Body regenerated end-to-end on every run; only the `dismissed:` frontmatter list persists.** Hand-edits below the frontmatter are blown away. To dismiss a suggestion, move its `id:` into the `dismissed:` frontmatter list with a `reason:`._
+_Generated 2026-07-17 20:02 by `cleanup-campsite` v1.4.2. **Body regenerated end-to-end on every run; only the `dismissed:` frontmatter list persists.** Hand-edits below the frontmatter are blown away. To dismiss a suggestion, move its `id:` into the `dismissed:` frontmatter list with a `reason:`._
 
 ## Open suggestions (5)
 
@@ -60,8 +60,4 @@ _Generated 2026-07-13 19:32 by `cleanup-campsite` v1.3.3. **Body regenerated end
 - **refs:** [[adrs/ADR-0004-single-source-the-manifesto-homepage-from-research]]
 
 ## Recently closed (since last run)
-- ~~`cleanup-CLN-AUD-1-recency`~~ — addressed 2026-07-13 (audit-docs ran; baseline established).
-- ~~`cleanup-CLN-JR-1-ADR-0001`~~ — addressed 2026-07-13 (launch retrospective journaled, references ADR-0001).
-- ~~`cleanup-CLN-JR-1-ADR-0002`~~ — addressed 2026-07-13 (same retrospective entry references ADR-0002).
-- ~~`cleanup-CLN-JR-1-ADR-0003`~~ — addressed 2026-07-13 (same retrospective entry references ADR-0003).
-- ~~`cleanup-CLN-JR-1-ADR-0004`~~ — addressed 2026-07-13 (same retrospective entry references ADR-0004).
+- (none — all 5 CLN-ADR-1 findings from the prior run remain open; no new closures.)

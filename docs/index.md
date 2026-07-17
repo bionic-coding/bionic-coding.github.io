@@ -20,9 +20,10 @@ See [[research/index]].
 | [[adrs/ADR-0001-use-jekyll-4-4-with-ruby-pinned-to-4-0-5]] | Use Jekyll 4.4 with Ruby pinned to 4.0.5 | Accepted | 2026-07-08 |
 | [[adrs/ADR-0000-record-architecture-decisions]] | Record architectural decisions as ADRs | Accepted | 2026-07-07 |
 
-## Briefs (1)
+## Briefs (2)
 
 - [[briefs/BRIEF-teaching-regular-people-ai-content-plan]] — `published` — `updated_at: 2026-07-11`
+- [[briefs/BRIEF-this-week-in-ai-format]] — `published` — `updated_at: 2026-07-17`
 
 ## Journal (1 month)
 

@@ -79,6 +79,7 @@ header_pages:
 #
 exclude:
   - docs/
+  - _templates/
 #   - .sass-cache/
 #   - .jekyll-cache/
 #   - gemfiles/

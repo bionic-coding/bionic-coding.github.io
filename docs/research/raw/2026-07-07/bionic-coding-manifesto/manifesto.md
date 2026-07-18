@@ -40,7 +40,7 @@ Almost no one starts there. Almost all software begins on the far side — a cod
 
 *What Bionic Coding is once you are across. The confident voice below assumes the invariants have already been recovered, pinned, and ratified. If that is not yet true of your system, this movement describes where you are going, not where you may act.*
 
-The factors divide into two kinds, and they read as an arc. The opening **practices** (1–2) establish the stance: intent is the source of truth, and code is held loosely. The **invariants** (3–7) are *what you preserve* — the load-bearing walls a regeneration must never move: state, structure, behavior, boundary, and experience. The closing **practices** (8–11) make the stance safe to hold: verification, amendment, augmentation, and regeneration itself.
+The factors divide into two kinds, and they read as an arc. The opening **practices** (1-2) establish the stance: intent is the source of truth, and code is held loosely. The **invariants** (3-7) are *what you preserve* — the load-bearing walls a regeneration must never move: state, structure, behavior, boundary, and experience. The closing **practices** (8-11) make the stance safe to hold: verification, amendment, augmentation, and regeneration itself.
 
 ## 1. Intent
 

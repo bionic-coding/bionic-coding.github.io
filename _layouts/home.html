@@ -20,7 +20,7 @@ layout: default
 
   {%- if page.featured_lessons -%}
   <section class="home-block">
-    <h2 class="block-head">Start here</h2>
+    <h2 class="block-head">Featured Lessons</h2>
     <ul class="home-list">
       {%- for slug in page.featured_lessons -%}
         {%- assign target = slug | prepend: '/learn/' | append: '/' -%}

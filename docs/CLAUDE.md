@@ -108,7 +108,7 @@ New books and runs are written as structured `.yaml`. Legacy `.md` books and run
 
 ### journal (append-only narrative)
 - `docs/journal/YYYY-MM.md` — one file per month. Append-only. Greppable headings.
-- Each entry: `## [YYYY-MM-DD HH:MM] <category> | <subject>` then 1–10 lines + optional `Refs: [[...]] [[...]]` line.
+- Each entry: `## [YYYY-MM-DD HH:MM] <category> | <subject>` then 1-10 lines + optional `Refs: [[...]] [[...]]` line.
 - Category enum: `decision | implementation | bug | learning | blocker | refactor | meeting | review | misc`.
 - Skill: `log-work`. Triggers: "log work", "journal this", end-of-day, after a meaningful skill side-effect.
 - **Body lines never begin with `## [`** — that prefix is reserved for entry headings. Any content that would start a body line with `## [` must be rewritten or dropped; otherwise it is indistinguishable from a real heading and can poison the retrospective window anchor.
@@ -270,7 +270,7 @@ When the op enum changes, edit BOTH regexes here and the prose enum above; nothi
 - `origin` — a skill (or group of skills) was ported into the project from an external source. Body: which skill(s), from what ref, on what date.
 - `garden` — `tend-garden` wrote a morning note under `docs/garden/`. Body: note date, headline count, artifact count. Written immediately BEFORE the note (the op is the note's log_head anchor and corroboration).
 
-Body under the heading: 1–5 lines. List specific paths touched. Keep terse — `log.md` is for grep, not reading.
+Body under the heading: 1-5 lines. List specific paths touched. Keep terse — `log.md` is for grep, not reading.
 
 `grep "^## \[" docs/log.md` returns the chronology. `grep -oE "^## \[[^]]+\] \w+" docs/log.md | sort | uniq -c` returns per-op counts.
 
@@ -846,7 +846,7 @@ Prose skills MUST resolve `.crux` by invoking the CLI — `python3 "${CLAUDE_PLU
 
 ### 14.3 Artifact prefix rules
 
-- Grammar: `^[A-Z][A-Z0-9]{1,9}$` (2–10 chars, uppercase alphanumeric, starts with a letter, no hyphen). The reserved type tokens `PB`, `ADR`, `RUN`, `BRIEF` are rejected as prefix values.
+- Grammar: `^[A-Z][A-Z0-9]{1,9}$` (2-10 chars, uppercase alphanumeric, starts with a letter, no hyphen). The reserved type tokens `PB`, `ADR`, `RUN`, `BRIEF` are rejected as prefix values.
 - The prefix **prepends the whole id** with a literal `-`: `CRX-PB-NNNN`, `CRX-ADR-NNNN`. The prefixed string IS the id — verbatim on every surface (filenames, YAML `id:`/`book_id:`/`forked_from:`, ADR frontmatter, wiki-links, indexes, `log.md` subjects).
 - **`RUN-NNN` and `BRIEF-<slug>` are NEVER prefixed** — run ids are book-scoped (the run dir + `book_id` carry the prefix); briefs are slug-keyed.
 - **Ids are immutable history.** Adopting or changing a prefix never renames existing artifacts; a mixed bare/prefixed tree is valid (one repo SHOULD converge on one prefix — `audit-docs` CHK-CFG-2 warns).

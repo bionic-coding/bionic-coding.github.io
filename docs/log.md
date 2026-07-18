@@ -2,6 +2,14 @@
 
 _Append-only. Newest first._
 
+## [2026-07-18] promptbook | started PB-0001-fix-mobile-nav-and-restore-about/RUN-001
+
+Started a new run against the active book. `total_prompts: 13`, `current_prompt: 1`. Snapshot: [[promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-001]]. `book_content_hash` bound at start; all 13 prompts `pending`.
+
+## [2026-07-18] promptbook | authored PB-0001-fix-mobile-nav-and-restore-about (iterate)
+
+Iterate cycle (`cycle_kind: verify`) to fix the broken header nav — mobile hamburger (sub-44px tap target + unstyled open panel) and the About link dropped from the menu (`header_pages` referenced `about.markdown`, file is `about.md`). `total_prompts: 13`, modules `(1×verify, 1×dev, 1×review)`. Assembled from modular templates; seeded by a crux:architect diagnosis. Validated (cycle-coverage pass, exit 0). See [[promptbooks/active/PB-0001-fix-mobile-nav-and-restore-about]].
+
 ## [2026-07-17] journal | processed the 2026-07-17 gardener inbox — order fix + link-checker merge
 
 Dispatched both gardener drops (work notes) → `docs/inbox/_dispatched/2026-07-17/`. Fixed the `order: 4` collision: `_lessons/leveraging-ai.md` → 10, `_lessons/glossary.md` → 11 (Glossary stays last). Council-merged the two link-checker branches into one two-pass checker on `garden/link-check-lessons` (`7e115e9`); deleted `garden/lesson-link-check`. Narrative: [[journal/2026-07]].
@@ -42,7 +50,7 @@ Reviewed the delta since 2026-07-12 (commits `078e719` model-news pipeline + `45
 
 Top-3 P1 ids: none (all P1s discharged). Closed since last run: `cleanup-CLN-AUD-1-recency` (audit ran) + `cleanup-CLN-JR-1-ADR-0001..0004` (launch retrospective journaled). Remaining 5 are all CLN-ADR-1 "ADR not linked from README/USER_GUIDE" — optional for a content site. See [[whats_next]].
 
-## [2026-07-13] journal | learning: Soft-launch retrospective — ADR-0001–0004 in hindsight
+## [2026-07-13] journal | learning: Soft-launch retrospective — ADR-0001-0004 in hindsight
 
 Entry in `docs/journal/2026-07.md` at 13:30. Reflective launch retrospective discharging the four CLN-JR-1 journal-gap P1s. Refs: [[adrs/ADR-0001-use-jekyll-4-4-with-ruby-pinned-to-4-0-5]] [[adrs/ADR-0002-deploy-to-github-pages-via-github-actions]] [[adrs/ADR-0003-ship-a-custom-presentation-layer-over-minima]] [[adrs/ADR-0004-single-source-the-manifesto-homepage-from-research]].
 

@@ -22,16 +22,16 @@ Unlike a Learn lesson, an issue is a **dated snapshot**. Perishable links are a 
 ## How to write an issue
 1. Copy `_templates/this-week-in-ai.md` to `_posts/YYYY-MM-DD-this-week-in-ai.md`.
 2. Fill the frontmatter: `title` prefix + date, and a `description` that names each story in plain language (this is the scannable teaser).
-3. Write the lede, 3–5 story sections (biggest first, related stories grouped), and the standing closer.
+3. Write the lede, 3-5 story sections (biggest first, related stories grouped), and the standing closer.
 4. For each claim, mark what's *claimed* (the vendor's words) vs. what's *verified*, and correct the popular misread when there is one.
 5. Publish. It renders at `/YYYY/MM/DD/this-week-in-ai.html`.
 
 Same discipline as everything else on the site: the template is scaffold; the sentences are yours.
 
 ## Anatomy — three layers
-**Post:** frontmatter → narrative lede → 3–5 story sections → standing closer.
+**Post:** frontmatter → narrative lede → 3-5 story sections → standing closer.
 
-- **Lede** — 2–3 sentences, first person, warm. Sums up the week and sets the tone. This is where the personality lives.
+- **Lede** — 2-3 sentences, first person, warm. Sums up the week and sets the tone. This is where the personality lives.
 - **Standing closer** — a permanent `## What I'm actually using` beat: opinion, not news. What you're reaching for this week and why. It's the column's signature and the reader payoff.
 
 **Story:**
@@ -55,7 +55,7 @@ These are the point of the column, not decoration:
 - **"My take" is optional per story.** Forced, it becomes filler; use it only when there's a real opinion.
 - **`What I'm actually using` is a permanent fixture** — every issue closes on it.
 - **The evidence module is an optional per-story module** — pull it in for receipt-heavy stories, skip it otherwise.
-- **3–5 stories**, biggest first, related stories grouped.
+- **3-5 stories**, biggest first, related stories grouped.
 
 ## Open questions
 - Cadence and how issues are triggered (weekly review vs. ad hoc); overlap with the night gardener's ideation.

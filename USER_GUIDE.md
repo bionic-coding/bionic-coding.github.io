@@ -1,6 +1,6 @@
 # Working with `docs/` in bionic-coding
 
-This project keeps its documentation in `docs/` — six concerns maintained by the `crux` Claude Code plugin. **You do not write these docs by hand.** You curate, decide, and discuss. Claude does the bookkeeping.
+This project keeps its documentation in `docs/` – six concerns maintained by the `crux` Claude Code plugin. **You do not write these docs by hand.** You curate, decide, and discuss. Claude does the bookkeeping.
 
 This guide is for humans. If you are an LLM agent picking up this repo, read `docs/CLAUDE.md` — that's the operational schema.
 

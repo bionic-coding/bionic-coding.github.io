@@ -19,7 +19,7 @@ tags: [model-news, weekly]
       not an evergreen lesson.
 -->
 
-<!-- LEDE — 2–3 sentences, first person, warm. Sum up the week, set the tone. -->
+<!-- LEDE — 2-3 sentences, first person, warm. Sum up the week, set the tone. -->
 <lede>
 
 ## <Story headline — plain or playful>
@@ -41,7 +41,7 @@ tags: [model-news, weekly]
 - [**<Anchor source>**](<url>) — the primary / most-credible source; bold it, list it first.
 - [<Source> (<Mon DD>)](<url>) — what it is / why it's here.
 
-<!-- Repeat the story block 3–5 times. Biggest first; group related stories. -->
+<!-- Repeat the story block 3-5 times. Biggest first; group related stories. -->
 ## <Next story…>
 
 <!-- STANDING CLOSER — keep this section every issue. -->

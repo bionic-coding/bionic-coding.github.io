@@ -23,7 +23,7 @@ Two modes ([[research/sources/llm-as-a-judge-evidently-guide]]):
 - **Pairwise comparison** — "which of these two is better?" Easier and more reliable than absolute scoring; best for choosing between models/prompts. Usually offline.
 - **Direct scoring** — grade one output against a criterion (correctness, relevance, safety). Works offline and for online monitoring.
 
-Practitioner rules of thumb: **binary labels beat fine-grained scales** (a 1–5 scale forces the unanswerable "what separates a 3 from a 4?"); **spell out the criteria** or scores drift; and **the same prompt tricks (chain-of-thought, clear instructions) improve a judge** like any other task.
+Practitioner rules of thumb: **binary labels beat fine-grained scales** (a 1-5 scale forces the unanswerable "what separates a 3 from a 4?"); **spell out the criteria** or scores drift; and **the same prompt tricks (chain-of-thought, clear instructions) improve a judge** like any other task.
 
 ## The catch: a judge has the failure modes you're testing for
 

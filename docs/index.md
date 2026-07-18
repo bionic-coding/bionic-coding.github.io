@@ -1,6 +1,6 @@
 # docs/bionic-coding
 
-_Last updated: 2026-07-17_
+_Last updated: 2026-07-18_
 
 ## What's next (5)
 
@@ -29,6 +29,6 @@ See [[research/index]].
 
 See [[journal/index]].
 
-## Promptbooks (0 active, 0 archived)
+## Promptbooks (1 active, 0 archived)
 
 See [[promptbooks/index]].

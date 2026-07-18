@@ -58,7 +58,7 @@ companion drop `gardener-lesson-freshness-2026-07-17`).
 
 ---
 
-## OPTIONAL / softer — round-out beats if you want a 4th–5th story
+## OPTIONAL / softer — round-out beats if you want a 4th-5th story
 
 - **Gemini 3.5 Pro slipped to July.** Promised at I/O for June, delayed after enterprise
   testers flagged reasoning/coding regressions. A quiet "meanwhile at Google" beat — a

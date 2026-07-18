@@ -145,5 +145,5 @@ First-party prompting guides worth sharing. Provider docs move around and per-mo
 
 On checking the output — evals and LLM-as-a-judge:
 
-- **[Zheng et al. — "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena"](https://arxiv.org/abs/2306.05685)** — the paper that named the technique, and the source for the judge biases in the note above (position, verbosity, self-enhancement). It also found a strong judge agrees with people about as often as people agree with each other.
-- **[Evidently AI — "LLM-as-a-judge: a complete guide"](https://www.evidentlyai.com/llm-guide/llm-as-a-judge)** — a practical, plain-language walkthrough: pairwise vs. direct scoring, why binary labels beat 1–5 scales, and using a jury of judges to cut variance.
+- **[Zheng et al. - "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena"](https://arxiv.org/abs/2306.05685)** - the paper that named the technique, and the source for the judge biases in the note above (position, verbosity, self-enhancement). It also found a strong judge agrees with people about as often as people agree with each other.
+- **[Evidently AI - "LLM-as-a-judge: a complete guide"](https://www.evidentlyai.com/llm-guide/llm-as-a-judge)** - a practical, plain-language walkthrough: pairwise vs. direct scoring, why binary labels beat 1-5 scales, and using a jury of judges to cut variance.

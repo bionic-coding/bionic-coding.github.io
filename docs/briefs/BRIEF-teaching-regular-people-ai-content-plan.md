@@ -40,8 +40,8 @@ Curious non-experts who are willing to try things. Not researchers, not total no
 - New post ideas come from the crux night gardener (`tend-garden`) — it watches what shipped and what's moving, and proposes topics.
 
 ## Launch scope
-- **Lessons: 7–9.** Have 8 scaffolded: Glossary, Markdown, Prompting & Evals, Agents & Skills, Agentic Harnesses, Sharing Agents & Skills, Wikis/Knowledge/RAG, Samples.
-- **Posts: 5–10.** Have 4 scaffolded: GPT-5.6 Sol vs Opus/Fable; Fable Relaunched; The New Codex; The MCP Moment. Need 1–6 more.
+- **Lessons: 7-9.** Have 8 scaffolded: Glossary, Markdown, Prompting & Evals, Agents & Skills, Agentic Harnesses, Sharing Agents & Skills, Wikis/Knowledge/RAG, Samples.
+- **Posts: 5-10.** Have 4 scaffolded: GPT-5.6 Sol vs Opus/Fable; Fable Relaunched; The New Codex; The MCP Moment. Need 1-6 more.
 
 ## Open questions
 - Reading level / assumed background.

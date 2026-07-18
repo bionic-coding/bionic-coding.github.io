@@ -32,4 +32,4 @@ adr:
 # Promptbook allocation. Same contract as adr.next_number — monotonic, never
 # reused. Forks always allocate a fresh id.
 promptbook:
-  next_number: 1
+  next_number: 2

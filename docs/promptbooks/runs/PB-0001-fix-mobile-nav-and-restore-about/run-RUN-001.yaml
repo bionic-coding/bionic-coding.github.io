@@ -5,26 +5,26 @@ book_content_hash: "sha256:2f4f88ffd96aae68dc5834f0d9fee280f7d2705a9f0beed26543e
 started_at: 2026-07-18T19:01:36Z
 completed_at: null
 status: in_progress
-current_prompt: 1
+current_prompt: 3
 prompts:
   - n: 1
     title: "Verify: research & reproduce the issue"
-    state: pending
-    started: null
-    completed: null
-    result: ""
-    artifacts: []
+    state: done
+    started: 2026-07-18T19:01:36Z
+    completed: 2026-07-18T19:14:31Z
+    result: "Diagnosis synthesized from 2 independent reproductions + clean jekyll build; 3 symptoms reproduced with box-model math + rendered-output evidence; non-architectural; recorded in notes"
+    artifacts: [docs/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-001.yaml]
   - n: 2
     title: "Verify: convene LLM council to review the diagnosis"
-    state: pending
-    started: null
-    completed: null
-    result: ""
-    artifacts: []
+    state: done
+    started: 2026-07-18T19:14:31Z
+    completed: 2026-07-18T19:24:18Z
+    result: "Council 5/5 APPROVE|APPROVE-WITH-NITS; 0 MUST-FIX; non-architectural; converged round 1"
+    artifacts: [docs/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-001.yaml]
   - n: 3
     title: "Verify: address council findings, return to Prompt 2"
-    state: pending
-    started: null
+    state: running
+    started: 2026-07-18T19:24:18Z
     completed: null
     result: ""
     artifacts: []
@@ -129,5 +129,14 @@ notes: |
   - Architectural? No — config typo correction + CSS/markup refinement inside the already-decided custom presentation layer (ADR-0003). No new decision. Iterate cycle correct; no escape to dev-cycle.
   - Files in scope: `_config.yml` (verify-only), `assets/main.scss`, `_layouts/default.html`.
   - Verification method (CSS/content site — no test suite/linter/static-analysis; code gates unittest/verify-code-docs/extract-code-docs are N/A): `bundle exec jekyll build` clean, then read `_site/**/index.html` nav markup (5 links incl `/about/` on home + a lesson page) and `_site/assets/main.css` (`.nav-toggle` 44px rules + `@media (max-width:46rem)` surface panel); reason about box model (no horizontal scrollbar at 375/390/414; no double hairline).
+
+  ## Council verdict (Prompt 2 — 5 dimensions, 3 blind reviewers)
+
+  - D1 Evidence/Reproduction: APPROVE-WITH-NITS — all 3 symptoms reproduce; numbers verified (31.6px tap target, ~43px rows, 5 nav links incl /about/ after clean build). Nits: S1 fix invisible without `jekyll clean` (stale .jekyll-cache re-renders old 4-link/no-About state); "working tree already corrected" imprecise — about.md is committed at HEAD (ff17186), not a pending edit.
+  - D2 Root-cause: APPROVE-WITH-NITS — all true causes; S1 git-confirmed (.markdown vs .md under exact-path where:"path"). Nit: S3 "low contrast" overstated.
+  - D3 Approach + minimality: APPROVE-WITH-NITS — sound, minimal, no new deps, breakpoint 46rem kept. Nit: pre-existing ADR-0004 header_pages drift is out of scope, track separately.
+  - D4 Consistency: APPROVE-WITH-NITS — consistent with ADR-0003/ADR-0004/CLAUDE.md. Build note: validate against the GitHub Actions build per ADR-0003 (Dart-Sass funcs); this change adds no new Sass-function risk.
+  - D5 Security: PASS — S1-S5 all N/A (static CSS/markup; DOM-only JS: no innerHTML sink, no listener leak); no [SECURITY] finding. Scope: NON-ARCHITECTURAL, no escape to dev-cycle.
+  - Aggregate: CONVERGED round 1. No CONCERNS, no MUST-FIX, no security finding, non-architectural. Route: minor non-safety nits -> Prompt 3.
 pr_draft: ""
 summary: ""

@@ -2,6 +2,10 @@
 
 _Append-only. Newest first._
 
+## [2026-07-18] promptbook | advanced PB-0001-fix-mobile-nav-and-restore-about/RUN-001 to prompt 2
+
+Prompt 1 (verify: research & reproduce) marked `done`. Diagnosis: `about.md`/`about.markdown` header_pages mismatch (verify-only, already fixed), sub-44px hamburger tap target, unstyled mobile menu panel — all reproduced by 2 independent agents + a clean `jekyll build`; recorded in [[promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-001]] `notes`. `current_prompt` now 2 (council review of the diagnosis).
+
 ## [2026-07-18] promptbook | started PB-0001-fix-mobile-nav-and-restore-about/RUN-001
 
 Started a new run against the active book. `total_prompts: 13`, `current_prompt: 1`. Snapshot: [[promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-001]]. `book_content_hash` bound at start; all 13 prompts `pending`.

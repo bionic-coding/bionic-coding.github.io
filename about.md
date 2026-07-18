@@ -2,10 +2,8 @@
 layout: page
 title: About
 permalink: /about/
-description: "What Bionic Coding is: a working publication on building software with AI carefully — augmenting human judgment, not automating it away."
+description: "Bionic Coding"
 ---
-
-<!-- DRAFT to react to (per "let's try things and change if needed"). Prose is yours to finalize. -->
 
 We're living through a shift I expect to prove bigger than the industrial revolution. Machines can now take over the *making* of things we assumed only people could make — software, most of all. The interesting question isn't whether they can. It's whether the human stays in control while they do.
 

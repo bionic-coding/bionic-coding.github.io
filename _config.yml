@@ -67,6 +67,7 @@ header_pages:
   - manifesto.md
   - articles.md
   - learn.md
+  - tools.md
   - about.markdown
 
 # Exclude from processing.

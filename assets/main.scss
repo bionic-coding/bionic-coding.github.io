@@ -178,6 +178,22 @@ a:hover {
   color: var(--accent);
 }
 
+/* Hamburger — hidden on desktop, revealed when the menu collapses (see Small screens). */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  padding: 0.3rem;
+  margin: 0;
+  background: none;
+  border: 0;
+  color: var(--muted);
+  line-height: 0;
+  cursor: pointer;
+}
+.nav-toggle:hover {
+  color: var(--accent);
+}
+
 /* ============================================================
    Page masthead
    ============================================================ */
@@ -642,12 +658,35 @@ a:hover {
 /* ============================================================
    Small screens
    ============================================================ */
+/* Collapse the header menu behind the hamburger once the links stop fitting. */
+@media (max-width: 46rem) {
+  .header-inner {
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+  }
+  .nav-toggle {
+    display: inline-flex;
+  }
+  .site-nav {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    padding-bottom: 0.35rem;
+  }
+  .site-nav.is-open {
+    display: flex;
+  }
+  .site-nav a {
+    margin-left: 0;
+    padding: 0.6rem 0;
+    font-size: 0.82rem;
+    border-top: 1px solid var(--rule);
+  }
+}
+
 @media (max-width: 34rem) {
   body {
     font-size: 1.08rem;
-  }
-  .site-nav a {
-    margin-left: 0.9rem;
   }
   .footer-inner {
     flex-direction: column;

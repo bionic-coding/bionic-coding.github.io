@@ -3,7 +3,7 @@ title: Glossary
 order: 11
 summary: "Plain-language definitions of the words AI people throw around."
 status: published
-updated: 2026-07-11
+updated: 2026-07-18
 ---
 
 The vocabulary of modern AI, one or two sentences each, no math required. Terms are alphabetical. Where a word has its own lesson, there's a link to it.
@@ -19,6 +19,8 @@ The vocabulary of modern AI, one or two sentences each, no math required. Terms 
 **API** – A way for one piece of software to use another. An AI API lets a program send prompts to a model and get answers back, which is how apps build AI features in. If you use a chat app, it reaches the model through a backend like this; you aren't calling the API yourself.
 
 **Benchmark** – A standard test used to compare models, like a set of exam questions or coding tasks. Benchmarks are useful but easy to over-read: topping a leaderboard doesn't mean a model is better for your actual work. See [Prompting and Evals]({{ '/learn/prompting-and-evals/' | relative_url }}) for checking output on your own tasks.
+
+**Bionic coding** – Using AI to generate code while keeping your intent and context in charge, so the output is higher quality and the work is repeatable instead of one-off. It's the deliberate opposite of "vibe coding," where you accept whatever the model produces without really steering it — bionic coding treats the model as an amplifier of a clear plan, not a substitute for having one. This site is named for the idea.
 
 **Chain-of-thought** – When a model works through a problem in steps before committing to an answer, the way you might use scratch paper. It tends to help on multi-step problems. When a product shows you this "thinking," it's often a summary or a tidied-up trace, not a literal window into how the model works.
 
@@ -71,6 +73,12 @@ The vocabulary of modern AI, one or two sentences each, no math required. Terms 
 **Reasoning** – A model spending extra effort before it answers: planning, working through steps, or checking itself, sometimes in hidden intermediate steps you never see. "Reasoning models" are tuned to do more of this, which helps on hard problems but costs more time and money. More reasoning is not a guarantee of a correct answer. The visible, step-by-step version is **chain-of-thought** — though what a product shows you is often a summary, not the model's actual internal steps.
 
 **Skill** – A packaged capability an **agent** can pick up and reuse: instructions plus, often, the specific tools it's allowed to call. Think of it as a saved way of doing one job. See [Skills]({{ '/learn/skills/' | relative_url }}).
+
+**Slop** – Low-quality AI-generated content churned out with little care or checking: filler text, generic images, plausible-but-wrong answers. It's not a statement about where the content came from — plenty of good work is machine-made — but about the result being careless or worthless. Contrast **synthetic code / synthetic prose**, which names the origin without the judgment.
+
+**Slop bombing** – Flooding someone with a large volume of **slop** to overwhelm them — a reader, a reviewer, a maintainer, an inbox. The point isn't any single piece but the sheer quantity, which buries the real work and makes it expensive to sort signal from noise.
+
+**Synthetic code / synthetic prose** – Code or writing produced by an AI or **LLM**. The term is neutral by design: it names where the text came from, not how good it is. That's the difference from **slop** — synthetic output can be careful and excellent or lazy and wrong, so "synthetic" describes the origin while "slop" is a verdict on the result.
 
 **Temperature** – A dial for how predictable or varied the output is. Low temperature gives more focused, consistent answers, which suits facts and code. High temperature gives looser, more surprising answers, which suits brainstorming. It makes output more or less predictable, not perfectly repeatable.
 

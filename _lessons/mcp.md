@@ -41,14 +41,6 @@ flowchart LR
 
 These aren't all used the same way. The model can **call the tools** on its own — the same ask-for-a-tool loop from the [Agents]({{ "/learn/agents/" | relative_url }}) lesson. But **resources** and **prompts** are usually pulled in by you or the app: a document you attach, a template you pick. Same standard plug — just not everything is a button the model presses.
 
-## What MCP is NOT
-
-- **Not a model.** It's the wiring, not the brain.
-- **Not a product or a database.** It's a protocol — rules on paper — that products choose to implement.
-- **Not automatic safety.** Connecting a server *grants access*; MCP standardizes the connection, not the judgment about whether a given action is safe. That part is on the host and on you.
-- **Not universal magic.** A server only exposes what its author built, and an app only works with MCP if it chose to support it. "Speaks MCP" is not "can do anything."
-- **Not training.** The big one: a server feeds data into the model's **context** for this conversation — like handing it a document to read. It does **not** train the underlying model on your files. Close the session and that data isn't baked into the model.
-
 ## How it's different from what you already know
 
 - **vs. a plugin or extension** — a plugin is usually tied to one app's ecosystem; an MCP server works with *any* host that speaks MCP.

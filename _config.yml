@@ -68,7 +68,7 @@ header_pages:
   - articles.md
   - learn.md
   - tools.md
-  - about.markdown
+  - about.md
 
 # Exclude from processing.
 # The following items will not be processed, by default.

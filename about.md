@@ -22,4 +22,4 @@ That's the posture behind everything here. The easy thing to do with these tools
 
 ## The manifesto, in a line
 
-For fifty years we treated source code as the asset. It never was. The durable thing is *intent* — the invariants a system must honor, and the ability to regenerate the code from them on demand, cheaply and provably. The human owns those invariants; the machine owns the manufacturing. That's the line the whole method draws, and it's where control stays with you. [Read the full argument →]({{ "/manifesto/" | relative_url }})
+For fifty years we treated source code as the asset. It never was. The durable thing is *intent* — the invariants a system must honor, and the ability to regenerate the code from them on demand, cheaply and provably. The human owns those invariants; the machine owns the manufacturing. That's the line the whole method draws, and it's where control stays with you. [Read the full manifesto →]({{ "/manifesto/" | relative_url }})

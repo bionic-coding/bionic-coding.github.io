@@ -2,7 +2,7 @@
 layout: page
 title: Articles
 permalink: /articles/
-description: "Notes on new developments in AI — for people who don't build models for a living."
+description: "Weekly-ish news for AI and software development."
 ---
 
 Timely, plain-language takes on what's new and why it matters.

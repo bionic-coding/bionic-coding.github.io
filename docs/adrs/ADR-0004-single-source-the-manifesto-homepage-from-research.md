@@ -34,7 +34,7 @@ projection of it and should be treated as regenerable, not independently authore
 
 ## Decision
 
-Serve the manifesto **as the homepage**. `index.markdown` (rendered at `/`) presents "The
+Serve the manifesto **as the homepage**. `index.md` (rendered at `/`) presents "The
 Bionic Coding Manifesto"; its body is **generated from the immutable raw capture**
 (`docs/research/raw/2026-07-07/bionic-coding-manifesto/manifesto.md`, audited at
 `docs/research/sources/bionic-coding-manifesto.md`), keeping the published text faithful
@@ -71,7 +71,7 @@ the site title, so it does not also appear as a nav item.
 
 **Negative:**
 - The homepage is a **derived artifact**: edits to the manifesto must be made to the
-  canonical source and re-projected onto `index.markdown`, not typed directly into the
+  canonical source and re-projected onto `index.md`, not typed directly into the
   page, or the single-source guarantee erodes.
 - The raw capture is immutable by the research contract, so a genuine revision of the
   manifesto means a **new dated capture** (re-ingest), then re-projection — not an in-place
@@ -81,10 +81,10 @@ the site title, so it does not also appear as a nav item.
 - Document the "edit the source, then re-project" flow so future manifesto changes do not
   drift the page from the capture.
 - If the manifesto is revised, re-ingest it as a new research capture and regenerate
-  `index.markdown` from the new source.
+  `index.md` from the new source.
 
 ## References
 
 - [[research/sources/bionic-coding-manifesto]] — the audited manifesto source the homepage is projected from
 - [[adrs/ADR-0003-ship-a-custom-presentation-layer-over-minima]] — the masthead/typography that renders the promoted title + tagline
-- `index.markdown`, `_config.yml` `header_pages` (in this repo)
+- `index.md`, `_config.yml` `header_pages` (in this repo)

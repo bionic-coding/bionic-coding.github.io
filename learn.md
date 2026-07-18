@@ -5,7 +5,7 @@ permalink: /learn/
 description: "A plain-language field guide to the ideas and tools behind modern AI."
 ---
 
-A plain-language field guide to modern AI — the words, the tools, and how to actually use them. Start anywhere.
+The Bionic Coding AI field guide. Start anywhere.
 
 {% assign items = site.lessons | sort: "order" %}
 <ol class="index-list">

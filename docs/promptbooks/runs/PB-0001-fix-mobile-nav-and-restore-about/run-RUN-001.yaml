@@ -98,6 +98,36 @@ prompts:
     completed: null
     result: ""
     artifacts: []
-notes: ""
+notes: |
+  ## Diagnosis (Prompt 1 — verify module, RUN-001)
+
+  Issue: broken header navigation on the Bionic Coding Jekyll site — three symptoms, all reproduced by two independent read-only agents + a clean `bundle exec jekyll build`.
+
+  ### Symptom 1 — About link missing from nav (VERIFIED FIXED; verify-only)
+  - Evidence: `_config.yml` header_pages (line 71) now lists `about.md`. The nav loop in `_layouts/default.html` (30-33) resolves each header page via `site.pages | where: "path", path | first` (exact-path match). A stale `about.markdown` entry matched no page (file is `about.md`), emitting no <a>. A clean jekyll build confirms the corrected config renders the `/about/` link in the compiled nav on all 17 pages (home + lesson pages); 5 nav links present (Manifesto, Articles, Learn, Tools, About); site title links home separately.
+  - Root cause: stale exact path string in config (`about.markdown`) vs actual filename (`about.md`) against an exact-path Liquid lookup. Cause = config path mismatch; symptom = missing link.
+  - Scope: `_config.yml` only. Already corrected in working tree.
+  - Remediation: none — verify-only. Do NOT re-apply or rename `about.md`.
+
+  ### Symptom 2 — Hamburger tap target below 44px floor
+  - Evidence: `.nav-toggle` (assets/main.scss 182-192) = `padding: 0.3rem` around a 22x22 SVG (default.html 25). Box ~= 22 + 2*(0.3*16) = 31.6px square — below the 44px touch floor. Button reads as dead.
+  - Root cause: insufficient min tap dimensions on `.nav-toggle`.
+  - Scope: assets/main.scss (`.nav-toggle`).
+  - Remediation: add `min-width:44px; min-height:44px; justify-content:center;` (keep line-height:0, token color).
+
+  ### Symptom 3 — Open mobile menu looks broken
+  - Evidence: in `@media (max-width:46rem)` (assets/main.scss 662-685): `.site-nav.is-open` only sets display:flex — no surface bg; links inherit `.site-nav a { color: var(--muted) }` (170-171) low contrast; each link has `border-top:1px solid var(--rule)` (683) stacked cramped hairlines; `padding:0.6rem 0` at ~0.82rem font => row ~43px (<44px).
+  - Root cause: collapsed panel never styled as a legible surface; reuses desktop muted inline-link styling.
+  - Scope: assets/main.scss (the 46rem media block).
+  - Remediation (token-based, light+dark safe): `.site-nav.is-open` -> `background: var(--surface)`; full-bleed via `margin: 0 -1.5rem` (cancels `.wrap{padding:0 1.5rem}`; overflow-proof below 46rem — spans wrap border-box <= viewport, NOT 100vw) with re-inset `padding: 0.25rem 1.5rem`; single panel `border-top:1px solid var(--rule)`. `.site-nav a` (mobile) -> `color: var(--ink)`; `min-height:44px`; `display:flex; align-items:center`; REMOVE per-link `border-top` (kills stacked/double hairline). Avoid double hairline where panel meets `.site-header{border-bottom:1px solid var(--rule)}` (147). FALLBACK (per book goal): if full-bleed still overflows at 375/390/414px, use an inset panel (no negative margin; surface bg, border-radius, `border:1px solid var(--rule)`, small margin-top).
+
+  ### Toggle hardening (markup + JS; _layouts/default.html)
+  - Evidence: `.nav-toggle` button (line 24) has no `type` (defaults to submit); JS (49-67) toggles + closes on link-tap but has NO Escape-close and NO outside-click-close.
+  - Remediation: add `type="button"`; add Escape keydown handler (close + aria-expanded=false) and a document click handler closing when target is outside the header inner (keep close-on-link-tap). No new deps; breakpoint 46rem unchanged.
+
+  ### Overall
+  - Architectural? No — config typo correction + CSS/markup refinement inside the already-decided custom presentation layer (ADR-0003). No new decision. Iterate cycle correct; no escape to dev-cycle.
+  - Files in scope: `_config.yml` (verify-only), `assets/main.scss`, `_layouts/default.html`.
+  - Verification method (CSS/content site — no test suite/linter/static-analysis; code gates unittest/verify-code-docs/extract-code-docs are N/A): `bundle exec jekyll build` clean, then read `_site/**/index.html` nav markup (5 links incl `/about/` on home + a lesson page) and `_site/assets/main.css` (`.nav-toggle` 44px rules + `@media (max-width:46rem)` surface panel); reason about box model (no horizontal scrollbar at 375/390/414; no double hairline).
 pr_draft: ""
 summary: ""

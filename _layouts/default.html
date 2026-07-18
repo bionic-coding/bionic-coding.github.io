@@ -21,7 +21,7 @@
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
         <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
           <path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
@@ -52,16 +52,22 @@
       var btn = document.querySelector('.nav-toggle');
       var nav = document.getElementById('site-nav');
       if (!btn || !nav) return;
-      btn.addEventListener('click', function () {
-        var open = nav.classList.toggle('is-open');
+      function setOpen(open) {
+        nav.classList.toggle('is-open', open);
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      btn.addEventListener('click', function () {
+        setOpen(!nav.classList.contains('is-open'));
       });
-      // Tapping a link closes the menu.
+      // Close on link tap, Escape, or a click outside the header.
       nav.addEventListener('click', function (e) {
-        if (e.target.closest('a')) {
-          nav.classList.remove('is-open');
-          btn.setAttribute('aria-expanded', 'false');
-        }
+        if (e.target.closest('a')) setOpen(false);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setOpen(false);
+      });
+      document.addEventListener('click', function (e) {
+        if (nav.classList.contains('is-open') && !e.target.closest('.header-inner')) setOpen(false);
       });
     })();
   </script>

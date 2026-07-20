@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Qwen3.8 Max lands, days after Kimi K3"
-date: 2026-07-20
+date: 2026-07-19
 description: "Alibaba previewed a 2.4-trillion-parameter multimodal model this week, days after Moonshot's Kimi K3. That's two frontier-scale models out of China in one week."
 tags: [model-news]
 ---

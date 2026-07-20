@@ -1,9 +1,10 @@
 # Research index
 
-_Last updated: 2026-07-15_
+_Last updated: 2026-07-20_
 
-## Sources (12)
+## Sources (13)
 
+- [[research/sources/qwen3-8-max-preview-fact-sheet]] — Alibaba's Qwen3.8-Max-Preview (WAIC 2026-07-19): 2.4T multimodal hosted preview, "second only to Fable 5" — vendor claim; **no model card, benchmarks, active-param count, or open weights yet** — `2026-07-20` — #qwen #alibaba #model-release #preview
 - [[research/sources/kimi-k3-docs]] — Kimi K3 platform docs (user paste): open-weights flagship, 2.8T MoE (16/896 experts), 1M context, vision; weights by Jul 27; vendor claims unverified — `2026-07-15` — #kimi #open-weights #model-release
 - [[research/sources/anthropic-introducing-fable-5-mythos-5]] — Anthropic model docs: Fable 5 specs — 1M context, 128K output, always-on adaptive thinking; closes the last frontier-models flag — `2026-07-15` — #anthropic #fable #specs
 - [[research/sources/anthropic-redeploying-fable-5]] — Anthropic (Jun 30): the Fable 5 suspension cause on the record — US export controls (Jun 12) after an Amazon jailbreak report, restored Jul 1 with a new classifier; resolves the contradiction — `2026-07-14` — #anthropic #fable #export-controls #safeguards
@@ -26,7 +27,7 @@ _Last updated: 2026-07-15_
 
 ## References (1)
 
-- [[research/references/frontier-models-2026]] — Running reference for the 2026 frontier-model landscape (Opus 4.8 + Fable 5 + GPT-5.6 fully verified — pricing, specs, Fable suspension cause, head-to-head benchmarks; **no open flags**; adds an open-weights entry for Kimi K3, vendor claims flagged) — sources: 9 — `last_reviewed: 2026-07-15`
+- [[research/references/frontier-models-2026]] — Running reference for the 2026 frontier-model landscape (Opus 4.8 + Fable 5 + GPT-5.6 fully verified — pricing, specs, Fable suspension cause, head-to-head benchmarks; adds two pre-release Chinese-lab entries — Kimi K3 open-weights and Alibaba's Qwen3.8-Max-Preview — both vendor claims flagged) — sources: 10 — `last_reviewed: 2026-07-20`
 
 ## Ideas (0)
 

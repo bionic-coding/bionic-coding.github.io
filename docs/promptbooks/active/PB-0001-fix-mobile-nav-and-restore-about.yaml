@@ -4,8 +4,8 @@ title: "Iterate: Fix mobile navigation and restore About link"
 status: active
 created_at: 2026-07-18
 total_prompts: 13
-current_run: RUN-001
-current_prompt: 3
+current_run: null
+current_prompt: null
 forked_from: null
 tags: [cycle, workflow, iterate]
 cycle_kind: verify

@@ -2,6 +2,25 @@
 
 _Append-only. Newest first._
 
+## [2026-07-20] ingest | qwen3-8-max-preview-fact-sheet
+
+"Qwen3.8-Max-Preview — fact sheet (compiled)" — user-pasted compilation on Alibaba's Qwen3.8-Max-Preview (announced 2026-07-19 at WAIC; no model card yet). Raw: `research/raw/2026-07-20/qwen3-8-max-preview-fact-sheet/`. Modeled on [[research/sources/kimi-k3-docs]] — vendor/announcement claims flagged inline (confirmed-vs-claimed teardown; the "2.4T" and "second only to Fable 5" figures are Alibaba's unverified claims). Synthesis: added a Qwen3.8-Max-Preview section to [[research/references/frontier-models-2026]] (now 10 sources, `last_reviewed: 2026-07-20`) and qualified its intro's "no open flags" line for the two pre-release Chinese-lab entries. No new category; no contradictions.
+
+## [2026-07-20] journal | misc: Triaged the night gardener's 2026-07-20 next-issue candidates into the weekly-post queue
+
+Entry in `docs/journal/2026-07.md` at 09:16. Refs: [[garden/2026-07-20]]
+
+## [2026-07-20] promptbook | abandoned PB-0001-fix-mobile-nav-and-restore-about/RUN-001
+
+RUN-001 set `status: abandoned`, `completed_at: 2026-07-20T15:11:02Z`, `current_prompt: null`. Prompts 1–2 (verify diagnosis + council, converged round 1 / 0 MUST-FIX) left `done`; prompt 3 left `running` and 4–13 `pending` as evidence — not fabricated terminal states. Reason: the nav fix (mobile hamburger + About restoration via the `about.markdown`→`about.md` rename) was delivered directly in commits `f8a3e82`/`a77ecf2` on 2026-07-18 and verified live (green `jekyll build`, both pages render); the iterate cycle's heavyweight develop/review modules were disproportionate to a CSS+config fix. Book `PB-0001` left `status: active` with `current_run: null` (dormant; not archive-eligible while prompts are non-terminal). See [[promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-001]].
+## [2026-07-20] garden | morning note 2026-07-20 (3 headlines, 1 artifact)
+
+Reviewed the delta since 2026-07-17 (`c38d596`→`6c16601`): the 07-18 buildout — README rewrite, new scaffolded `tools.md`, a de-AI-ing pass on titles/emdashes, and the mobile-nav fix (hamburger + JS + `@media` scss) with About restored via the `about.markdown`→`about.md` rename. Verified the nav fix is live (both pages render, build green). Flagged that PB-0001's RUN-001 is still `in_progress` at prompt 3 while its fix already shipped in commits — a run-ledger/reality mismatch. News sweep (WebSearch fallback; sources still `(proposed)`) firmed both carried leads — MCP `2026-07-28` final spec (8 days out) and Kimi K3 (#4 AAII / #1 Frontend Code Arena) — and surfaced the new "model + harness" frame. Escalated the `mcp.md` freshness clock once, per the 07-17 commitment. Dropped [[inbox/gardener-next-issue-candidates-2026-07-20]]. See [[garden/2026-07-20]].
+
+## [2026-07-20] cleanup-campsite | 5 open (0 P1, 5 P2, 0 P3), 0 closed, 0 dismissed
+
+Top-3 P1 ids: none (no P1s). All 5 open are CLN-ADR-1 "ADR-000N not linked from README/USER_GUIDE" — unchanged from 2026-07-17, optional for a content site. PB-0001 exempt from CLN-PB-1 (last run timestamp 2026-07-18, within the 7-day active-progress window); no Proposed ADRs; audit ran 2026-07-13 (7 days, < 14); retro not due. See [[whats_next]].
+
 ## [2026-07-18] promptbook | advanced PB-0001-fix-mobile-nav-and-restore-about/RUN-001 to prompt 2
 
 Prompt 1 (verify: research & reproduce) marked `done`. Diagnosis: `about.md`/`about.markdown` header_pages mismatch (verify-only, already fixed), sub-44px hamburger tap target, unstyled mobile menu panel — all reproduced by 2 independent agents + a clean `jekyll build`; recorded in [[promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-001]] `notes`. `current_prompt` now 2 (council review of the diagnosis).

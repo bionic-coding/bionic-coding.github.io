@@ -3,13 +3,13 @@ title: "Frontier AI Models — 2026 Landscape"
 slug: frontier-models-2026
 type: references
 tags: [models, anthropic, openai, pricing, benchmarks]
-sources: [claude-opus-4-8, claude-fable, simon-willison-claude-opus-4-8, gpt-5-6-system-card, gpt-5-6-pricing, anthropic-redeploying-fable-5, artificial-analysis-gpt-5-6, anthropic-introducing-fable-5-mythos-5, kimi-k3-docs]
-last_reviewed: 2026-07-15
+sources: [claude-opus-4-8, claude-fable, simon-willison-claude-opus-4-8, gpt-5-6-system-card, gpt-5-6-pricing, anthropic-redeploying-fable-5, artificial-analysis-gpt-5-6, anthropic-introducing-fable-5-mythos-5, kimi-k3-docs, qwen3-8-max-preview-fact-sheet]
+last_reviewed: 2026-07-20
 ---
 
 # Frontier AI Models — 2026 Landscape
 
-A running reference for the current frontier-model landscape, built to back the Articles queue (the GPT-5.6/Opus/Fable comparison, "Fable, Relaunched", "The New Codex") and the model-tier lesson. **Facts are dated and cited to their `docs/research/sources/` capture.** The **Verification log** at the end records how each formerly-open claim was checked; as of 2026-07-15 every claim here is backed by a captured primary source — no open flags.
+A running reference for the current frontier-model landscape, built to back the Articles queue (the GPT-5.6/Opus/Fable comparison, "Fable, Relaunched", "The New Codex") and the model-tier lesson. **Facts are dated and cited to their `docs/research/sources/` capture.** The **Verification log** at the end records how each formerly-open claim was checked; as of 2026-07-15 every claim in the fully-verified frontier trio (Opus 4.8, Fable 5, GPT-5.6) is backed by a captured primary source. The two pre-release Chinese-lab entries — **Kimi K3** and **Qwen3.8-Max-Preview** — are the exception: they rest on vendor announcement claims (no model card, no independent benchmarks yet) and are flagged inline, pending verification.
 
 ## Anthropic — Claude Opus 4.8
 
@@ -58,6 +58,17 @@ Source: [[research/sources/kimi-k3-docs]] (Kimi platform docs, user paste 2026-0
 - **Scale (verify):** 2.8T total parameters — Kimi claims "the world's first open-source model in the 3-trillion-parameter class." It's **Mixture-of-Experts, activating 16 of 896 experts**, so *active* params per token are a small fraction of the total. New attention (KDA + Attention Residuals); claimed ~2.5× K2 scaling efficiency.
 - **Specs:** 1M-token context, native vision (images + video). OpenAI-compatible API (`kimi-k3` @ `api.moonshot.ai/v1`); thinking always on (`reasoning_effort: max` only for now).
 - **Pricing:** flat pay-as-you-go, no context-length tiering, separate cache-hit/miss rates — **numbers not captured.** Cite Kimi's pricing page and *independent* benchmarks (not the vendor blog) before publishing anything comparative.
+
+## Qwen3.8-Max-Preview (Alibaba) — announced, no model card yet
+
+Source: [[research/sources/qwen3-8-max-preview-fact-sheet]] (user-compiled fact sheet, 2026-07-20). **Announcement-only — no official model card, benchmark table, or pricing exists; separating *confirmed* from *claimed* is the whole point.** Announced **2026-07-19** at WAIC (Shanghai) via an X post, not a blog post.
+
+- **The second Chinese frontier-scale entry in a week.** Where Kimi K3 is open-weights-first, Qwen3.8-Max-Preview is a **paid hosted preview** (Alibaba Token Plan, Qoder, QoderWork); open weights are only *promised* ("go open-weight soon" — no date, no license). It landed **2–3 days after Kimi K3** and is widely read as a competitive response — notable given **Alibaba holds ~36% of Moonshot.**
+- **Scale (vendor-stated):** **2.4T total parameters** — Alibaba's first trillion-parameter-class **multimodal** model (text, images, video, documents), extended-thinking by default. **Active params per token are undisclosed** — presumed sparse MoE by Qwen lineage, but that single most important serving number is missing.
+- **Headline claim (marketing, not a measurement):** Alibaba calls it **"second only to Fable 5"** — with **no benchmarks, prompts, or methodology** published to support it. Every benchmark number circulating "for 3.8" is almost certainly a **Qwen3.7-Max** figure.
+- **What's genuinely unknown:** context window (a 1M figure circulates but traces to the *3.7-Max* spec), max output, knowledge cutoff, per-token price, open-weight date/license. **No Hugging Face / ModelScope repo and no OpenRouter listing yet** — the most reliable evidence the weights have not actually shipped.
+- **Independent signal so far is thin:** a single blind StackPerf run (**80 vs Kimi K3's 83**; a later report frames it 65/80) and anecdotal coding tests "rivaling Fable 5 and Grok 4.5," with **latency** flagged. Data points, not verdicts.
+- **Citable fallback:** the predecessor **Qwen3.7-Max** (May 19, 2026) *does* have a published table — SWE-Bench Verified **80.4**, GPQA Diamond 92.4, AA Intelligence Index 56.6, 1M context, **$2.50 / $7.50 per MTok**. Use it (not 3.8 rumors) when you need Qwen numbers on the record.
 
 ## Naming note (important for a lay audience)
 

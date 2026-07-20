@@ -9,11 +9,11 @@ when **you** remove its `(proposed)` marker. That edit is the acceptance gate.
 
 | source | url | topics | last_seen | notes |
 |--------|-----|--------|-----------|-------|
-| Anthropic News | https://www.anthropic.com/news | claude, models, safety, releases | — | (proposed) |
+| Anthropic News | https://www.anthropic.com/news | claude, models, safety, releases | — | accepted 2026-07-20 |
 | OpenAI News | https://openai.com/news | gpt, models, api, releases | — | (proposed) |
 | Google DeepMind Blog | https://deepmind.google/discover/blog/ | gemini, research, releases | — | (proposed) |
-| Simon Willison's Weblog | https://simonwillison.net/ | llm, practical, tools, hands-on | — | (proposed) |
-| Model Context Protocol | https://modelcontextprotocol.io/ | mcp, tools, protocol | — | (proposed) |
+| Simon Willison's Weblog | https://simonwillison.net/ | llm, practical, tools, hands-on | — | accepted 2026-07-20 |
+| Model Context Protocol | https://modelcontextprotocol.io/ | mcp, tools, protocol | — | accepted 2026-07-20 |
 | Hacker News | https://news.ycombinator.com/ | ecosystem, launches, discussion | — | (proposed) |
 | Latent Space | https://www.latent.space/ | ai-engineering, interviews, analysis | — | (proposed) |
 | Ars Technica AI | https://arstechnica.com/ai/ | news, analysis, policy | — | (proposed) |

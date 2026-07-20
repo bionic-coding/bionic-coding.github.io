@@ -1,7 +1,7 @@
 ---
-generated_at: 2026-07-17T20:02:27Z
+generated_at: 2026-07-20T14:56:18Z
 generator: cleanup
-generator_version: "1.4.2"
+generator_version: "1.5.0"
 scan_findings: 5
 suggestions_open: 5
 suggestions_dismissed_carried: 0
@@ -10,7 +10,7 @@ dismissed: []
 
 # What's next
 
-_Generated 2026-07-17 20:02 by `cleanup-campsite` v1.4.2. **Body regenerated end-to-end on every run; only the `dismissed:` frontmatter list persists.** Hand-edits below the frontmatter are blown away. To dismiss a suggestion, move its `id:` into the `dismissed:` frontmatter list with a `reason:`._
+_Generated 2026-07-20 14:56 by `cleanup-campsite` v1.5.0. **Body regenerated end-to-end on every run; only the `dismissed:` frontmatter list persists.** Hand-edits below the frontmatter are blown away. To dismiss a suggestion, move its `id:` into the `dismissed:` frontmatter list with a `reason:`._
 
 ## Open suggestions (5)
 

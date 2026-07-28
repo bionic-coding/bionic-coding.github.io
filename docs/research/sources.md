@@ -4,6 +4,8 @@ _One row per ingested research source. Newest first._
 
 | slug | title | source_url | captured_at | last_source_check | last_update | static | raw_path | wiki_path |
 |------|-------|------------|-------------|-------------------|-------------|--------|----------|-----------|
+| kimi-k3-technical-report | Kimi K3: Open Frontier Intelligence — Technical Report | — | 2026-07-21 | 2026-07-21 | — | true | research/raw/2026-07-21/kimi-k3-technical-report/ | research/sources/kimi-k3-technical-report.md |
+| claude-opus-5-system-card | System Card: Claude Opus 5 | — | 2026-07-21 | 2026-07-21 | — | true | research/raw/2026-07-21/claude-opus-5-system-card/ | research/sources/claude-opus-5-system-card.md |
 | qwen3-8-max-preview-fact-sheet | Qwen3.8-Max-Preview — fact sheet (compiled) | — | 2026-07-20 | 2026-07-20 | — | false | research/raw/2026-07-20/qwen3-8-max-preview-fact-sheet/ | research/sources/qwen3-8-max-preview-fact-sheet.md |
 | kimi-k3-docs | Introducing Kimi K3 (platform docs) | — | 2026-07-15 | 2026-07-15 | — | false | research/raw/2026-07-15/kimi-k3-docs/ | research/sources/kimi-k3-docs.md |
 | anthropic-introducing-fable-5-mythos-5 | Introducing Claude Fable 5 and Claude Mythos 5 | https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5 | 2026-07-15 | 2026-07-15 | — | false | research/raw/2026-07-15/anthropic-introducing-fable-5-mythos-5/ | research/sources/anthropic-introducing-fable-5-mythos-5.md |

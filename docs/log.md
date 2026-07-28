@@ -2,6 +2,14 @@
 
 _Append-only. Newest first._
 
+## [2026-07-21] ingest | kimi-k3-technical-report
+
+"Kimi K3: Open Frontier Intelligence — Technical Report" (Kimi Team / Moonshot, 47pp) — PDF dispatched from `docs/inbox/` by process-inbox. Raw: `research/raw/2026-07-21/kimi-k3-technical-report/` (PDF + full `pdftotext` extraction, `static: true`). **Closes both open gaps on [[research/sources/kimi-k3-docs]]**: activated params (**104B of 2.8T**) and the benchmark table (Figure 1, transcribed). Notable: Moonshot's own abstract states K3 "still trails … Claude Fable 5 and GPT-5.6 Sol," walking back the earlier platform-docs marketing framing. Synthesis: [[research/references/frontier-models-2026]] Kimi section rewritten from "announced" to "SHIPPED"; intro reframed so Qwen3.8 is now the only announcement-only entry; now 12 sources. Added a resolved-by pointer to the older kimi-k3-docs capture gaps. No new category; no contradictions (the softer self-assessment supersedes, not contradicts, the marketing claim).
+
+## [2026-07-21] ingest | claude-opus-5-system-card
+
+"System Card: Claude Opus 5" (Anthropic, 194pp, card dated 2026-07-24) — PDF dispatched from `docs/inbox/` by process-inbox. Raw: `research/raw/2026-07-21/claude-opus-5-system-card/` (PDF + full `pdftotext` extraction, `static: true`). Source page carries Executive Summary, §1, §8.1 table, §8.2 verbatim; §§2–7 + 8.3–9 left to `raw/source.txt` (declared capture gap). Synthesis: [[research/references/frontier-models-2026]] gains a **Claude Opus 5** section as the current Opus flagship (4.8 retitled "predecessor"), now 11 sources, `last_reviewed: 2026-07-21`. Key: ASL-3, most-aligned-to-date, SWE-bench Verified 96.0; hallucinates slightly more than 4.8 despite higher accuracy. No new category; no contradictions.
+
 ## [2026-07-20] ingest | qwen3-8-max-preview-fact-sheet
 
 "Qwen3.8-Max-Preview — fact sheet (compiled)" — user-pasted compilation on Alibaba's Qwen3.8-Max-Preview (announced 2026-07-19 at WAIC; no model card yet). Raw: `research/raw/2026-07-20/qwen3-8-max-preview-fact-sheet/`. Modeled on [[research/sources/kimi-k3-docs]] — vendor/announcement claims flagged inline (confirmed-vs-claimed teardown; the "2.4T" and "second only to Fable 5" figures are Alibaba's unverified claims). Synthesis: added a Qwen3.8-Max-Preview section to [[research/references/frontier-models-2026]] (now 10 sources, `last_reviewed: 2026-07-20`) and qualified its intro's "no open flags" line for the two pre-release Chinese-lab entries. No new category; no contradictions.

@@ -1,0 +1,5 @@
+dispatched: 2026-07-21
+classified: research (.pdf — technical report) — confident
+action: ingest-research → kimi-k3-technical-report
+raw: research/raw/2026-07-21/kimi-k3-technical-report/
+note: closes the two open gaps flagged on [[research/sources/kimi-k3-docs]] — activated params (104B) and the benchmark table.

@@ -10,7 +10,11 @@ tags: [model-news, weekly]
   THIS WEEK IN AI — issue template.
   Copy this file to _posts/YYYY-MM-DD-this-week-in-ai.md and fill it in.
   Full usage + conventions: docs/briefs/BRIEF-this-week-in-ai-format.md
-
+  .
+  NEVER leave a blank line inside an HTML comment. kramdown ends the HTML block
+  at the blank line and then stops converting Markdown for the REST of the post —
+  headings and links render as literal text. Use a lone "." as a spacer instead.
+  .
   Rules of the road:
     - Scaffold only lives here; you write the sentences (scaffold, don't generate).
     - Mark what's *claimed* (the vendor's words) vs. what's *verified*.

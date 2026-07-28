@@ -1,9 +1,11 @@
 # Research index
 
-_Last updated: 2026-07-20_
+_Last updated: 2026-07-21_
 
-## Sources (13)
+## Sources (15)
 
+- [[research/sources/kimi-k3-technical-report]] — Kimi K3 technical report (47pp): **104B activated of 2.8T**, KDA + Stable LatentMoE, 1M context; full benchmark table; Moonshot's own verdict is that K3 **trails Fable 5 and GPT-5.6 Sol** — closes both gaps on [[research/sources/kimi-k3-docs]] — `2026-07-21` — #kimi #open-weights #technical-report #benchmarks
+- [[research/sources/claude-opus-5-system-card]] — Anthropic's Claude Opus 5 System Card (194pp, card dated 2026-07-24): ASL-3, most-aligned-to-date, SWE-bench Verified 96.0, largest gains in agentic coding/computer use; **hallucinates slightly more than 4.8 despite being more accurate** — `2026-07-21` — #anthropic #opus-5 #system-card #alignment
 - [[research/sources/qwen3-8-max-preview-fact-sheet]] — Alibaba's Qwen3.8-Max-Preview (WAIC 2026-07-19): 2.4T multimodal hosted preview, "second only to Fable 5" — vendor claim; **no model card, benchmarks, active-param count, or open weights yet** — `2026-07-20` — #qwen #alibaba #model-release #preview
 - [[research/sources/kimi-k3-docs]] — Kimi K3 platform docs (user paste): open-weights flagship, 2.8T MoE (16/896 experts), 1M context, vision; weights by Jul 27; vendor claims unverified — `2026-07-15` — #kimi #open-weights #model-release
 - [[research/sources/anthropic-introducing-fable-5-mythos-5]] — Anthropic model docs: Fable 5 specs — 1M context, 128K output, always-on adaptive thinking; closes the last frontier-models flag — `2026-07-15` — #anthropic #fable #specs
@@ -27,7 +29,7 @@ _Last updated: 2026-07-20_
 
 ## References (1)
 
-- [[research/references/frontier-models-2026]] — Running reference for the 2026 frontier-model landscape (Opus 4.8 + Fable 5 + GPT-5.6 fully verified — pricing, specs, Fable suspension cause, head-to-head benchmarks; adds two pre-release Chinese-lab entries — Kimi K3 open-weights and Alibaba's Qwen3.8-Max-Preview — both vendor claims flagged) — sources: 10 — `last_reviewed: 2026-07-20`
+- [[research/references/frontier-models-2026]] — Running reference for the 2026 frontier-model landscape (**Claude Opus 5 now the current Opus flagship, from its system card**; Opus 4.8 retained as predecessor; Fable 5 + GPT-5.6 verified; **Kimi K3 now shipped with a technical report** — 104B active, full benchmarks, vendor caveats flagged; Qwen3.8-Max-Preview still announcement-only) — sources: 12 — `last_reviewed: 2026-07-21`
 
 ## Ideas (0)
 

@@ -1,0 +1,1 @@
+note: PDF dropped into docs/inbox/ as "Claude Opus 5 System Card.pdf" and dispatched by process-inbox on 2026-07-21. Canonical URL not captured; the card itself is dated 2026-07-24 (Anthropic, 194 pages). source.txt is a full `pdftotext -layout` extraction of the PDF. Supply the anthropic.com URL on refresh so the published version can be diffed.

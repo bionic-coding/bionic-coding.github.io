@@ -34,6 +34,9 @@ _Kimi's own K3 platform docs, pasted by the user 2026-07-15. Vendor marketing + 
 
 ## Capture gaps
 
+> **Resolved 2026-07-21 by [[research/sources/kimi-k3-technical-report]].** The gaps below were real at capture and are left as the honest record of *this* source. The technical report has since supplied the missing pieces: **104B activated parameters** (of 2.8T), the **full benchmark table**, and a materially more conservative vendor self-assessment ("still trails … Claude Fable 5 and GPT-5.6 Sol"). The weights shipped at `huggingface.co/moonshotai/Kimi-K3`. Prefer the technical report for any K3 claim.
+
+
 - **Provenance:** user paste, not a fetched capture; canonical URL not verified (`source_url: null`). The technical blog (`kimi.com/blog/kimi-k3`) was **unreachable** at capture time, so the **benchmarks and case studies live there, uncaptured**.
 - **No numbers:** no benchmark scores and no per-token pricing in this source — both flagged as TBD for the Kimi K3 draft.
 - `static: false` — a pre-release doc that will change once weights ship (July 27, 2026); re-check then.

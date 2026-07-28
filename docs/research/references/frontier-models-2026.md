@@ -3,15 +3,31 @@ title: "Frontier AI Models — 2026 Landscape"
 slug: frontier-models-2026
 type: references
 tags: [models, anthropic, openai, pricing, benchmarks]
-sources: [claude-opus-4-8, claude-fable, simon-willison-claude-opus-4-8, gpt-5-6-system-card, gpt-5-6-pricing, anthropic-redeploying-fable-5, artificial-analysis-gpt-5-6, anthropic-introducing-fable-5-mythos-5, kimi-k3-docs, qwen3-8-max-preview-fact-sheet]
-last_reviewed: 2026-07-20
+sources: [claude-opus-4-8, claude-fable, simon-willison-claude-opus-4-8, gpt-5-6-system-card, gpt-5-6-pricing, anthropic-redeploying-fable-5, artificial-analysis-gpt-5-6, anthropic-introducing-fable-5-mythos-5, kimi-k3-docs, qwen3-8-max-preview-fact-sheet, claude-opus-5-system-card, kimi-k3-technical-report]
+last_reviewed: 2026-07-21
 ---
 
 # Frontier AI Models — 2026 Landscape
 
-A running reference for the current frontier-model landscape, built to back the Articles queue (the GPT-5.6/Opus/Fable comparison, "Fable, Relaunched", "The New Codex") and the model-tier lesson. **Facts are dated and cited to their `docs/research/sources/` capture.** The **Verification log** at the end records how each formerly-open claim was checked; as of 2026-07-15 every claim in the fully-verified frontier trio (Opus 4.8, Fable 5, GPT-5.6) is backed by a captured primary source. The two pre-release Chinese-lab entries — **Kimi K3** and **Qwen3.8-Max-Preview** — are the exception: they rest on vendor announcement claims (no model card, no independent benchmarks yet) and are flagged inline, pending verification.
+A running reference for the current frontier-model landscape, built to back the Articles queue (the GPT-5.6/Opus/Fable comparison, "Fable, Relaunched", "The New Codex") and the model-tier lesson. **Facts are dated and cited to their `docs/research/sources/` capture.** The **Verification log** at the end records how each formerly-open claim was checked; as of 2026-07-15 every claim in the fully-verified frontier trio (Opus 4.8, Fable 5, GPT-5.6) is backed by a captured primary source. Of the two Chinese-lab entries, **Kimi K3 has now shipped** — weights released and a 47-page technical report captured, so it carries real numbers (still vendor-run; see its section). **Qwen3.8-Max-Preview remains the one announcement-only entry**, resting on vendor claims with no model card or independent benchmarks, and is flagged inline pending verification.
 
-## Anthropic — Claude Opus 4.8
+## Anthropic — Claude Opus 5 (current Opus flagship)
+
+Source: [[research/sources/claude-opus-5-system-card]] (Anthropic System Card, card dated 2026-07-24, captured 2026-07-21). **Primary vendor source with published methodology and competitor comparisons — the strongest kind of source in this reference.** Supersedes Opus 4.8 as the current Opus-class model; the 4.8 section below is retained as the predecessor baseline.
+
+- **What it is:** an upgrade to Opus 4.8, with the largest gains in **agentic coding, computer use, and long-horizon knowledge work**, plus math/scientific reasoning. **Knowledge cutoff May 2026. Text output only.**
+- **RSP / safety classification:** **ASL-3 protections, the same as Opus 4.8.** Overall alignment risk assessed **very low**; **not more capable overall than Fable 5**. Does **not** cross the automated AI R&D threshold. **CB-1 but not CB-2** capabilities.
+- **Alignment — the headline:** Anthropic's **most aligned model to date** on its automated behavioral audit, surpassing Sonnet 5, Opus 4.8 *and* Mythos 5; cooperates with misuse less than any model tested. Internal monitoring found circumvention attempts in **<0.01% of completions** (comparable to Mythos 5), aimed at completing the user's task, and **no sandbagging, malicious actions, or oversight evasion**.
+- **The honest asterisk Anthropic published against itself:** Opus 5 **hallucinates factual claims slightly more than Opus 4.8 despite being more accurate overall**, plus "a surprising number of cases" of **confidently stating answers it was in fact unsure about**. This is the most citable lay-audience finding in the card.
+- **Agentic safety:** comparable or better than 4.8, with the **largest gains in prompt injection robustness** across coding, computer use, and browser use — directly relevant to the "supervise your coding agent" lesson.
+- **Cyber:** exceeds Opus 4.8, **falls short of Mythos 5** (notably at *exploiting* vulnerabilities). Safeguards match Fable 5's with one change: **source-code vulnerability discovery is now permitted at all access levels** (defensive work enabled; compiled-binary vulnerability discovery still blocked).
+- **Over-refusal:** **among the lowest over-refusal rates on benign requests of any recent model** — the user-facing quality-of-life win.
+- **Benchmarks (from the card's own Table 8.1.A):** **SWE-bench Verified 96.0**; SWE-bench Pro 79.2; Multilingual 89.5; Multimodal 59.4; BrowseComp 90.8; OSWorld 2.0 **70.6** (vs 55.7 for 4.8); FrontierBench v0.1 **43.3** (vs 21.1); GDPval-AA v2 **1861**; AA-Briefcase **1720**; ARC-AGI-3 **30.2** (vs 1.5 for 4.8, 7.8 for Sol).
+- **It does NOT sweep — cite this when comparing:** **Fable 5 edges it** on SWE-bench Pro (80 vs 79.2) and HLE no-tools (56.5 vs 56.3); **GPT-5.6 Sol leads** DeepSWE v1.1 (72.7) and ARC-AGI-2 (92.5); **Mythos 5 leads** HealthBench Professional (66.0). Anthropic's own framing is "comparable to — and in some cases ahead of" Fable 5 and Mythos 5.
+- **Methodology caveat for any head-to-head:** Claude figures are **max-effort adaptive thinking averaged over 5 trials**; competitor figures are **lifted from rivals' published cards**, not re-run by Anthropic. Context windows evaluation-dependent, ≤1M tokens.
+- **Not in the card:** pricing, API model id, and context/output specs. Cite the announcement page for those.
+
+## Anthropic — Claude Opus 4.8 (predecessor)
 
 Source: [[research/sources/claude-opus-4-8]] (Anthropic announcement, captured 2026-07-12).
 
@@ -50,14 +66,18 @@ Sources: [[research/sources/gpt-5-6-system-card]] (OpenAI "GPT-5.6 Preview Syste
 - **Health:** GPT-5.6 Sol's length-adjusted **HealthBench Professional score is 60.5 (+8.7 vs GPT-5.5)** — the largest gain since GPT-5.
 - **Access controls:** the most sensitive cyber/bio capabilities are gated behind **trust-based access and actor-level enforcement**, reserved for "trusted defenders."
 
-## Kimi K3 (open-weights) — announced, weights by Jul 27
+## Kimi K3 (open-weights) — SHIPPED, with a technical report
 
-Source: [[research/sources/kimi-k3-docs]] (Kimi platform docs, user paste 2026-07-15). **Vendor marketing — verify the self-claims; no benchmarks or pricing numbers are captured yet, and the technical blog was unreachable at capture.** Backs the Kimi K3 draft in the Articles queue.
+Sources: [[research/sources/kimi-k3-technical-report]] (47pp technical report, captured 2026-07-21 — **the authoritative K3 source**) and [[research/sources/kimi-k3-docs]] (platform docs, 2026-07-15 — the earlier announcement-stage capture). **The weights are out** (`huggingface.co/moonshotai/Kimi-K3`), and the technical report closes both gaps the July capture flagged.
 
-- **The open/closed contrast this landscape was missing.** Opus 4.8, Fable 5, and GPT-5.6 are all **API-only** (rent access). Kimi K3 is **open-weights** — Kimi says the full weights ship **by July 27, 2026**. As of now it's an announcement plus a hosted API.
-- **Scale (verify):** 2.8T total parameters — Kimi claims "the world's first open-source model in the 3-trillion-parameter class." It's **Mixture-of-Experts, activating 16 of 896 experts**, so *active* params per token are a small fraction of the total. New attention (KDA + Attention Residuals); claimed ~2.5× K2 scaling efficiency.
-- **Specs:** 1M-token context, native vision (images + video). OpenAI-compatible API (`kimi-k3` @ `api.moonshot.ai/v1`); thinking always on (`reasoning_effort: max` only for now).
-- **Pricing:** flat pay-as-you-go, no context-length tiering, separate cache-hit/miss rates — **numbers not captured.** Cite Kimi's pricing page and *independent* benchmarks (not the vendor blog) before publishing anything comparative.
+- **The open/closed contrast this landscape was missing.** Opus 5/4.8, Fable 5, and GPT-5.6 are all **API-only** (rent access). Kimi K3 is **open-weights and now downloadable** — the only frontier-scale model here you can actually run yourself.
+- **Scale — RESOLVED.** **2.8T total parameters with 104B activated per token** (~3.7% activation), via **Stable LatentMoE activating 16 of 896 routed experts**. The 104B figure is the one the earlier capture could not supply, and it is what serving-cost estimates need. Architecture: **Kimi Delta Attention (KDA) + Attention Residuals**; **~2.5× scaling efficiency over K2** — now stated in the technical report, not just marketing.
+- **Specs:** **1M-token context**, native vision. OpenAI-compatible API (`kimi-k3` @ `api.moonshot.ai/v1`); thinking always on. Post-training is RL across general, agentic, and coding domains at **multiple reasoning-effort levels**.
+- **Moonshot's own verdict undercuts its earlier marketing — cite THIS framing.** The report states K3 **"still trails the most powerful proprietary models, namely Claude Fable 5 and GPT-5.6 Sol,"** while "consistently outperform[ing] other open and proprietary models evaluated in our suite." That is a notably more conservative claim than the platform docs' "world's first open-source model in the 3-trillion-parameter class," and it comes from the more rigorous document. Prefer it.
+- **Benchmarks (vendor-run, all at max/xhigh effort).** K3 **leads** ProgramBench (77.8), SWE-Marathon (42.0), BrowseComp (91.2), AutomationBench (30.8), and is 0.5 pt off the lead on Terminal-Bench 2.1 (88.3 vs Sol's 88.8). It **trails** on DeepSWE (67.5 vs Sol 73.0), FrontierSWE (81.2 vs Fable 86.6), GDPval-AA v2 (1686 vs Fable 1747), JobBench, CharXiv, Zerobench. Full table on the source page.
+- **Caveats that must travel with those numbers:** Moonshot's harness; one benchmark ("Kimi Code Bench 2.0") is explicitly *Internal*; **"All Fable 5 results are with potential fallbacks. All GPT-5.6 Sol results include potential cyberguards."** Only GDPval-AA v2 is third-party (Artificial Analysis, as of 2026-07-23).
+- **K3 vs Opus 5 is NOT a head-to-head.** Opus 5 does not appear in this report (its comparison set stops at Opus 4.8), and the Opus 5 card is a different harness. Numbers look comparable on GDPval-AA v2, BrowseComp, and AutomationBench, but do not present cross-report deltas as a matchup.
+- **Still not captured:** the **weights license** (the report links the HF repo but never names a license — check the repo before any licensing claim), pretraining token count, and pricing numbers.
 
 ## Qwen3.8-Max-Preview (Alibaba) — announced, no model card yet
 

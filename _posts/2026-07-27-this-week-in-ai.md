@@ -27,8 +27,3 @@ This is the 2.8-trillion-parameter open-weights model I covered when it was anno
 
 **More info:**
 - [**Kimi K3 on Hugging Face**](https://huggingface.co/moonshotai/Kimi-K3) — the weights.
-
-<!-- STANDING CLOSER — permanent fixture, every issue closes on it. First-person, opinion not news: what you're reaching for this week, and why. -->
-## What I'm actually using
-
-`<closing take — what you're reaching for this week, and why>`

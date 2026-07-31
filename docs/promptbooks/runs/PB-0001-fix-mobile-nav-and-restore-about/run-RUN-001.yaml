@@ -1,7 +1,7 @@
 format_version: "1"
 run_id: RUN-001
 book_id: PB-0001
-book_content_hash: "sha256:2f4f88ffd96aae68dc5834f0d9fee280f7d2705a9f0beed26543ea0ddb88fd89"
+book_content_hash: "sha256:878bedef3fd2fe2021000387caa850e2fe842190f45d75b2d36ca5474a290c3c"
 started_at: 2026-07-18T19:01:36Z
 completed_at: 2026-07-20T15:11:02Z
 status: abandoned
@@ -138,5 +138,28 @@ notes: |
   - D4 Consistency: APPROVE-WITH-NITS — consistent with ADR-0003/ADR-0004/CLAUDE.md. Build note: validate against the GitHub Actions build per ADR-0003 (Dart-Sass funcs); this change adds no new Sass-function risk.
   - D5 Security: PASS — S1-S5 all N/A (static CSS/markup; DOM-only JS: no innerHTML sink, no listener leak); no [SECURITY] finding. Scope: NON-ARCHITECTURAL, no escape to dev-cycle.
   - Aggregate: CONVERGED round 1. No CONCERNS, no MUST-FIX, no security finding, non-architectural. Route: minor non-safety nits -> Prompt 3.
+
+  ## Hash realignment (docs/log.md audit remediation, 2026-07-30)
+
+  The 2026-07-30 `audit-docs` full vault-walk flagged CHK-PB-BIND: this run's
+  stored `book_content_hash` (`sha256:2f4f88ff...`) did not match the value
+  recomputed by the installed plugin's current `validate-promptbook.py`
+  `compute_book_hash` against the bound book
+  (`docs/promptbooks/active/PB-0001-fix-mobile-nav-and-restore-about.yaml`).
+  Investigation (git log on the book file: commits `4f9cee5` create,
+  `6432043` current_prompt 1->3, `ec2e7b9` current_run/current_prompt -> null)
+  confirmed the ONLY post-creation changes to the book were to `current_run`/
+  `current_prompt` — both excluded from `frozen_plan_subset` — and that
+  `frozen_plan_subset(book)` is byte-identical between the run-creation-time
+  book (`4f9cee5`) and the current book. Recomputing `compute_book_hash` against
+  BOTH versions yields the same value: `sha256:878bedef...`, confirming the
+  mismatch was writer-vs-validator hash-algorithm drift (the value stored at
+  run-start time was produced by a different canonicalization than the plugin
+  ships today), NOT an in-place plan edit — no §4 fork-rule violation occurred.
+  Per user authorization and the `migrate-promptbooks` precedent (which
+  recomputes `book_content_hash` against a migrated book), `book_content_hash`
+  above was realigned from `sha256:2f4f88ffd96aae68dc5834f0d9fee280f7d2705a9f0beed26543ea0ddb88fd89`
+  to `sha256:878bedef3fd2fe2021000387caa850e2fe842190f45d75b2d36ca5474a290c3c`.
+  See `docs/log.md` `[2026-07-30] promptbook` for the log entry.
 pr_draft: ""
 summary: ""

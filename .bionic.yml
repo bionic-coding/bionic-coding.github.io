@@ -1,0 +1,24 @@
+# .bionic.yml — per-project layout source of truth (config_version 1)
+config_version: "1"        # REQUIRED. String, like every other crux version field.
+docs_dir: docs             # OPTIONAL. Repo-root-relative path to the ledger (docs) tree. Default: "docs".
+artifact_prefix: ""        # OPTIONAL. ^[A-Z][A-Z0-9]{1,9}$ or blank. Blank/absent = bare ids.
+
+# `.bionic.yml` is the layout source of truth and SUPERSEDES the legacy `.crux`
+# file. It lives at the repo root (found before the durable layer is located)
+# and is named for the destination methodology, not the tool — so the durable
+# home still makes sense if crux is ever replaced.
+#
+# Resolution precedence: `.bionic.yml` > legacy `.crux` > convention.
+# This file is OPTIONAL — absent (and with no `.crux`), crux behaves exactly as
+# if it contained the defaults above (ledger at ./docs/, bare PB-NNNN / ADR-NNNN
+# ids). Malformed or invalid values fail loud (exit 1).
+# Designed to be committed so the team shares one config — works identically untracked.
+# NEVER put secrets/tokens/keys here — this file is meant to be shared. Secrets live in ~/.crux/ (the user-home directory).
+# Full contract: docs/CLAUDE.md §14; resolved via the plugin's bionic-config CLI
+# (e.g. `python3 "${CRUX_PLUGIN_ROOT}/scripts/bionic-config.py"`).
+#
+# bionic-coding note: no legacy `.crux` file existed in this repo at the time
+# this file was created (2026-07-30, invariants-concern enablement) — there was
+# nothing to supersede. This file was written fresh, values identical to the
+# pre-existing zero-config defaults (`source: "defaults"` per bionic-config.py),
+# to formalize the layout now that the repo has a `bionic/` durable root.

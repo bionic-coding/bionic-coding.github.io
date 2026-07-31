@@ -1,0 +1,15 @@
+# bionic/invariants/reconciliation.yml — the invariants concern's reconciliation
+# manifest (docs/CLAUDE.md §15.4). One entry per check, rooted by .bionic.yml.
+#
+#   checks:
+#     - check_id: <stable path/id in bionic/invariants/>
+#       pin_id: INV-NNNN
+#       last_result: pass|fail|stale|none
+#       last_checked: <ISO date>|null
+#
+# The check→pin mapping is derived/regenerable; last_result/last_checked are
+# authored data (crux is not a test runner). Never fabricate a `pass`.
+#
+# Scaffold-only: no checks have been mined yet. Populated by `recover-invariants`
+# under the human-ratify gate (docs/CLAUDE.md §15.3) — it never sets `ratified`.
+checks: []

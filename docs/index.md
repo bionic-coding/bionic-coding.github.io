@@ -1,10 +1,10 @@
 # docs/bionic-coding
 
-_Last updated: 2026-07-21_
+_Last updated: 2026-07-30_
 
-## What's next (5)
+## What's next (6)
 
-_5 open suggestions (P1: 0, P2: 5, P3: 0) — see [[whats_next]]._
+_6 open suggestions (P1: 1, P2: 5, P3: 0) — see [[whats_next]]._
 
 ## Research (15 sources, 3 synthesis pages)
 
@@ -32,3 +32,7 @@ See [[journal/index]].
 ## Promptbooks (1 active, 0 archived)
 
 See [[promptbooks/index]].
+
+## Invariants (0)
+
+_Ledger scaffolded, not yet populated — see [[invariants/index]]. Run `recover-invariants` to mine candidates._

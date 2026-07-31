@@ -8,7 +8,7 @@ Guidance for Claude Code working in this repository.
 a plain-language AI field guide ("Lessons"), and a weekly-ish news column ("Articles").
 There is no application code: this repo is content, Liquid templates, and one stylesheet.
 
-See `docs/CLAUDE.md` for documentation operations — the `docs/` tree is maintained by the
+See `bionic/CLAUDE.md` for documentation operations — the `bionic/` tree is maintained by the
 `crux` Claude Code plugin and has its own ownership rules.
 
 ## Commands
@@ -41,7 +41,7 @@ frontmatter `status` is not `published`, so links stay alive and unfinished pros
 **Posts** (`_posts/`) — `layout: post`, `title`, `date`, `description` (the scannable teaser
 used on the homepage and index), `tags`. The recurring column has a template at
 `_templates/this-week-in-ai.md`; its full format contract lives in
-`docs/briefs/BRIEF-this-week-in-ai-format.md` (3–5 stories biggest-first, annotated dated
+`bionic/briefs/BRIEF-this-week-in-ai-format.md` (3–5 stories biggest-first, annotated dated
 links, a permanent `## What I'm actually using` closer, claimed-vs-verified marking).
 
 **Lessons** (`_lessons/`) — `title`, `order` (drives sort on `/learn/`), `summary`,

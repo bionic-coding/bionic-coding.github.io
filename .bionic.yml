@@ -1,6 +1,6 @@
 # .bionic.yml — per-project layout source of truth (config_version 1)
 config_version: "1"        # REQUIRED. String, like every other crux version field.
-docs_dir: docs             # OPTIONAL. Repo-root-relative path to the ledger (docs) tree. Default: "docs".
+docs_dir: bionic
 artifact_prefix: ""        # OPTIONAL. ^[A-Z][A-Z0-9]{1,9}$ or blank. Blank/absent = bare ids.
 
 # `.bionic.yml` is the layout source of truth and SUPERSEDES the legacy `.crux`

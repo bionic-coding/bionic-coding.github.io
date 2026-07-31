@@ -11,7 +11,7 @@
 # invariants concern was left DISABLED on migration pending user confirmation;
 # the user has since confirmed enablement (2026-07-30) — see docs/log.md for
 # the scaffold-only opt-in (empty ledger + suite, no pins mined).
-schema_version: "4"
+schema_version: "5"
 
 # Concerns this project has opted into. Skills no-op against a concern that
 # isn't enabled. Order is irrelevant.

@@ -79,7 +79,7 @@ header_pages:
 # their entries' file path in the `include:` list.
 #
 exclude:
-  - docs/
+  - bionic/
   - _templates/
 #   - .sass-cache/
 #   - .jekyll-cache/

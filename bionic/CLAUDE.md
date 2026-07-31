@@ -4,7 +4,7 @@ Operational schema for the `docs/` tree in **bionic-coding**. The repo-root `CLA
 
 ## 1. What this `docs/` directory is
 
-A project-scoped documentation tree maintained by the `crux` Claude Code plugin. It covers seven concerns: **code docs** (regenerated from source), **research wiki** (curated external knowledge), **ADRs** (architecture decisions), **briefs** (pre-decision exploration), **work journal** (narrative work record), **promptbooks** (plan-of-prompts artifacts with run snapshots), and **invariants** (pinned, ratified, executable statements of what must be true — a ledger under `docs/invariants/` + a peer executable check suite at `bionic/invariants/`, per §15). The invariants concern is enabled at `schema_version: "4"`. The plugin and its skills are installed via Claude Code's plugin marketplace flow, or via Codex's own plugin marketplace flow. Skill prose that must stay correct across both runtimes uses crux's portable `CRUX_PLUGIN_ROOT` bridge name instead of assuming any one runtime's loader-set variable is universal (see §7.A). This file is the *operational* contract; the plugin's `README.md` and `templates/` are the *distribution* contract.
+A project-scoped documentation tree maintained by the `crux` Claude Code plugin. It covers seven concerns: **code docs** (regenerated from source), **research wiki** (curated external knowledge), **ADRs** (architecture decisions), **briefs** (pre-decision exploration), **work journal** (narrative work record), **promptbooks** (plan-of-prompts artifacts with run snapshots), and **invariants** (pinned, ratified, executable statements of what must be true — a ledger under `docs/invariants/` + a peer executable check suite at `bionic/invariants/checks/`, per §15). The invariants concern is enabled at `schema_version: "5"`. The plugin and its skills are installed via Claude Code's plugin marketplace flow, or via Codex's own plugin marketplace flow. Skill prose that must stay correct across both runtimes uses crux's portable `CRUX_PLUGIN_ROOT` bridge name instead of assuming any one runtime's loader-set variable is universal (see §7.A). This file is the *operational* contract; the plugin's `README.md` and `templates/` are the *distribution* contract.
 
 ## 2. Ownership
 
@@ -70,7 +70,7 @@ docs/
     <slug>.md              One ledger page per pin: id, class, provenance/ratification/verification, checks[], why-link.
  ```
 
-The invariants concern's peer **executable check suite** lives OUTSIDE the docs tree, at the repo root under `bionic/invariants/` (the first tenant of the `bionic/` durable root), with a `reconciliation.yml` mapping check→pin→last_result. `audit-docs` walks the `docs/invariants/` ledger as a concern AND reconciles it against `bionic/invariants/` (§15).
+The invariants concern's peer **executable check suite** lives OUTSIDE the docs tree, at the repo root under `bionic/invariants/checks/` (the first tenant of the `bionic/` durable root), with a `reconciliation.yml` mapping check→pin→last_result. `audit-docs` walks the `docs/invariants/` ledger as a concern AND reconciles it against `bionic/invariants/checks/` (§15).
 
 New books and runs are written as structured `.yaml`. Legacy `.md` books and run snapshots are **still read** during coexistence (a reading skill format-detects by extension + `format_version` before parsing); a run's format is fixed at its own start from the book's format as of that start. Migration of existing `.md` files is owned by the `migrate-promptbooks` skill, which translates each legacy book/run to `.yaml`, recomputes each run's `book_content_hash`, and preserves the original under `docs/promptbooks/legacy/` (never deletes it; the in-flight active book + its `in_progress` run are excluded). Schema pointers: `${CRUX_PLUGIN_ROOT}/schemas/promptbook.schema.json` (book shape, SSOT for CHK-PB-1) and `${CRUX_PLUGIN_ROOT}/schemas/run.schema.json` (run/per-prompt shape, SSOT for §11.B), validated by `${CRUX_PLUGIN_ROOT}/scripts/validate-promptbook.py`. **`format_version`** is a third, independent version axis (a per-file on-disk-format signal, value `"1"`), deliberately distinct from `docs/manifest.yml`'s tree-layout `schema_version` (§7) and `plugin.json`'s SKILL.md-contract `schema_version` (§7.A) — it governs the intra-file structure of one promptbook/run document and is also the `.md`↔`.yaml` coexistence discriminator.
 
@@ -130,7 +130,7 @@ New books and runs are written as structured `.yaml`. Legacy `.md` books and run
 
 ### invariants (machine proposes, human ratifies) — schema_version 4+
 - The ledger under `docs/invariants/` carries recovered candidates: `recover-invariants` writes `observed` stubs, but the **ratification** transition (`observed → ratified | rejected`, `ratified → retired`) is a **human** act via `transition-invariant` — recovery NEVER self-ratifies (§15.3).
-- The peer check suite `bionic/invariants/` + its `reconciliation.yml` are durable (survive regeneration). A pin's ledger frontmatter is the source of truth for identity/provenance/ratification; the reconciliation holds check→pin + `last_result`.
+- The peer check suite `bionic/invariants/checks/` + its `reconciliation.yml` are durable (survive regeneration). A pin's ledger frontmatter is the source of truth for identity/provenance/ratification; the reconciliation holds check→pin + `last_result`.
 - Skills: `recover-invariants` (machine candidate-emitter), `transition-invariant` (human ratify/reject/retire gate). Audit: the CHK-INV rules (§15.5), reference-implemented in `check_invariants.py`.
 - Triggers: "recover invariants", "ratify invariant INV-NNNN", "reject invariant", "retire invariant".
 
@@ -151,7 +151,7 @@ Cleanup adds the section when `N > 0`, updates the breakdown on every run, and R
 ```markdown
 # docs/bionic-coding
 
-_Last updated: 2026-07-30_
+_Last updated: 2026-07-31_
 
 ## Research (N sources, M synthesis pages)
 ### Sources (N)
@@ -163,7 +163,7 @@ _Last updated: 2026-07-30_
 ## ADRs (N)
 | id | title | status | date |
 |---|---|---|---|
-| (wiki-link to the ADR page under adrs/) | Record architectural decisions | Accepted | 2026-07-30 |
+| (wiki-link to the ADR page under adrs/) | Record architectural decisions | Accepted | 2026-07-31 |
 
 ## Briefs (N)
 - [[briefs/BRIEF-<slug>]] — `<status>` — `updated_at: YYYY-MM-DD`
@@ -290,7 +290,7 @@ Body under the heading: 1–5 lines. List specific paths touched. Keep terse —
 ## 7. `manifest.yml` schema
 
 ```yaml
-schema_version: "4"
+schema_version: "5"
 
 concerns_enabled:           # which of the seven concerns this project uses
   - code
@@ -333,7 +333,8 @@ The installed plugin refuses to operate on a `docs/` tree whose `schema_version`
 - `"1"` — initial layout.
 - `"2"` — Layout unchanged since v1 introduction; the bump aligned with a broader plugin-schema revision. Additive — v1 trees read cleanly under a v2 validator.
 - `"3"` — **BREAKING — the first non-additive layout bump; it ends the additive-only precedent the `"1"`/`"2"` rows established** (do not read the rows above as asserting all bumps are additive). Retires the research-local `docs/research/new/` drop folder in favor of the cross-concern top-level `docs/inbox/` staging area processed by `process-inbox`. A v2 tree has `docs/research/new/` and no `docs/inbox/`; recognized now only as a needs-migration state. **Upgrade path:** `audit-docs --migrate` creates `docs/inbox/`, relocates any in-flight `docs/research/new/*` (incl. a pending `urls.md`) into it, removes the emptied `docs/research/new/`, and rewrites `schema_version` to `"3"`.
-- `"4"` — **current. BREAKING.** Adds the seventh concern, **invariants** (§15): a ledger under `docs/invariants/` + a peer executable check suite at `bionic/invariants/` reconciled via the `.bionic.yml`-rooted manifest. Breaking because the peer suite lives *outside* the docs tree and an older plugin cannot gracefully degrade (ignoring an unreconciled suite risks treating durable checks as disposable). The upgraded plugin operates only on `"4"` (the supported-range predicate is the single-value check `schema_version == "4"`) and recognizes `"3"`/`"2"` solely as needs-migration states. **Upgrade path:** `audit-docs --migrate` (rung 3→4) bumps to `"4"`, **opt-in-enables** `invariants` (only when the `bionic/` layout is present or you confirm — an existing repo with no `bionic/` degrades gracefully), and creates the empty ledger + suite + reconciliation surfaces (idempotent, fail-closed).
+- `"4"` — **BREAKING.** Adds the seventh concern, **invariants** (§15): a ledger under `docs/invariants/` + a peer executable check suite at `bionic/invariants/checks/` reconciled via the `.bionic.yml`-rooted manifest. Breaking because the peer suite lives *outside* the docs tree and an older plugin cannot gracefully degrade (ignoring an unreconciled suite risks treating durable checks as disposable). At `"4"`, `docs/` and `bionic/` are still two separate roots: `docs/` the ledger tree, a bare `bionic/` holding only the invariants check suite. **Upgrade path:** `audit-docs --migrate` (rung 3→4) bumps to `"4"`, **opt-in-enables** `invariants` (only when the `bionic/` layout is present or you confirm — an existing repo with no `bionic/` degrades gracefully), and creates the empty ledger + suite + reconciliation surfaces (idempotent, fail-closed).
+- `"5"` — **current. BREAKING.** Relocates the tree: `docs/` and the bare invariants-only `bionic/` merge into one flat `bionic/` root (`migrate-tree.py`'s four-way move / skip-done / recurse / collide classification, per ADR-0059). The invariants ledger pages take over the top-level `bionic/invariants/*.md` namespace; the pre-existing check suite is pushed down one level into `bionic/invariants/checks/` first, so the two never collide. `.bionic.yml`'s `docs_dir` is rewritten to `bionic` as part of the same rung (an existing `artifact_prefix` is preserved verbatim — never a template overwrite). Breaking because a `"4"`-only plugin reading a `"5"` tree would still expect two separate roots and never find the ledger. The upgraded plugin operates only on `"5"` (the supported-range predicate is the single-value check `schema_version == "5"`) and recognizes `"4"`/`"3"`/`"2"` solely as needs-migration states. **Upgrade path:** `audit-docs --migrate` (rung 4→5, `migrate-tree.py`) merges the two trees entry-by-entry, unifies the invariants folders, rewrites `.bionic.yml`, and bumps `schema_version` to `"5"` — idempotent (a tree already at `"5"` reports `already-migrated` and does nothing) and fails closed (refuses rather than guesses) on an unresolvable two-tree collision.
 
 The plugin's SKILL.md frontmatter contract (see §7.A) was revised separately, bumping `plugin.json` `schema_version` from `"1"` to `"2"` — `docs/manifest.yml` `schema_version` did not move because no `docs/` layout changed. Likewise the `cleanup-campsite` additions (the log op, the regenerated `docs/whats_next.md`, the optional `cleanup:` block above) were **additive** — older readers gracefully degrade (the new op shows as a `CHK-LOG-*` warning at worst; absent `whats_next.md` is the v1 default; absent `cleanup:` block falls back to defaults) — and did not bump this `schema_version`. The promptbook/run Markdown→YAML format change is a `format_version` change, NOT a tree-layout bump: the files still live at `promptbooks/active/`, `promptbooks/runs/<id>-<slug>/`, `promptbooks/archive/` — only their extension and intra-file shape changed, and legacy `.md` files coexist with new `.yaml` ones.
 
@@ -849,7 +850,7 @@ docs_dir: docs             # OPTIONAL. Repo-root-relative path to the ledger (do
 artifact_prefix: ""        # OPTIONAL. ^[A-Z][A-Z0-9]{1,9}$ or blank. Blank/absent = bare ids.
 ```
 
-A legacy `.crux` uses the identical keys and validation (the surface moved, not the semantics — same grammar, same `prefixed()`, same textual + containment validation). Note: `.bionic.yml` §1 also defines a visible `bionic/` durable root (`bionic/docs/` ledger + `bionic/invariants/` check suite, §15); relocating the ledger to `bionic/docs/` is deferred, so `docs_dir` still resolves the ledger at `docs/` today.
+A legacy `.crux` uses the identical keys and validation (the surface moved, not the semantics — same grammar, same `prefixed()`, same textual + containment validation). Note: `.bionic.yml` §1 also defines a visible `bionic/` durable root (the ledger + the `bionic/invariants/checks/` check suite, §15). Relocating the ledger onto that root is the schema `"4"`→`"5"` migration (§7, `migrate-tree.py`, invoked via `audit-docs --migrate`) — a flat merge onto `bionic/`, never a nested `bionic/docs/` arrangement. **This repo has already run that rung**: `docs_dir: bionic` in `.bionic.yml`, `schema_version: "5"` in `bionic/manifest.yml` — the ledger resolves at `bionic/` today, not `docs/`.
 
 ### 14.1 Resolution contract
 
@@ -888,13 +889,13 @@ Prose skills MUST resolve the layout config by invoking the CLI — canonically 
 
 The seventh concern, **invariants** — pinned, ratified, executable statements of *what must be true*, verifiable against regeneration. This section is the **single source of truth** for the concern's contract; the skills (`recover-invariants`, `transition-invariant`) and `audit-docs` (the CHK-INV rules) reference it by name rather than restating it.
 
-> **Enablement:** the invariants concern is enabled only at `schema_version: "4"` (see §7). While the tree is at `"3"` this section is the *defined-but-not-yet-enabled* contract; enabling it (adding `invariants` to `concerns_enabled`, creating the surfaces) is the breaking `"3"→"4"` migration.
+> **Enablement:** the invariants concern is enabled only at `schema_version: "5"` (see §7). While the tree is at `"3"` this section is the *defined-but-not-yet-enabled* contract; enabling it (adding `invariants` to `concerns_enabled`, creating the surfaces) is the breaking `"3"→"4"` migration.
 
 ### 15.1 The pin and its two projections
 
 An **invariant** is the durable pinned concept. It has an `id` and projects into two artifacts keyed by that id:
-- a **ledger page** (human-readable: intent, `class`, the *why*-link) under the docs concern at `<ledger>/invariants/<slug>.md` — i.e. `docs/invariants/<slug>.md` in the current layout (the move to `bionic/docs/invariants/` is deferred with the ledger relocation); and
-- **zero-or-more checks** (the executable form) under the peer suite `bionic/invariants/`.
+- a **ledger page** (human-readable: intent, `class`, the *why*-link) under the docs concern at `<ledger>/invariants/<slug>.md` — `docs/invariants/<slug>.md` at schema `"4"` (a separate docs tree), or `bionic/invariants/<slug>.md` once the schema `"4"`→`"5"` migration has flat-merged the tree onto `bionic/` (this repo's current state — see §7 and §14); and
+- **zero-or-more checks** (the executable form) under the `invariants/checks/` subdirectory.
 
 The invariant is neither the page nor the check; both are projections of the pin.
 
@@ -922,18 +923,18 @@ The four ladder names (`observed-unratified`, `recovered-and-ratified`, …) are
 ### 15.3 Safety invariant: machine proposes, human disposes
 
 Recovery is autonomous but **cannot self-ratify**. Anything a machine extracts enters `provenance: recovered, ratification: observed` and nothing else. Only a human transitions `observed → ratified | rejected`, and `ratified → retired` (retirement is explicit). Two skills implement the split:
-- **`recover-invariants`** (machine) — mines code, emits *candidate* checks into `bionic/invariants/`, writes `observed` ledger stubs at recovery time (so no candidate is invisible), records provenance/verification in the reconciliation; never sets `ratified`.
+- **`recover-invariants`** (machine) — mines code, emits *candidate* checks into `bionic/invariants/checks/`, writes `observed` ledger stubs at recovery time (so no candidate is invisible), records provenance/verification in the reconciliation; never sets `ratified`.
 - **`transition-invariant`** (human gate) — the `observed → ratified | rejected` and `ratified → retired` state machine; mirrors `transition-adr` (frontmatter-only mutation, bidirectional/audited write). Trigger phrases route to it.
 
 ### 15.4 Reconciliation manifest + pin-level aggregation
 
-A suite manifest rooted by `.bionic.yml` (or a standalone manifest at `bionic/invariants/` that `.bionic.yml` roots when present) is the single reconciliation surface `audit-docs` reads. One **entry per check**, v1 shape:
+A suite manifest rooted by `.bionic.yml` (or a standalone manifest at `bionic/invariants/checks/` that `.bionic.yml` roots when present) is the single reconciliation surface `audit-docs` reads. One **entry per check**, v1 shape:
 
 ```yaml
 { check_id: <stable path/id in bionic/invariants/>, pin_id: INV-NNNN, last_result: pass|fail|stale|none, last_checked: <ISO date|null> }
 ```
 
-The check→pin mapping is derived (regenerable); `last_result`/`last_checked` are authored data persisted here (crux is **not** a test runner — a human/CI annotation or a check's recorded exit sets them). A **resolvable check** = a `check_id` present in `bionic/invariants/` whose entry maps to an existing pin.
+The check→pin mapping is derived (regenerable); `last_result`/`last_checked` are authored data persisted here (crux is **not** a test runner — a human/CI annotation or a check's recorded exit sets them). A **resolvable check** = a `check_id` present in `bionic/invariants/checks/` whose entry maps to an existing pin.
 
 **Pin-level aggregation** (a pin with 0..N checks): `fail` if any check is `fail`; else `stale` if any is `stale`; else `pass` if ≥1 is `pass` and none fail/stale; else `none`.
 

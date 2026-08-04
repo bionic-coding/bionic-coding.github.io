@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>State of Open-Source Local LLMs — July 2026: GLM 5.2 Breaks the Frontier, Qwen 4.1, Llama 5 405B — LLMCheck</title>
+<meta name="description" content="July 2026 open-source LLM report: GLM 5.2 becomes the first open model to beat GPT-5 and Claude on SWE-Bench Pro, Qwen 4.1 leads Mac-runnable models, DeepSeek R3 and Llama 5 405B push the frontier. Full Apple Silicon benchmarks.">
+<meta name="keywords" content="open source LLM July 2026, best local LLM July 2026, GLM 5.2, Qwen 4.1, DeepSeek R3, Llama 5 405B, Phi-5 Large, Gemma 4.5 27B, Mistral Medium 4, Kimi K3">
+<meta name="author" content="LLMCheck">
+<link rel="canonical" href="https://llmcheck.net/blog/state-of-open-source-local-llms-july-2026/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- Fonts (async) -->
+<link rel="stylesheet" href="/fonts.css">
+
+<!-- Google Analytics 4 -->
+
+<!-- Open Graph -->
+<meta property="og:title" content="State of Open-Source Local LLMs — July 2026: GLM 5.2 Breaks the Frontier, Qwen 4.1, Llama 5 405B">
+<meta property="og:description" content="July 2026 open-source LLM report: GLM 5.2 becomes the first open model to beat GPT-5 and Claude on SWE-Bench Pro, Qwen 4.1 leads Mac-runnable models, DeepSeek R3 and Llama 5 405B push the frontier. Full Apple Silicon benchmarks.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://llmcheck.net/blog/state-of-open-source-local-llms-july-2026/">
+<meta property="og:image" content="https://llmcheck.net/og-image-icon.png">
+<meta property="article:published_time" content="2026-07-11">
+<meta property="article:modified_time" content="2026-07-11">
+<meta property="article:author" content="LLMCheck">
+<meta property="article:section" content="Industry Report">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="State of Open-Source Local LLMs — July 2026">
+<meta name="twitter:description" content="GLM 5.2 becomes the first open model to beat GPT-5 and Claude on SWE-Bench Pro. Qwen 4.1 leads Mac-runnable models, DeepSeek R3 + Llama 5 405B push the frontier. The definitive July 2026 report.">
+<meta name="twitter:image" content="https://llmcheck.net/og-image-icon.png">
+
+<!-- Schema: BlogPosting -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "State of Open-Source Local LLMs — July 2026: GLM 5.2 Breaks the Frontier, Qwen 4.1, Llama 5 405B",
+  "description": "July 2026 open-source LLM report: GLM 5.2 becomes the first open model to beat GPT-5 and Claude on SWE-Bench Pro, Qwen 4.1 leads Mac-runnable models, DeepSeek R3 and Llama 5 405B push the frontier. Full Apple Silicon benchmarks.",
+  "url": "https://llmcheck.net/blog/state-of-open-source-local-llms-july-2026/",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-11",
+  "author": { "@type": "Organization", "name": "LLM Check", "url": "https://llmcheck.net" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "LLM Check",
+    "logo": { "@type": "ImageObject", "url": "https://llmcheck.net/logo.svg" }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://llmcheck.net/blog/state-of-open-source-local-llms-july-2026/" },
+  "keywords": "open source LLM July 2026, best local LLM July 2026, GLM 5.2, Qwen 4.1, DeepSeek R3, Llama 5 405B, Phi-5 Large, Gemma 4.5 27B, Mistral Medium 4, Kimi K3",
+  "wordCount": 3500,
+  "image": { "@type": "ImageObject", "url": "https://llmcheck.net/og-image-icon.png" },
+  "isPartOf": { "@type": "Blog", "@id": "https://llmcheck.net/blog/", "name": "LLMCheck Blog" },
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".answer-capsule", "h2"] }
+}
+</script>
+
+<!-- Schema: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://llmcheck.net" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://llmcheck.net/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "State of Open-Source Local LLMs — July 2026", "item": "https://llmcheck.net/blog/state-of-open-source-local-llms-july-2026/" }
+  ]
+}
+</script>
+
+<!-- Schema: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What's the best open-source local LLM in July 2026?",
+      "acceptedAnswer": { "@type": "Answer", "text": "According to the LLMCheck index (July 2026), the best open model overall is GLM 5.2 (744B-A40B), the first open-weights model to beat GPT-5 and Claude on SWE-Bench Pro at 68.5% — but it is server-class. For a model you can actually run on a Mac, Qwen 4.1 32B-A3B is the #1 pick with an LLMCheck Score of 76: 80% SWE-Verified, Apache 2.0, and ~62 tok/s on a 24 GB M4 Pro." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is GLM 5.2 really the first open model to beat GPT-5 and Claude?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, on SWE-Bench Pro. GLM 5.2 from Zhipu AI scores 68.5% on SWE-Bench Pro, edging out the published scores for GPT-5 and Claude on the same agentic-coding benchmark — the first time an MIT-licensed open-weights model has led a frontier closed model on a hard agentic-coding eval. It is a 744B-A40B mixture-of-experts model, so it is server-class, but the 106B-A12B GLM 5.2 Air distillation brings most of that capability to a 64 GB Mac." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I run GLM 5.2 on a Mac?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Not the full GLM 5.2 (744B-A40B) — that needs a multi-GPU server or an 8-bit cluster. But GLM 5.2 Air (106B-A12B) runs on a 64 GB Mac at roughly 30 tok/s at Q4_K_M, and reaches ~34 tok/s on a 128 GB Mac Studio via MLX and ~38 tok/s on an M4 Ultra 192 GB. Air retains 58% on SWE-Bench Pro, making it the most capable frontier-adjacent model you can run on consumer Apple Silicon as of July 2026." }
+    },
+    {
+      "@type": "Question",
+      "name": "What changed in Qwen 4.1 vs Qwen 4?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Qwen 4.1 32B-A3B is a refinement of Qwen 4, not a new architecture. SWE-Verified climbs from 78% to 80%, tool-use reliability improved, and Mac speed ticked up to ~62 tok/s on an M4 Pro 24 GB (vs ~60 for Qwen 4). It keeps the Apache 2.0 license and 1M native context. According to the LLMCheck index the LLMCheck Score rises from 75 to 76, making Qwen 4.1 the new Mac-runnable #1." }
+    },
+    {
+      "@type": "Question",
+      "name": "DeepSeek R3 vs Llama 5 405B vs Kimi K3 — which frontier model is best?",
+      "acceptedAnswer": { "@type": "Answer", "text": "All three are server-class. DeepSeek R3 (685B-A37B, MIT) leads on reasoning with 95% on AIME 2025 and is the math/reasoning champion. Llama 5 405B (dense, Llama 5 license) leads broad knowledge at 91% MMLU but is the hardest to serve. Kimi K3 (~1T-A32B, MIT) is the agentic-coding leader for long-horizon tool-use tasks. For most teams, DeepSeek R3 offers the best capability-per-dollar; for autonomous coding agents, Kimi K3 edges ahead." }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the best local LLM for a 24 GB Mac in July 2026?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Qwen 4.1 32B-A3B. Its MoE structure means only 3B parameters are active per token, so it uses ~19 GB at Q4_K_M and runs at ~62 tok/s on a base M4 Pro 24 GB MacBook Pro while scoring 80% on SWE-Verified. According to the LLMCheck index, the 24 GB tier is the sweet spot of the July 2026 market — frontier-adjacent capability at production-usable speed on entry-tier pro hardware." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I run Llama 5 405B on Apple Silicon?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Barely. Llama 5 405B is a 405B dense model, so even at Q2 it needs roughly 150 GB of unified memory. An M4 Ultra Mac Studio with 192 GB can technically load it at Q2 and runs it at about 5 tok/s — usable for batch jobs, far too slow for interactive chat. For real frontier capability on a Mac, GLM 5.2 Air at ~30-38 tok/s is the far more practical choice." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why are Chinese labs leading the open frontier in July 2026?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Three of the four frontier-class open releases this month came from Chinese labs: GLM 5.2 (Zhipu), DeepSeek R3 (DeepSeek), and Kimi K3 (Moonshot). All three ship under MIT. They have combined aggressive MoE scaling with permissive licensing, and GLM 5.2 became the first open model to beat GPT-5 and Claude on SWE-Bench Pro. Meta's Llama 5 405B is the lone Western frontier entrant, and it ships under a more restrictive license." }
+    },
+    {
+      "@type": "Question",
+      "name": "Has 1M context become standard for open models?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Qwen 4.1, Gemma 4.5 27B, GLM 5.2, and DeepSeek R3 all ship with 1M-class native context windows. Six months ago 256K was the open-source ceiling; in July 2026 a 1M token window is the spec-sheet expectation rather than a differentiator. Gemma 4.5 27B in particular pairs its 1M context with strong retrieval accuracy, making it a top pick for long-document analysis on a 32 GB Mac." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is open source now ahead of closed models on coding?",
+      "acceptedAnswer": { "@type": "Answer", "text": "On agentic coding, for the first time, yes at the frontier. GLM 5.2's 68.5% on SWE-Bench Pro beats the published GPT-5 and Claude scores. On Mac-runnable hardware, Qwen 4.1's 80% SWE-Verified is at or above the closed leaders. Closed models still hold an edge in long-horizon reliability, multimodal breadth, and production tool-use uptime, but the agentic-coding crown moved to open weights in July 2026." }
+    }
+  ]
+}
+</script>
+
+<style>
+:root {
+    --bg-base: #030303;
+    --bg-surface: #0A0A0A;
+    --bg-elevated: #121212;
+    --phosphor: #39FF14;
+    --phosphor-dim: rgba(57, 255, 20, 0.15);
+    --text-main: #EAEAEA;
+    --text-muted: #777777;
+    --text-dark: #333333;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-focus: rgba(255, 255, 255, 0.2);
+    --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-pixel: 'VT323', monospace;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --radius-xs: 4px;
+    --amber: #ff9f0a;
+    --amber-dim: rgba(255, 159, 10, 0.15);
+    --blue: #0a84ff;
+    --blue-dim: rgba(10, 132, 255, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+  body {
+    font-family: var(--font-ui);
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    line-height: 1.5;
+    overflow-x: hidden;
+    background-image:
+      linear-gradient(var(--border-subtle) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: center top;
+    background-attachment: fixed;
+  }
+
+  body::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+    z-index: 999;
+    background-size: 100% 2px;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  .topnav { position: sticky; top: 0; width: 100%; border-bottom: 1px solid var(--border-subtle); background: rgba(3, 3, 3, 0.85); backdrop-filter: blur(12px); z-index: 100; }
+  .topnav-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 48px; }
+  .topnav-logo { font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text-main); }
+  .status-dot { width: 8px; height: 8px; background-color: var(--phosphor); border-radius: 50%; box-shadow: 0 0 8px var(--phosphor); animation: pulse 2s infinite; }
+  .topnav-right { display: flex; gap: 24px; }
+  .topnav-link { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 500; font-family: var(--font-mono); transition: color 0.2s; }
+  .topnav-link:hover { color: var(--text-main); }
+  .topnav-more { position: relative; display: flex; align-items: center; }
+  .topnav-more-btn { background: none; border: none; cursor: pointer; padding: 0; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500; color: var(--text-muted); transition: color 0.2s; letter-spacing: 0; line-height: 1; }
+  .topnav-more-btn:hover { color: var(--text-main); }
+  .topnav-dropdown { display: none; position: absolute; top: 100%; right: 0; min-width: 180px; background: rgba(10,10,10,0.98); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 6px 0; margin-top: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.6); backdrop-filter: blur(12px); z-index: 200; }
+  .topnav-more.open .topnav-dropdown { display: block; }
+  .topnav-drop-link { display: block; padding: 9px 18px; color: #999; text-decoration: none; font-size: 0.8rem; font-family: var(--font-mono); transition: all 0.15s; letter-spacing: 0.02em; }
+  .topnav-drop-link:hover { color: #39FF14; background: rgba(57,255,20,0.06); }
+  @media(max-width:520px){.topnav-inner{padding:0 0.75rem;}.topnav-right{gap:8px;}.topnav-link{font-size:0.6rem;}.topnav-logo{font-size:0.7rem;}}@media(max-width:380px){.topnav-right{gap:6px;}.topnav-link{font-size:0.55rem;letter-spacing:-0.02em;}.topnav-logo span{font-size:0.65rem;}}
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.4); }
+    70% { box-shadow: 0 0 0 6px rgba(57, 255, 20, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(57, 255, 20, 0); }
+  }
+
+  .article-wrap { max-width: 760px; margin: 0 auto; padding: 52px 24px 80px; }
+  .article-meta { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); margin-bottom: 20px; flex-wrap: wrap; }
+  .article-category { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 2px 9px; border-radius: var(--radius-xs); background: var(--phosphor-dim); color: var(--phosphor); }
+  .article-wrap h1 { font-size: 40px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 22px; color: var(--text-main); }
+  .article-intro { font-size: 18px; color: var(--text-muted); line-height: 1.65; margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border-subtle); }
+
+  .toc { background: var(--bg-elevated); border-radius: var(--radius-sm); padding: 20px 24px; margin-bottom: 40px; border: 1px solid var(--border-subtle); }
+  .toc-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { font-size: 14px; line-height: 2; }
+  .toc a { color: var(--phosphor); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  .article-body h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.025em; margin: 48px 0 16px; padding-top: 8px; color: var(--text-main); }
+  .article-body h3 { font-size: 19px; font-weight: 600; letter-spacing: -0.015em; margin: 30px 0 12px; color: var(--text-main); }
+  .article-body p { font-size: 16px; line-height: 1.8; margin-bottom: 20px; color: var(--text-muted); }
+  .article-body ul, .article-body ol { padding-left: 24px; margin-bottom: 20px; }
+  .article-body li { font-size: 16px; line-height: 1.8; margin-bottom: 8px; color: var(--text-muted); }
+  .article-body li strong { font-weight: 600; color: var(--text-main); }
+  .article-body strong { font-weight: 600; color: var(--text-main); }
+
+  .callout { border-left: 3px solid var(--phosphor); background: var(--phosphor-dim); padding: 16px 20px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: 24px; }
+  .callout p { font-size: 15px; margin-bottom: 0; line-height: 1.65; color: var(--text-main); }
+  .callout.amber { border-left-color: var(--amber); background: var(--amber-dim); }
+  .callout.blue { border-left-color: var(--blue); background: var(--blue-dim); }
+
+  .vs-table { width: 100%; border-collapse: collapse; margin-bottom: 28px; font-size: 14px; }
+  .vs-table th { background: var(--bg-elevated); font-weight: 700; text-align: left; padding: 11px 14px; border-bottom: 2px solid var(--border-subtle); color: var(--text-main); }
+  .vs-table th:not(:first-child) { text-align: center; }
+  .vs-table td { padding: 11px 14px; border-bottom: 1px solid var(--border-subtle); vertical-align: top; color: var(--text-muted); }
+  .vs-table td:not(:first-child) { text-align: center; }
+  .vs-table tr:last-child td { border-bottom: none; }
+  .vs-table .winner { color: var(--phosphor); font-weight: 700; }
+  .vs-table .label { font-weight: 600; color: var(--text-main); }
+  .vs-table .rank { color: var(--phosphor); font-weight: 700; font-family: var(--font-mono); }
+  .vs-table caption { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; text-align: left; font-style: italic; }
+
+  .spec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 24px 0 28px; }
+  .spec-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 18px 20px; }
+  .spec-card h4 { font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 10px; font-family: var(--font-mono); letter-spacing: 0.02em; }
+  .spec-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 13px; border-bottom: 1px solid var(--border-subtle); }
+  .spec-row:last-child { border-bottom: none; }
+  .spec-row .s-label { color: var(--text-muted); }
+  .spec-row .s-val { color: var(--text-main); font-family: var(--font-mono); font-weight: 600; font-size: 12px; }
+
+  .article-cta { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius); padding: 32px 36px; margin: 52px 0 0; text-align: center; }
+  .article-cta h3 { font-size: 22px; font-weight: 700; margin-bottom: 10px; color: var(--text-main); }
+  .article-cta p { font-size: 15px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
+  .article-cta a { display: inline-flex; align-items: center; gap: 8px; background: var(--phosphor); color: var(--bg-base); padding: 12px 26px; border-radius: var(--radius-xs); font-size: 15px; font-weight: 600; text-decoration: none; transition: opacity 0.15s; }
+  .article-cta a:hover { opacity: 0.85; }
+
+  .footer { text-align: center; padding: 36px 24px; border-top: 1px solid var(--border-subtle); color: var(--text-muted); font-size: 12px; line-height: 1.6; }
+  .footer a { color: var(--text-muted); text-decoration: none; }
+  .footer a:hover { color: var(--text-main); }
+
+  @media (max-width: 700px) {
+    .article-wrap h1 { font-size: 28px; }
+    .article-intro { font-size: 16px; }
+    .article-cta { padding: 24px 20px; }
+    .spec-grid { grid-template-columns: 1fr; }
+    .vs-table { font-size: 13px; }
+    .vs-table th, .vs-table td { padding: 9px 8px; }
+    .related-grid { grid-template-columns: 1fr !important; }
+  }
+
+  .faq-section { margin: 48px 0 40px; }
+  .faq-section > h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; }
+  .faq-item { border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 20px 24px; margin-bottom: 12px; background: var(--bg-surface); }
+  .faq-item h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; line-height: 1.4; color: var(--text-main); }
+  .faq-item p { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin: 0; }
+
+  .sources-section { margin: 0 0 40px; padding: 20px 24px; background: var(--bg-elevated); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); }
+  .sources-section h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 10px; }
+  .sources-section ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .sources-section li { font-size: 13px; }
+  .sources-section a { color: var(--phosphor); text-decoration: none; }
+  .sources-section a:hover { text-decoration: underline; }
+
+  .answer-capsule { font-size: 1.05rem; font-weight: 500; color: var(--text-main); line-height: 1.7; margin-bottom: 24px; padding: 16px 20px; background: rgba(57,255,20,0.04); border-radius: 6px; border-left: 3px solid var(--phosphor); }
+  .author-bio { display: flex; gap: 16px; align-items: flex-start; padding: 20px; background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: 8px; margin: 32px 0; }
+  .author-avatar { width: 48px; height: 48px; border-radius: 50%; background: rgba(57,255,20,0.08); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--phosphor); font-size: 1.1rem; flex-shrink: 0; }
+  .author-info strong { color: var(--phosphor); font-family: 'JetBrains Mono', monospace; }
+  .author-info p { color: var(--text-muted); font-size: 0.9rem; margin-top: 4px; line-height: 1.5; }
+
+  .code-block { background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 16px 20px; margin-bottom: 20px; overflow-x: auto; }
+  .code-block code { font-family: var(--font-mono); font-size: 14px; color: var(--phosphor); line-height: 1.6; }
+
+  .section-divider { border: none; border-top: 1px solid var(--border-subtle); margin: 48px 0 0; }
+
+  /* Recap list */
+  .recap-list { list-style: none; padding: 0; margin: 0 0 24px; display: flex; flex-direction: column; gap: 10px; }
+  .recap-list li { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 14px 18px; font-size: 14.5px; line-height: 1.55; color: var(--text-muted); margin-bottom: 0; }
+  .recap-list li strong { color: var(--phosphor); font-family: var(--font-mono); font-weight: 700; font-size: 13px; }
+  .recap-date { display: inline-block; font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); padding: 2px 7px; background: var(--bg-elevated); border-radius: 3px; margin-left: 6px; }
+
+  /* Related posts */
+  .related-posts { margin: 48px 0 32px; }
+  .related-posts-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .related-card { background: var(--bg-elevated); border: 1px solid var(--border-subtle); border-radius: 10px; padding: 16px; text-decoration: none; color: inherit; transition: border-color 0.15s; display: block; }
+  .related-card:hover { border-color: rgba(57,255,20,0.3); }
+  .related-label { font-size: 10px; font-weight: 700; color: var(--phosphor); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .related-title { font-size: 14px; font-weight: 600; color: var(--text-main); line-height: 1.4; }
+  @media(max-width:640px){.related-grid{grid-template-columns:1fr;}}
+
+  /* ── Affiliate buy box ── */
+  .buy-box{background:var(--bg-elevated);border:1px solid var(--border-subtle);border-left:3px solid var(--phosphor);border-radius:10px;padding:22px 24px;margin:40px 0;}
+  .buy-box-label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--phosphor);margin-bottom:10px;}
+  .buy-box-intro{font-size:14px;color:var(--text-main);margin:0 0 16px;line-height:1.6;}
+  .buy-box-links{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+  .buy-btn{display:inline-block;background:var(--phosphor);color:#030303;font-weight:700;font-size:14px;padding:11px 20px;border-radius:6px;text-decoration:none;transition:opacity .15s;}
+  .buy-btn:hover{opacity:.85;}
+  .buy-box-disclosure{font-size:11px;color:var(--text-muted);line-height:1.5;margin:0;}
+  @media(max-width:640px){.buy-btn{flex:1;text-align:center;}}
+</style>
+</head>
+<body>
+
+<nav class="topnav" role="navigation">
+  <div class="topnav-inner">
+    <a href="/" class="topnav-logo"><span class="status-dot"></span> <span>LLM CHECK</span></a>
+    <div class="topnav-right">
+      <a href="/leaderboard" class="topnav-link">LEADERBOARD</a>
+      <a href="/benchmarks" class="topnav-link">BENCHMARKS</a>
+      <a href="/best-llm/" class="topnav-link">BEST BY MAC</a>
+      <a href="/software" class="topnav-link">SOFTWARE</a>
+      <a href="/hardware" class="topnav-link">HARDWARE</a>
+      <a href="/guides/" class="topnav-link">GUIDES</a>
+      <a href="/blog/" class="topnav-link active">BLOG</a>
+      <a href="/#wizard" class="nav-cta">&#9654; Check my Mac</a>
+      <div class="topnav-more">
+        <button class="topnav-link topnav-more-btn" onclick="this.parentElement.classList.toggle('open')">MORE &#9662;</button>
+        <div class="topnav-dropdown">
+          <a href="/advisor" class="topnav-drop-link">Mac Advisor</a>
+          <a href="/compare/tool" class="topnav-drop-link">Compare Tool</a>
+          <a href="/methodology" class="topnav-drop-link">Methodology</a>
+          <a href="/data/" class="topnav-drop-link">Open Data</a>
+          <a href="/glossary/" class="topnav-drop-link">Glossary</a>
+          <a href="/about" class="topnav-drop-link">About</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<article class="article-wrap" itemscope itemtype="https://schema.org/BlogPosting">
+
+  <div class="article-meta">
+    <span class="article-category">INDUSTRY REPORT</span>
+    <span>&middot;</span>
+    <time itemprop="datePublished" datetime="2026-07-11">July 2026</time>
+    <span>&middot;</span>
+    <span>19 min read</span>
+  </div>
+
+  <h1 itemprop="headline">State of Open-Source Local LLMs &mdash; July 2026</h1>
+
+  <div class="answer-capsule">According to the LLMCheck index (July 2026), GLM 5.2 from Zhipu AI became the first open-weights model to beat GPT-5 and Claude on SWE-Bench Pro, scoring 68.5%. Qwen 4.1 32B-A3B is the new Mac-runnable #1 at score 76, while DeepSeek R3, Llama 5 405B, and Kimi K3 push the server-class frontier.</div>
+
+  <p class="article-intro" itemprop="description">
+    June 2026 was the month open source spread out across every Mac tier. July 2026 is the month it broke the frontier. GLM 5.2 &mdash; a 744-billion-parameter mixture-of-experts model from Zhipu AI &mdash; became the first open-weights model in history to beat GPT-5 and Claude on SWE-Bench Pro, the hard agentic-coding benchmark. Around it, ten flagship releases landed in 30 days: Qwen 4.1 took the Mac-runnable crown, DeepSeek R3 hit 95% on AIME, Meta shipped its long-rumored Llama 5 405B dense frontier model, and Gemma 4.5 27B, Mistral Medium 4, and Phi-5 Large 28B refreshed the mid tier. This is the definitive July 2026 recap, benchmarked on Apple Silicon, with install commands. Every claim is sourced from LLMCheck's own measurement pipeline.
+  </p>
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">In this article</div>
+    <ol>
+      <li><a href="#recap">The 30-Day Recap (TL;DR)</a></li>
+      <li><a href="#glm52">GLM 5.2 &mdash; the frontier falls</a></li>
+      <li><a href="#qwen41">Qwen 4.1 &mdash; the new Mac #1</a></li>
+      <li><a href="#frontier">The frontier server tier: R3 vs 405B vs K3</a></li>
+      <li><a href="#midtier">Mid-tier refreshes: Gemma 4.5, Mistral, Phi-5</a></li>
+      <li><a href="#top10">The July 2026 Open-Source Top 10</a></li>
+      <li><a href="#trends">5 things that changed in July 2026</a></li>
+      <li><a href="#bytier">By Mac tier &mdash; what to run today</a></li>
+      <li><a href="#next">What's coming next month</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </nav>
+
+  <div class="article-body" itemprop="articleBody">
+
+    <!-- SECTION 1: RECAP -->
+    <h2 id="recap">The 30-Day Recap (TL;DR)</h2>
+    <p>Every major open-weights release between June 11 and July 2026, with a one-line takeaway. Ten flagship drops in 30 days &mdash; and for the first time, the headline is not a Mac model but a server-class one that beat the closed frontier outright.</p>
+
+    <ul class="recap-list">
+      <li><strong>GLM 5.2</strong> <span class="recap-date">Jul 8</span> &mdash; MIT, 744B-A40B MoE, 68.5% SWE-Bench Pro &mdash; the FIRST open model to beat GPT-5 and Claude. The headline.</li>
+      <li><strong>GLM 5.2 Air 106B-A12B</strong> <span class="recap-date">Jul 8</span> &mdash; MIT, runs on a 64 GB Mac at ~30 tok/s, 58% SWE-Bench Pro &mdash; frontier-adjacent on consumer silicon.</li>
+      <li><strong>Qwen 4.1 32B-A3B</strong> <span class="recap-date">Jul 2</span> &mdash; Apache 2.0, 80% SWE-Verified, ~62 tok/s on M4 Pro 24 GB &mdash; the new Mac-runnable #1, score 76.</li>
+      <li><strong>DeepSeek R3</strong> <span class="recap-date">Jul 5</span> &mdash; MIT, 685B-A37B, AIME 95% &mdash; frontier reasoning, server-class.</li>
+      <li><strong>Llama 5 405B</strong> <span class="recap-date">Jul 6</span> &mdash; Meta's dense frontier, MMLU 91%, server / 192 GB Q2 only (~5 tok/s on M4 Ultra).</li>
+      <li><strong>Gemma 4.5 27B</strong> <span class="recap-date">Jul 3</span> &mdash; Gemma, 1M context, MMLU 86%, ~42 tok/s on M5 Max, 32 GB Mac.</li>
+      <li><strong>Mistral Medium 4 41B-A13B</strong> <span class="recap-date">Jul 4</span> &mdash; Apache 2.0 MoE, SWE-Verified 70%, ~48 tok/s, 32 GB Mac.</li>
+      <li><strong>Phi-5 Large 28B</strong> <span class="recap-date">Jun 28</span> &mdash; MIT, MMLU 88%, AIME 80%, ~38 tok/s on M5 Max, 24&ndash;32 GB Mac.</li>
+      <li><strong>Kimi K3 ~1T-A32B</strong> <span class="recap-date">Jul 7</span> &mdash; MIT, agentic-coding leader, server-class.</li>
+      <li><strong>Command R+ 2 104B</strong> <span class="recap-date">Jul 1</span> &mdash; CC-BY-NC, enterprise RAG, ~28 tok/s on a 64 GB Mac.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Headline story:</strong> For two years, the open-vs-closed gap on agentic coding was the one number that still favored OpenAI and Anthropic. In July 2026, GLM 5.2 erased it &mdash; 68.5% on SWE-Bench Pro, ahead of GPT-5 and Claude, under an MIT license. The full model is server-class, but the GLM 5.2 Air distillation brings 58% SWE-Bench Pro to a 64 GB Mac at ~30 tok/s. The frontier is now open.</p>
+    </div>
+
+    <!-- SECTION 2: GLM 5.2 -->
+    <hr class="section-divider">
+    <h2 id="glm52">GLM 5.2 &mdash; the frontier falls</h2>
+    <p>On July 8, Zhipu AI released GLM 5.2: a 744-billion-parameter mixture-of-experts model with 40 billion active parameters per token, shipped under the MIT license. The benchmark that matters is SWE-Bench Pro &mdash; the harder, contamination-resistant successor to SWE-Verified that measures multi-file, multi-step agentic coding. GLM 5.2 scores <strong>68.5%</strong>. According to LLMCheck cross-reference data, that edges out the published GPT-5 and Claude scores on the same benchmark. This is the first time in the history of open-weights AI that an MIT-licensed model has led the closed frontier on a hard agentic-coding eval.</p>
+
+    <div class="spec-grid">
+      <div class="spec-card">
+        <h4>GLM 5.2 Architecture</h4>
+        <div class="spec-row"><span class="s-label">Total params</span><span class="s-val">744B</span></div>
+        <div class="spec-row"><span class="s-label">Active params</span><span class="s-val">40B (5.4%)</span></div>
+        <div class="spec-row"><span class="s-label">Context</span><span class="s-val">1M native</span></div>
+        <div class="spec-row"><span class="s-label">License</span><span class="s-val">MIT</span></div>
+        <div class="spec-row"><span class="s-label">Mac tier</span><span class="s-val">Server-class</span></div>
+        <div class="spec-row"><span class="s-label">LLMCheck Score</span><span class="s-val">70 / 100</span></div>
+      </div>
+      <div class="spec-card">
+        <h4>Benchmarks</h4>
+        <div class="spec-row"><span class="s-label">SWE-Bench Pro</span><span class="s-val">68.5%</span></div>
+        <div class="spec-row"><span class="s-label">SWE-Verified</span><span class="s-val">84%</span></div>
+        <div class="spec-row"><span class="s-label">MMLU</span><span class="s-val">90%</span></div>
+        <div class="spec-row"><span class="s-label">AIME 2025</span><span class="s-val">93%</span></div>
+        <div class="spec-row"><span class="s-label">LiveCodeBench</span><span class="s-val">85%</span></div>
+        <div class="spec-row"><span class="s-label">Agentic SWE</span><span class="s-val">71%</span></div>
+      </div>
+    </div>
+
+    <p><strong>Why SWE-Bench Pro is the number that matters.</strong> SWE-Verified, the benchmark that defined the open-source coding race through the first half of 2026, has been increasingly criticized for contamination &mdash; many of its issues leaked into training corpora. SWE-Bench Pro was built specifically to resist that, with held-out repositories, harder multi-file tasks, and a stricter evaluation harness. A 68.5% on Pro is roughly equivalent in difficulty to a high-80s on Verified, and it is the benchmark closed-lab researchers themselves now cite. GLM 5.2 leading it is not a curiosity &mdash; it is the new state of the art.</p>
+
+    <p><strong>The architecture is the enabler.</strong> At 744B total with only 40B active, GLM 5.2 uses an extreme sparsity ratio &mdash; just 5.4% of parameters fire per token. That keeps inference cost low relative to its capability, but the full weights still need a multi-GPU server or an 8-bit cluster to host. This is not a model you run on a Mac. What you run on a Mac is its distillation.</p>
+
+    <p><strong>GLM 5.2 Air brings it home.</strong> Alongside the flagship, Zhipu shipped <strong>GLM 5.2 Air</strong> &mdash; a 106B-A12B MoE distilled from the full model, also MIT-licensed. Air retains <strong>58% on SWE-Bench Pro</strong>, which is still ahead of every other Mac-runnable model on that benchmark, and it runs on a 64 GB Mac at roughly 30 tok/s at Q4_K_M. On a 128 GB Mac Studio it reaches ~34 tok/s via MLX, and on an M4 Ultra 192 GB it hits ~38 tok/s. For the first time, a frontier-adjacent agentic coder runs on consumer Apple Silicon. We cover the full GLM 5.2 story &mdash; flagship, Air, and how it beat the closed labs &mdash; in our <a href="/blog/glm-5-2-open-model-beats-gpt5-claude/" style="color:var(--phosphor)">dedicated GLM 5.2 deep dive</a>.</p>
+
+    <div class="code-block"><code># GLM 5.2 Air (the Mac-runnable distillation)<br>ollama run glm5.2:air        # ~60 GB, MoE 12B-active<br><br># MLX (fastest on Apple Silicon)<br>mlx_lm.generate --model mlx-community/GLM-5.2-Air-106B-A12B-4bit \<br>  --prompt "Fix the failing tests in this repo"<br><br># Full GLM 5.2 (server-class, multi-GPU): see Zhipu model card</code></div>
+
+    <div class="callout">
+      <p><strong>Verdict:</strong> GLM 5.2 is the most important open-weights release of 2026. The flagship redefines the frontier; GLM 5.2 Air makes 58% SWE-Bench Pro real on a 64 GB Mac. If you have the RAM, Air is now the most capable agentic coder you can run locally as of July 2026.</p>
+    </div>
+
+    <!-- SECTION 3: QWEN 4.1 -->
+    <hr class="section-divider">
+    <h2 id="qwen41">Qwen 4.1 &mdash; the new Mac #1</h2>
+    <p>Six weeks after the full Qwen 4 release, Alibaba shipped Qwen 4.1 32B-A3B on July 2 &mdash; a point-release refinement rather than a new generation. The architecture is unchanged (32B total, 3B active, 1M native context, Apache 2.0), but the instruction-tuning and tool-use stages were rebuilt on a larger, cleaner preference dataset. SWE-Verified climbs from 78% to <strong>80%</strong>, tool-use reliability improves measurably, and the LLMCheck Score rises from 75 to <strong>76</strong>. That makes Qwen 4.1 the new #1 Mac-runnable open model.</p>
+
+    <div class="spec-grid">
+      <div class="spec-card">
+        <h4>Qwen 4.1 Benchmarks</h4>
+        <div class="spec-row"><span class="s-label">SWE-Verified</span><span class="s-val">80%</span></div>
+        <div class="spec-row"><span class="s-label">MMLU</span><span class="s-val">90%</span></div>
+        <div class="spec-row"><span class="s-label">HumanEval</span><span class="s-val">95%</span></div>
+        <div class="spec-row"><span class="s-label">AIME 2025</span><span class="s-val">92%</span></div>
+        <div class="spec-row"><span class="s-label">Agentic SWE</span><span class="s-val">63%</span></div>
+        <div class="spec-row"><span class="s-label">LLMCheck Score</span><span class="s-val">76 / 100</span></div>
+      </div>
+      <div class="spec-card">
+        <h4>Mac Performance</h4>
+        <div class="spec-row"><span class="s-label">M5 Max 128 GB</span><span class="s-val">82 tok/s</span></div>
+        <div class="spec-row"><span class="s-label">M5 Max 64 GB</span><span class="s-val">69 tok/s</span></div>
+        <div class="spec-row"><span class="s-label">M4 Pro 24 GB</span><span class="s-val">62 tok/s</span></div>
+        <div class="spec-row"><span class="s-label">RAM (Q4_K_M)</span><span class="s-val">~19 GB</span></div>
+        <div class="spec-row"><span class="s-label">License</span><span class="s-val">Apache 2.0</span></div>
+        <div class="spec-row"><span class="s-label">Context</span><span class="s-val">1M native</span></div>
+      </div>
+    </div>
+
+    <p><strong>The 80% SWE-Verified mark is the milestone.</strong> Crossing 80% on a 24 GB consumer Mac &mdash; while only firing 3 billion parameters per token &mdash; was unthinkable a year ago. According to the LLMCheck index, Qwen 4.1's SWE-Verified score now matches or exceeds the published numbers for the closed Mac-class competition, and it does so under a fully unrestricted Apache 2.0 license. For startups shipping coding agents and IDE plugins on locally-hosted weights, this is the model with zero licensing risk and zero per-token cost.</p>
+
+    <p><strong>The speed bump matters more than the version number.</strong> Qwen 4.1 reaches ~62 tok/s on a base M4 Pro 24 GB MacBook Pro, up from ~60 for Qwen 4, thanks to refreshed MLX Metal kernels shipped alongside the release. On an M5 Max 128 GB it hits 82 tok/s. The combination of 80% SWE-Verified, 62 tok/s, and a 19 GB memory footprint is why Qwen 4.1 is the model we recommend by default for any Mac with 24 GB or more.</p>
+
+    <div class="code-block"><code># Ollama (one-line install, ~19 GB download)<br>ollama run qwen4.1:32b-a3b<br><br># MLX (fastest on Apple Silicon)<br>mlx_lm.generate --model mlx-community/Qwen4.1-32B-A3B-4bit \<br>  --prompt "Refactor this module and add tests"<br><br># LM Studio: search "Qwen 4.1 32B A3B" in Discover tab</code></div>
+
+    <div class="callout">
+      <p><strong>Verdict:</strong> Qwen 4.1 32B-A3B is the new default recommendation for any Mac with 24 GB RAM or more. It takes the Mac-runnable #1 spot from Qwen 4 with an 80% SWE-Verified score, an Apache 2.0 license, and ~62 tok/s on entry-tier pro hardware.</p>
+    </div>
+
+    <!-- SECTION 4: FRONTIER SERVER TIER -->
+    <hr class="section-divider">
+    <h2 id="frontier">The frontier server tier &mdash; DeepSeek R3 vs Llama 5 405B vs Kimi K3</h2>
+    <p>Below GLM 5.2, three more frontier-class models shipped in July &mdash; and all three are server-class, meaning none run practically on a Mac. They matter anyway: they set the ceiling that next month's distillations will chase, and they define where each lab's strengths lie. DeepSeek R3 owns reasoning, Llama 5 405B owns broad knowledge, and Kimi K3 owns agentic coding.</p>
+
+    <table class="vs-table">
+      <caption>The July 2026 frontier server tier &mdash; July 2026.</caption>
+      <thead>
+        <tr>
+          <th></th>
+          <th>DeepSeek R3</th>
+          <th>Llama 5 405B</th>
+          <th>Kimi K3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="label">Params</td><td>685B-A37B</td><td>405B dense</td><td>~1T-A32B</td></tr>
+        <tr><td class="label">License</td><td class="winner">MIT</td><td>Llama 5</td><td class="winner">MIT</td></tr>
+        <tr><td class="label">MMLU</td><td>90%</td><td class="winner">91%</td><td>89%</td></tr>
+        <tr><td class="label">AIME 2025</td><td class="winner">95%</td><td>88%</td><td>90%</td></tr>
+        <tr><td class="label">SWE-Bench Pro</td><td>64%</td><td>59%</td><td class="winner">66%</td></tr>
+        <tr><td class="label">Agentic / long-horizon</td><td>Strong</td><td>Moderate</td><td class="winner">Leader</td></tr>
+        <tr><td class="label">Context</td><td>1M</td><td>256K</td><td class="winner">2M</td></tr>
+        <tr><td class="label">M4 Ultra 192 GB</td><td>Not practical</td><td>~5 tok/s (Q2)</td><td>Not practical</td></tr>
+        <tr><td class="label">Best for</td><td>Reasoning / math</td><td>Broad knowledge</td><td>Coding agents</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>DeepSeek R3 owns reasoning.</strong> The 685B-A37B MoE, MIT-licensed, scores <strong>95% on AIME 2025</strong> &mdash; the highest math-reasoning score of any open model, closed or open, this month. DeepSeek's R-series has always been a reasoning specialist, and R3 widens that lead with a more efficient routing layer than R2. According to LLMCheck cross-reference data, R3 is the model to beat on competition math, theorem-style proofs, and multi-step logical reasoning. It is server-class, but its capability-per-active-parameter is the best of the three frontier entrants.</p>
+
+    <p><strong>Llama 5 405B owns broad knowledge &mdash; and the dense-model burden.</strong> Meta finally shipped the long-rumored 405B dense frontier model on July 6, under the Llama 5 license. At 91% MMLU it edges every other open model on broad academic knowledge, and it retains Llama 5's native multimodality. But 405B dense is brutal to serve: even at Q2 it needs roughly 150 GB of memory. An M4 Ultra 192 GB Mac Studio can technically load it at Q2 and run it at about <strong>5 tok/s</strong> &mdash; fine for overnight batch jobs, far too slow for interactive use. For most teams, the 405B is a cloud-only model.</p>
+
+    <p><strong>Kimi K3 owns agentic coding and context.</strong> Moonshot's ~1-trillion-parameter, 32B-active MoE (MIT) is the long-horizon agentic-coding leader, scoring 66% on SWE-Bench Pro and pairing it with a 2M-token context window &mdash; the largest of any model this month. For autonomous coding agents that need to hold an entire large codebase in context and execute multi-hour tool-use loops, Kimi K3 is the strongest open option, though it remains server-class and out of reach for local Mac inference.</p>
+
+    <div class="callout amber">
+      <p><strong>Practical recommendation:</strong> None of these three run usefully on a Mac. If you need frontier capability locally, the answer is GLM 5.2 Air, not these. If you can serve in the cloud: pick DeepSeek R3 for math and reasoning, Kimi K3 for long-horizon coding agents, and Llama 5 405B only if you specifically need its multimodal breadth and can absorb the serving cost.</p>
+    </div>
+
+    <!-- SECTION 5: MID-TIER -->
+    <hr class="section-divider">
+    <h2 id="midtier">Mid-tier refreshes &mdash; Gemma 4.5 27B, Mistral Medium 4, Phi-5 Large 28B</h2>
+    <p>While the frontier grabbed headlines, three mid-tier releases quietly reshaped the 24&ndash;32 GB Mac segment &mdash; the range where most pro-Mac users actually live. Each targets a different strength: Gemma 4.5 27B on long context, Mistral Medium 4 on efficient MoE coding, and Phi-5 Large 28B on dense reasoning.</p>
+
+    <h3>Gemma 4.5 27B &mdash; the 1M-context workhorse</h3>
+    <p>Google scaled its Gemma 4.5 refresh up to a 27B dense variant on July 3. The headline is context: a full <strong>1M native window</strong> paired with strong retrieval accuracy, plus 86% MMLU. It runs at ~42 tok/s on an M5 Max and fits a 32 GB Mac at roughly 17 GB. For long-document analysis, codebase-wide reasoning, and RAG over large corpora on consumer hardware, Gemma 4.5 27B is the new top pick &mdash; the Gemma license allows commercial use, and the model lands at an LLMCheck Score of 68.</p>
+
+    <h3>Mistral Medium 4 &mdash; efficient MoE coding</h3>
+    <p>Mistral's Medium 4 is a 41B-A13B MoE under Apache 2.0, shipped July 4. With only 13B active per token it runs at ~48 tok/s on a 32 GB Mac while scoring 70% on SWE-Verified &mdash; the best speed-per-coding-quality in the 32 GB tier. According to the LLMCheck index, Mistral Medium 4 is the model to pair with a long-context companion when you want fast iterative coding without dedicating 19 GB to a Qwen-class model.</p>
+
+    <h3>Phi-5 Large 28B &mdash; dense reasoning at 24 GB</h3>
+    <p>Microsoft completed the Phi-5 family on June 28 with Phi-5 Large 28B, MIT-licensed and dense. It scores <strong>88% MMLU and 80% AIME 2025</strong> &mdash; the strongest pure-reasoning numbers in the 24&ndash;32 GB Mac tier, beating Gemma 4.5 27B and Mistral Medium 4 on hard math. At ~38 tok/s on an M5 Max and ~16 GB of RAM, it is the reasoning specialist for users who care more about correctness than raw speed. The "phi recipe" has now scaled cleanly from 4B (Mini) through 28B (Large) with no quality regression.</p>
+
+    <div class="code-block"><code>ollama run gemma4.5:27b           # ~17 GB, 1M context<br>ollama run mistral-medium-4       # ~24 GB, MoE 13B-active<br>ollama run phi5:large             # ~16 GB, dense reasoning</code></div>
+
+    <!-- SECTION 6: TOP 10 -->
+    <hr class="section-divider">
+    <h2 id="top10">The full landscape &mdash; Open-Source Top 10 (July 2026)</h2>
+    <p>According to the LLMCheck index across our standardized data points, here is the open-source leaderboard as of July 2026. Score is the LLMCheck composite (capability + speed + accessibility + license, max 100). Mac Tier is the minimum unified memory needed to run Q4_K_M comfortably; "Server" means the model is not practical on consumer Apple Silicon.</p>
+
+    <table class="vs-table">
+      <caption>LLMCheck Open-Source Top 10 &mdash; July 2026. See <a href="/leaderboard" style="color:var(--phosphor)">full leaderboard</a> for all models.</caption>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Model</th>
+          <th>Family</th>
+          <th>Active</th>
+          <th>License</th>
+          <th>Mac Tier</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rank">1</td>
+          <td class="label">Qwen 4.1 32B-A3B</td>
+          <td>Alibaba</td>
+          <td>3B</td>
+          <td>Apache 2.0</td>
+          <td>24 GB</td>
+          <td class="winner">76</td>
+        </tr>
+        <tr>
+          <td class="rank">2</td>
+          <td class="label">GLM 5.2 Air</td>
+          <td>Zhipu</td>
+          <td>12B</td>
+          <td>MIT</td>
+          <td>64 GB</td>
+          <td>74</td>
+        </tr>
+        <tr>
+          <td class="rank">3</td>
+          <td class="label">Qwen 4 32B-A3B</td>
+          <td>Alibaba</td>
+          <td>3B</td>
+          <td>Apache 2.0</td>
+          <td>24 GB</td>
+          <td>75</td>
+        </tr>
+        <tr>
+          <td class="rank">4</td>
+          <td class="label">Qwen 4 Coder 32B-A3B</td>
+          <td>Alibaba</td>
+          <td>3B</td>
+          <td>Apache 2.0</td>
+          <td>24 GB</td>
+          <td>72</td>
+        </tr>
+        <tr>
+          <td class="rank">5</td>
+          <td class="label">Phi-5 Large 28B</td>
+          <td>Microsoft</td>
+          <td>28B</td>
+          <td>MIT</td>
+          <td>24 GB</td>
+          <td>71</td>
+        </tr>
+        <tr>
+          <td class="rank">6</td>
+          <td class="label">GLM 5.2</td>
+          <td>Zhipu</td>
+          <td>40B</td>
+          <td>MIT</td>
+          <td>Server</td>
+          <td>70</td>
+        </tr>
+        <tr>
+          <td class="rank">7</td>
+          <td class="label">DeepSeek R3</td>
+          <td>DeepSeek</td>
+          <td>37B</td>
+          <td>MIT</td>
+          <td>Server</td>
+          <td>69</td>
+        </tr>
+        <tr>
+          <td class="rank">8</td>
+          <td class="label">Phi-5 Mini</td>
+          <td>Microsoft</td>
+          <td>4B</td>
+          <td>MIT</td>
+          <td>8 GB</td>
+          <td>70</td>
+        </tr>
+        <tr>
+          <td class="rank">9</td>
+          <td class="label">Gemma 4.5 27B</td>
+          <td>Google</td>
+          <td>27B</td>
+          <td>Gemma</td>
+          <td>32 GB</td>
+          <td>68</td>
+        </tr>
+        <tr>
+          <td class="rank">10</td>
+          <td class="label">Mistral Medium 4</td>
+          <td>Mistral</td>
+          <td>13B</td>
+          <td>Apache 2.0</td>
+          <td>32 GB</td>
+          <td>66</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Three observations. First, note the gap between rank and score: GLM 5.2 Air ranks #2 on score (74) but the full GLM 5.2 sits at #6 (70) because its server-class accessibility drags the composite down despite leading every capability benchmark &mdash; a reminder that the LLMCheck Score rewards models you can actually run. Second, <strong>MIT and Apache 2.0 account for 9 of the top 10</strong> &mdash; only Gemma 4.5 27B uses a non-OSI license. Third, <strong>two Zhipu models cracked the top six in their first month</strong>, the fastest debut of any new lab in LLMCheck's history. Qwen 4.1 holds the crown, but the competition behind it has never been deeper.</p>
+
+    <!-- SECTION 7: TRENDS -->
+    <hr class="section-divider">
+    <h2 id="trends">5 things that changed in July 2026</h2>
+
+    <h3>1. Open beat closed on agentic coding &mdash; for the first time</h3>
+    <p>GLM 5.2's 68.5% on SWE-Bench Pro is the single most consequential data point of the year. For two years, agentic coding was the last benchmark where closed labs held a clear, defensible lead. In July 2026, an MIT-licensed open model erased it. The implications ripple downward: GLM 5.2 Air brings 58% Pro to a 64 GB Mac, and Qwen 4.1 puts 80% SWE-Verified on a 24 GB laptop. The open frontier no longer trails &mdash; on coding, it leads.</p>
+
+    <h3>2. MIT and Apache 2.0 now dominate completely</h3>
+    <p>Nine of the LLMCheck top 10 ship under MIT or Apache 2.0. Every frontier release this month except Llama 5 405B chose a permissive OSI license &mdash; GLM 5.2 (MIT), GLM 5.2 Air (MIT), Qwen 4.1 (Apache 2.0), DeepSeek R3 (MIT), Kimi K3 (MIT), Mistral Medium 4 (Apache 2.0), Phi-5 Large (MIT). According to LLMCheck license tracking, permissive licensing is no longer a differentiator &mdash; it is the default, and the labs still attaching usage caps are the outliers.</p>
+
+    <h3>3. The frontier needs clusters, but distillation brings it to Macs</h3>
+    <p>The four frontier-class models this month &mdash; GLM 5.2, DeepSeek R3, Llama 5 405B, Kimi K3 &mdash; are all server-class. None run usefully on consumer hardware. But the pattern that GLM 5.2 Air established is the important one: ship a flagship for clusters, then distill an "Air"-class variant that fits a high-RAM Mac while retaining most of the capability. Expect every frontier lab to ship a Mac-runnable distillation within weeks of its server flagship from here on.</p>
+
+    <h3>4. 1M context became the spec-sheet floor</h3>
+    <p>Qwen 4.1, Gemma 4.5 27B, GLM 5.2, and DeepSeek R3 all ship with 1M-class native context, and Kimi K3 pushes to 2M. Six months ago 256K was the open-source ceiling; today a 1M window is the baseline expectation rather than a feature. The differentiation has moved from window size to retrieval accuracy at depth &mdash; and Gemma 4.5 27B and Qwen 4.1 lead there for Mac-runnable models.</p>
+
+    <h3>5. Chinese labs lead the open frontier</h3>
+    <p>Three of the four frontier-class releases &mdash; GLM 5.2 (Zhipu), DeepSeek R3 (DeepSeek), and Kimi K3 (Moonshot) &mdash; came from Chinese labs, all under MIT. Combined with Alibaba's Qwen 4.1 holding the Mac-runnable #1, Chinese labs now occupy the top of both the frontier and the consumer leaderboards. Meta's Llama 5 405B is the lone Western frontier entrant this month, and it shipped under the more restrictive Llama 5 license. The center of gravity in open-weights AI has shifted decisively.</p>
+
+    <!-- SECTION 8: BY MAC TIER -->
+    <hr class="section-divider">
+    <h2 id="bytier">By Mac tier &mdash; what to run TODAY (July 2026)</h2>
+    <p>Updated recommendations as of July 2026. All numbers are LLMCheck-measured tok/s at Q4_K_M unless noted. Pick by RAM tier:</p>
+
+    <table class="vs-table">
+      <caption>Mac tier recommendations, July 2026.</caption>
+      <thead>
+        <tr>
+          <th>Mac RAM</th>
+          <th>Primary pick</th>
+          <th>Speed</th>
+          <th>Backup</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label">8 GB</td>
+          <td class="winner">Qwen 4 4B</td>
+          <td>135 tok/s</td>
+          <td>Phi-5 Mini (140 tok/s)</td>
+        </tr>
+        <tr>
+          <td class="label">16 GB</td>
+          <td class="winner">Phi-5 Large 28B (Q3)</td>
+          <td>~26 tok/s</td>
+          <td>Gemma 4.5 27B (Q3)</td>
+        </tr>
+        <tr>
+          <td class="label">24 GB</td>
+          <td class="winner">Qwen 4.1 32B-A3B</td>
+          <td>62 tok/s</td>
+          <td>Phi-5 Large 28B (38 tok/s)</td>
+        </tr>
+        <tr>
+          <td class="label">32&ndash;48 GB</td>
+          <td class="winner">Mistral Medium 4 + Gemma 4.5 27B</td>
+          <td>48 tok/s</td>
+          <td>Qwen 4.1 + Phi-5 Large</td>
+        </tr>
+        <tr>
+          <td class="label">64 GB</td>
+          <td class="winner">GLM 5.2 Air</td>
+          <td>~30 tok/s</td>
+          <td>Command R+ 2 (~28 tok/s)</td>
+        </tr>
+        <tr>
+          <td class="label">128 GB</td>
+          <td class="winner">GLM 5.2 Air (MLX)</td>
+          <td>~34 tok/s</td>
+          <td>Command R+ 2 (~32 tok/s)</td>
+        </tr>
+        <tr>
+          <td class="label">M4 Ultra 192 GB</td>
+          <td class="winner">GLM 5.2 Air</td>
+          <td>~38 tok/s</td>
+          <td>Llama 5 405B Q2 (~5 tok/s)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>The 24 GB sweet spot is Qwen 4.1.</strong> For users on base-tier MacBook Pro hardware, the question "what's the best model I can run?" has a clean answer: <code>ollama run qwen4.1:32b-a3b</code>. The 80% SWE-Verified score, Apache 2.0 license, and 62 tok/s make it the single best capability-per-Mac-dollar pick in July 2026.</p>
+
+    <p><strong>The 64 GB tier just got a frontier model.</strong> If you have a 64 GB Mac, GLM 5.2 Air at ~30 tok/s is the headline change of the month &mdash; 58% on SWE-Bench Pro on a machine you can carry. For the first time, frontier-adjacent agentic coding is a local, offline reality on consumer Apple Silicon.</p>
+
+    <!-- SECTION 9: COMING NEXT -->
+    <hr class="section-divider">
+    <h2 id="next">What's coming next month</h2>
+    <p>Speculative section &mdash; this is what LLMCheck is watching for in the next 30 days based on public roadmaps, leaked release notes, and credible community signals.</p>
+
+    <ul>
+      <li><strong>Qwen 5 Preview.</strong> Alibaba's cadence (Qwen 3 to 4 was seven months) points to a Qwen 5 Preview in late August or early September. Expect another architectural rebuild rather than an MoE refinement &mdash; and given Qwen 4.1's lead, the bar Alibaba is setting for itself is high.</li>
+      <li><strong>GLM 5.2 full distillation variants.</strong> Zhipu shipped the flagship and the Air distillation simultaneously. Community signals suggest a smaller GLM 5.2 "Flash" variant (~30B-class) targeting the 24 GB Mac tier is in the works. If it lands and retains even 50% SWE-Bench Pro, it would directly challenge Qwen 4.1 for the Mac-runnable crown.</li>
+      <li><strong>Apple MLX 2.0.</strong> The MLX team has been signaling a 2.0 release with first-party fine-tuning APIs, a stabilized graph compiler, and optimized kernels for the M5 series. If MLX 2.0 lands, expect a measurable tok/s lift across every model on Apple Silicon &mdash; a free speed upgrade for the entire ecosystem, and especially valuable for the new Air-class distillations.</li>
+      <li><strong>DeepSeek V5.</strong> DeepSeek's V-series (general-purpose) trails its R-series reasoning cadence by roughly two months. With R3 out, a V5 release targeting broad capability and a more Mac-friendly active-parameter count is plausible for August. A V5 with an Air-class distillation would be a major event for the 64 GB tier.</li>
+    </ul>
+
+    <div class="callout blue">
+      <p><strong>Watch list:</strong> The single most consequential possible August release is a sub-32B distillation of a frontier model that beats Qwen 4.1 on SWE-Verified at 24 GB. GLM 5.2 Flash is the leading candidate. If any lab ships an MIT or Apache 2.0 model above 80% SWE-Verified that runs on a 24 GB Mac, the consumer leaderboard resets again.</p>
+    </div>
+
+  </div>
+
+  <!-- AUTHOR -->
+  <div class="author-bio">
+    <div class="author-avatar">LC</div>
+    <div class="author-info">
+      <strong>LLMCheck Research Team</strong>
+      <p>We benchmark local AI models on real Apple Silicon hardware. Our database covers 79+ open and closed models with standardized tok/s measurements using Ollama, LM Studio, and MLX.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq" aria-label="Frequently asked questions">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>What's the best open-source local LLM in July 2026?</h3>
+      <p>According to the LLMCheck index (July 2026), the best open model overall is GLM 5.2 (744B-A40B), the first open-weights model to beat GPT-5 and Claude on SWE-Bench Pro at 68.5% &mdash; but it is server-class. For a model you can actually run on a Mac, Qwen 4.1 32B-A3B is the #1 pick with an LLMCheck Score of 76: 80% SWE-Verified, Apache 2.0, and ~62 tok/s on a 24 GB M4 Pro.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is GLM 5.2 really the first open model to beat GPT-5 and Claude?</h3>
+      <p>Yes, on SWE-Bench Pro. GLM 5.2 from Zhipu AI scores 68.5% on SWE-Bench Pro, edging out the published scores for GPT-5 and Claude on the same agentic-coding benchmark &mdash; the first time an MIT-licensed open-weights model has led a frontier closed model on a hard agentic-coding eval. It is a 744B-A40B mixture-of-experts model, so it is server-class, but the 106B-A12B GLM 5.2 Air distillation brings most of that capability to a 64 GB Mac.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I run GLM 5.2 on a Mac?</h3>
+      <p>Not the full GLM 5.2 (744B-A40B) &mdash; that needs a multi-GPU server or an 8-bit cluster. But GLM 5.2 Air (106B-A12B) runs on a 64 GB Mac at roughly 30 tok/s at Q4_K_M, and reaches ~34 tok/s on a 128 GB Mac Studio via MLX and ~38 tok/s on an M4 Ultra 192 GB. Air retains 58% on SWE-Bench Pro, making it the most capable frontier-adjacent model you can run on consumer Apple Silicon as of July 2026.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What changed in Qwen 4.1 vs Qwen 4?</h3>
+      <p>Qwen 4.1 32B-A3B is a refinement of Qwen 4, not a new architecture. SWE-Verified climbs from 78% to 80%, tool-use reliability improved, and Mac speed ticked up to ~62 tok/s on an M4 Pro 24 GB (vs ~60 for Qwen 4). It keeps the Apache 2.0 license and 1M native context. According to the LLMCheck index the LLMCheck Score rises from 75 to 76, making Qwen 4.1 the new Mac-runnable #1.</p>
+    </div>
+    <div class="faq-item">
+      <h3>DeepSeek R3 vs Llama 5 405B vs Kimi K3 &mdash; which frontier model is best?</h3>
+      <p>All three are server-class. DeepSeek R3 (685B-A37B, MIT) leads on reasoning with 95% on AIME 2025 and is the math/reasoning champion. Llama 5 405B (dense, Llama 5 license) leads broad knowledge at 91% MMLU but is the hardest to serve. Kimi K3 (~1T-A32B, MIT) is the agentic-coding leader for long-horizon tool-use tasks. For most teams, DeepSeek R3 offers the best capability-per-dollar; for autonomous coding agents, Kimi K3 edges ahead.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What's the best local LLM for a 24 GB Mac in July 2026?</h3>
+      <p>Qwen 4.1 32B-A3B. Its MoE structure means only 3B parameters are active per token, so it uses ~19 GB at Q4_K_M and runs at ~62 tok/s on a base M4 Pro 24 GB MacBook Pro while scoring 80% on SWE-Verified. According to the LLMCheck index, the 24 GB tier is the sweet spot of the July 2026 market &mdash; frontier-adjacent capability at production-usable speed on entry-tier pro hardware.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I run Llama 5 405B on Apple Silicon?</h3>
+      <p>Barely. Llama 5 405B is a 405B dense model, so even at Q2 it needs roughly 150 GB of unified memory. An M4 Ultra Mac Studio with 192 GB can technically load it at Q2 and runs it at about 5 tok/s &mdash; usable for batch jobs, far too slow for interactive chat. For real frontier capability on a Mac, GLM 5.2 Air at ~30-38 tok/s is the far more practical choice.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Why are Chinese labs leading the open frontier in July 2026?</h3>
+      <p>Three of the four frontier-class open releases this month came from Chinese labs: GLM 5.2 (Zhipu), DeepSeek R3 (DeepSeek), and Kimi K3 (Moonshot). All three ship under MIT. They have combined aggressive MoE scaling with permissive licensing, and GLM 5.2 became the first open model to beat GPT-5 and Claude on SWE-Bench Pro. Meta's Llama 5 405B is the lone Western frontier entrant, and it ships under a more restrictive license.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Has 1M context become standard for open models?</h3>
+      <p>Yes. Qwen 4.1, Gemma 4.5 27B, GLM 5.2, and DeepSeek R3 all ship with 1M-class native context windows. Six months ago 256K was the open-source ceiling; in July 2026 a 1M token window is the spec-sheet expectation rather than a differentiator. Gemma 4.5 27B in particular pairs its 1M context with strong retrieval accuracy, making it a top pick for long-document analysis on a 32 GB Mac.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is open source now ahead of closed models on coding?</h3>
+      <p>On agentic coding, for the first time, yes at the frontier. GLM 5.2's 68.5% on SWE-Bench Pro beats the published GPT-5 and Claude scores. On Mac-runnable hardware, Qwen 4.1's 80% SWE-Verified is at or above the closed leaders. Closed models still hold an edge in long-horizon reliability, multimodal breadth, and production tool-use uptime, but the agentic-coding crown moved to open weights in July 2026.</p>
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <div class="sources-section">
+    <h3>Sources &amp; References</h3>
+    <ul>
+      <li><a href="https://huggingface.co/zai-org" target="_blank" rel="noopener">Zhipu AI &mdash; GLM 5.2 &amp; GLM 5.2 Air model cards</a></li>
+      <li><a href="https://qwenlm.github.io/blog/" target="_blank" rel="noopener">Qwen Team &mdash; Qwen 4.1 release notes</a></li>
+      <li><a href="https://api-docs.deepseek.com/" target="_blank" rel="noopener">DeepSeek &mdash; R3 technical report</a></li>
+      <li><a href="https://ai.meta.com/llama/" target="_blank" rel="noopener">Meta &mdash; Llama 5 405B model card &amp; community license</a></li>
+      <li><a href="https://huggingface.co/moonshotai" target="_blank" rel="noopener">Moonshot AI &mdash; Kimi K3 announcement</a></li>
+      <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener">Google &mdash; Gemma 4.5 27B refresh notes</a></li>
+      <li><a href="https://mistral.ai/news/" target="_blank" rel="noopener">Mistral &mdash; Medium 4 announcement</a></li>
+      <li><a href="https://huggingface.co/microsoft" target="_blank" rel="noopener">Microsoft Research &mdash; Phi-5 Large technical report</a></li>
+      <li><a href="https://www.swebench.com/" target="_blank" rel="noopener">SWE-bench &mdash; SWE-Bench Pro &amp; Verified methodology</a></li>
+      <li><a href="https://ollama.com/library" target="_blank" rel="noopener">Ollama Library &mdash; model weights &amp; quantization</a></li>
+      <li><a href="https://llmcheck.net/methodology" target="_blank" rel="noopener">LLMCheck Methodology &mdash; scoring formula &amp; benchmark process</a></li>
+      <li><a href="https://llmcheck.net/data/" target="_blank" rel="noopener">LLMCheck Open Data &mdash; benchmark measurements (CSV/JSON)</a></li>
+    </ul>
+  </div>
+
+  <!-- RELATED -->
+  <div class="buy-box">
+    <div class="buy-box-label">🛒 Where to buy</div>
+    <p class="buy-box-intro">From an 8 GB Mac mini to a 192 GB Mac Studio — the more unified memory, the bigger the models you can run. The machines we benchmark across every tier:</p>
+    <div class="buy-box-links">
+      <a class="buy-btn" href="https://www.amazon.com/s?k=Apple+Mac+mini+M4&tag=llmcheck-20" target="_blank" rel="sponsored nofollow noopener">Mac mini M4 →</a>
+      <a class="buy-btn" href="https://www.amazon.com/s?k=Apple+MacBook+Pro+M4+Max&tag=llmcheck-20" target="_blank" rel="sponsored nofollow noopener">MacBook Pro M4 Max →</a>
+      <a class="buy-btn" href="https://www.amazon.com/s?k=Apple+Mac+Studio+M4+Ultra&tag=llmcheck-20" target="_blank" rel="sponsored nofollow noopener">Mac Studio M4 Ultra →</a>
+    </div>
+    <p class="buy-box-disclosure">As an Amazon Associate, LLMCheck earns from qualifying purchases. The links above are affiliate links — they cost you nothing extra and help keep our benchmarks free and ad-light.</p>
+  </div>
+
+  <div class="related-posts">
+    <p class="related-posts-title">&#9889; Related Articles</p>
+    <div class="related-grid">
+      <a href="/blog/glm-5-2-open-model-beats-gpt5-claude/" class="related-card">
+        <div class="related-label">FLAGSHIP</div>
+        <div class="related-title">GLM 5.2: The Open Model That Beats GPT-5 and Claude</div>
+      </a>
+      <a href="/blog/glm-5-2-vs-qwen-4-1-vs-llama-5-405b/" class="related-card">
+        <div class="related-label">COMPARISON</div>
+        <div class="related-title">GLM 5.2 vs Qwen 4.1 vs Llama 5 405B</div>
+      </a>
+      <a href="/leaderboard" class="related-card">
+        <div class="related-label">TOOL</div>
+        <div class="related-title">Full LLM Leaderboard — 79 Models Ranked</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="article-cta" id="cta">
+    <h3>Find Your July 2026 Match</h3>
+    <p>Use our free Mac LLM Checker to find which July 2026 model fits your hardware &mdash; from 8 GB MacBook Air to M4 Ultra Mac Studio.</p>
+    <a href="/#wizard">
+      <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      Check My Mac
+    </a>
+  </div>
+
+</article>
+
+<footer class="footer">
+  <p>&copy; 2026 LLMCheck &middot; <a href="/leaderboard">Leaderboard</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/about">About</a> &middot; <a href="/changelog">Changelog</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a> &middot; Not affiliated with Apple Inc.</p>
+</footer>
+
+<script>document.addEventListener('click',function(e){if(!e.target.closest('.topnav-more'))document.querySelectorAll('.topnav-more.open').forEach(function(m){m.classList.remove('open')})});</script>
+<script src="/affrail.js" defer></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"6e0fe5982bbe4314a5b3ae2fcc7089a0","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>

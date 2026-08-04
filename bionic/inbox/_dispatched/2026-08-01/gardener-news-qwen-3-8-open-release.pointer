@@ -1,0 +1,5 @@
+Dispatched 2026-08-01 → ingest-research.
+Capture: research/raw/2026-08-01/qwen3-8-open-weight-announcement/
+Source page: research/sources/qwen3-8-open-weight-announcement.md
+Synthesis: research/references/open-weights-landscape-2026.md (new);
+           research/references/frontier-models-2026.md (Qwen 3.8 section updated)

@@ -1,0 +1,7 @@
+Dispatched 2026-08-01 → ingest-research. Item carried TWO URLs; split into two source pages.
+Captures: research/raw/2026-08-01/willison-kimi-k3/
+          research/raw/2026-08-01/willison-inkling/
+Source pages: research/sources/willison-kimi-k3.md
+              research/sources/willison-inkling.md
+Synthesis: research/references/open-weights-landscape-2026.md (new);
+           research/references/frontier-models-2026.md (K3 pricing + Jul 16 date resolved)

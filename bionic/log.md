@@ -2,6 +2,34 @@
 
 _Append-only. Newest first._
 
+## [2026-08-03] ingest | qwen3-8-max-a-new-bar-for-coding-and-cowork
+
+"Qwen3.8-Max: A New Bar for Coding and Cowork" (Qwen Team, 2026-08-02).
+Raw: `research/raw/2026-08-03/qwen3-8-max-a-new-bar-for-coding-and-cowork/`.
+Scripted capture failed (`thin_content`, exit 2 — client-rendered SPA); body captured by headless-browser render, `rendered.html` + `rendered.md` alongside the empty `source.html`. Declared in Capture gaps.
+Synthesis: [[research/references/open-weights-landscape-2026]] (Qwen section rewritten), [[research/references/frontier-models-2026]] (section rewritten, retitled from "Qwen3.8-Max-Preview — announced").
+Resolves three long-open questions: 95B active params, 1M context, $2/$6 pricing. Weights deferred a third time.
+
+## [2026-08-03] ingest | qwen3-8-max-qwencloud-model-page
+
+"Qwen3.8-Max — QwenCloud model page" (serving page, captured 2026-08-03).
+Raw: `research/raw/2026-08-03/qwen3-8-max-qwencloud-model-page/`.
+Synthesis: same two references pages — supplies the pricing, context, and rate-limit figures the launch post omits.
+
+## [2026-08-01] cleanup-campsite | 7 open (0 P1, 7 P2, 0 P3), 1 closed, 0 dismissed
+
+No P1 findings — first clean-P1 run since 2026-07-20. See [[whats_next]].
+New this run: 2 × CLN-ADR-3 on ADR-0004, both `docs/` paths the schema 4→5 migration relocated to `bionic/`.
+Closed: `cleanup-CLN-AUD-1-recency` (audit ran 2026-07-30). Note that run left 3 BROKEN findings pending — an audit-docs question, outside cleanup's remit.
+
+## [2026-08-01] ingest | willison-kimi-k3, willison-inkling, raschka-notable-open-weight-models, state-of-open-source-local-llms-july-2026, qwen3-8-open-weight-announcement
+
+Five open-weights sources from the gardener's 2026-07-30 read-news pass (four inbox items; the Willison item carried two URLs and was split into two source pages).
+Raw: research/raw/2026-08-01/{willison-kimi-k3,willison-inkling,raschka-notable-open-weight-models,state-of-open-source-local-llms-july-2026,qwen3-8-open-weight-announcement}/
+Synthesis: NEW research/references/open-weights-landscape-2026.md (8 sources); updated research/references/frontier-models-2026.md (K3 pricing $3/$15 and Jul 16 date resolved; Qwen 3.8 second capture, still no benchmarks).
+Contradictions flagged: LLMCheck's Kimi K3 row (~1T-A32B / Jul 7 / 2M context / 66% SWE-Bench Pro) contradicts Moonshot's technical report and Willison on all four figures — technical report preferred, LLMCheck spec tables discounted. K3 announcement date differs across three sources (Jul 7 / 16 / 17); Willison's same-day Jul 16 preferred.
+Open: whether K3 weights shipped by the promised 2026-07-27 is unconfirmed — Raschka on Jul 26 still reports them pending.
+
 ## [2026-07-31] schema | close out the 4→5 migration follow-ups (Jekyll exclude, root CLAUDE.md, bionic/CLAUDE.md refresh)
 
 Discharged the three stale-reference follow-ups the `[2026-07-30] schema | migrate docs schema 4→5` entry below left open, using the 1.8.0 plugin copy at `~/.claude/plugins/cache/crux/crux/1.8.0/` (the `~/.local/share/crux/` copy is a stale 1.7.0 clone). (1) `_config.yml`'s Jekyll `exclude:` list: `docs/` → `bionic/`, so the 66 management-tree `.md` files stop being built as site content (`_config_production.yml` carries no `docs/` reference, needed no change); verified `bundle exec jekyll build --config _config.yml,_config_production.yml` succeeds and `_site/bionic/` does not exist. (2) Repo-root `CLAUDE.md` (outside the docs tree): two path fixes, `` `docs/CLAUDE.md` `` → `` `bionic/CLAUDE.md` `` and `` `docs/briefs/BRIEF-this-week-in-ai-format.md` `` → `` `bionic/briefs/BRIEF-this-week-in-ai-format.md` ``; nothing else changed. (3) `bionic/CLAUDE.md`: re-rendered from the 1.8.0 `templates/CLAUDE.md.tmpl` ({{repo_name}} → bionic-coding, {{today}} → 2026-07-31 — the only two canonical substitutions per the installed `init-docs` SKILL.md), preserving the one prior project-specific addition found (the ADR-0044 citation in §14, absent from both the 1.7.0 and 1.8.0 templates). The 1.8.0 template itself carries known-stale prose the code contradicts, corrected here rather than copied verbatim: (a) §7's schema-version history mislabeled `"4"` as **current** while its own predicate already checked `schema_version == "5"`, and the ladder had no `"5"` rung at all — added a `"5"` bullet (current) describing the real `migrate-tree.py` 4→5 rung (flat merge of `docs/` + the bare invariants-only `bionic/` onto one `bionic/` root, ledger pages take the top-level `bionic/invariants/*.md` namespace, pre-existing checks pushed down into `bionic/invariants/checks/` first, `.bionic.yml` `docs_dir` rewritten to `bionic`), and demoted `"4"`'s bullet to non-current; (b) §14's `.bionic.yml` note and §15.1 both said relocating the ledger onto `bionic/` "is deferred" via a nested `bionic/docs/` path that `migrate-tree.py` never produces — corrected to describe the real flat-merge mechanism and noted this repo has already run that rung (`docs_dir: bionic`, `schema_version: "5"`). All `<tree>` literal placeholders (template bug — appears verbatim 6 times, never templated) resolved to the constant `bionic` (`migrate-tree.py`'s `DEFAULT_TREE`), giving `bionic/invariants/checks/` throughout. Left everything else's `docs/` spelling as the template ships it, per §14.2's own normative clause (a literal `docs/` segment denotes `<docs_dir>/`; `init-docs` only ever substitutes `{{repo_name}}`/`{{today}}`, confirmed against the installed `skills/init-docs/SKILL.md` step 5/7). Also fixed `bionic/invariants/reconciliation.yml`'s two header-comment cross-references (`docs/CLAUDE.md` → `bionic/CLAUDE.md`, §15.4 and §15.3); `checks: []` data untouched. Verification: diffed the new `bionic/CLAUDE.md` against a template-plus-substitution baseline — every remaining delta traces to one of the corrections listed above or the preserved ADR-0044 sentence; schema-version mentions are internally consistent (`"5"` current everywhere) after the edit; final repo-root `grep -rn "docs/"` sweep (excluding `_site/`, `.jekyll-cache/`, `.git/`, and `bionic/journal/` + `bionic/log.md` historical entries, which correctly narrate the pre-migration path) turned up no other live references to the retired `docs/` tree.

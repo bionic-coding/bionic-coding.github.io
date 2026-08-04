@@ -1,0 +1,7 @@
+Dispatched 2026-08-01 → ingest-research (fetched the URL the KEEPER note pointed to, not the note).
+Capture: research/raw/2026-08-01/state-of-open-source-local-llms-july-2026/
+Source page: research/sources/state-of-open-source-local-llms-july-2026.md
+Synthesis: research/references/open-weights-landscape-2026.md (new)
+Note: the gardener's CAUTION held — all figures single-source, and its Kimi K3 row is
+contradicted by the K3 technical report and Willison. Flagged in both the source page
+and the synthesis page.

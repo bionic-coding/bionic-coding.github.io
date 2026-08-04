@@ -30,7 +30,7 @@ To be clear, I don't run everything through K3. It's a primary driver that repor
 
 And so far so good. But we're still cleaning up the mess Opus 5 left behind.
 
-## Qwen 3.8 Max Landed — the API, Anyway
+## Qwen 3.8 Max
 
 On the subject of open weight models, Qwen 3.8 Max is now available via Alibaba Cloud.
 They have also promised to release the weights shortly.
@@ -45,3 +45,11 @@ They have also promised to release the weights shortly.
 **More info:**
 - [Qwen3.8-Max: A New Bar for Coding and Cowork](https://qwen.ai/blog?id=qwen3.8) — Alibaba's launch post and the source of every benchmark number above; the full table and its footnotes are at the bottom. Note footnote 1: "Fable5 results may involve fallbacks."
 - [Qwen3.8-Max on QwenCloud](https://www.qwencloud.com/models/qwen3.8-max) — the serving page: price, context, and rate limits. This is where the verifiable numbers live.
+
+## Qwen3.8-27B
+
+Coming next week with the weights for Qwen3.8 Max, Alibaba has promised to release Qwen3.8-27B.
+
+I've tried `qwen3.6-27b` and `qwen3.6-35b-a3b` and both seem very capable for something that runs on a laptop.
+
+I'm pretty excited to see what Qwen3.8-27B brings...

@@ -11,9 +11,9 @@ tags: [model-news, weekly]
   Copy this file to _posts/YYYY-MM-DD-this-week-in-ai.md and fill it in.
   Full usage + conventions: docs/briefs/BRIEF-this-week-in-ai-format.md
   .
-  NEVER leave a blank line inside an HTML comment. kramdown ends the HTML block
-  at the blank line and then stops converting Markdown for the REST of the post —
-  headings and links render as literal text. Use a lone "." as a spacer instead.
+  Start HTML comments at column 0 and keep a blank line around them. An indented
+  comment, or one glued to a paragraph, is parsed as Markdown and leaks into the
+  post as visible text. Use a lone "." on the line as a spacer.
   .
   Rules of the road:
     - Scaffold only lives here; you write the sentences (scaffold, don't generate).

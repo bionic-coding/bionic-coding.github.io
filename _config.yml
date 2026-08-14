@@ -62,7 +62,10 @@ defaults:
     values:
       layout: lesson
 
-# Top-nav pages. The manifesto is the homepage (linked via the site title).
+# header_pages drives the top nav, in this order. Each entry must match a
+# source file path exactly; a stale or mismatched entry silently drops that
+# page from the nav (this broke the About link — see ADR-0005). A page can
+# override its nav text with `nav_label` in its own frontmatter.
 header_pages:
   - manifesto.md
   - articles.md
@@ -81,6 +84,10 @@ header_pages:
 exclude:
   - bionic/
   - _templates/
+  # Repo documentation is not published — see ADR-0005.
+  - README.md
+  - USER_GUIDE.md
+  - CLAUDE.md
 #   - .sass-cache/
 #   - .jekyll-cache/
 #   - gemfiles/

@@ -1,6 +1,6 @@
 # docs/bionic-coding
 
-_Last updated: 2026-08-03_
+_Last updated: 2026-08-14_
 
 ## What's next (7)
 
@@ -10,11 +10,12 @@ _7 open suggestions (P1: 0, P2: 7, P3: 0) — see [[whats_next]]._
 
 See [[research/index]].
 
-## ADRs (5)
+## ADRs (6)
 
 | id | title | status | date |
 |---|---|---|---|
-| [[adrs/ADR-0004-single-source-the-manifesto-homepage-from-research]] | Single-source the manifesto homepage from research | Accepted | 2026-07-08 |
+| [[adrs/ADR-0005-serve-a-landing-homepage-and-a-five-item-top-nav]] | Serve a landing homepage and a five-item top nav | Accepted | 2026-08-14 |
+| [[adrs/ADR-0004-single-source-the-manifesto-homepage-from-research]] | Single-source the manifesto homepage from research | Superseded | 2026-08-14 |
 | [[adrs/ADR-0003-ship-a-custom-presentation-layer-over-minima]] | Ship a custom presentation layer over Minima | Accepted | 2026-07-08 |
 | [[adrs/ADR-0002-deploy-to-github-pages-via-github-actions]] | Deploy to GitHub Pages via GitHub Actions | Accepted | 2026-07-08 |
 | [[adrs/ADR-0001-use-jekyll-4-4-with-ruby-pinned-to-4-0-5]] | Use Jekyll 4.4 with Ruby pinned to 4.0.5 | Accepted | 2026-07-08 |
@@ -25,11 +26,11 @@ See [[research/index]].
 - [[briefs/BRIEF-teaching-regular-people-ai-content-plan]] — `published` — `updated_at: 2026-07-11`
 - [[briefs/BRIEF-this-week-in-ai-format]] — `published` — `updated_at: 2026-07-17`
 
-## Journal (1 month)
+## Journal (2 months)
 
 See [[journal/index]].
 
-## Promptbooks (1 active, 0 archived)
+## Promptbooks (0 active, 1 archived)
 
 See [[promptbooks/index]].
 

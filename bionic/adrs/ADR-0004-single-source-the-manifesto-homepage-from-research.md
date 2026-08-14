@@ -1,14 +1,14 @@
 ---
 id: ADR-0004
 title: "Single-source the manifesto homepage from research"
-status: Accepted
-date: 2026-07-08
+status: Superseded
+date: 2026-08-14
 proposed_date: 2026-07-07
 accepted_date: 2026-07-08
 deprecated_date: null
-superseded_date: null
+superseded_date: 2026-08-14
 supersedes: []
-superseded_by: null
+superseded_by: ADR-0005
 deciders: ["Mark Madsen"]
 tags: [content, information-architecture, manifesto, single-source, navigation]
 related_briefs: []

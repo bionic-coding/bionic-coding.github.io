@@ -1,19 +1,18 @@
 # Promptbooks
 
-_Last updated: 2026-07-20_
+_Last updated: 2026-08-14_
 
-## Active (1)
+## Active (0)
 
-| id | title | status | current_run | progress | tags | created_at |
-|----|-------|--------|-------------|----------|------|------------|
-| [[promptbooks/active/PB-0001-fix-mobile-nav-and-restore-about]] | Iterate: Fix mobile navigation and restore About link | active | — | RUN-001 abandoned (reached 2/13) | cycle, workflow, iterate | 2026-07-18 |
+_None currently active._
 
 ## Recent runs (last 20)
 
 | book | run | status | current_prompt | started_at |
 |------|-----|--------|-----------------|------------|
-| [[promptbooks/active/PB-0001-fix-mobile-nav-and-restore-about]] | RUN-001 | abandoned | — (was 3) | 2026-07-18T19:01:36Z |
+| [[promptbooks/archive/PB-0001-fix-mobile-nav-and-restore-about]] | RUN-002 | completed | — (was 13) | 2026-08-14T15:19:25Z |
+| [[promptbooks/archive/PB-0001-fix-mobile-nav-and-restore-about]] | RUN-001 | abandoned | — (was 3) | 2026-07-18T19:01:36Z |
 
-## Archived (0)
+## Archived (1)
 
-_None yet._
+- [[promptbooks/archive/PB-0001-fix-mobile-nav-and-restore-about]] — completed 2026-08-14

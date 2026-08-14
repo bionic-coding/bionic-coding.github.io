@@ -1,7 +1,7 @@
 format_version: "1"
 id: PB-0001
 title: "Iterate: Fix mobile navigation and restore About link"
-status: active
+status: archived
 created_at: 2026-07-18
 total_prompts: 13
 current_run: null
@@ -326,3 +326,8 @@ prompts:
       forged skill used in the cycle (or a clean no-op if none); book archived;
       `promptbook | archived` log entry.
     side_effects: [archive-promptbook, forge-skill]
+archive_note:
+  archived_at: 2026-08-14
+  final_run: RUN-002
+  note: |
+    Archived 2026-08-14. Final run: [[promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-002]] (13/13 prompts terminal).

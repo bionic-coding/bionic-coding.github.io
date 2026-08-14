@@ -59,14 +59,42 @@
       btn.addEventListener('click', function () {
         setOpen(!nav.classList.contains('is-open'));
       });
-      // Close on link tap, Escape, or a click outside the header.
+      // Close on link tap, Escape, or a press outside the header.
       nav.addEventListener('click', function (e) {
         if (e.target.closest('a')) setOpen(false);
       });
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') setOpen(false);
+        // The is-open guard matters: without it, btn.focus() would run on
+        // every Escape keypress anywhere on the site. At ≤46rem, where the
+        // toggle is displayed, that yanks focus to the toggle and scrolls
+        // to the header. Return focus to the toggle button so it isn't
+        // stranded on a now-hidden nav link (WCAG 2.4.3).
+        if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+          setOpen(false);
+          btn.focus();
+        }
       });
+      // Scope the outside-close check to .header-inner, the common ancestor
+      // of the toggle button and the nav. The opening click bubbles to
+      // document right after setOpen(true) runs. Narrowing this check to
+      // #site-nav alone would put the toggle button outside the "inside"
+      // area. That same bubbled click would then immediately close the nav
+      // it just opened, making the toggle inert.
       document.addEventListener('click', function (e) {
+        if (nav.classList.contains('is-open') && !e.target.closest('.header-inner')) setOpen(false);
+      });
+      // iOS does not fire `click` on non-interactive elements for touch
+      // input. There, the click-based close above never runs for a tap on
+      // non-interactive content, so this pointerdown listener covers that
+      // case instead. No UA or touch check gates this: on every platform,
+      // this makes the outside-close fire on press rather than on the
+      // completed click. Non-primary buttons (right-click, middle-click)
+      // never dismissed the card on any platform, so they do not dismiss
+      // here either. The card is out of flow (see .site-nav in the ≤46rem
+      // block), so closing it shifts nothing, and the tap resolves where
+      // the user aimed.
+      document.addEventListener('pointerdown', function (e) {
+        if (e.button !== 0) return;
         if (nav.classList.contains('is-open') && !e.target.closest('.header-inner')) setOpen(false);
       });
     })();

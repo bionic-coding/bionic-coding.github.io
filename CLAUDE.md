@@ -85,8 +85,8 @@ When in doubt: write the shorter sentence and state the fact.
 
 - `index.md` — `layout: home`; the hero, manifesto pull-quote, latest 3 posts, and a
   `featured_lessons` list of lesson slugs, all set in frontmatter.
-- `manifesto.md` — the canonical manifesto, served at `/manifesto/` and reached via the
-  site title. (Root `README.md` is an older plain-markdown copy of the same text; treat
+- `manifesto.md` — the canonical manifesto, served at `/manifesto/` and reached from the
+  top nav. (Root `README.md` is an older plain-markdown copy of the same text; treat
   `manifesto.md` as authoritative.)
 - `articles.md`, `learn.md` — index pages that loop over `site.posts` / `site.lessons`.
 - Top nav is driven by `header_pages` in `_config.yml`; a page can override its nav text
@@ -96,9 +96,11 @@ When in doubt: write the shorter sentence and state the fact.
 
 ## Rendering gotchas
 
-- **Never leave a blank line inside an HTML comment.** kramdown ends the HTML block at the
-  blank line and stops converting Markdown for the *rest of the file* — headings and links
-  render as literal text. Use a lone `.` on the line as a spacer.
+- **Start HTML comments at column 0, with a blank line around them.** An indented comment,
+  or one glued to an adjacent paragraph, is parsed as Markdown text and leaks into the
+  output as visible text. Blank lines inside a top-level comment are harmless; inside an
+  HTML block such as a `<div>` they leave the block's inner Markdown unconverted, but
+  conversion resumes after the block closes. Use a lone `.` on the line as a spacer.
 - Markdown is GFM via kramdown with `hard_wrap: false`, so hand-wrapped paragraphs do not
   become `<br>` tags.
 - `assets/main.scss` fully replaces Minima's stylesheet — the theme gem is a dependency but

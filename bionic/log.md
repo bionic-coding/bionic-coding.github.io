@@ -2,6 +2,186 @@
 
 _Append-only. Newest first._
 
+## [2026-08-14] promptbook | archived PB-0001-fix-mobile-nav-and-restore-about
+
+Final run RUN-002 completed 13/13 prompts (13 done, 0 skipped, 0 blocked-confirmed).
+Forge-log evaluated fold: clean no-op (no forged skills invoked this cycle — only
+plugin skills council/run-promptbook/propose-adr/transition-adr/audit-docs/log-work).
+Completion summary written to the run's `summary` field; PR draft stays stored in
+`pr_draft`, uncommitted at HEAD 43ab7f2 — not opened, nothing pushed. Book moved
+[[promptbooks/active/PB-0001-fix-mobile-nav-and-restore-about]] ->
+[[promptbooks/archive/PB-0001-fix-mobile-nav-and-restore-about]].
+
+## [2026-08-14] promptbook | advanced PB-0001-fix-mobile-nav-and-restore-about/RUN-002 to prompt 13
+
+Prior prompt #12 (Prep: changelog, docs, journal, PR notes), outcome done — CHANGELOG.md
+created (didn't exist; adaptation recorded), audit-docs gate PASSED (0 broken / 1 drift
+auto-fixed / 4 warnings classified), reflective journal entry written, PR draft stored in
+the run snapshot's `pr_draft` field. No PR opened, nothing pushed or committed. Current
+prompt #13 (Summary: completion report AND archive the book), state running.
+
+## [2026-08-14] audit | 0 broken, 1 drift fixed, 4 warnings
+
+Full vault-walk (54-check; 77 md files, inline) — the PB-0001/RUN-002 Prompt 12 documentation gate.
+
+**Fixed (drift + safe-broken):** research — `research/sources.md` row `bionic-coding-manifesto`: `static` column `n/a` → `false` (frontmatter is source of truth, CHK-RES-8).
+
+**Pending broken:** none. The 2026-07-30 audit's three pending-broken items are all discharged (schema now `"5"`; journal corrective entry written 2026-07-30; RUN-001 hash realigned 2026-07-30 — CHK-PB-BIND recompute now matches both runs). This cycle's writes verified clean: ADR-0005 ↔ ADR-0004 supersession is bidirectional (CHK-ADR-6), ADR frontmatter/date state machine valid (CHK-ADR-1/3/5), `adrs/index.md` + `index.md` ADR rollup match frontmatter (vendored `generate-index-rollup.py --dry-run` exit 0), journal 2026-08 row correct (2 entries: decision 1, review 1), promptbook validator exit 0 on the active book + both run snapshots (cycle-coverage pass included), PB-0001 index 12/13 with RUN-002 prompt 12 `running` is a valid mid-run state. Also clean: config (`.bionic.yml`, bare prefix, no second tree), schema/inbox (`"5"`, inbox empty), log enum + order, master-index counts, research graph (22 sources / 22 raw dirs 1:1 / 4 synthesis, registry rows, wiki-links), briefs back-refs, invariants (delegated `check_invariants.py`: 0 pins, 0 checks), catalog (`validate-catalog.py --dry-run`: 0 drift), ADR template ↔ §11.A keyset equality.
+
+**Warnings:** (1) CHK-RES-11 — 8 synthesis markers (6 contradiction, 1 unresolved, 1 source-updated) + 21 `## Capture gaps` sections; expected baseline, `refresh-research-synthesis` when wanted. (2) `whats_next.md` (generated 2026-08-02) still describes ADR-0004 as Accepted in suggestion 5 — stale since the 2026-08-14 supersession; REGENERATED artifact owned by `cleanup-campsite`, not an audit fix surface — run `cleanup-campsite` to refresh. (3) Cosmetic missing blank line between entries at `log.md:245–246` — append-only history, surfaced not fixed (same class as the 2026-07-30 note). (4) `invariants/index.md` scaffold prose still cites pre-schema-5 paths (`docs/invariants/<slug>.md`; suite "in `bionic/invariants/`" rather than `bionic/invariants/checks/`) — cosmetic, no audit check owns it; refresh on next invariants touch.
+
+## [2026-08-14] journal | review: PB-0001/RUN-002 mobile-nav verify cycle converged after 3 review rounds
+
+Entry in `journal/2026-08.md` at 18:12. Refs: [[promptbooks/PB-0001-fix-mobile-nav-and-restore-about]] [[adrs/ADR-0005-serve-a-landing-homepage-and-a-five-item-top-nav]]
+
+## [2026-08-14] promptbook | advanced PB-0001-fix-mobile-nav-and-restore-about/RUN-002 to prompt 12
+
+Prior prompt #11, outcome done (fix loop converged in 3 review rounds with zero
+MUST-FIX: ADR-0005 accepted / ADR-0004 superseded closing MX-1/MX-2; the
+_config.yml comment rewritten true closing MX-3; README/USER_GUIDE/CLAUDE
+excluded with a recorded published-file-set regression unit closing MX-4 and
+S3-MF-1; rendered-output units added for every ff17186-touched file closing
+CV-M1; the mobile card moved out of flow at ≤46rem, eliminating the
+reflow-during-gesture retarget class — S1-M1 measured 0/9 retargets against
+9/9 on the reconstructed round-2 artifact — with a real-Chrome interaction
+harness recorded closing CV-M3; every loop-authored comment spot-checked
+zero-false-clause; the in-flow-to-out-of-flow design change disclosed; a true
+iOS WebKit device check recommended pre-merge, since both harness rounds ran
+Chrome emulation only), current prompt #12.
+
+## [2026-08-14] adr | ADR-0004: post-acceptance body edit by `ff17186` (retroactive record)
+
+Retroactive record closing MX-2 from the PB-0001/RUN-002 external review. Commit `ff17186`
+("more cleanup", 2026-07-18) edited four body lines of ADR-0004 — `index.markdown` →
+`index.md` in the Decision, Consequences (Negative), Follow-on work, and References
+sections — after ADR-0004 had been Accepted on 2026-07-08. An Accepted ADR's body is frozen
+(`bionic/CLAUDE.md` §4/§11) and no `adr` op was written at the time. The op is recorded here
+after the fact, per the review; the 2026-07-18 history is NOT edited in place, and the four
+edited lines stay exactly as `ff17186` left them. Context and rationale:
+[[adrs/ADR-0005-serve-a-landing-homepage-and-a-five-item-top-nav]].
+
+## [2026-08-14] adr | ADR-0004: supersede (superseded by ADR-0005)
+
+Single-source the manifesto homepage from research. Accepted → Superseded by ADR-0005 at
+the independent acceptance gate. Frontmatter only: `status: Superseded`, `date: 2026-08-14`,
+`superseded_date: 2026-08-14`, `superseded_by: ADR-0005`. Body byte-identical (verified by
+hash against `HEAD`) — including the four lines `ff17186` edited post-acceptance, which are
+recorded above rather than reverted. ADR-0005 already carried `supersedes: [ADR-0004]` from
+drafting, so the back-pointer is now symmetric and the `audit-docs` BROKEN asymmetry
+ADR-0005 anticipated is closed. Rows updated in `bionic/adrs/index.md` and `bionic/index.md`.
+
+## [2026-08-14] adr | ADR-0005: accept (accepted)
+
+Serve a landing homepage and a five-item top nav. Proposed → Accepted at an independent
+acceptance gate (a fresh architect, not the drafting instance). Frontmatter only:
+`status: Accepted`, `accepted_date: 2026-08-14`, `date: 2026-08-14`; body now frozen.
+Council: MAJORITY_APPROVE at 94% consensus, all 10 dissent points drafting fixes, all
+applied by the drafter and verified closed at this gate. Acceptance criterion 4 re-run
+against HEAD after the `_config.yml` edit: `bundle exec jekyll clean && bundle exec jekyll
+build` green, 24 HTML pages, zero pages missing `href="/about/"`, all five nav links
+(`/manifesto/`, `/articles/`, `/learn/`, `/tools/`, `/about/`) present in
+`_site/index.html`. Supersedes ADR-0004 (see the entry above). Closes MX-1.
+
+## [2026-08-14] adr | ADR-0005: Serve a landing homepage and a five-item top nav
+
+Proposed. File `bionic/adrs/ADR-0005-serve-a-landing-homepage-and-a-five-item-top-nav.md`.
+Tags: information-architecture, navigation, homepage, jekyll, publication. Drafted as the
+MX-1/MX-2 remedy from PB-0001/RUN-002. Records the landing-page homepage (`index.md`,
+`layout: home`), the five-entry `header_pages` nav and its exact-match silent-drop failure
+mode, the site title linking `/` with `manifesto.md` at `/manifesto/`, and the
+repo-documentation exclusion. Also records two things that cannot be corrected in place:
+`ff17186`'s unlogged post-acceptance edit to ADR-0004's frozen body, and this log's
+2026-07-20 `promptbook` entry misattributing the About fix to `f8a3e82`/`a77ecf2` instead
+of `ff17186`. Frontmatter carries `supersedes: [ADR-0004]`; ADR-0004 is untouched, so the
+supersession is one-sided until the independent acceptance gate runs `transition-adr`.
+
+## [2026-08-14] promptbook | advanced PB-0001-fix-mobile-nav-and-restore-about/RUN-002 to prompt 11
+
+Prior prompt #10, outcome done (conformance audit complete — 3 blind
+auditors: coverage GAPS-FOUND with 2 MUST-FIX, 4 of 5 ff17186 files
+uncovered and the MX-4 fix has no unit, plus 5 SHOULD-FIX incl. a
+mutation-proven V1; comments/docs DRIFT-FOUND with 2 MUST-FIX, the
+_config.yml comment (MX-3) and a false CLAUDE.md site-title claim, plus a
+log.md:168 commit misattribution; dev-practice conformance PASS with 0
+Tier-1 violations, all tokens independently reproduced, plan hash intact;
+consolidated MUST-FIX list + fix/defer decisions recorded for Prompt 11),
+current prompt #11.
+
+## [2026-08-14] promptbook | advanced PB-0001-fix-mobile-nav-and-restore-about/RUN-002 to prompt 10
+
+Prior prompt #9, outcome done (external review complete — 8 blind reviewers:
+3 quality dimensions + S1–S5 security fan-out with mandatory reports;
+correctness PASS with all gates re-run green incl. CI-exact; consistency FAIL
+on 2 MUST-FIX, both ADR-0004 — stale/contradicted decision and an unlogged
+frozen-body edit; clarity FAIL on 1 MUST-FIX, a false header_pages comment;
+security all N/A on the diff; 1 pre-existing MUST-FIX, README/USER_GUIDE/
+CLAUDE.md reachable at the site root with no live credentials; 4 MUST-FIX
+carried to Prompt 11), current prompt #10.
+
+## [2026-08-14] promptbook | advanced PB-0001-fix-mobile-nav-and-restore-about/RUN-002 to prompt 9
+
+Prior prompt #8, outcome done (internal review verdict READY-FOR-EXTERNAL-
+REVIEW: all four root causes confirmed resolved, desktop provably untouched,
+CI-exact build passes closing the F3 evidence gap, no security exposure; 1
+CONFIRMED-low a11y finding F2 + 3 nits deferred with rationale under the
+verify-only posture; F1 iOS pointerdown carried to Prompt 11 as should-fix),
+current prompt #9.
+
+## [2026-08-14] promptbook | advanced PB-0001-fix-mobile-nav-and-restore-about/RUN-002 to prompt 8
+
+Prior prompt #7, outcome done (all quality gates green in one loop: G1–G6
+recorded with exact commands + result tokens, jekyll clean/build exit 0 at 24
+pages, production-overlay build exit 0 with About present; N/A gates recorded
+with reasons; security analysis deferred to Prompt 9), current prompt #8.
+
+## [2026-08-14] promptbook | advanced PB-0001-fix-mobile-nav-and-restore-about/RUN-002 to prompt 7
+
+Prior prompt #6, outcome done (verification team ran verify-only — nothing to
+implement, all fixes already committed in ff17186/a77ecf2; V1–V6 executed per
+plan and PASS with exact commands + verbatim result tokens; no source file
+modified, G1 empty before and after), current prompt #7.
+
+## [2026-08-14] promptbook | advanced PB-0001-fix-mobile-nav-and-restore-about/RUN-002 to prompt 6
+
+Prior prompt #5, outcome done (verification plan derived from the verified
+approach: 6 verification units V1–V6 + gates G1–G6 + N/A gate reasons + risks
+R1–R7 + acceptance criteria; zero code-edit units, all fixes already
+committed in ff17186/a77ecf2; 5 findings carried forward to Prompt 12),
+current prompt #6.
+
+## [2026-08-14] promptbook | advanced PB-0001-fix-mobile-nav-and-restore-about/RUN-002 to prompt 5
+
+Prior prompt #4, outcome done (committed to the verify-only approach; decision
+journal entry filed at bionic/journal/2026-08.md), current prompt #5.
+
+## [2026-08-14] journal | PB-0001/RUN-002: commit to verify-only approach for the mobile-nav fix
+
+Appended a `decision` entry to `bionic/journal/2026-08.md` (new file — first
+2026-08 entry): root causes (S1 ff17186; S2/S3/toggle a77ecf2), the verify-only
+approach, why it's right, and non-obvious council findings. Updated
+`bionic/journal/index.md` with the new 2026-08 row.
+
+## [2026-08-14] promptbook | advanced PB-0001-fix-mobile-nav-and-restore-about/RUN-002 to prompt 4
+
+Prior prompt #3, outcome done (council findings resolved across 2 fix-rounds;
+round-3 council UNANIMOUS APPROVE, confidence 0.973, CONVERGED round 3 of 3),
+current prompt #4.
+
+## [2026-08-14] promptbook | advanced PB-0001-fix-mobile-nav-and-restore-about/RUN-002 to prompt 3
+
+Prior prompt #2, outcome done (carry-over from RUN-001), current prompt #3.
+
+## [2026-08-14] promptbook | advanced PB-0001-fix-mobile-nav-and-restore-about/RUN-002 to prompt 2
+
+Prior prompt #1, outcome done (carry-over from RUN-001), current prompt #2.
+
+## [2026-08-14] promptbook | started PB-0001-fix-mobile-nav-and-restore-about/RUN-002
+
+book_id: PB-0001, run_id: RUN-002, total_prompts: 13, current_prompt: 1.
+RUN-002 carries RUN-001's completed verify work (Prompts 1–2: diagnosis +
+council verdict) forward per user authorization to continue the abandoned
+cycle (RUN-001 abandoned 2026-07-20 at Prompt 3).
+
 ## [2026-08-03] ingest | qwen3-8-max-a-new-bar-for-coding-and-cowork
 
 "Qwen3.8-Max: A New Bar for Coding and Cowork" (Qwen Team, 2026-08-02).

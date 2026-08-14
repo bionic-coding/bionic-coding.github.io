@@ -1,0 +1,754 @@
+format_version: '1'
+run_id: RUN-002
+book_id: PB-0001
+book_content_hash: sha256:878bedef3fd2fe2021000387caa850e2fe842190f45d75b2d36ca5474a290c3c
+started_at: 2026-08-14 15:19:25+00:00
+completed_at: '2026-08-14T18:29:56Z'
+status: completed
+current_prompt: null
+prompts:
+- n: 1
+  title: 'Verify: research & reproduce the issue'
+  state: done
+  started: '2026-08-14T15:21:15Z'
+  completed: '2026-08-14T15:21:15Z'
+  result: 'Carried over from RUN-001 (executed 2026-07-18): diagnosis synthesized from 2 independent reproductions
+    + clean jekyll build; 3 symptoms reproduced with box-model math + rendered-output evidence; non-architectural;
+    recorded in notes (see RUN-001 snapshot)'
+  artifacts: [bionic/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-001.yaml]
+- n: 2
+  title: 'Verify: convene LLM council to review the diagnosis'
+  state: done
+  started: '2026-08-14T15:21:15Z'
+  completed: '2026-08-14T15:21:23Z'
+  result: 'Carried over from RUN-001 (executed 2026-07-18): council 5/5 APPROVE|APPROVE-WITH-NITS; 0 MUST-FIX;
+    non-architectural; converged round 1; routed to Prompt 3 for minor non-safety nits (see RUN-001 snapshot)'
+  artifacts: [bionic/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-001.yaml]
+- n: 3
+  title: 'Verify: address council findings, return to Prompt 2'
+  state: done
+  started: '2026-08-14T15:21:23Z'
+  completed: '2026-08-14T15:35:41Z'
+  result: 'All council findings resolved across 2 fix-rounds: round-1 nits addressed; round-2 unanimous
+    MUST-FIX (diagnosis stale — all fixes already committed: S1 ff17186, S2/S3/toggle a77ecf2) resolved
+    by re-baselining all four items to verify-only; round-3 council UNANIMOUS APPROVE (confidence 0.973),
+    CONVERGED round 3 of 3; routed to Prompt 4'
+  artifacts: [bionic/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-002.yaml]
+- n: 4
+  title: 'Verify: commit to the approach'
+  state: done
+  started: '2026-08-14T15:35:41Z'
+  completed: '2026-08-14T15:36:38Z'
+  result: 'Committed to the verify-only approach: decision entry in bionic/journal/2026-08.md records
+    root causes, the ff17186/a77ecf2 verify-only posture, the council debate (round 2 REJECT -> re-baseline
+    -> round 3 UNANIMOUS APPROVE), and non-obvious findings'
+  artifacts: [bionic/journal/2026-08.md]
+- n: 5
+  title: 'Develop: derive an implementation plan from the verified approach'
+  state: done
+  started: '2026-08-14T15:36:38Z'
+  completed: '2026-08-14T15:45:06Z'
+  result: 'Verification plan derived from the verified approach: 6 verification units (V1–V6) + gates
+    G1–G6 + N/A gate reasons + risks R1–R7 + acceptance criteria; zero code-edit units (all fixes committed
+    in ff17186/a77ecf2); 5 findings carried forward to Prompt 12'
+  artifacts: [bionic/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-002.yaml]
+- n: 6
+  title: 'Develop: spawn implementation team'
+  state: done
+  started: '2026-08-14T15:45:06Z'
+  completed: '2026-08-14T15:51:39Z'
+  result: Verification team ran in verify-only mode — nothing to implement (all fixes committed in ff17186/a77ecf2);
+    all six verification units V1–V6 executed per plan and PASS with exact commands + verbatim result
+    tokens; no source file modified (G1 empty before and after)
+  artifacts: [bionic/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-002.yaml]
+- n: 7
+  title: 'Develop: run quality gates; loop until clean'
+  state: done
+  started: '2026-08-14T15:51:39Z'
+  completed: '2026-08-14T15:52:00Z'
+  result: 'All quality gates green in one loop: G1–G6 recorded with exact commands + result tokens (jekyll
+    clean/build exit 0, 24 pages; production-overlay build exit 0, About present); N/A gates (test suite,
+    linter, static analysis, verify-code-docs, invariants) recorded with reasons; security analysis deferred
+    to Prompt 9'
+  artifacts: [bionic/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-002.yaml]
+- n: 8
+  title: 'Develop: internal review'
+  state: done
+  started: '2026-08-14T15:52:00Z'
+  completed: '2026-08-14T16:01:15Z'
+  result: 'Internal review (independent, private dry-run) verdict READY-FOR-EXTERNAL-REVIEW: all four
+    root causes confirmed resolved, desktop provably untouched, CI-exact build passes (closes F3 evidence
+    gap), no security exposure; 1 CONFIRMED-low a11y finding (F2 Escape focus return) + 3 nits deferred
+    with rationale per the verify-only posture, F1 (iOS pointerdown) carried to Prompt 11 as should-fix'
+  artifacts: [bionic/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-002.yaml]
+- n: 9
+  title: 'Review: external team review (multi-dimension + dedicated security review)'
+  state: done
+  started: '2026-08-14T16:01:15Z'
+  completed: '2026-08-14T16:12:02Z'
+  result: 'External review complete (8 blind reviewers: 3 quality dimensions + S1–S5 security fan-out
+    with mandatory reports): correctness PASS (all gates re-run green incl. CI-exact; root causes resolved
+    at cause); consistency FAIL (MX-1 ADR-0004 stale+contradicted, MX-2 ff17186 violated ADR append-only);
+    clarity FAIL (MX-3 false header_pages comment); security all N/A on the diff; MX-4 pre-existing reachable
+    publication exposure (README/USER_GUIDE/CLAUDE.md at site root, no credentials); 4 MUST-FIX carried
+    to Prompt 11'
+  artifacts: [bionic/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-002.yaml]
+- n: 10
+  title: 'Review: tests, docs, and dev-practice conformance audit'
+  state: done
+  started: '2026-08-14T16:12:02Z'
+  completed: '2026-08-14T16:23:31Z'
+  result: 'Conformance audit complete (3 blind auditors): coverage GAPS-FOUND (2 MUST-FIX: 4 of 5 ff17186
+    files uncovered; MX-4 fix has no unit) + 5 SHOULD-FIX incl. V1 mutation-proven; comments/docs DRIFT-FOUND
+    (2 MUST-FIX: config comment = MX-3; CLAUDE.md site-title claim) + log.md:168 commit misattribution;
+    dev-practice conformance PASS (0 Tier-1 violations, all tokens independently reproduced, plan hash
+    intact); consolidated MUST-FIX list + fix/defer decisions recorded for Prompt 11'
+  artifacts: [bionic/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-002.yaml]
+- n: 11
+  title: 'Review: implement feedback; loop until clean'
+  state: done
+  started: '2026-08-14T16:23:31Z'
+  completed: '2026-08-14T18:06:48Z'
+  result: 'Fix loop converged in 3 review rounds with zero MUST-FIX: ADR-0005 accepted / ADR-0004 superseded
+    (MX-1/MX-2); config comment rewritten true (MX-3); README/USER_GUIDE/CLAUDE excluded with recorded
+    published-file-set regression unit (MX-4 + S3-MF-1); rendered-output units for the ff17186 files (CV-M1);
+    mobile card moved out of flow at ≤46rem, eliminating the reflow-during-gesture retarget class (S1-M1:
+    0/9 retargets vs 9/9 on the reconstructed round-2 artifact) with real-Chrome interaction harness recorded
+    (CV-M3); all loop-authored comments spot-checked zero-false-clause; design change disclosed (in-flow
+    push-down → out-of-flow card); iOS WebKit device check recommended pre-merge (Chrome emulation only)'
+  artifacts: [bionic/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-002.yaml, bionic/adrs/ADR-0005-serve-a-landing-homepage-and-a-five-item-top-nav.md]
+- n: 12
+  title: 'Prep: changelog, docs, journal, PR notes'
+  state: done
+  started: '2026-08-14T18:06:48Z'
+  completed: '2026-08-14T18:24:01Z'
+  result: Changelog created (repo-root CHANGELOG.md, adaptation recorded — file didn't exist); audit-docs
+    gate PASSED (0 BROKEN / 1 DRIFT auto-fixed / 4 WARNINGs classified); reflective journal entry written
+    (bionic/journal/2026-08.md, 18:12); PR draft stored in pr_draft (title, summary, root cause, test
+    plan, risk notes, refs); PR NOT opened, nothing pushed or committed.
+  artifacts: [CHANGELOG.md, bionic/journal/2026-08.md, bionic/journal/index.md, bionic/log.md, CLAUDE.md,
+    _templates/this-week-in-ai.md]
+- n: 13
+  title: 'Summary: completion report AND archive the book'
+  state: done
+  started: '2026-08-14T18:24:01Z'
+  completed: '2026-08-14T18:29:56Z'
+  result: Completion summary written to summary field; forge-log evaluated fold checked clean no-op (no
+    forged skills used this cycle — only plugin skills council/run-promptbook/propose-adr/transition-adr/audit-docs/log-work);
+    book archived via archive-promptbook; PR not opened, nothing pushed or committed.
+  artifacts: [bionic/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-002.yaml]
+notes: |
+  ## Provenance (RUN-002 start)
+
+  RUN-001 (started 2026-07-18, abandoned 2026-07-20 at Prompt 3) completed
+  Prompts 1–2: the Diagnosis below and the council verdict that approved it.
+  Both are carried over verbatim from RUN-001's snapshot notes so this run
+  continues from Prompt 3 (address council findings). Source:
+  bionic/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-001.yaml.
+
+  ## Diagnosis (Prompt 1 — verify module, RUN-001; revised per council rounds 1–2 in RUN-002)
+
+  Issue: broken header navigation on the Bionic Coding Jekyll site — three symptoms, all reproduced by two independent read-only agents + a clean `bundle exec jekyll build`.
+
+  ### Symptom 1 — About link missing from nav (VERIFIED FIXED; verify-only)
+  - Evidence: `_config.yml` header_pages (line 71) now lists `about.md`. The nav loop in `_layouts/default.html` (30-33) resolves each header page via `site.pages | where: "path", path | first` (exact-path match). A stale `about.markdown` entry matched no page (file is `about.md`), emitting no <a>. A clean jekyll build confirms the corrected config renders the `/about/` link in the compiled nav on all 24 HTML pages as of the 2026-08-14 clean build (home + lesson pages); 5 nav links present (Manifesto, Articles, Learn, Tools, About); site title links home separately.
+  - Root cause: stale exact path string in config (`about.markdown`) vs actual filename (`about.md`) against an exact-path Liquid lookup. Cause = config path mismatch; symptom = missing link.
+  - Scope: `_config.yml` only. The fix is committed at HEAD (ff17186) — verify-only; do NOT re-apply.
+  - Remediation: none — verify-only. Do NOT re-apply or rename `about.md`.
+
+  ### Symptom 2 — Hamburger tap target below 44px floor (VERIFIED FIXED; verify-only)
+  - Evidence (historical, pre-fix, 2026-07-18): `.nav-toggle` (then at assets/main.scss 182-192) = `padding: 0.3rem` around a 22x22 SVG (default.html 25). Box ~= 22 + 2*(0.3*16) = 31.6px square — below the 44px touch floor. Button read as dead.
+  - At HEAD (commit a77ecf2): `.nav-toggle` (assets/main.scss 183-196) carries `min-width:44px; min-height:44px; justify-content:center` (with `line-height:0` and token color kept) — tap target meets the 44px floor.
+  - Root cause: insufficient min tap dimensions on `.nav-toggle`.
+  - Scope: assets/main.scss (`.nav-toggle`).
+  - Remediation: none — already implemented in a77ecf2; verify-only. Do NOT re-apply.
+
+  ### Symptom 3 — Open mobile menu looks broken (VERIFIED FIXED; verify-only)
+  - Evidence (historical, pre-fix, 2026-07-18): in `@media (max-width:46rem)` (then at assets/main.scss 662-685): `.site-nav.is-open` only set display:flex — no surface bg; links inherited `.site-nav a { color: var(--muted) }` — muted color, a secondary factor (the primary legibility defect was the missing surface); each link had `border-top:1px solid var(--rule)` stacked cramped hairlines; `padding:0.6rem 0` at ~0.82rem font => row ~43px (<44px).
+  - At HEAD (commit a77ecf2): the 46rem block (assets/main.scss 668-703) implements the book-goal FALLBACK inset-panel variant: `.site-nav` carries `background:var(--surface)`, `border:1px solid var(--rule)`, `border-radius:6px` (inset within `.wrap` padding — never overflows); `.site-nav a` carries `color:var(--ink)`, `min-height:44px`, flex-centered rows; per-link hairlines replaced by row-divider-only `.site-nav a + a { border-top:1px solid var(--rule) }` (no first-row hairline, so no double hairline against the header border).
+  - Root cause: collapsed panel never styled as a legible surface; reuses desktop muted inline-link styling.
+  - Scope: assets/main.scss (the 46rem media block).
+  - Remediation: none — already implemented in a77ecf2 as the book-goal FALLBACK inset-panel variant; verify-only. Do NOT re-apply and do NOT replace with the full-bleed primary variant.
+
+  ### Toggle hardening (markup + JS; _layouts/default.html) (VERIFIED FIXED; verify-only)
+  - Evidence (historical, pre-fix, 2026-07-18): `.nav-toggle` button (line 24) had no `type` (defaulted to submit); JS (then 49-67) toggled + closed on link-tap but had NO Escape-close and NO outside-click-close.
+  - At HEAD (commit a77ecf2): button carries `type="button"` (_layouts/default.html 24); JS (49-73) has `setOpen()` with aria-expanded sync, close-on-link-tap, Escape keydown close, and outside-click close (`.header-inner` containment check).
+  - Remediation: none — already implemented in a77ecf2; verify-only. Do NOT re-apply. No new deps; breakpoint 46rem unchanged.
+
+  ### Overall
+  - Architectural? No — config typo correction + CSS/markup refinement inside the already-decided custom presentation layer (ADR-0003). No new decision. Iterate cycle correct; no escape to dev-cycle.
+  - Files in scope (ALL verify-only): `_config.yml` (fix committed ff17186), `assets/main.scss` (fixes committed a77ecf2), `_layouts/default.html` (fixes committed a77ecf2).
+  - Cycle posture: every remediation is already committed at HEAD (S1 in ff17186; S2/S3/toggle-hardening in a77ecf2 — landed during RUN-001 before its abandonment). This is now a verify-only iterate cycle: confirm the committed implementation meets every diagnosed requirement (build + rendered-output checks), then document. Nothing remains to implement.
+  - Out of scope: pre-existing ADR-0004 header_pages drift (config-path vs filename consistency across header pages) — tracked separately, not in this cycle (corrected in Prompt 11: the drift was ADR-0004's stale DECISION, not merely the path string — the Accepted ADR contradicted HEAD's landing-page homepage + 5-item nav; see the Fix loop section below).
+  - Verification method (CSS/content site — no test suite/linter/static-analysis; code gates unittest/verify-code-docs/extract-code-docs are N/A): run `bundle exec jekyll clean` FIRST (stale `.jekyll-cache` re-renders the old 4-link/no-About state and false-negatives the S1 check), then `bundle exec jekyll build` clean, then read `_site/**/index.html` nav markup (5 links incl `/about/` on home + a lesson page) and `_site/assets/main.css` (`.nav-toggle` 44px rules + `@media (max-width:46rem)` surface panel); reason about box model (no horizontal scrollbar at 375/390/414; no double hairline). Also validate against the GitHub Actions production build per ADR-0003 (`jekyll build` with the production overlay, Dart-Sass compiler): the change uses only existing design tokens and plain CSS properties — no new Sass-function usage, no new build risk.
+
+  ## Council verdict (Prompt 2 — 5 dimensions, 3 blind reviewers)
+
+  - D1 Evidence/Reproduction: APPROVE-WITH-NITS — all 3 symptoms reproduce; numbers verified (31.6px tap target, ~43px rows, 5 nav links incl /about/ after clean build). Nits: S1 fix invisible without `jekyll clean` (stale .jekyll-cache re-renders old 4-link/no-About state); "working tree already corrected" imprecise — about.md is committed at HEAD (ff17186), not a pending edit.
+  - D2 Root-cause: APPROVE-WITH-NITS — all true causes; S1 git-confirmed (.markdown vs .md under exact-path where:"path"). Nit: S3 "low contrast" overstated.
+  - D3 Approach + minimality: APPROVE-WITH-NITS — sound, minimal, no new deps, breakpoint 46rem kept. Nit: pre-existing ADR-0004 header_pages drift is out of scope, track separately.
+  - D4 Consistency: APPROVE-WITH-NITS — consistent with ADR-0003/ADR-0004/CLAUDE.md. Build note: validate against the GitHub Actions build per ADR-0003 (Dart-Sass funcs); this change adds no new Sass-function risk.
+  - D5 Security: PASS — S1-S5 all N/A (static CSS/markup; DOM-only JS: no innerHTML sink, no listener leak); no [SECURITY] finding. Scope: NON-ARCHITECTURAL, no escape to dev-cycle.
+  - Aggregate: CONVERGED round 1. No CONCERNS, no MUST-FIX, no security finding, non-architectural. Route: minor non-safety nits -> Prompt 3.
+
+  ## Council findings resolution (Prompt 3 — RUN-002, round 1)
+
+  Each round-1 nit → resolution applied to the Diagnosis above:
+  - D1 `jekyll clean`: Verification method now requires `bundle exec jekyll clean` before the build check (stale `.jekyll-cache` false-negative risk named).
+  - D1 working-tree wording: Symptom 1 scope corrected — the About fix is committed at HEAD (ff17186), not a pending working-tree edit.
+  - D2 "low contrast" overstatement: Symptom 3 evidence reworded — muted color is a secondary factor; the primary defect is the missing surface. The `color: var(--ink)` remediation is retained as a legibility improvement.
+  - D3 ADR-0004 drift: recorded as explicitly out of scope in Overall; tracked separately.
+  - D4 GitHub Actions build: Verification method now includes the production-overlay build per ADR-0003; no new Sass-function usage, so no new build risk.
+  - D5 Security: PASS, no findings — nothing to resolve.
+
+  ## Council verdict round 2 (Prompt 2 return — RUN-002)
+
+  - Configuration: async council, 3/3 seats responded (gpt-5.6-sol, claude-fable-5, gemini-3.1-pro-preview); convenor also ran a clean `jekyll clean` + `jekyll build` at HEAD as evidence.
+  - D1 Evidence/Reproduction: CONCERNS (unanimous), 1 MUST-FIX. D2 Root-cause: APPROVE (majority). D3 Approach + minimality: mixed — blocked by D1 MUST-FIX. D4 Consistency: APPROVE (unanimous). D5 Security: APPROVE (unanimous; S1–S5 N/A, no [SECURITY] finding).
+  - MUST-FIX (identical across all 3 seats): the revised diagnosis was stale against HEAD — the S2/S3/toggle-hardening remediations were already committed in a77ecf2 (2026-07-18, during RUN-001, before its abandonment). Presenting them as future work would commit the cycle to re-applying or replacing an already-implemented fix.
+  - Corollaries: S2/S3 pre-fix evidence must be re-dated as historical (D2); the full-bleed primary Symptom-3 variant conflicts with the committed FALLBACK inset-panel implementation and must be dropped (D3); "all 17 pages" stale — the 2026-08-14 clean build has 24 HTML pages, all carrying the 5-link nav (minor).
+  - Escape verdict: NO — unanimous; non-architectural; should now be a verify-only iterate.
+  - Aggregate: NOT CONVERGED (unanimous REJECT, 1 MUST-FIX). Route per book: back to Prompt 3 (round 2 of max 3).
+
+  ## Council findings resolution (Prompt 3 — RUN-002, round 2)
+
+  Round-2 MUST-FIX + corollaries → resolutions applied to the Diagnosis above:
+  - MUST-FIX stale diagnosis: S2/S3/toggle-hardening sections re-baselined to VERIFIED FIXED / verify-only, citing a77ecf2 with current HEAD line numbers (main.scss 183-196 and 668-703; default.html 24 and 49-73).
+  - D2 corollary: pre-fix evidence re-dated as historical in all three sections.
+  - D3 corollary: full-bleed primary variant dropped — the committed implementation is the book-goal FALLBACK inset-panel variant; the cycle must NOT replace it.
+  - Page count: Symptom 1 corrected from "all 17 pages" to "all 24 HTML pages" (2026-08-14 clean build).
+  - Cycle posture recorded in Overall: verify-only for all four items (S1 ff17186; S2/S3/toggle a77ecf2). Nothing remains to implement.
+
+  ## Council verdict round 3 (Prompt 2 return — RUN-002)
+
+  - Configuration: async council, 3/3 seats responded (gpt-5.6-sol, claude-fable-5, gemini-3.1-pro-preview). Convenor evidence: at-HEAD source spot-checks (all diagnosis claims confirmed), git show on ff17186 + a77ecf2, clean `jekyll clean && jekyll build` (24 HTML pages; 5-link nav incl /about/ on home + a lesson page; compiled CSS carries the 44px rules, the 46rem inset-panel block, and the `a + a` divider) plus a clean production-overlay build (24 pages, About present).
+  - Round-2 MUST-FIX resolution: RESOLVED, 3/3 — all four items verify-only citing ff17186 (S1) / a77ecf2 (S2/S3/toggle); pre-fix evidence re-dated historical; full-bleed variant dropped in favor of the committed book-goal FALLBACK inset-panel; page count corrected to 24; cycle posture verify-only.
+  - D1 Evidence: APPROVE (claude-fable-5 APPROVE-WITH-NITS — one non-blocking nit: the diagnosis's nav-label list says "Learn" where the rendered nav text is "Lessons" (learn.md title); correct in the final documentation pass). D2 Root-cause: APPROVE. D3 Approach + minimality: APPROVE. D4 Consistency: APPROVE. D5 Security: APPROVE (S1–S5 N/A, no [SECURITY] finding).
+  - Escape verdict: NO — unanimous; non-architectural.
+  - Aggregate: CONVERGED round 3 of 3 — UNANIMOUS APPROVE (consensus confidence 0.973, 0 dissent). No MUST-FIX, no blocking CONCERNS. Route: Prompt 4. Carry-forward for Prompt 12: fix the "Learn" → "Lessons" label in documentation (non-blocking).
+
+  ## Verification plan (Prompt 5 — dev module, RUN-002)
+
+  ### Posture
+
+  Zero code-edit units. All four remediations are committed ancestors of HEAD `43ab7f2` — `ff17186` (S1, `_config.yml`) and `a77ecf2` (S2/S3/toggle, `_layouts/default.html` + `assets/main.scss`), both confirmed by `git merge-base --is-ancestor`. The dev module's work is six independently checkable verification units (V1–V6) that prove the committed implementation satisfies every diagnosed requirement. Nothing is re-implemented; the committed Symptom-3 implementation is the book-goal FALLBACK inset-panel variant and stays.
+
+  Precondition (run once, before V1). Confirm the working tree carries no uncommitted site-file change, so build output is attributable to HEAD: `git status --short -- ':!bionic/'` — expect EMPTY output (only `bionic/` docs files are modified). If non-empty, STOP — build evidence would describe the working tree, not HEAD.
+
+  ### V1 — Nav links render on every page
+
+  Claim: a clean build emits 24 HTML pages; every page carries a 5-link nav (Manifesto, Articles, Lessons, Tools, About) including `/about/`.
+
+  Commands: `bundle exec jekyll clean && bundle exec jekyll build`; `find _site -name "*.html" | wc -l`; `grep -L 'href="/about/"' $(find _site -name "*.html") | wc -l`; extract the `<nav class="site-nav" id="site-nav">…</nav>` block from `_site/index.html` and one lesson page; per-page link-count histogram over all 24 pages.
+
+  Expected tokens: build exit 0; HTML page count 24; pages missing `/about/` = 0; nav block byte-exact: `<nav class="site-nav" id="site-nav"><a href="/manifesto/">Manifesto</a><a href="/articles/">Articles</a><a href="/learn/">Lessons</a><a href="/tools/">Tools</a><a href="/about/">About</a></nav>`; histogram exactly `24 5` (no NONAV, no other count).
+
+  Page inventory (so 24 is auditable): 6 posts + `404.html` + 5 top-level pages (index, manifesto, articles, tools, about) + `/learn/` index + 11 lesson pages = 24. `404.html` renders the nav and is included in the "every page" claim.
+
+  ### V2 — Hamburger tap target meets the 44px floor
+
+  Claim: compiled CSS carries `min-width: 44px` / `min-height: 44px` on `.nav-toggle`; box-model math confirms ≥44×44 CSS px.
+
+  Commands: `grep -A14 '^\.nav-toggle {' _site/assets/main.css`; `grep -c 'box-sizing: border-box' _site/assets/main.css`.
+
+  Expected tokens: inside `.nav-toggle` — `display: none;`, `align-items: center;`, `justify-content: center;`, `min-width: 44px;`, `min-height: 44px;`, `padding: 0.3rem;`, `border: 0;`, `line-height: 0;`; universal border-box count ≥1.
+
+  Box-model reasoning to record: `box-sizing: border-box` applies to `*` (source assets/main.scss 71–75) and `border: 0`, so the `min-*` pair floors the border-box at 44×44. Natural size = 22px SVG + 2×0.3rem (9.6px) = 31.6px — the pre-fix figure — so the mins are load-bearing. At ≤46rem the button is `display: inline-flex` with the glyph centered in the 44px box.
+
+  ### V3 — Collapsed menu renders as an inset surface panel
+
+  Claim: compiled CSS carries the 46rem inset-panel rules with row dividers only between rows.
+
+  Command: extract the block by offset — `python3 -c "c=open('_site/assets/main.css').read(); i=c.find('@media (max-width: 46rem)'); print(c[i:i+900])"` (note the space after the colon in the compiled media query).
+
+  Expected tokens in one `@media (max-width: 46rem)` block: `.header-inner` → `flex-wrap: wrap;`, `gap: 0.5rem 1rem;`; `.nav-toggle` → `display: inline-flex;`; `.site-nav` → `display: none;`, `flex-basis: 100%;`, `flex-direction: column;`, `background: var(--surface);`, `border: 1px solid var(--rule);`, `border-radius: 6px;`; `.site-nav.is-open` → `display: flex;`; `.site-nav a` → `display: flex;`, `align-items: center;`, `min-height: 44px;`, `margin-left: 0;`, `padding: 0.55rem 0.9rem;`, `font-size: 0.82rem;`, `color: var(--ink);`; `.site-nav a + a` → `border-top: 1px solid var(--rule);`.
+
+  Negative assertions: (1) no first-row hairline — within the block `border-top` appears exactly once (count = 1), on `a + a` only; (2) no double hairline against the header border — geometry, not adjacency: `.header-inner` carries `padding-bottom: 1.15rem` separating the panel's top border from `.site-header`'s `border-bottom`; (3) ink wins the cascade — desktop `.site-nav a { color: var(--muted) }` (source 170–176) and the 46rem `color: var(--ink)` (source 690–698) have equal specificity; the media-query rule is later in the compiled file — confirm ordering in the compiled CSS. Row height: `min-height: 44px` floors each row; pre-fix rows were ~43px.
+
+  ### V4 — Toggle markup and behavior
+
+  Claim: `_layouts/default.html` hardens the toggle with no listener leak and no innerHTML sink in the nav script. Method: line-cited reading of markup (21–36) + script (49–73) against an 11-row checklist: (1) `type="button"` line 24; (2) `aria-expanded="false"` initial + `aria-controls="site-nav"` + `aria-label="Menu"` line 24; (3) `id="site-nav"` matches aria-controls line 29; (4) SVG `aria-hidden="true" focusable="false"` line 25; (5) `setOpen()` writes class + aria-expanded together (one state writer) 55–58; (6) toggle reads live DOM state, not a shadow boolean 59–61; (7) link-tap close delegated on nav, guarded by `closest('a')` 63–65; (8) Escape-close on document keydown 66–68; (9) outside-click close guarded by `!closest('.header-inner')` and gated on is-open 69–71; (10) no listener leak — exactly 4 addEventListener calls, all registered once inside the IIFE with early return when either element is missing (line 54), none added inside a handler; (11) no innerHTML sink in the nav script (49–73 performs no HTML string assignment).
+
+  Scope note for the Prompt 9 security reviewer: line 87 assigns `p.innerHTML` in the PRE-EXISTING callouts script, untouched by a77ecf2, out of this cycle's scope — recorded as an observation so it is not filed as a regression. The "no innerHTML sink" claim is correct for the nav script, with that scope attached.
+
+  ### V5 — Overflow safety at 375 / 390 / 414px
+
+  Claim: nothing overflows horizontally at the three target widths — box-model reasoning (static arithmetic over border-box sizing), not a device test.
+
+  Chain: border-box on `*` makes every width a border-box width. `.wrap` = viewport − 2×1.5rem (48px) below the measure. Panel (`flex-basis: 100%`, incl. 2px border) and row content box (panel minus 2×0.9rem padding): 375px → wrap 327 / panel 327 / row 296.2; 390px → 342 / 342 / 311.2; 414px → 366 / 366 / 335.2. The panel is strictly inset within the page padding and cannot reach the viewport edge. Longest label "MANIFESTO" ≈ 90px + 28.8px padding ≈ 119px — far inside the narrowest 296.2px row. No wrap, no overflow, no horizontal scrollbar.
+
+  Pass criterion: the table recorded with these numbers; grep the V3 block for `100vw`, `width:`, `margin-left: -` → 0 matches (other than `margin-left: 0`).
+
+  ### V6 — Production-overlay build (the CI path) — run LAST
+
+  Claim: the GitHub Actions build path per ADR-0003/ADR-0002 succeeds, `/about/` present, drafts exclusion verified structurally.
+
+  Commands: `bundle exec jekyll clean`; `bundle exec jekyll build --config _config.yml,_config_production.yml`; `find _site -name "*.html" | wc -l`; `test -f _site/about/index.html && echo ABOUT_PRESENT`; `grep -c 'href="/about/"' _site/index.html`; then RESTORE the base build: `bundle exec jekyll clean && bundle exec jekyll build`.
+
+  Expected tokens: build exit 0; 24 pages; ABOUT_PRESENT; home `/about/` count ≥1.
+
+  Drafts exclusion — structural, not differential: `_drafts/` and `_lesson_drafts/` are both EMPTY at HEAD, so base and production builds both emit 24 pages; a page-count delta proves nothing. Verify the mechanism: `_config_production.yml` sets `collections.lesson_drafts.output: false` (read it); `find _site/learn -name "index.html" | wc -l` → 12; `ls _lesson_drafts | wc -l` → 0. Record the honest verdict: the exclusion mechanism is configured and the overlay applied; the exclusion is vacuous at HEAD because zero draft files exist — no draft leaked because none exists.
+
+  No new Sass risk: the changed regions use only existing custom properties + plain CSS — grep for `@use`, `@import`, `map.`, `color.`, `math.` → 0 matches.
+
+  ### Quality gates
+
+  N/A gates (each with its written reason — "not applicable" must be distinguishable from "not run"): Test suite — N/A: no test framework exists (Gemfile declares only jekyll ~> 4.4.1, minima ~> 2.5, jekyll-feed ~> 0.12; no test/spec directory); the rendered-output checks ARE the tests — V1–V3/V6 assert against `_site` output as a suite asserts against return values. Linter/formatter — N/A: none configured (no .rubocop.yml/.stylelintrc/.prettierrc/.eslintrc/.editorconfig/package.json). Static analysis — N/A: no application code (content, Liquid, one stylesheet, three inline DOM scripts). Security analysis — deferred to the review module (Prompt 9 dedicated security review; V4 supplies its listener-leak + innerHTML scope input). verify-code-docs/extract-code-docs — N/A: `bionic/manifest.yml` does not list `code` in concerns_enabled and carries no extractors map; no `bionic/code/` tree exists. Invariant checks — N/A: concern enabled but empty (0 pins, 0 checks).
+
+  Positive gates: G1 `git status --short -- ':!bionic/'` → empty (HEAD attribution); G2 `bundle exec jekyll clean` → exit 0 (mandatory before every build); G3 `bundle exec jekyll build` → exit 0, 24 HTML pages; G4 rendered-nav checks (V1 tokens); G5 compiled-CSS checks (V2+V3 tokens); G6 production-overlay build → exit 0, 24 pages, /about/ present.
+
+  ### Risks
+
+  R1 stale `.jekyll-cache` false-negative → `jekyll clean` before EVERY build. R2 working-tree vs HEAD divergence → G1 precondition, re-run after V6. R3 grep whitespace false-negative (compiled CSS is expanded: `@media (max-width: 46rem)` WITH the space) → use byte-exact patterns / offset extraction; treat zero-match as "check the pattern" first. R4 `_site/` left in production-overlay state → V6 last, ends with base-config restore. R5 Ruby/bundler mismatch → record `ruby -v` + `bundle -v` with gate results (observed at plan time: ruby 4.0.5, bundler 4.0.10); a LoadError/Gem:: failure is an environment blocker, not a V-unit failure — escalate. R6 drafts-exclusion vacuity → structural check with vacuity stated. R7 reasoning units read as unverified → V5 is static arithmetic, not rendered measurement; record the math + line citations; state the method honestly.
+
+  ### Acceptance criteria (module exit)
+
+  1. V1–V6 each recorded PASS with exact command + observed token verbatim. 2. G1–G6 recorded, both builds exit 0 at 24 pages. 3. Every N/A gate carries its written reason. 4. No source file modified — G1 empty before V1 and after V6 (only `_site/`, `.jekyll-cache`, `bionic/` change). 5. Discrepancies carried forward to Prompt 12, not absorbed. 6. `_site/` restored to base-config build at exit.
+
+  ### Findings against HEAD (carry forward to Prompt 12)
+
+  1. "Learn" → "Lessons": the Diagnosis's Symptom-1 label list says "Learn"; rendered nav text is "Lessons" (learn.md `title: Lessons`); manifesto.md carries `nav_label: Manifesto`. Fix the label list in the documentation pass. 2. The 24 pages include `404.html` — composition stated so 24 is auditable (nuance, not contradiction). 3. innerHTML scope: D5's "no innerHTML sink" is true of the nav script (49–73) but line 87's callouts script is pre-existing/out-of-scope — attach scope for Prompt 9. 4. Drafts-exclusion vacuous at HEAD (both draft dirs empty) — verify structurally, say so. 5. "No double hairline" is geometry, not adjacency — `.header-inner` padding-bottom 1.15rem separates panel border from header border.
+
+  ## Verification results (Prompts 6–7 — dev module, RUN-002)
+
+  Environment: ruby 4.0.5 (2026-05-20 revision 64336ffd0e) +PRISM [arm64-darwin27]; bundler 4.0.10; executed 2026-08-14.
+
+  ### V1 — PASS. Nav links render on every page.
+  - `git status --short -- ':!bionic/'` (precondition) → empty.
+  - `bundle exec jekyll clean && bundle exec jekyll build` → CLEAN_EXIT:0, BUILD_EXIT:0.
+  - `find _site -name "*.html" | wc -l` → 24.
+  - `grep -L 'href="/about/"' $(find _site -name "*.html") | wc -l` → 0.
+  - Home nav extract (byte-exact; identical on lesson page `_site/learn/agents/index.html`): `<nav class="site-nav" id="site-nav"><a href="/manifesto/">Manifesto</a><a href="/articles/">Articles</a><a href="/learn/">Lessons</a><a href="/tools/">Tools</a><a href="/about/">About</a></nav>`
+  - Per-page link-count histogram over all 24 pages: `24 5` (no NONAV, no other count).
+
+  ### V2 — PASS. Hamburger tap target meets 44px floor.
+  - `grep -A14 '^\.nav-toggle {' _site/assets/main.css` → block carries `display: none;`, `align-items: center;`, `justify-content: center;`, `min-width: 44px;`, `min-height: 44px;`, `padding: 0.3rem;`, `margin: 0;`, `background: none;`, `border: 0;`, `color: var(--muted);`, `line-height: 0;`, `cursor: pointer;` — all expected tokens present.
+  - `grep -c 'box-sizing: border-box' _site/assets/main.css` → 1 (≥1 expected).
+  - Box-model: natural size = 22px SVG + 2×0.3rem (9.6px) = 31.6px (the pre-fix figure); `min-width/min-height: 44px` + `border: 0` + universal border-box floors the border-box at 44×44px. Load-bearing mins confirmed.
+
+  ### V3 — PASS. Collapsed menu = inset surface panel.
+  - Offset-extract of `@media (max-width: 46rem)` block (compiled file offset 14780) carries, byte-exact: `.header-inner { flex-wrap: wrap; gap: 0.5rem 1rem; }`; `.nav-toggle { display: inline-flex; }`; `.site-nav { display: none; flex-basis: 100%; flex-direction: column; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; }`; `.site-nav.is-open { display: flex; }`; `.site-nav a { display: flex; align-items: center; min-height: 44px; margin-left: 0; padding: 0.55rem 0.9rem; font-size: 0.82rem; color: var(--ink); }`; `.site-nav a + a { border-top: 1px solid var(--rule); }`.
+  - `border-top` count within the block = 1 (on `.site-nav a + a` only — no first-row hairline).
+  - Cascade order: desktop `.site-nav a { color: var(--muted) }` at offset 3836; 46rem block at offset 14780 — later in compiled file, equal specificity → `color: var(--ink)` wins.
+  - Geometry: `.header-inner { padding-bottom: 1.15rem; }` confirmed — separates panel top border from `.site-header` bottom border (no double hairline is geometric, not adjacency-based).
+
+  ### V4 — PASS. Toggle markup and behavior (11-row checklist, line-cited against _layouts/default.html).
+  1. `type="button"` — line 24. 2. `aria-expanded="false"` + `aria-controls="site-nav"` + `aria-label="Menu"` — line 24. 3. `id="site-nav"` matches aria-controls — line 29 vs 24. 4. SVG `aria-hidden="true" focusable="false"` — line 25. 5. `setOpen()` single state writer (class + aria-expanded together) — 55–58. 6. Toggle reads live DOM state (`nav.classList.contains('is-open')`) — 59–61. 7. Link-tap close delegated, guarded by `closest('a')` — 63–65. 8. Escape-close on document keydown — 66–68. 9. Outside-click close guarded by `!closest('.header-inner')`, gated on is-open — 69–71. 10. Exactly 4 addEventListener calls (59, 63, 66, 69), all inside the IIFE with early return line 54, none inside a handler — no listener leak. 11. No innerHTML sink in nav script (49–73).
+  - Scope note for Prompt 9 security reviewer: line 87 (`p.innerHTML = p.innerHTML.replace(re, '');`) is in the separate PRE-EXISTING callouts script (75–94), untouched by a77ecf2, out of this cycle's scope — flagged so it is not filed as a regression.
+
+  ### V5 — PASS. Overflow safety at 375/390/414px (static arithmetic over border-box sizing, not a device test).
+  - 375px: wrap 327 / panel 327 / row content-box 296.2. 390px: 342 / 342 / 311.2. 414px: 366 / 366 / 335.2. Longest label "MANIFESTO" ≈119px — far inside narrowest 296.2px row. No wrap, no overflow, no horizontal scrollbar.
+  - Negative-assertion greps against the block body: `100vw` → 0, `width:` → 0, `margin-left: -` → 0.
+
+  ### V6 — PASS. Production-overlay build (CI path per ADR-0003/ADR-0002), run last.
+  - `bundle exec jekyll clean` → exit 0; `bundle exec jekyll build --config _config.yml,_config_production.yml` → PROD_BUILD_EXIT:0.
+  - `find _site -name "*.html" | wc -l` → 24; `test -f _site/about/index.html` → ABOUT_PRESENT; `grep -c 'href="/about/"' _site/index.html` → 1.
+  - Structural drafts check: `_config_production.yml` sets `lesson_drafts: output: false`; `find _site/learn -name "index.html" | wc -l` → 12; `_lesson_drafts` → 0 files; `_drafts` → 0 files. Vacuity statement: the exclusion mechanism is configured and the overlay applied; the exclusion is vacuous at HEAD because zero draft files exist — no draft leaked because none exists to leak.
+  - No-new-Sass greps against `assets/main.scss`: `@use`/`@import`/`map.`/`color.`/`math.` → all 0.
+  - Restore: `bundle exec jekyll clean && bundle exec jekyll build` → exit 0 / exit 0.
+
+  ### Gates G1–G6
+  - G1 `git status --short -- ':!bionic/'` → empty BOTH before V1 and after V6 restore (HEAD attribution; no source file modified).
+  - G2 `bundle exec jekyll clean` → exit 0, run before every build (3×: base, production, restore).
+  - G3 `bundle exec jekyll build` → exit 0, 24 HTML pages.
+  - G4 rendered-nav checks (V1 tokens) → PASS.
+  - G5 compiled-CSS checks (V2+V3 tokens) → PASS.
+  - G6 production-overlay build → exit 0, 24 pages, /about/ present.
+
+  ### N/A gates (reasons recorded)
+  - Test suite — N/A: no test framework (Gemfile: jekyll ~> 4.4.1, minima ~> 2.5, jekyll-feed ~> 0.12; no test/spec dir); V1–V3/V6 rendered-output checks serve as the suite.
+  - Linter/formatter — N/A: none configured.
+  - Static analysis — N/A: no application code (content, Liquid, one stylesheet, three inline DOM scripts).
+  - Security analysis — deferred to Prompt 9 (dedicated review module); V4 supplies listener-leak + innerHTML-scope input.
+  - verify-code-docs/extract-code-docs — N/A: `bionic/manifest.yml` has no `code` concern and no extractors map.
+  - Invariant checks — N/A: concern enabled but empty (0 pins, 0 checks).
+
+  ### Discrepancies vs plan
+  One cosmetic, no material: V5's negative-assertion grep for `width:` false-positives on the `@media (max-width: 46rem)` header line if applied naively; excluding the header line (intent: property declarations in the block body) gives clean 0/0/0. Carried forward to Prompt 12 (tighten plan wording for reuse).
+
+  ### Final state
+  `_site/` restored to base-config build (24 pages, About present); G1 empty; no tracked source file modified — only gitignored `_site/`/`.jekyll-cache` and `bionic/` docs files changed. All 6 module acceptance criteria met.
+
+  ## Internal review (Prompt 8 — dev module, RUN-002)
+
+  Scope: the committed fix under review (ff17186 + a77ecf2) — private dry-run by an independent reviewer, blind-style; verification re-run including the CI-exact build. Verdict: READY-FOR-EXTERNAL-REVIEW — no blocking findings.
+
+  Confirmed clean: root-cause resolution (all four resolved — cause, not symptom); regressions (every panel declaration inside the single 46rem block at compiled offset 14780; base `.site-nav a` untouched; `.site-nav`/`.nav-toggle`/`.is-open` appear nowhere else in the repo — desktop provably unreachable by changed selectors); cascade/specificity/aria-sync/listener-leak/dark-mode tokens all clean; security pass clean (no injection sink in the nav script, no secrets, no authz surface, Gemfile/Gemfile.lock/.github untouched by both commits, no unsafe ops). Measured corroboration: panel text `--ink` on `--surface` = 17.96:1 light / 14.22:1 dark; pre-fix `--muted` on `--bg` was 5.74:1 / 7.24:1 (both AA) — confirms the round-1 council's "low contrast overstated" nit numerically.
+
+  ### Findings and dispositions
+
+  - F1 (PLAUSIBLE, Medium) — outside-click close may not fire on iOS Safari: iOS Safari does not bubble `click` from non-interactive elements to `document`, so tapping prose in `<main>` may never reach the listener (_layouts/default.html 69–71). Unproven (needs iOS Simulator confirmation). Minimal fix recipe recorded: use `pointerdown` instead of `click` (behaviorally equivalent here — pointerdown on the toggle while open is guarded by `closest('.header-inner')`, the subsequent click still closes exactly once). DISPOSITION: carried to Prompt 11 as should-fix; not fixed in this cycle (verify-only posture; cannot verify on iOS here).
+  - F2 (CONFIRMED, Low) — Escape close drops keyboard focus to `<body>`: the handler is new in a77ecf2; a keyboard user tabbed into the open panel pressing Escape gets blurred to `<body>` when `display: none` lands on the focused link's ancestor, and the next Tab restarts from the document top; WAI-ARIA disclosure requires focus return to the trigger; the handler is also ungated (runs on every Escape site-wide) (_layouts/default.html 66–68). Minimal fix recipe recorded: `if (e.key === 'Escape' && nav.classList.contains('is-open')) { setOpen(false); btn.focus(); }` (the is-open guard is required or btn.focus() steals focus on every Escape). DISPOSITION: DEFERRED with rationale — the council-approved verify-only posture forbids new code in this cycle; F2 is an a11y refinement beyond the diagnosed requirements (Escape-close itself works as diagnosed), low severity; carried to Prompt 11 as should-fix and to Prompt 12 PR notes as a documented follow-up.
+  - F3 (CONFIRMED evidence gap — CLOSED here) — V6 did not run the CI-exact command: `.github/workflows/jekyll.yml` builds with `JEKYLL_ENV: production` and `--baseurl "${{ steps.pages.outputs.base_path }}"`; V6 set neither (`JEKYLL_ENV` gates `show_full` in `_layouts/lesson.html:11`). The internal reviewer ran the exact CI command — `JEKYLL_ENV=production bundle exec jekyll build --config _config.yml,_config_production.yml --baseurl ""` → exit 0, 24 pages, About present, nav byte-identical, 44px rules + 46rem block present. `CNAME` is an apex domain so `base_path` is empty and `--baseurl ""` matches CI. RESOLVED: the record now carries the CI-exact evidence; Prompt 12 to reflect it.
+  - F4 (CONFIRMED, Nit) — `padding: 0.3rem` and `line-height: 0` on `.nav-toggle` are inert given the 44px border-box mins + flex centering (assets/main.scss 188, 193). DISPOSITION: DEFERRED (cosmetic, committed code; recipe: delete both or comment them as a floor for a larger future glyph).
+  - F5 (CONFIRMED, Nit) — the "surface card" comment (assets/main.scss 676–678) overstates the fill: panel `--surface` vs page `--bg` measures 1.10:1 light / 1.09:1 dark; the panel reads by its 1px `--rule` border (1.30:1 / 1.31:1), and row dividers are 1.43:1 light but 1.19:1 dark (near-invisible in dark). NOT a new inconsistency — `.lesson-soon` (main.scss 611–613) uses the identical recipe; the weak fill contrast is a system-wide token property, not introduced by this diff. DISPOSITION: DEFERRED (recipe: reword the comment to the mechanism — "border-defined card using the .lesson-soon recipe" — and give the dark-mode panel one visual check).
+  - F6 (CONFIRMED, Nit) — `.header-inner` as the JS containment boundary couples behavior to a layout class (renaming silently degrades the guard to always-close) and, since `.header-inner` is `.wrap`-constrained while `.site-header` spans the viewport, tapping the header's side gutters closes the menu (defensible) (_layouts/default.html 70). DISPOSITION: DEFERRED (recipe: `closest('.site-header')` or a comment naming the coupling).
+  - F7 (CONFIRMED, Nit) — "defaulted to submit" overstates the pre-fix impact: no `<form>` exists anywhere in the repo, so a submit-type button outside a form did nothing; `type="button"` is correct hardening but fixed no active bug. DISPOSITION: carried to Prompt 12 — state it accurately in the PR notes.
+
+  Prompt 8 exit: every CONFIRMED finding resolved (F3) or deferred with rationale (F2, F4, F5, F6); the PLAUSIBLE finding evaluated and carried forward (F1); no source file modified (verify-only posture holds).
+
+  ## External review (Prompt 9 — review module, RUN-002)
+
+  Configuration: 8 parallel blind reviewers — 3 quality dimensions (correctness, consistency, clarity) + dedicated security fan-out, one agent per threat class S1–S5 with mandatory N/A reports (per book Prompt 9). All reviewers blind to each other and to the Prompt 8 internal review. Scope: the committed fix (ff17186 + a77ecf2) — note: ff17186 is a 5-file commit (_config.yml, about.md, articles.md, tools.md, ADR-0004), wider than the nav fix alone; all reviewers covered the full surface.
+
+  ### Quality dimensions
+
+  - CORRECTNESS — PASS. All gates re-run independently and green: jekyll clean/build exit 0, 24 HTML pages, 5-link nav incl /about/ on every page (histogram `24 5`), compiled CSS carries 44px mins + 46rem panel block, CI-exact build (JEKYLL_ENV=production, --baseurl "") exit 0 with About present. All four root causes resolved AT CAUSE (config string itself fixed, not worked around; border-box mins floor the tap target; panel surface + ink rows; toggle hardening simulated across 19 interaction paths with aria-expanded tracking is-open in every state). Supplementary: node --check SYNTAX_OK on the nav script; WCAG contrast 17.96:1 light / 14.22:1 dark panel text.
+  - CONSISTENCY — FAIL, 2 MUST-FIX (both on ADR-0004, detailed below). Nav/CSS work itself internally consistent: card recipe matches .lesson-soon exactly, token discipline clean, IIFE conventions kept, all 5 header_pages entries resolve, inset variant sanctioned by the re-baselined diagnosis. ADR-0002/ADR-0003 consistent; production-overlay build passes.
+  - CLARITY — FAIL, 1 MUST-FIX (false header_pages comment, detailed below). Pattern across SHOULD-FIX: the diff's three non-obvious mechanisms (box-sizing-dependent overflow safety, the 31.6px natural button box, the .header-inner containment guard) are exactly the three no comment explains, while existing comments lean on uncheckable words. All clarity findings are comment/prose-only — no declaration, selector, or behavior line implicated.
+
+  ### MUST-FIX findings (blocking; carried to Prompt 11)
+
+  - MX-1 (consistency M1) — ADR-0004 (status Accepted, superseded_by null) is contradicted by HEAD on three counts: (i) it decides index.md presents the manifesto; HEAD index.md is layout: home (hero + latest posts + featured lessons) with manifesto.md at /manifesto/. (ii) it decides header_pages lists ONLY About; HEAD lists 5 entries. (iii) it decides the manifesto does not appear as a nav item; HEAD renders Manifesto as nav item #1 on all 24 pages. HEAD is ADR-0004's explicitly REJECTED Option A. The cycle's own Diagnosis certifies as correct the state ADR-0004 forbids. The round-1 deferral (run notes, Overall section) does NOT cover this — it names the path-string drift (solved: all 5 entries resolve), not the stale DECISION. Fix: propose-adr a successor recording the landing-page homepage + 5-item nav; transition-adr supersede ADR-0004; correct the misnamed deferral in these notes.
+  - MX-2 (consistency M2) — ff17186 edited 4 body lines of ADR-0004 (status Accepted) substituting index.markdown → index.md, violating the append-only freeze rule (bionic/CLAUDE.md: body frozen after Proposed; only status frontmatter mutates), and no adr op was written to bionic/log.md. Compounding: since the Decision is stale (MX-1), the edit pointed a false statement more precisely. Fix: fold into MX-1's successor ADR — record there that ADR-0004's body carries an unlogged post-acceptance path correction; write the missing adr log op. Do NOT revert by hand (a second frozen-body edit).
+  - MX-3 (clarity MF-1; independently found by consistency as S1) — _config.yml:65 comment "Top-nav pages. The manifesto is the homepage (linked via the site title)." is false on both clauses at HEAD: index.md is layout: home (manifesto.md has permalink /manifesto/), and the site title links / not /manifesto/ (default.html:23); meanwhile manifesto.md is entry #1 of the very list the comment introduces. A fossil of ADR-0004's original decision. Fix (comment-only, changes no rendered byte): reword to state the actual contract (nav order; exact-filename match required by the where:"path" lookup; nav text from nav_label else title).
+  - MX-4 (security S3; corroborated by S5 + S1 out-of-class handoff) — PRE-EXISTING, out of the diff, but on a live reachable path (non-downgradable per book): https://bionic-coding.com/README.md (18.4KB) and /USER_GUIDE.md (22.6KB) publish live at the site root (S5 additionally observed /CLAUDE.md, 6.5KB). USER_GUIDE.md documents internal crux tooling incl. the secrets-store contract. Credential scan of the full published output: NO live credentials (single key-shaped string is a literal-x placeholder). Proven pre-existing: present in the ff17186^ artifact too; exclude: block untouched by the diff. Fix: add README.md, USER_GUIDE.md, CLAUDE.md to exclude: in _config.yml; regression test = published file-set check.
+
+  ### SHOULD-FIX findings (Prompt 11 judgment)
+
+  - SF-1 (correctness SF-1 = internal F1, independently rediscovered) — outside-click close inert on iOS Safari (default.html:69-71): iOS WebKit does not bubble click from non-interactive elements to document; the cursor:pointer escape hatch is absent (cursor appears once in the stylesheet, on .nav-toggle). Graceful degradation exists (hamburger re-tap + link tap still close), hence not MUST-FIX. Minimal fix: add pointerdown beside click with the same guard (double-fire safe — the .header-inner guard excludes the button in the pointerdown pass).
+  - SF-2 (correctness SF-2 = internal F2, independently rediscovered) — close does not return focus to the toggle (default.html:66-68): display:none on the focused link's ancestor resets focus to body (WCAG 2.4.3; ARIA disclosure requires focus return); Escape handler also ungated. Minimal fix: guard on is-open + btn.focus().
+  - SF-3 (consistency S2 = clarity SC-8) — tools.md:10-15 blank line inside an HTML comment: violates the documented CLAUDE.md kramdown gotcha (blank line ends the HTML block and stops Markdown conversion for the rest of the file). Introduced by ff17186 (in the cycle's diff). VERIFIED LATENT, not live: rendered output currently correct (the surviving text needs no Markdown conversion), but any future Markdown added in/after the block trips it. Fix: replace the blank line with a lone . spacer per the documented convention.
+  - SF-4 (consistency S3) — tools.md:21-25 uses ` - ` separators where every comparable list on the site uses ` — ` (about.md, five lesson pages); ff17186 created the outlier. Cosmetic.
+  - SF-5 (clarity SF-2) — panel comment (main.scss:676-678): "so it can never overflow" states a conclusion while hiding its load-bearing precondition (box-sizing: border-box line 74 + flex-basis resolving against the content box); "never" overreaches (contents could still overflow — today's longest label fits, that is "not today", not "never"); "reads correctly in light AND dark" is an uncheckable adjective (the checkable fact: all three tokens are redefined under prefers-color-scheme: dark).
+  - SF-6 (clarity SF-3) — the load-bearing 44px mins (main.scss:187-188) are uncommented at their primary site: nothing hints the natural box is 31.6px (a maintainer tidying "redundant" mins off a padded button silently reintroduces the bug) and 44's provenance appears nowhere.
+  - SF-7 (clarity SF-4 = internal F6 mechanism) — the .header-inner containment choice (default.html:69-71) is the diff's most non-obvious mechanism and is unexplained: the opening click on the button bubbles to document after setOpen(true); .header-inner wraps both button and nav so closest() matches and the menu survives; narrowing to #site-nav would close the menu on the click that opened it.
+
+  ### SHOULD-CONSIDER / NIT (deferral candidates for Prompt 11)
+
+  - SC-1 (correctness SF-3) — header_pages lookup fails silently (default.html:30-33): the silent-drop is the systemic reason S1 shipped undetected; the string fix closes the instance but leaves the failure class unguarded. Consider a build-time assertion. The DURABLE half of the ADR-0004 drift family — distinct from MX-1's decision staleness.
+  - SC-2 (correctness SF-4) — nav unreachable at <46rem with JS disabled: PRE-EXISTING (display:none predates the diff, visible as unchanged context in a77ecf2); noted, not charged.
+  - SC-3 (consistency C1) — root CLAUDE.md:88-89 repeats the stale "manifesto reached via the site title" claim (outside the diff; the diff owns the mechanism).
+  - SC-4 (consistency C5) — about.md:23 "Read the full manifesto →" near-collides with _layouts/home.html:17 "Read the manifesto →" (rule 1: one name per thing).
+  - SC-5 (consistency C6/C7 = internal F4 + token/order nits) — inert padding: 0.3rem/line-height: 0 on .nav-toggle; 44px the only non-rem box metric (defensible as WCAG floor, unremarked); panel property order differs from the .lesson-soon/.callout recipe order.
+  - SC-6 (clarity SC-5/6/9, NIT-10) — divider comment gives effect not reason; section comment captions three listeners while bound to one; terminology drift (header menu / collapsed menu / surface card / inset panel — pick one); type="button" rationale uncommented.
+  - SC-7 (clarity SC-7) — commit messages misdescribe both commits (a77ecf2 "scss fixes" also rewrites default.html; ff17186 "more cleanup" spans config + content + ADR edits). IMMUTABLE — record in Prompt 12 PR notes so the changelog carries the description the messages don't.
+  - SN-1 (S1 nit) — default.html:32 nav label output is unescaped Liquid (| escape not applied, unlike :7); no reachable path (values are commit-gated frontmatter; below the trust boundary — an actor who can set them already has build-time RCE via :jekyll_plugins). Defense-in-depth only.
+  - SN-2 (S4 should-consider, pre-existing) — Actions pinned to mutable major tags not SHAs; vendored assets/mermaid.min.js (3.5MB) has no recorded provenance/version. Pre-existing hardening tickets, not charged to this diff.
+  - SN-3 (S5 nit) — e.target.closest() assumes an Element target; unreachable via real clicks; no security consequence.
+
+  ### Security verdicts S1–S5 (mandatory reports, all filed)
+
+  - [SECURITY:S1] Injection — N/A on the diff. Nav script has zero HTML sinks (only classList.toggle + setAttribute with literals; zero server-side interpolation in the script region). Callouts innerHTML (default.html:87) pre-existing, untouched, round-trips already-parsed author markup with a prefix-removal regex — no untrusted-input path exists anywhere on the site (repo-wide scan: no location/URLSearchParams/postMessage/storage/fetch/cookie readers). Liquid nav output unescaped but unreachable (SN-1). Build-time surface closed (bionic/ correctly excluded — the exclude rename closes rather than opens a hole).
+  - [SECURITY:S2] Secrets — N/A. Full-diff scan (keywords, vendor prefixes, credential-in-URL, entropy ≥20 chars, base64 ≥40 chars): no credential-shaped material; the 5 new URLs are bare public vendor homepages. _config.yml/_config_production.yml/.bionic.yml carry no keys (github_username is public-by-design, rendered into the footer deliberately). No secret-shaped tracked files repo-wide; no path from any secret to _site (workflow uses no secrets.* interpolation; GITHUB_TOKEN least-privileged and never enters the build). Note: GitHub's run_secret_scanning was unavailable (repo not found under that name with current credentials) — verdict rests on the documented pattern/entropy scans; residual risk assessed negligible.
+  - [SECURITY:S3] Authorization — N/A on the diff (proven by artifact file-set diff: production build before vs after ff17186 emits IDENTICAL file sets; /about/ was already published at ff17186^ — the bug was a dangling link over an already-reachable page; live /about/ returns 200). No authn/authz mechanism exists on the site at all. Deploy surface untouched and least-privileged (no pull_request_target). Separately: MX-4 pre-existing publication exposure.
+  - [SECURITY:S4] Supply chain — N/A. Zero dependency/CI/plugin files touched (Gemfile.lock pins jekyll 4.4.1, jekyll-feed 0.17.0, kramdown 2.5.2, minima 2.5.2, liquid 4.0.4 — unchanged). Diff adds no script/link/iframe/fetch/CDN; the 5 tools.md links are navigational anchors (no target=_blank, no reverse-tabnabbing surface). Existing load surface is fully self-hosted (fonts, styles, mermaid with securityLevel strict). SN-2 pre-existing tickets.
+  - [SECURITY:S5] Unsafe file/shell/resource — N/A / PASS. Nav JS writes only classList + aria-expanded; no storage/network/clipboard/service-worker/capture/navigation-hijack/form-interception primitives in the diff; no build-time shell/file ops (no scripts, no plugins dir, workflow untouched); no crossorigin/referrerpolicy/integrity changes (existing font-preload crossorigin is spec-required, same-origin). tools.md external links carry no target=_blank. MX-4 corroborated; SN-3 nit.
+
+  ### Cross-reviewer convergences (independent rediscovery — high confidence)
+
+  - SF-1/F1 and SF-2/F2 found independently by internal review (Prompt 8) and the external correctness reviewer, with identical minimal fixes.
+  - MX-3 found independently by clarity (MUST-FIX) and consistency (SHOULD-FIX S1) — classified MUST-FIX (accuracy outranks; the comment states the opposite of what the code does).
+  - MX-4 flagged by S3 (MUST-FIX), corroborated by S5 (SHOULD-CONSIDER) and S1 (out-of-class handoff); credentials independently verified absent by both S3 and S5.
+  - tools.md blank-line-in-comment flagged by consistency (S2), clarity (SC-8), and S5 (nit) — verified latent by all three.
+
+  Route per book: findings carried to Prompt 10 (conformance audit) and Prompt 11 (fix loop).
+
+  ## Conformance audit (Prompt 10 — review module, RUN-002)
+
+  Configuration: 3 parallel blind auditors per book Prompt 10 — (a) test/verification coverage, (b) comments/docs, (c) dev-practice conformance. All evidence independently re-derived by the auditors (builds re-run, tokens recomputed, line citations re-checked).
+
+  ### Audit (a) — coverage: GAPS-FOUND
+
+  Reproduces (credit): G1 empty both times; V1 24 pages / missing-About 0 / histogram {5:24} / nav byte-exact; V2 all 12 declarations; V3 byte-exact block, border-top=1, offsets 3836<14780; V5 negative greps 0/0/0 (incl. the recorded body-only narrowing); V6 prod-overlay exit 0 / 24 / ABOUT_PRESENT. Page inventory audits exactly (6 posts + 404 + 5 top-level + /learn/ + 11 lessons). Mutation test: rebuilding with a temp overlay restoring about.markdown flips V1 to MISSING_ABOUT 24, histogram {4:24} — V1 is a PROVEN regression check (build still exits 0 — SC-1's silent-drop confirmed).
+
+  - CV-M1 (MUST-FIX) — 4 of the 5 files in ff17186 have zero V-unit coverage: about.md, articles.md, tools.md, ADR-0004. Prompt 9's "all reviewers covered the full surface" was review-by-reading, not a verification unit; no recorded check would fail if these regressed. Sharpest: tools.md carries the documented kramdown blank-line-in-comment hazard (verified latent: h2#recommended + tool list render correctly at HEAD). Fix: add a V-unit asserting rendered output for every file the commit touched.
+  - CV-M2 (MUST-FIX) — the MX-4 publication-exposure fix has no verification unit and lands in the very file (_config.yml) this cycle certifies; current base build emits _site/CLAUDE.md (6.5KB), _site/README.md (18.4KB), _site/USER_GUIDE.md (22.6KB). MX-4 prescribes its own regression test (published file-set check) — add it as a V-unit BEFORE Prompt 11 edits _config.yml. A reachable-security fix with no coverage is non-downgradable.
+  - CV-S1 (SHOULD-FIX) — V6 is labeled "the CI path" but its command is not CI's: V6-as-recorded vs CI-exact (JEKYLL_ENV=production --baseurl "") differ in 2 files; the material difference is learn/leveraging-ai/ — V6's build publishes the stub lesson's full body, CI publishes the lesson-soon card (JEKYLL_ENV gates show_full in _layouts/lesson.html:11). Both emit 24 pages — the page-count token cannot distinguish the configurations. F3 closed the evidence gap but the V6 block was never amended. The overlay's actual live differentiator at HEAD is the JEKYLL_ENV stub gate, not drafts exclusion (vacuous).
+  - CV-S2 (SHOULD-FIX) — V3's absence assertion runs over a truncatable window: the true block is 897 chars, the window 900 — 3 bytes of headroom; one added declaration pushes a second border-top past the window while the count still reports 1. Brace-match the block instead of slicing a constant.
+  - CV-S3 (SHOULD-FIX) — V4 claims "behavior" but its method is static reading; R7's honesty rule was applied only to V5. Auditor executed the shipped script against a DOM shim across 9 interaction paths — aria-expanded tracks is-open in every state, V4's conclusion is CORRECT — but that execution is audit work, not a recorded unit. Relabel V4's method or record the execution.
+  - CV-S4 (SHOULD-FIX) — dark mode has zero V-unit coverage; the panel depends on --surface/--ink/--rule (all three confirmed redefined in the compiled dark block); the one scheme with a measured legibility concern (dark row divider 1.19:1, internal F5) is the one no unit checks.
+  - CV-S5 (SHOULD-FIX) — V1's strongest check (the histogram) has no recorded command; the reproducible sibling grep -L 'href="/about/"' is weaker than it appears (0 pages carry /about/ outside the nav today — one future body link turns it into a permanent false-green). Record the histogram command.
+  - CV-C1..C4 (SHOULD-CONSIDER) — mutation coverage proven for 1 of 4 defects; nothing exercises the 46rem boundary or names the co-active 34rem block (verified benign: font-size + footer direction only; .site-nav a is root-relative); desktop non-regression asserted only in Prompt 8 (the base .nav-toggle mins are inert only because display:none — no unit pins that dependency); V2's box-sizing check is attached to the wrong unit (border-box is not load-bearing for V2 — content-box would make the button LARGER — but IS load-bearing for V5's panel arithmetic, which lacks the check).
+  - Observation (out of scope, not charged): _lessons/leveraging-ai.md renders a literal `## Don't Be a Passenger` paragraph in the DEV build — a kramdown heading failure in a status: stub lesson; neither commit touches it; surfaced only because the auditor ran the non-CI build.
+
+  ### Audit (b) — comments/docs: DRIFT-FOUND
+
+  Verified ACCURATE (no finding): the a77ecf2 comments' load-bearing claims hold — "never overflow" is TRUE (two independent guarantees: border-box keeps the 1px border inside flex-basis:100%, and .wrap insets 1.5rem; either alone suffices; the comment credits only the .wrap inset); "reads correctly in light AND dark" is TRUE measured (17.96:1 / 14.22:1, both tokens defined in both schemes); the outside-click comment is accurate in the only regime that matters (--measure 48rem > 46rem breakpoint, so .header-inner spans the viewport at ≤46rem); type="button" warrants no comment (no form exists — defensive hygiene); setOpen() is self-documenting; historical .markdown references in journal/garden/log are correct as history. extract-code-docs --dry-run: N/A (no code concern in bionic/manifest.yml, no extractors, no code tree).
+
+  - CD-M1 (MUST-FIX = MX-3, third independent discovery) — _config.yml:65 comment false in both clauses, contradicted by line 67 directly below it; ff17186 edited line 71 inside this block and left the header comment stale (origin: 2980959 truncated it but kept the false premise). Rewording supplied: state nav order, exact-path fragility (where:"path" silently drops stale extensions — the very bug this cycle fixes), nav_label override.
+  - CD-M2 (MUST-FIX, new) — root CLAUDE.md:88-89: "manifesto.md — the canonical manifesto, served at /manifesto/ and reached via the site title." The second clause is false (site title links /; manifesto is reached from the top nav). Same verified build evidence as CD-M1. Fix: "reached from the top nav".
+  - CD-S1 (SHOULD-FIX = SF-6) — main.scss:187-188 44px floor has no comment anywhere (repo-wide grep confirms): the natural box is 31.6px (22px icon + 2×0.3rem; html sets no font-size so 0.3rem=4.8px), the mins — not the padding — make the target tappable, 44 is an external standard (WCAG 2.5.5 / iOS HIG), and the mins sit in the desktop base rule while only mattering at ≤46rem. Deleting them silently restores the diagnosed bug with no test to catch it. Comment text supplied.
+  - CD-S2 (SHOULD-FIX = SF-7) — default.html:70 .header-inner containment WHY unexplained: it is the common ancestor of button AND nav; the opening click bubbles to document after setOpen(true); narrowing to #site-nav makes the toggle inert. Comment text supplied.
+  - CD-S3 (SHOULD-FIX, corroborates MX-1) — ADR-0004:43-44 asserts header_pages lists ONLY About; HEAD lists five. Third copy of the false premise. Remedy is the superseding ADR (MX-1), not a body edit; notes ff17186's body edit as the mechanism letting an Accepted ADR drift quietly.
+  - CD-S4 (SHOULD-FIX, new) — bionic/log.md:168 attributes the About fix to the WRONG commits: verified via git log -S "about.markdown" -- _config.yml → f8a3e82 "update about" deleted about.markdown/added about.md AND edited header_pages while leaving - about.markdown in place (this BROKE the nav); ff17186 made the fix (- about.markdown / + about.md); a77ecf2 never touches about or _config.yml. The log names the breaking commit as the fixing commit, omits the actual fix, and credits an uninvolved commit. log.md is APPEND-ONLY — no in-place edit; correct attribution recorded here and in the successor ADR (MX-1) + Prompt 12 PR notes.
+  - CD-C1 (SHOULD-CONSIDER) — the CLAUDE.md kramdown gotcha (lines 99-101) does not reproduce as written: tested with the repo's own toolchain (kramdown 2.5.2 + GFM parser, input GFM, hard_wrap false) — top-level comment with blank line inside: renders fine; INDENTED comment with blank line: leaks as visible text with -- mangled to –; comment glued to preceding paragraph: leaks; div block with blank lines: inner Markdown unconverted but recovers after the close tag. The real failure is a LEAK triggered by indentation or missing preceding blank line — not "stops converting for the rest of the file". Rewording supplied; deferred (outside the cycle's diff).
+  - CD-C2 (SHOULD-CONSIDER = divider comment) — main.scss:699 states the rule not the consequence: the panel's own 1px border (684) is why a first-row border-top would double into a visible 2px hairline. Rewording supplied.
+  - CD-C3 (SHOULD-CONSIDER = SC-7) — commit messages: ff17186 "more cleanup" covers five unrelated changes incl. the user-visible fix + an Accepted-ADR body edit (uncheckable adjective, names nothing); a77ecf2 "scss fixes" — 22 of 31 changed lines are HTML/JS. Immutable; journal 2026-08 already maps each root cause to its commit; Prompt 12 changelog carries the mapping forward.
+
+  ### Audit (c) — dev-practice conformance: PASS
+
+  Tier-1 (all PASS, zero NOT-ALLOWED): (1) every gate carries exact command + concrete token — auditor re-derived them independently: 24 pages, 24 5 histogram, byte-exact nav (incl. >Lessons<), 12 declarations, border-top=1, offsets 3836/14780, box-sizing=1, 12 learn pages, 0 lesson_drafts, all 11 V4 line citations — exact matches throughout; no bare "all green". (2) Internal review strictly preceded external (Prompt 8 completed == Prompt 9 started, 16:01:15Z), findings all dispositioned, F2 deferral rationale substantive; F3 closure corroborated against the workflow file (JEKYLL_ENV + baseurl; CNAME apex ⇒ --baseurl "" correct; lesson.html:11 gates show_full). (3) Schema/data migration: N/A correctly — the diff's only config change is a one-line string swap (no collection/permalink/URL-shape change); the one docs-data instance (ADR-0004 body edit) is already captured as MX-2 with the correct remedy. (4) Process conformance clean: all eleven promptbook ops present newest-first and contiguous, matching snapshot states exactly; journal commit-entry present with its log op correctly interleaved; council verdicts recorded for all 3 rounds with configurations; RUN-001 carry-over byte-verified (council verdict identical 7/7 lines); plan binding intact (compute_book_hash recomputed == stored 878bedef…); verify-only posture independently confirmed (G1 empty).
+
+  Tier-2: no hidden weakened assertions — the two narrowings (V5 body-only grep; V6 structural drafts check) are both disclosed with rationale and verified honest. All 6 N/A gates carry written reasons; the two mechanically checkable ones verified true (no code concern; invariants empty 0 pins/0 checks). No hand-mutated state; sampled numeric claims all reproduce. Security scan of the run's own artifacts (snapshot, journal, log): zero credential material.
+
+  - CF-C1 (SHOULD-CONSIDER) — V6's heading overstates what V6 ran; the record as a whole is honest (F3 names and closes the gap) but a reader of V6 alone is misled, and the overstatement propagated to the Prompt 7 result line + log entry (written history — append-only). Fix: erratum pointer V6 → F3 (this section is the pointer; Prompt 12 PR notes distinguish "production-overlay build" (V6) from "CI-exact build" (F3)).
+  - CF-C2 (SHOULD-CONSIDER) — G4/G5 gate lines record bare PASS delegating to V1/V2/V3 tokens; evidence exists verbatim and reproduces, but restate one token inline per gate in the Prompt 11 re-run record.
+  - CF-C3 (SHOULD-CONSIDER) — book Prompt 8 names the code-review skill; it is not in the installed skill set, and the equivalent independent-reviewer substitution was not recorded. Recorded here: Prompt 8 was executed by an independent reviewer agent (private dry-run) as a sanctioned equivalent.
+  - CF-C4 (SHOULD-CONSIDER) — Provenance says both Prompt 1–2 outputs were "carried over verbatim": the council verdict was (byte-verified); the Diagnosis was subsequently revised across two council rounds (disclosed in its heading). Read the Provenance as "carried over, then revised per council rounds 1–2".
+  - CF-N1 (NIT) — V3's border-top count + cascade offsets carry tokens but no commands; all three reproduced exactly; record the one-line commands in the Prompt 11 re-run.
+
+  ### Prompt 11 consolidated MUST-FIX list (blocking)
+
+  1. MX-1 + MX-2 — ADR-0004 reconciliation: propose-adr a successor recording the landing-page homepage + 5-item nav architecture; council; fresh-architect accept; transition-adr supersede ADR-0004 (frontmatter-only); record the unlogged post-acceptance body edit + the log.md:168 misattribution (CD-S4) in the successor; write the missing adr log op; correct the misnamed deferral in these notes (Overall section names the path-string drift; the actual drift is ADR-0004's stale DECISION).
+  2. MX-3 (= CD-M1) — rewrite _config.yml:65 comment accurately.
+  3. CD-M2 — fix root CLAUDE.md:88-89 ("reached via the site title" → "reached from the top nav").
+  4. MX-4 + CV-M2 — add README.md, USER_GUIDE.md, CLAUDE.md to exclude: in _config.yml; add the published-file-set V-unit FIRST (before the edit) and re-run it after (regression test).
+  5. CV-M1 — add a rendered-output V-unit for every file ff17186 touched (about.md, articles.md, tools.md — incl. the kramdown hazard assertions; ADR-0004 is build-excluded, covered by the ADR workstream).
+
+  Prompt 11 fix decisions (SHOULD-FIX, per commander judgment under the book's fix-loop charter): FIX now — SF-1 pointerdown outside-close, SF-2 Escape guard + btn.focus(), SF-3 tools.md spacer, SF-5 panel comment, SF-6 44px why-comment, SF-7 .header-inner why-comment, CD-C2 divider comment, CV-S1/S5/N1 record amendments in the re-run. DEFER with rationale to PR notes/follow-ups — inert padding deletion (SC-5/F4; the new 44px comment clarifies the padding's role), CLAUDE.md gotcha rewording (CD-C1; outside diff), terminology drift + section-comment placement + em-dash + about.md CTA collision (SC-4/SC-6/SF-4; cosmetic batch, one follow-up commit), root CLAUDE.md broader site-structure review, header_pages silent-failure assertion (SC-1; durable half — follow-up iterate/brief candidate), no-JS nav (SC-2; pre-existing), Actions SHA pinning + mermaid provenance (SN-2; pre-existing hardening tickets), commit-message record (SC-7; immutable — changelog carries the mapping), SN-1 Liquid escape defense-in-depth, SN-3, CV-S2 brace-match + CV-S3 method relabel + CV-S4 dark-mode check + CV-C1..C4 (folded into the re-run units where cheap, else recorded). Forge-log used entry: NO forged skill was invoked by this review module (council/run-promptbook are plugin skills) — clean no-op.
+
+  ## Fix loop (Prompt 11 — review module, RUN-002)
+
+  ### Workstream A — ADR reconciliation (MX-1 + MX-2)
+
+  Architect drafted ADR-0005 "Serve a landing homepage and a five-item top nav" (bionic/adrs/ADR-0005-serve-a-landing-homepage-and-a-five-item-top-nav.md) via propose-adr (manifest next_number 5→6, index row, log op). Council (run-adr-council, 3 seats, 0 errored): MAJORITY_APPROVE at 94% consensus — anthropic APPROVE 90%, gemini APPROVE 95%, openai REJECT 97% where the rejector stated "the core decision is sound... straightforward drafting fixes rather than objections to the architecture itself". All 10 dissent points were drafting fixes; unanimous: stale CLAUDE.md follow-on removed; 2 seats: line-number locator replaced with date-keyed reference (the 2026-07-20 promptbook entry); plus explicit acceptance criteria, publication-boundary scope statement, overbroad-exclude rewording, exclude-hazard follow-on. Drafter applied all 7 consolidated fixes and re-verified every claim against current files. Dissent resolution: remedies unanimous; both approving seats delegated verification to the acceptance gate. Fresh architect instance (never the drafter) performed acceptance: 7/7 council conditions closed, 7/7 factual claims re-verified against the tree, acceptance criterion 4 re-run at HEAD after the _config.yml edit (jekyll clean && build exit 0, 24 HTML pages, 0 pages missing href="/about/", all five nav links present, byte-exact nav block). Transitions executed via transition-adr: ADR-0005 Proposed → Accepted (accepted_date 2026-08-14); ADR-0004 Accepted → Superseded (superseded_by: ADR-0005, superseded_date 2026-08-14); bidirectional pointers; index rows updated in bionic/adrs/index.md and bionic/index.md; three log ops prepended to bionic/log.md including the RETROACTIVE record closing MX-2 (ff17186's four-line post-acceptance body edit to ADR-0004, index.markdown → index.md; history not edited in place). ADR-0004 body byte-identical: shasum of lines 17–EOF = 8166e1ef… at HEAD and working tree. Gate disclosures: (1) transition-adr's duplicate-supersedes guard was read as guarding duplicate list entries, not pre-declared supersessions — end state idempotent and correct; (2) residual prose defect now frozen — see Errata.
+
+  ### Workstream B — code/config/doc fixes
+
+  Per file: _config.yml — header_pages comment rewritten true (nav order, exact-path silent-drop hazard citing ADR-0005, nav_label override; every clause verified against the Liquid in _layouts/default.html:29-34) + README.md/USER_GUIDE.md/CLAUDE.md added to exclude: (preserving bionic/, _templates_) + reason comment "Repo documentation is not published — see ADR-0005". _layouts/default.html — pointerdown outside-close (iOS fix), Escape guard + btn.focus() (WCAG 2.4.3), containment comment, pointerdown comment, Escape comment. assets/main.scss — comment-only: 44px why-comment (31.6px natural box arithmetic verified), panel comment rewritten to mechanism (border-box + .wrap inset; contrast 17.96:1 light / 14.22:1 dark independently recomputed), divider comment consequence. tools.md — blank line inside HTML comment → lone . spacer (hardening per the documented convention — the hazard was LATENT at HEAD, the page rendered correctly; recorded accurately, not as a broken-page fix). Root CLAUDE.md — "reached via the site title" → "reached from the top nav" (one clause).
+
+  ### Verification re-run (post-fix, independent agent)
+
+  All PASS. G1 adapted (diff-scope, not clean-tree — the verify-only posture ended when Prompt 11 authorized fixes): git status -- ':!bionic/' = exactly the five fix files @43ab7f2. G2/G3 exit 0. G4 24 pages. G5 24 + no lesson_drafts leak (mechanism: _config.yml:48-50 output:true flipped by _config_production.yml:10-11). G6 About link = 1. V1: 24 pages, 0 missing About, histogram command recorded this run ({5:24}). V2: 12 declarations. V3: brace-matched block (CV-S2 amendment) byte-exact 1200B, border-top: declaration count 1 (raw grep = 2 includes comment text — use the declaration form), offsets 3840 < 15289 (moved from 3836/14780 as expected from comment text; ordering invariant intact), one-line commands recorded (CF-N1). V4: method honestly labeled static-reading (CV-S3); 9-path trace confirms aria-expanded ↔ is-open invariant with the new behaviors; setOpen is the only writer of both. V5: negative greps 0/0/0, body-only narrowing disclosed and load-bearing. V6 erratum (CF-C1): V6-as-recorded is the production-overlay build, NOT the CI path; both run and labeled — overlay exit 0 / 24 pages; CI-exact (JEKYLL_ENV=production --config _config.yml,_config_production.yml --baseurl "") exit 0 / 24 pages; the overlay's live differentiator at HEAD is the JEKYLL_ENV stub gate (_layouts/lesson.html:10-11), drafts exclusion vacuous (_lesson_drafts/ holds only .gitkeep).
+
+  ### Durable units recorded (closures of CV-M1, CV-M2, CV-M3, S3-MF-1)
+
+  V7 — published file-set (regression test for MX-4). Method, honestly labeled per the cycle's own rule applied to V6/V4: the pre-fix baseline was RECONSTRUCTED from `git archive HEAD` (pre-fix state) after the _config.yml edit landed, not run before it; post-fix builds ran live — same evidential strength, honest label. Baseline: _site/README.md 18401 B, _site/USER_GUIDE.md 22603 B, _site/CLAUDE.md 6474 B all published; 24 HTML pages; no _site/bionic/. Provenance note: working-tree CLAUDE.md is 6472 B because CD-M2 edited it in the same loop; 6474 reproduces only against HEAD. Post-fix (jekyll clean && build, and CI-exact variant per CV-M2-R1): all three ABSENT in both builds; 24 HTML pages; no _site/bionic/. Mutation control: overlay restoring the pre-fix exclude list → 3 files PRESENT again (the edit is load-bearing; YAML arrays replace, not merge — _config_production.yml must never redeclare exclude:). Class check relabeled (CV-M2-R2 / S3-SF1): find _site -name '*.md' -o -name '*.yml' → empty is an EXTENSION-SCOPED DENYLIST, not a durable oracle — an extensionless or wrong-extension root file defeats it (demonstrated: a published _site/NOTES.txt and _site/SECURITY both still read 0 from this check). The load-bearing durable oracle is the inventory count: find _site -type f ! -path '*/assets/*' ! -path '*/fonts/*' → 26 files, all intended (6 posts + 404 + 5 top-level + learn index + 11 lessons + feed.xml + CNAME); without the fonts exclusion the count is 30. Commands inlined (no dangling pointer): baseline = `git archive HEAD | tar -x` into a temp dir + `bundle exec jekyll build`; mutation control = a temp copy of the working tree + an overlay redeclaring `exclude:` with only `bionic/` + `_templates/` + `bundle exec jekyll build`; post-fix = `bundle exec jekyll clean && bundle exec jekyll build` (and the CI-exact variant) + `find _site \( -iname 'README*' -o -iname 'USER_GUIDE*' -o -iname 'CLAUDE*' \)` (expect 0 hits) + the class check + the inventory filter above.
+
+  V8 — rendered output of every file ff17186 touched (CV-M1): about page renders real content (h2#the-manifesto-in-a-line = 1; href="/manifesto/" = 3; delta-grep "Read the full manifesto" present per CV-M1-R1); articles page post loop populated (6/6 post links; delta-grep the description string "Weekly-ish news for AI and software development." present in meta + subtitle); tools page kramdown-hazard assertions (h2#recommended = 1; ul = 1, li = 5; Markdown conversion resumes after the comment). Assertion-form correction: kramdown emits HTML comments VERBATIM into output, so raw grep for comment-internal strings always matches in the source HTML; the leakage oracle is comment-strip-then-grep (perl -0777 -pe 's/<!--.*?-->//gs'), which returns 0 — no visible leakage; the lone . spacer does not leak (<p>.</p> = 0). ADR-0004/0005 build-exclusion asserted by no _site/bionic/.
+
+  V10 — nav interaction harness (CV-M3; round 2): real Chrome 147.0.7727.117 via Playwright 1.53.1 (channel:'chrome'); script extracted programmatically from the working tree (both guards asserted at extraction); verbatim CSS slices (brace-balance asserted); touch 390×844 + mouse 700×900 (≤46rem) + desktop 1200×900 contexts; geometry: header 66.4px closed → 311.8px open (245px reflow available). 23 paths, 0 DEFECT — including all round-1 MUST-FIX defect paths now SAFE: P12 touch tap on content link → click lands on the TAPPED link + nav closes via click handler; P12-mouse → no collapse to common ancestor, navigation happens; P13 right/middle-click outside → nav stays open, contextmenu/auxclick target correct (no retarget); P5 nav-link tap → navigate + close; P6 non-interactive tap → closes via pointerdown (iOS fix survives the guards). Full regression: toggle ×3 input modes, svg-icon pointerdown, double-fire no-op, Escape open (focus → toggle) / closed (no-op), rapid ×6 synced, stale-is-open desktop carry-over safe, outside-button guard skip, scroll-gesture close (accepted per F1 deferral). Writer invariant: 39 runtime samples, 0 desyncs. Re-runnable artifacts: navtest/V10_RECORDED_UNIT.md + v10_report.json (harness dir outside the repo). Caveat recorded: Chrome emulation only — true iOS WebKit not exercised in either round; device check recommended pre-merge (PR notes). FIXTURE-BASED, relabeled: this unit runs against a standalone HTML/CSS/JS fixture extracted from the working tree, not the built _site/ output; its artifacts live in a per-user TMPDIR — not version-controlled, OS-reapable — and the harness symlinks a global node_modules (not hermetic). The unit is reconstructable from the recorded setup, but the artifacts themselves are not durable in the strict sense. Round 3's real-site unit (see the round-2 re-review below) supersedes V10 as the authority on nav-dismiss behavior.
+
+  ### Re-review round 1 (7 blind reviewers)
+
+  Per reviewer, one line: Correctness APPROVE (0 MUST-FIX; compiled CSS byte-identical modulo comments — SHA over 607 declaration lines (comment-stripped filter; a blank-line-stripped variant yields 610 — same conclusion, diff empty); 12/12 JS interaction assertions; zero prose lines changed across all 24 pages; exclude tree-diff exactly 3 removals; _config_production.yml does not redeclare exclude:). Consistency DONE-WITH-CONCERNS — MX-1/MX-2/MX-3/CD-M2/CD-S4 all CLOSED (log.md numstat 133 insertions 0 deletions — pure prepend; 2026-07-20 entry untouched at its new position); 2 SHOULD-FIX (C-1 ADR-0005:47-48 reversed substitution wording; C-2 bionic/index.md journal count stale). Clarity DONE-WITH-CONCERNS — all five comments CLOSED; 1 new MUST-FIX MX-C1 (pointerdown comment's "never runs on iOS" contradicts its own non-interactive premise). Coverage BACK-TO-FIX — CV-M1 CLOSED, CV-M2 CLOSED on re-derived evidence (baseline could not have been read off the current tree — genuine); 1 new MUST-FIX CV-M3 (amended behavioral JS had zero recorded units — the Prompt 10 shim ran pre-change) + SHOULD-FIX R1/R2 (CI-exact variant; denylist → class check). S3 BACK-TO-FIX — exposure CLOSED and mutation-proven load-bearing; 1 MUST-FIX: the mandated regression test existed only as prescription, not recorded unit; SHOULD-FIX denylist gap (NOTES.md/SECURITY.md demonstration). S1 BACK-TO-FIX — 1 MUST-FIX measured in real Chrome: pointerdown close reflows 230px before click-target resolution → touch mis-navigation to a different link, mouse click lost entirely at ≤46rem, contextmenu retarget; validated remediation shape supplied. S5 DONE-WITH-CONCERNS — 0 MUST-FIX; Escape fix verified on all four properties; 1 introduced SHOULD-FIX F1 (touch-scroll closes nav, drops focus — frequency change vs existing click path; outcome identical).
+
+  ### Re-review round 2 fixes (applied)
+
+  Round-2 MUST-FIX closures: S1-M1 — two guards added to the pointerdown listener (verbatim: if (e.button) return; then if (e.target.closest('a, button, input, select, textarea, summary, label, [role="button"], [onclick]')) return;) — non-primary pointers do not dismiss; interactive targets are left to the click handler because iOS dispatches real clicks for them and closing first would reflow before click-target resolution. MX-C1 — pointerdown comment rewritten true of the final code (non-interactive taps covered by pointerdown; interactive taps left to the click handler; non-primary pointers do not dismiss). CV-M3/S3-MF-1 — V10 harness unit + V7 recorded unit (above). Writing-rule polish applied to the loop's own new comments: panel→card (one name), "(above)" disambiguated to "(declared on .site-nav)", "visible 2px hairline"→"stack to 2px", tilde dropped from 31.6px, "overflowing the viewport" named, containment sentence split, "actually" dropped, exclude reason comment added. Proofs: comment-stripped main.scss diff HEAD-vs-worktree EMPTY; functional JS delta = exactly the Escape guard + btn.focus() + pointerdown listener with its two guards; shipped _site/index.html contains both guard lines; build exit 0, 24 pages, About nav intact.
+
+  ### SHOULD-FIX dispositions (fix-vs-defer per the book's charter)
+
+  FIXED in round 2: SF-1..SF-7 + CD-C2 (round 1), R3 SC-C1/SC-C2/SC-C3 + N-1..N-5 (comment polish), R2 C-2 (journal count — fixed with this record), CV-S1/S2/S3/S5 + CF-C1/C2/N1 (verification amendments, folded into the re-run above), CV-M2-R1 (CI-exact variant in V7), CV-M2-R2/S3-SF1 (class check in V7), CV-M1-R1 (delta greps in V8).
+  DEFERRED with rationale: R7 F1 touch-scroll close — outcome matches the pre-existing click path (focus drops to BODY, next Tab resumes at the interaction point); closing on outside touch is the intended outside-close semantics; restoring focus on pointerdown-close would fight mousedown's default focus behavior on mouse (the S5 reviewer's own caveat) and yank focus before navigation on link taps; candidate follow-up: a shared close(returnFocus) helper. R2 C-1 — see Errata (frozen body; permanent record states the direction). R5 NIT-2 (main.css.map publishes SCSS via sourcesContent — hygiene only, repo public) and NIT-3 (tools.md authoring notes publish as HTML comments — pre-existing, not sensitive): pre-existing follow-ups. R6 NIT-1 (e.target.closest not total — pre-existing, unreachable), R6 NIT-2 / R7 N2 (stale is-open on resize — pre-existing, benign, Escape heals), R7 N1 (nav landmark has no aria-label — pre-existing), R7 N4 (nav_label unescaped — committed-frontmatter source, no untrusted path), R1 NIT-2 (resize edge, pre-existing), R2 C-3 (log line-number citation fragility — see Errata), R2 C-4 (whats_next.md still names ADR-0004 Accepted — regenerated artifact, self-heals on next cleanup-campsite), SN-1/SN-2/SN-3 + SC-1/SC-2 from Prompt 9 (pre-existing hardening tickets, unchanged): all deferred to follow-ups / PR notes.
+
+  ### Errata
+
+  1. ADR-0005:47-48 — "substituting index.markdown for index.md" reads backwards under strict usage (the edit replaced index.markdown WITH index.md). Caught by the acceptance gate (judged not to block: direction resolves against the artifact; stopping over a preposition disproportionate) and re-raised by the consistency reviewer as C-1 "fix before commit". Disposition: the ADR body froze at Accepted — the rule this cycle just enforced — so no in-place edit; the retroactive log entry states the direction unambiguously (index.markdown → index.md) and git history is definitive; no amending ADR for a preposition. Dissent recorded, deferral rationale: freeze-rule consistency outweighs a one-word correction whose truth is preserved in two other permanent records.
+  2. Run-record line-number citations — the Prompt 10 advance log entry cites "log.md:168"; append-only prepends move the target (now ~line 224). Durable form: cite by date + heading (the 2026-07-20 promptbook | abandoned entry), as ADR-0005 does. No in-place edit of the log entry (append-only).
+  3. tools.md SF-3 — recorded accurately as hardening against the documented kramdown blank-line hazard (the page rendered correctly at HEAD; the hazard was latent), not as fixing a broken page.
+  4. ADR-0005 council record — this section is the run-record home for the council verdict (MAJORITY_APPROVE 94%, seat votes and confidence as above); the ADR's log entry quotes it, and the consistency reviewer flagged the snapshot had no such record until now.
+  5. V10's P6 verdict ("Chrome compat click retargeted to spacer1 — harmless") was a fixture-dependent artifact: the element sitting ~245px below the tap in the fixture was a non-interactive spacer; on the real pages it is a link, and it navigates (the round-2 S1 reviewer measured 9/9 spurious navigations on the real site). The harness scored 23/23 while the shipped code mis-navigated on three of the site's own pages — the strongest argument for testing _site rather than a fixture. V10's remaining outcomes reproduce against the real site (the round-2 reviewer independently confirmed the JS delta, the empty SCSS diff, 24 pages, both guards shipped, and the substance of P5/P12/P13/R4/P6-close).
+
+  ### Re-review round 2 (3 scoped closure reviewers) and round-3 decision
+
+  Round-2 scoped re-review (one reviewer per round-1 MUST-FIX dimension; blind):
+
+  - Clarity: MX-C1 CLOSED — the rewritten pointerdown comment's false clause is gone and every clause verifies against the final code; five of six polish items HOLDS; all five round-1 comment closures survive with no regression; every figure independently recomputed exact (31.6px, 44px, 2px, 17.96:1, 14.22:1). 4 SHOULD-FIX on the comments: SF-1 "Non-primary pointers" names isPrimary but the code tests e.button (use "buttons"); SF-2 the "they dispatch no click, so..." inference is unsound (same premise as the close-here clause, opposite conclusion) and "unstated" is uncheckable; SF-3 the comment attributes an unconditional listener to an iOS-only cause (no UA/touch check; on all platforms the outside-close moves from click to pointerdown — observable delta: press outside, release inside now closes); SF-4 the Escape comment restates the guard's condition but not its load-bearing reason (unguarded btn.focus() fires on every Escape site-wide, yanking focus and scrolling to the header). 0 MUST-FIX.
+  - Coverage + S3 recording: CV-M3 CLOSED, S3-MF-1 CLOSED — every substantive token re-derived independently reproduced: git-archive HEAD baseline 18401/22603/6474 to the byte, post-fix absence in base and CI-exact builds (24 pages, class check 0, no _site/bionic), mutation control (overlay restoring pre-fix exclude → 3 files PRESENT; YAML arrays replace not merge), V10 artifacts exist and coherent (23 paths, 0 DEFECT, guard-asserted extraction, 39-sample writer invariant), V8 oracle correction verified (raw grep 1 / comment-stripped 0). 6 SHOULD-FIX on the RECORDING (applied below): the md/yml class check over-claims (an extensionless file defeats it — demonstrated NOTES.txt/SECURITY published while the class check reads 0; the inventory count is the load-bearing durable oracle, relabel); the 26-file inventory needs its exact filter recorded (find _site -type f ! -path '*/assets/*' ! -path '*/fonts/*' → 26; without the fonts exclusion the count is 30); V7's temporal claim overstates (the baseline was reconstructed from git archive HEAD after the edit, not run before it — label it reconstructed-from-HEAD per the cycle's own honesty-of-method rule applied to V6/V4); the dangling "commands recorded verbatim in the Prompt 11 review evidence" pointer resolves to itself (inline the commands instead); V10's artifacts live in a per-user TMPDIR — not durable in the strict sense, and its P6 "harmless" verdict was fixture-dependent (see Errata 5); no CI gate for any V-unit (systemic — deferred: deploy-pipeline changes are out of this loop's scope; ADR-0005 already records CI integration as the candidate follow-up). 0 MUST-FIX.
+  - S1: S1-M1 OPEN — one residual MUST-FIX, same mechanism, measured on the REAL built site (real Chrome via Playwright, served _site/, positive control reproducing all three round-1 symptoms): the guards closed the interactive-target half (P5/P12/P13 verified fixed; iOS fix survives an iOS-simulation path; no unintended selector matches — [role="button"] and [onclick] match nothing on any page; no new undismissable case vs HEAD). But a dismiss tap on NON-interactive content still reflows: pointerdown closes the in-flow panel, the page jumps ~230px before the tap's click resolves, and Chrome hit-tests the click against the new layout — 9/9 dismiss taps navigated spuriously to whatever link slid under the finger (0/9 at HEAD) on /articles/, /, /learn/; hazard band 7–19% of the outside-tap area; touch-only, i.e. exactly the platform the listener exists for. Reviewer's class-kill: "The guard list is an allowlist of what must not reflow. The defect is that reflow-during-gesture is unsafe in both directions, so no allowlist can close it. The direction that kills the whole class: stop the dismiss from reflowing at all (take the open panel out of flow), after which both guards and the mid-gesture-reflow hazard disappear together." V10's P6 row graded the identical mechanism "harmless" — a fixture artifact (see Errata 5). 1 SHOULD-FIX (the interactive allowlist is a silent maintenance trap — evaporates under the structural fix) + 2 NITs (e.button truthiness; .header-inner check dead-by-construction on the pointerdown path once the interactive guard is present).
+
+  Round-3 decision (commander, under the fix-loop charter; fix-loop round 3 — the last round before user escalation):
+  - Fix: take the open panel OUT OF FLOW at ≤46rem (positioned under the header row, preserving the inset-card visual identity: 1.5rem side inset, 1px --rule border, --surface background, 44px rows, divider). Zero reflow on open/close kills the whole retarget class in both directions.
+  - With zero reflow the interactive-target guard is removed (no longer load-bearing); the primary-button guard stays, rewritten as e.button !== 0.
+  - Design-change disclosure: the mobile panel moves from in-flow push-down (the a77ecf2 committed variant) to out-of-flow overlay at ≤46rem. This is presentation, not information architecture — no ADR covers panel positioning (ADR-0005 records the nav's IA, unchanged); the change is contained to the ≤46rem mobile nav and is the reviewer-prescribed remedy for the last open MUST-FIX.
+  - The pointerdown + Escape comments are rewritten to final truth, closing clarity SF-1..SF-4.
+  - Verification authority shifts: round-3 verification runs against the REAL built site (round 2's lesson — the fixture's P6 verdict was fixture-dependent; test _site, not a fixture). The round-3 real-site unit supersedes V10.
+
+  ### Re-review round 3 (final gate) and pre-commit polish
+
+  Round-3 fixes landed: the open card moved OUT OF FLOW at ≤46rem (.site-header position: relative; .site-nav position: absolute, top: 100%, left/right: 1.5rem; flex-wrap/gap/flex-basis removed), the interactive-target guard was deleted (nothing reflows, so nothing can retarget), the primary-button guard rewritten e.button !== 0, and all comments rewritten to final truth. Design-change disclosure stands as recorded in the round-3 decision.
+
+  Re-review round 3 (2 blind closure reviewers, real built site — round 2's lesson applied: test _site, not a fixture):
+
+  - S1: S1-M1 CLOSED — recommend advance. Harness validated first: a faithful reconstruction of the round-2 artifact reproduced round 2's numbers exactly (230px shift, 9/9 retargets, hazard bands 19/12/7%), proving the instrument sensitive. Reflow = 0px on 9 pages (HEAD/round-2: 230px); hazard-band enumeration returns 0 points. ORACLE CORRECTION recorded: replaying round 2's nine literal coordinates navigates 9/9 on the round-3 tree — correctly, because with no push-down the element under the finger at press time IS the aimed link; the valid S1 oracle is aimed-at vs resolved, and under it the round-3 tree scores 0/9 retargets and 0/9 failed closes (round-2 artifact: 9/9 retargets; HEAD: 0/9). A 51-tap dense stratified sweep found zero reflow-retargets. 14/14 regression paths pass, including iOS-sim with the compat click suppressed (the iOS fix survives). Out-of-flow hunt clean: panel links own their hit areas 5/5 (opaque card, no bleed); the card scrolls away with the non-sticky header exactly as the header always has; bonus — Escape-while-scrolled no longer lurches (0px jump vs HEAD's −230px); Tab order byte-identical to HEAD; resize across 46rem flips absolute↔static cleanly; dark-scheme contrast exact (17.96:1 / 14.22:1); narrow viewports (320×480, 280×653) never overflow; toggle target measured 44×44, rows exactly 44px. Writer invariant: 24/24 mutation batches carry both writes, 60-action randomized fuzz, 0 desyncs. SHOULD-CONSIDER (z-index pin) fixed in the polish pass. NITs: ~8px touch-adjustment snap band below the last row (PRE-EXISTING, nav-independent — control proves identical behavior with the nav closed); stale aria-expanded after mobile→desktop resize (pre-existing, unexposed); Escape while scrolled far focuses the off-screen toggle without scrolling it into view (introduced, minor, strictly better than HEAD's lurch); a partial line of body text stays visible below the card (inherent to overlay menus).
+  - Clarity: 0 MUST-FIX — SF-1..SF-4 all CLOSED; every comment in the touched files verified clause-by-clause against the shipped build; contrast figures recomputed exact; no clause references the removed interactive guard; 4 SHOULD-FIX raised on the loop's own new comments (F1 border-box clause credited an inoperative mechanism — leftover from the in-flow design; F2 Escape consequence stated site-wide when it holds only at ≤46rem; F3 three names for one element across a cross-file pointer; F4 stale "click" umbrella line) plus NITs.
+
+  Pre-commit polish pass (SHOULD-FIX dispositions — FIXED, comment-only plus one defensive declaration): F1 deleted the inoperative border-box clause; F2 scoped the Escape consequence to ≤46rem where the toggle is displayed; F3 unified the element name to "the card" across the JS comment so the cross-file pointer lands on matching vocabulary; F4 umbrella line now reads "a press outside the header"; N2 dropped diff-relative "now"; N3 added the iOS scope word; N5 pointer made precise "(see .site-nav in the ≤46rem block)"; N4-partial "Return focus to". Plus z-index: 1 on .site-nav (S1 reviewer's SHOULD-CONSIDER: the card rendered above content only because it was the sole positioned element — an unstated invariant; the line pins what the code got by luck; verified operative — .site-header creates no stacking context, z-index: 1 lifts the card in the root context). Proof: comment-stripped diff of both files vs the round-3 reviewed state = exactly "+ z-index: 1;"; build exit 0, 24 pages, About nav intact.
+
+  Spot-check (clarity reviewer, resumed session): ZERO-FALSE-CLAUSE — every clause in the four edited comments true of the final code; z-index falsifies no comment (no comment claims paint order); code delta vs the round-3 reviewed state byte-identical apart from the one declaration.
+
+  Final NIT deferrals (recorded, rationale): NIT-A — the umbrella summary elides the non-primary-press and synthetic-click edge cases; both are documented 25 lines below; a summary eliding documented detail is acceptable by design. NIT-B — z-index: 1 is the one declaration in the mobile block without a rationale comment; the invariant is enforced in code and the pre-pin behavior was the shipped behavior; candidate one-line comment for a follow-up polish commit. Clarity N4 remainder — "bring the tap target up to 44px" phrasal verb in the 44px comment, unchanged this round, deferred. N6 — the card's top edge overlaps the header's 1px border-bottom by 1px (top: 100% resolves against the padding box); both borders are the same --rule color, visually seamless; cosmetic, deferred.
+
+  CONVERGENCE: three review rounds; round 3 green with zero MUST-FIX — the book's gate is met. Every MUST-FIX raised in Prompts 9 and 10 is closed: MX-1/MX-2 (ADR-0005 Accepted, ADR-0004 Superseded, retroactive log op), MX-3 (config comment true), MX-4 + S3-MF-1 (exclude fix + recorded published-file-set regression unit with reconstructed baseline, mutation control, CI-exact variant, inventory oracle), CD-M2 (CLAUDE.md clause), CV-M1 (rendered-output units for the ff17186 files), CV-M3 (real-Chrome interaction harness unit), S1-M1 (out-of-flow card kills the reflow-during-gesture retarget class — 0/9 retargets vs 9/9 on the reconstructed round-2 artifact), MX-C1 (comment rewritten true, then polished to zero-false-clause). Final mobile-nav state: out-of-flow card at ≤46rem; pointerdown outside-close (primary button only); Escape guard + focus return; all loop-authored comments clause-verified. Pre-merge recommendation carried to Prompt 12: true iOS WebKit device check (both harness rounds ran Chrome emulation). Forge-log used entry at convergence exit: NO forged skill was invoked by this review module (council, run-promptbook, propose-adr, transition-adr are plugin skills) — clean no-op.
+
+  ## Prep (Prompt 12 — RUN-002)
+
+  ### 1. Changelog (book step 1)
+
+  CHANGELOG.md did not exist — the book template assumed it did. Minimal adaptation: created a repo-root CHANGELOG.md (keep-a-changelog style) with a `## [Unreleased]` entry — Fixed: the mobile nav's out-of-flow overlay card at ≤46rem (no reflow, outside-press + Escape close, About link verified); Changed: README.md/USER_GUIDE.md/CLAUDE.md excluded from the published site (previously leaked into `_site`). Links to bionic/journal/2026-08.md and ADR-0005. Adaptation recorded here per §11 (a missing prerequisite file is not a stop-point; the plan already authorizes the in-repo edit).
+
+  ### 2. Documentation (book step 2)
+
+  audit-docs ran after all Prompt 12 writes (54-check, inline walk, 77 md files). Result: 0 BROKEN, 1 DRIFT auto-fixed (bionic/research/sources.md CHK-RES-8: the bionic-coding-manifesto row's `static` cell `n/a` → `false`, frontmatter wins), 4 WARNINGs — (a) research synthesis markers + capture-gap sections at the expected baseline; (b) bionic/whats_next.md still calls ADR-0004 Accepted, correctly classified as a REGENERATED artifact owned by cleanup-campsite (not hand-edited here) and carried as a follow-up; (c) bionic/log.md has a cosmetic missing blank line between two 2026-07-20 entries — append-only history, surfaced not fixed; (d) bionic/invariants/index.md scaffold prose cites pre-schema-5 paths — no CHK rule owns it, refresh on next invariants touch. The audit appended its own `audit` log op. Verdict: documentation gate PASSES — zero BROKEN findings to address.
+
+  Documented-contract lock-step: the fix cycle's own verification evidence (CD-C1, above) falsified the kramdown blank-line-in-comment gotcha as written in root CLAUDE.md — rewritten to the empirically verified mechanism: indented or paragraph-glued comments leak as visible text; top-level comments with inner blank lines render fine; div blocks with blank lines leave inner Markdown unconverted but conversion resumes after the block closes; the `.` spacer convention is kept. A second stale copy of the same false claim was found in _templates/this-week-in-ai.md and rewritten to match. Re-grep confirmed zero stale references outside bionic/. CLAUDE.md.tmpl twin: does not exist in this repo — N/A, recorded rather than skipped silently.
+
+  ### 3. Journal (book step 3)
+
+  A reflective entry was prepended to bionic/journal/2026-08.md — heading `[2026-08-14 18:12] review | PB-0001/RUN-002: mobile-nav verify cycle converged after 3 review rounds`. 2026-08 now carries 2 entries (decision (1), review (1)); journal/index.md's row updated; a `journal` op appended to bionic/log.md.
+
+  ### 4. PR notes (book step 4)
+
+  The pr_draft field below carries the full draft PR body: title suggestion, summary, verified root cause, test plan (incl. the V7/V8 regression units and the real-site interaction numbers), risk notes, ADR-0005/RUN-002 references, and an explicit draft-only footer. Per the book's own instruction: the PR was NOT opened and nothing was pushed.
+
+  ### Disposition
+
+  No commit was made anywhere in Prompt 12 — the book never instructs one, and its own goal reserves merging for a human ("PR draft ready for a human to merge (not opened)"). All site changes remain uncommitted at HEAD 43ab7f2: the five review-cycle fix files (_config.yml, _layouts/default.html, assets/main.scss, tools.md, root CLAUDE.md) plus this prompt's own additions — repo-root CHANGELOG.md (new) and _templates/this-week-in-ai.md — and the bionic/ record writes above. The human reviews, commits, and opens the PR using pr_draft.
+
+  ### Follow-ups carried out of this prompt
+
+  cleanup-campsite regeneration of whats_next.md (stale ADR-0004 reference); an optional refresh-research-synthesis pass for the 8 synthesis markers; an invariants/index.md prose refresh on next touch; a true iOS WebKit device check before this merges.
+pr_draft: |
+  # Suggested PR title
+
+  Fix mobile-nav reflow-retarget defect; verify About link; exclude repo docs from _site
+
+  ## Summary
+
+  - Mobile nav: the collapsed panel now renders out-of-flow (`position: absolute`) at ≤46rem instead of pushing content down. Opening/closing causes zero page reflow, so content never shifts under a tap. Outside-press (primary pointer only) and Escape both close the panel; Escape returns focus to the toggle.
+  - About link: verified present in the top nav (Manifesto / Articles / Lessons / Tools / About) on all 24 built pages.
+  - Repo documentation (`README.md`, `USER_GUIDE.md`, `CLAUDE.md`) is no longer published into `_site` — added to Jekyll's `exclude:` list.
+
+  ## Verified root cause
+
+  - **About link** — `_config.yml`'s `header_pages` listed a stale `about.markdown` entry against an exact-path Liquid lookup (`site.pages | where: "path", path`); the actual file is `about.md`, so the lookup silently dropped the link. Already fixed at HEAD by commit `ff17186`; this cycle verified it rather than re-fixing it (the issue's original premise was partly stale by the time we checked — the link already worked).
+  - **Mobile nav interaction defect** — found during review, not in the original diagnosis. The in-flow (push-down) panel committed in `a77ecf2` reflowed the page ~230px on open; a pointerdown-based outside-close then closed the panel before the browser resolved the tap's click target, so a dismiss-tap on non-interactive content re-hit-tested against the shifted layout and navigated to whatever link had slid under the finger. Measured 9/9 spurious navigations on the real built site in round 2. Fixed by taking the panel out of flow at ≤46rem — zero reflow removes the retarget class in both directions — rather than adding more guards around the reflow.
+  - **Repo docs publication exposure** — `README.md`, `USER_GUIDE.md`, `CLAUDE.md` were reachable at the site root in every build (no credentials present, but not intended for publication). Pre-existing; found by this cycle's exposure audit. Fixed via `_config.yml` `exclude:`.
+
+  ## Test plan
+
+  - `bundle exec jekyll build` — exit 0, 24 HTML pages.
+  - CI-exact: `JEKYLL_ENV=production bundle exec jekyll build --config _config.yml,_config_production.yml --baseurl ""` — exit 0, 24 HTML pages.
+  - Sensitive-file absence: `find _site \( -iname 'README*' -o -iname 'USER_GUIDE*' -o -iname 'CLAUDE*' \)` — 0 hits in both builds.
+  - Real-site interaction (round 3, run against the real built `_site/`, real Chrome via Playwright): 0px reflow on open/close across 9 pages (was 230px pre-fix); 0/9 spurious retargets and 0/9 failed closes (was 9/9 retargets pre-fix on the reconstructed round-2 artifact); a 51-tap dense stratified sweep found zero reflow-retargets; 14/14 regression paths pass, including an iOS-simulation path with the compat click suppressed.
+  - Rendered-output regression (V8, recorded in the run snapshot): `about.md`, `articles.md`, `tools.md` (the files `ff17186` touched) each assert real rendered content, including confirming `tools.md`'s documented kramdown-comment hazard stays latent rather than triggering.
+  - Published-file-set regression (V7, recorded in the run snapshot): `README.md`/`USER_GUIDE.md`/`CLAUDE.md` absent from `_site` in both the base and CI-exact builds; a mutation control confirms the exclude edit is load-bearing (reverting it republishes all three); the durable oracle is a 26-file inventory count (`find _site -type f ! -path '*/assets/*' ! -path '*/fonts/*'`), not an extension-scoped denylist (a wrong-extension file would defeat a denylist alone).
+
+  ## Risk notes
+
+  - Presentation-only change. No content or information-architecture change — the nav's IA (landing homepage + 5-item top nav) is unchanged and covered separately by ADR-0005.
+  - **Design change disclosed**: the mobile panel moves from an in-flow push-down (the committed `a77ecf2` variant) to an out-of-flow overlay card at ≤46rem. This is the reviewer-prescribed remedy for the reflow-retarget defect above, not a scope change.
+  - Both interaction-test rounds ran against Chrome emulation only (via Playwright); a true iOS WebKit device check is recommended before this merges.
+  - Changes are currently uncommitted on top of HEAD `43ab7f2` (five files: `_config.yml`, `_layouts/default.html`, `assets/main.scss`, `tools.md`, root `CLAUDE.md`) — left for the human to review and commit.
+
+  ## References
+
+  - [[adrs/ADR-0005-serve-a-landing-homepage-and-a-five-item-top-nav]] (Accepted; supersedes ADR-0004)
+  - Run record: `bionic/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-002.yaml`
+
+  ---
+  *This is a draft PR body stored in the run snapshot's `pr_draft` field. The PR was not opened and nothing was pushed — the human opens the PR and pastes this body in.*
+summary: |
+  Mobile-nav fix + About-link verification completed as a verify-only iterate
+  cycle (RUN-002, resuming after RUN-001 was abandoned at Prompt 3 on
+  2026-07-20). The verify module's diagnosis council converged unanimously
+  (round 3, confidence 0.973) on a verify-only posture: all four symptoms
+  (missing About link, sub-44px hamburger, unstyled collapsed menu, toggle
+  hardening) were already fixed at HEAD (`ff17186`, `a77ecf2`). The dev module
+  recorded six verification units (V1-V6) confirming the committed fix against
+  every diagnosed requirement, all green in one gate loop. External and
+  conformance review surfaced 4 MUST-FIX (a stale ADR-0004, a false config
+  comment, and a pre-existing repo-docs publication exposure among them) plus a
+  reflow-during-gesture navigation defect discovered only during interaction
+  testing; the 3-round review-fix loop converged with zero MUST-FIX. ADR-0005
+  was accepted (council MAJORITY_APPROVE, 94%) and supersedes ADR-0004. Repo
+  documentation (README.md, USER_GUIDE.md, CLAUDE.md) is now excluded from the
+  published site, backed by a recorded regression unit. The change is
+  reviewed, verified against a durable record of checks (this Jekyll site has
+  no test suite), and documented, with a PR draft stored in this run's
+  `pr_draft` field — uncommitted at HEAD `43ab7f2`, left for a human to review,
+  commit, and merge.
+
+  ## Links
+
+  - Book (lifecycle-neutral): [[promptbooks/PB-0001-fix-mobile-nav-and-restore-about]]
+  - This run: `bionic/promptbooks/runs/PB-0001-fix-mobile-nav-and-restore-about/run-RUN-002.yaml`
+  - Verify decision journal entry (Prompt 4, 2026-08-14): [[journal/2026-08]] —
+    the `decision` entry recording the four root causes, the ff17186/a77ecf2
+    verify-only posture, and the council debate (round 2 unanimous REJECT ->
+    re-baseline -> round 3 UNANIMOUS APPROVE).
+  - Reflective review journal entry (Prompt 12, 2026-08-14 18:12):
+    [[journal/2026-08]] — heading "review | PB-0001/RUN-002: mobile-nav verify
+    cycle converged after 3 review rounds".
+  - Changelog: `CHANGELOG.md` `## [Unreleased]` (repo root; new file created
+    this cycle; links to the journal entry and to ADR-0005).
+  - ADR: [[adrs/ADR-0005-serve-a-landing-homepage-and-a-five-item-top-nav]]
+    (Accepted; supersedes [[adrs/ADR-0004-single-source-the-manifesto-homepage-from-research]]).
+
+  ## Stats (derived from this run's record, not estimated)
+
+  - Prompts executed: 13 of 13 (RUN-002; Prompts 1-2 carried over verbatim from
+    RUN-001, which was abandoned 2026-07-20 at Prompt 3).
+  - Council deliberations: 4 — the verify-diagnosis council convened 3 times
+    (Prompt 2: round 1 CONVERGED-with-nits, round 2 unanimous CONCERNS/
+    MUST-FIX, round 3 CONVERGED UNANIMOUS APPROVE) plus the separate ADR-0005
+    acceptance council (Prompt 11 Workstream A, MAJORITY_APPROVE 94%).
+  - Dev quality-gate loops: 1 — Prompt 7's six gates (G1-G6) plus every N/A
+    gate were recorded green on the first pass; nothing looped.
+  - Review-fix loops: 3 — Prompt 11's fix loop ran 3 rounds to convergence
+    (round 1: 7 MUST-FIX across five review dimensions; round 2: 6 closed, 1
+    residual real-site MUST-FIX (S1-M1) surfaced by re-review; round 3: the
+    mobile card moved out of flow, 0 MUST-FIX, recommend-advance).
+  - Files changed: 19 total. 7 shippable/site files — `_config.yml`,
+    `_layouts/default.html`, `assets/main.scss`, `tools.md`, root `CLAUDE.md`,
+    `_templates/this-week-in-ai.md`, and new `CHANGELOG.md` — plus 12
+    `bionic/` record writes (9 modified: ADR-0004, adrs/index.md, index.md,
+    journal/index.md, log.md, manifest.yml, this promptbook's active file,
+    promptbooks/index.md, research/sources.md; 3 new: ADR-0005,
+    journal/2026-08.md, this run's own run-RUN-002.yaml).
+  - Tests added: none — this Jekyll site has no test framework (Gemfile lists
+    only jekyll/minima/jekyll-feed; no test/spec directory). The durable
+    verification record stands in: V1-V6 (dev-module gates: nav links on every
+    page, 44px tap target, panel styling, toggle behavior, overflow safety,
+    production-overlay build), V7 (published file-set regression unit for the
+    repo-docs exclusion, with a mutation control proving it load-bearing), V8
+    (rendered-output unit for every file `ff17186` touched), V10 (a
+    fixture-based Chrome/Playwright interaction harness, round 2 — superseded
+    once its P6 verdict proved fixture-dependent), and the round-3 real-site
+    interaction unit (run against the built `_site/` with real Chrome;
+    supersedes V10 as the authority on nav-dismiss behavior and folds in the
+    dark-scheme contrast check that CV-S4 flagged as uncovered — no separate
+    "V9" unit exists in the record under that number).
+
+  ## Outstanding deferred work
+
+  - A true iOS WebKit device check before this merges (both interaction-test
+    rounds ran Chrome emulation only).
+  - `cleanup-campsite` regeneration of `bionic/whats_next.md` (still names
+    ADR-0004 as Accepted — a regenerated artifact, self-heals on next run).
+  - An optional `refresh-research-synthesis` pass for the 8 accumulated
+    synthesis markers.
+  - A `bionic/invariants/index.md` scaffold-prose refresh on next touch
+    (cites pre-schema-5 paths; no CHK rule owns it yet).
+  - A CI gate for the V1-V8/V10/round-3 verification units (none currently run
+    in CI; ADR-0005 records this as a candidate follow-up).
+  - The `z-index: 1` rationale-comment NIT (assets/main.scss mobile block) —
+    the one declaration from the loop's own polish pass left without a
+    one-line comment.
+  - Pre-existing hardening NITs carried in the run notes: GitHub Actions
+    pinned to mutable tags rather than SHAs, vendored `mermaid.min.js` with no
+    recorded provenance/version, the resize/focus/no-JS-nav NITs, and the
+    CD-C1 CLAUDE.md kramdown-gotcha rewording (outside this cycle's diff).
+
+  ## Stored PR draft (full text in this run's `pr_draft` field; substance below)
+
+  Title: "Fix mobile-nav reflow-retarget defect; verify About link; exclude
+  repo docs from _site". Summary: the collapsed mobile panel now renders
+  out-of-flow at <=46rem (zero reflow on open/close, replacing the in-flow
+  push-down variant that caused spurious navigation on dismiss-tap); the About
+  link is verified present on all 24 built pages; README.md/USER_GUIDE.md/
+  CLAUDE.md are excluded from `_site`. Verified root cause: the About-link
+  config typo (already fixed at `ff17186`); the reflow-during-gesture retarget
+  defect found during review (fixed by taking the panel out of flow); and the
+  pre-existing repo-docs publication exposure (fixed via `exclude:`). Test
+  plan: base + CI-exact builds exit 0 at 24 pages; sensitive-file absence
+  check (0 hits for README/USER_GUIDE/CLAUDE in both builds); the round-3
+  real-site interaction numbers (0px reflow, 0/9 retargets vs 9/9 pre-fix, a
+  51-tap sweep, 14/14 regression paths); the V7 and V8 regression units. Risk
+  notes: presentation-only, no IA change (see ADR-0005); the mobile-panel
+  out-of-flow design change is disclosed; Chrome emulation only, iOS device
+  check recommended pre-merge; all changes remain uncommitted on top of HEAD
+  `43ab7f2`. The PR was NOT opened and nothing was pushed — the human opens
+  the PR and pastes the stored draft body in.

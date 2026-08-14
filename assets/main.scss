@@ -184,6 +184,13 @@ a:hover {
   display: none;
   align-items: center;
   justify-content: center;
+  /* Natural box is 31.6px: 22px icon + 2×0.3rem padding (html sets no
+     font-size, so 0.3rem = 4.8px here). The min-width/min-height below,
+     not the padding, bring the tap target up to 44px — the WCAG 2.5.5 /
+     iOS HIG minimum. This rule lives in the desktop base styles but only
+     matters at ≤46rem, where .nav-toggle is actually displayed (see
+     "Small screens" below). Deleting these mins silently restores the
+     sub-44px tap target this rule was added to fix. */
   min-width: 44px;
   min-height: 44px;
   padding: 0.3rem;
@@ -666,19 +673,25 @@ a:hover {
    ============================================================ */
 /* Collapse the header menu behind the hamburger once the links stop fitting. */
 @media (max-width: 46rem) {
-  .header-inner {
-    flex-wrap: wrap;
-    gap: 0.5rem 1rem;
+  .site-header {
+    position: relative;
   }
   .nav-toggle {
     display: inline-flex;
   }
-  /* Collapsed menu = its own surface card (inset within .wrap padding, so it can
-     never overflow), with its links as 44px tap rows. Uses --surface/--ink/--rule
-     so it reads correctly in light AND dark. */
+  /* Collapsed menu = its own surface card, with its links as 44px tap rows.
+     Position: absolute takes the card out of flow. Opening or closing it
+     never reflows the page. Absolute positioning plus the left/right: 1.5rem
+     insets keeps the card inside the viewport. --surface/--ink/--rule are
+     defined for both color schemes; ink-on-surface contrast measures 17.96:1
+     in light, 14.22:1 in dark. */
   .site-nav {
     display: none;
-    flex-basis: 100%;
+    position: absolute;
+    top: 100%;
+    z-index: 1;
+    left: 1.5rem;
+    right: 1.5rem;
     flex-direction: column;
     background: var(--surface);
     border: 1px solid var(--rule);
@@ -696,7 +709,9 @@ a:hover {
     font-size: 0.82rem;
     color: var(--ink);
   }
-  /* Divider between rows only — never a top hairline on the first row. */
+  /* Divider between rows only. The first row gets no border-top here
+     because the card's own 1px border (declared on .site-nav) already
+     sits directly above it; adding one would stack to 2px. */
   .site-nav a + a {
     border-top: 1px solid var(--rule);
   }

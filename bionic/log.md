@@ -2,6 +2,14 @@
 
 _Append-only. Newest first._
 
+## [2026-08-15] garden | morning note 2026-08-15 (3 headlines, 4 artifacts)
+
+Note: [[garden/2026-08-15]]. Headlines: publication boundary (CHANGELOG.md published; V7 oracle unwired), link-annotation decay across four issues, open-weights + pricing news. Artifacts: branch `garden/exclude-changelog-from-build`; `bionic/inbox/gardener-news-muse-glimmer.md`; `bionic/inbox/gardener-news-sonnet5-price-hold.md`; `bionic/inbox/gardener-idea-publication-boundary-gate.md`.
+
+## [2026-08-15] cleanup-campsite | 1 open (0 P1, 1 P2, 0 P3), 7 closed, 0 dismissed
+
+Top-3 P1 ids: none (no P1 findings). Sole open finding: `cleanup-CLN-ADR-1-ADR-0005`. See [[whats_next]].
+
 ## [2026-08-14] promptbook | archived PB-0001-fix-mobile-nav-and-restore-about
 
 Final run RUN-002 completed 13/13 prompts (13 done, 0 skipped, 0 blocked-confirmed).

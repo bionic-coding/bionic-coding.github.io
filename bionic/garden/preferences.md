@@ -1,5 +1,5 @@
 ---
-generated_at: 2026-07-17T20:30:00Z
+generated_at: 2026-08-15T18:20:00Z
 generator: tend-garden
 source: tending.md
 ---
@@ -23,4 +23,5 @@ Snoozes contribute zero weight.
 | research | 0 | 0 | 0 | 0.0 | normal | n/a |
 | news | 0 | 0 | 0 | 0.0 | normal | n/a |
 
-_No dismissals yet — every kind surfaces normally._
+_No dismissals yet — every kind surfaces normally. `tending.md` carries an empty
+`snoozed:` and `dismissed:` list as of this run._

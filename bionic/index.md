@@ -1,10 +1,10 @@
 # docs/bionic-coding
 
-_Last updated: 2026-08-14_
+_Last updated: 2026-08-15_
 
-## What's next (7)
+## What's next (1)
 
-_7 open suggestions (P1: 0, P2: 7, P3: 0) — see [[whats_next]]._
+_1 open suggestion (P1: 0, P2: 1, P3: 0) — see [[whats_next]]._
 
 ## Research (22 sources, 4 synthesis pages)
 

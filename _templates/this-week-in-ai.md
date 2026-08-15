@@ -15,6 +15,12 @@ tags: [model-news, weekly]
   comment, or one glued to a paragraph, is parsed as Markdown and leaks into the
   post as visible text. Use a lone "." on the line as a spacer.
   .
+  Placeholder tokens below (`<lede>`, `<substance>`, etc.) are wrapped in
+  backticks on purpose: a bare, unclosed pseudo-tag like <lede> drops kramdown
+  into raw-HTML-block mode and swallows every heading and bold/link markup for
+  the rest of the document, unrendered. Keep the backticks until real prose
+  replaces the token.
+  .
   Rules of the road:
     - Scaffold only lives here; you write the sentences (scaffold, don't generate).
     - Mark what's *claimed* (the vendor's words) vs. what's *verified*.
@@ -24,26 +30,26 @@ tags: [model-news, weekly]
 -->
 
 <!-- LEDE — 2-3 sentences, first person, warm. Sum up the week, set the tone. -->
-<lede>
+`<lede>`
 
 ## <Story headline — plain or playful>
 <!-- One line: what happened, in plain language. -->
-<what happened>
+`<what happened>`
 
 <!-- Substance: a paragraph or two. Separate claimed from verified. -->
-<substance>
+`<substance>`
 
 <!-- OPTIONAL evidence module — use for receipt-heavy stories; delete otherwise. -->
 **What the evidence shows:**
-- <receipt>
-- <receipt>
+- `<receipt>`
+- `<receipt>`
 
 <!-- OPTIONAL one-line take — italic, only if you actually have one. -->
-*My take: <one line>.*
+*My take: `<one line>`.*
 
 **More info:**
-- [**<Anchor source>**](<url>) — the primary / most-credible source; bold it, list it first.
-- [<Source> (<Mon DD>)](<url>) — what it is / why it's here.
+- [**`<Anchor source>`**](<url>) — the primary / most-credible source; bold it, list it first.
+- [`<Source>` (<Mon DD>)](<url>) — what it is / why it's here.
 
 <!-- Repeat the story block 3-5 times. Biggest first; group related stories. -->
 ## <Next story…>
@@ -51,4 +57,4 @@ tags: [model-news, weekly]
 <!-- STANDING CLOSER — keep this section every issue. -->
 ## What I'm actually using
 <!-- First-person, opinion not news. What you're reaching for this week, and why. Sign off. -->
-<closing take>
+`<closing take>`

@@ -22,6 +22,7 @@ PROMO SPACE — your own tools, up top. This is the "promote our stuff" block.
 - **[Claude Code](https://www.anthropic.com/claude-code)** - an AI assistant for coding.
 - **[OpenCode](https://opencode.ai)** - an agentic harness for building software (and other things) with AI. An open-source alternative to Claude Code.
 - **[Claude](https://claude.ai)** - the best frontier model for AI agents.
+- **[Fireworks.ai](https://fireworks.ai)** - an inference platform for open models. How I run Kimi K3 and Qwen3.8 Max.
 - **[Perplexity](https://www.perplexity.ai)** - web search.
 
 <!-- When this list outgrows hand-editing, consider moving the entries to

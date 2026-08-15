@@ -6,7 +6,7 @@ _Last updated: 2026-08-15_
 
 _1 open suggestion (P1: 0, P2: 1, P3: 0) — see [[whats_next]]._
 
-## Research (22 sources, 4 synthesis pages)
+## Research (27 sources, 4 synthesis pages)
 
 See [[research/index]].
 

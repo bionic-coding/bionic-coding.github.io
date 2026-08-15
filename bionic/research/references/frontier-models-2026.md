@@ -3,8 +3,8 @@ title: "Frontier AI Models — 2026 Landscape"
 slug: frontier-models-2026
 type: references
 tags: [models, anthropic, openai, pricing, benchmarks]
-sources: [claude-opus-4-8, claude-fable, simon-willison-claude-opus-4-8, gpt-5-6-system-card, gpt-5-6-pricing, anthropic-redeploying-fable-5, artificial-analysis-gpt-5-6, anthropic-introducing-fable-5-mythos-5, kimi-k3-docs, qwen3-8-max-preview-fact-sheet, claude-opus-5-system-card, kimi-k3-technical-report, willison-kimi-k3, qwen3-8-open-weight-announcement, qwen3-8-max-a-new-bar-for-coding-and-cowork, qwen3-8-max-qwencloud-model-page]
-last_reviewed: 2026-08-03
+sources: [claude-opus-4-8, claude-fable, simon-willison-claude-opus-4-8, gpt-5-6-system-card, gpt-5-6-pricing, anthropic-redeploying-fable-5, artificial-analysis-gpt-5-6, anthropic-introducing-fable-5-mythos-5, kimi-k3-docs, qwen3-8-max-preview-fact-sheet, claude-opus-5-system-card, kimi-k3-technical-report, willison-kimi-k3, qwen3-8-open-weight-announcement, qwen3-8-max-a-new-bar-for-coding-and-cowork, qwen3-8-max-qwencloud-model-page, glm-5-3-frontier-coding-with-emergent-cyber-capabilities, deepseek-v4-pro-0813-model-card, qwen3-8-2-4t-a95b-open-weights-release, qwen3p8-max-fireworks-model-page]
+last_reviewed: 2026-08-15
 ---
 
 # Frontier AI Models — 2026 Landscape
@@ -93,9 +93,11 @@ Sources: [[research/sources/kimi-k3-technical-report]] (47pp technical report, c
 
 ## Qwen3.8-Max (Alibaba) — LAUNCHED 2 August, with a full benchmark table
 
-Sources: [[research/sources/qwen3-8-max-a-new-bar-for-coding-and-cowork]] (Qwen Team launch post, 2026-08-02 — **the authoritative source**) and [[research/sources/qwen3-8-max-qwencloud-model-page]] (serving page, captured 2026-08-03). Supersedes the announcement-stage [[research/sources/qwen3-8-max-preview-fact-sheet]] (2026-07-20) and [[research/sources/qwen3-8-open-weight-announcement]] (GIGAZINE, 2026-07-21). Fuller treatment, including the agentic showcases, is in [[research/references/open-weights-landscape-2026]].
+Sources: [[research/sources/qwen3-8-max-a-new-bar-for-coding-and-cowork]] (Qwen Team launch post, 2026-08-02), [[research/sources/qwen3-8-max-qwencloud-model-page]] (serving page, 2026-08-03), and — as of this writing — [[research/sources/qwen3-8-2-4t-a95b-open-weights-release]] (HF model card, weights live, 2026-08-15) and [[research/sources/qwen3p8-max-fireworks-model-page]] (third-party hosting, 2026-08-15). Supersedes the announcement-stage [[research/sources/qwen3-8-max-preview-fact-sheet]] (2026-07-20) and [[research/sources/qwen3-8-open-weight-announcement]] (GIGAZINE, 2026-07-21). Fuller treatment, including the agentic showcases, is in [[research/references/open-weights-landscape-2026]].
 
-- **The API shipped; the weights did not.** "The open weights will be released next week" on Hugging Face and ModelScope. **Third deferral** after "soon" on 19 July and 21 July. No license named. Do not call this an open-weights model yet.
+- **The API shipped 2 August; the weights followed within two weeks.** After "soon" on 19 July, "soon" on 21 July, and "next week" on 2 August, `Qwen/Qwen3.8-2.4T-A95B` was live on Hugging Face by the 2026-08-15 capture (6,381 downloads in the first days). **Two caveats before writing "open":** the released weights are the **text-only, thinking-always-on base** — vision input, non-thinking mode, 1M default context, and built-in tools remain Qwen3.8-Max API features — and they ship under a **custom `qwen3.8-max` license**, not Apache/MIT; the license text is uncaptured.
+- **Architecture disclosed with the weights:** 92 layers, hidden 8192, hybrid layout 23 × (3 × (Gated DeltaNet → MoE) → 1 × (Gated Attention → MoE)), 512 experts with 10 routed + 1 shared active, multi-step MTP; 262K native context extensible to 1,010,000.
+- **Third-party hosting:** Fireworks lists the model at **$2.00 / $0.25 / $6.00 per MTok** with **262k context** (the native window, not the API's 1M), listing created 8/12/2026 — matching QwenCloud's $2/$6 and $0.25 cache pricing. Note the listing anomaly recorded on the source page: Fireworks' `qwen3p8-max` URL serves this open-weights listing.
 - **Scale — RESOLVED.** **2.4T total, 95B active** — the serving number three prior captures could not produce. Comparable activation to Kimi K3's 2.8T / 104B.
 - **Pricing — RESOLVED, and it reprices the table: $2 / $6 per MTok.** Against Opus 4.8's $5 / $25, Sol's $5 / $30, Fable 5's $10 / $50, and K3's $3 / $15, Qwen3.8-Max is **the cheapest frontier-scale model on this page by a wide margin** — a fifth of Fable's input price and an eighth of its output price. Implicit cache read $0.25 / MTok; explicit cache read $0.17.
 - **Specs (QwenCloud):** 1M context (991K max input, 131K max output, 262K max reasoning); 2M TPM / 15K RPM; **image, text, and video input**, text output. Three reasoning-effort levels — **`xhigh` (default) / `medium` / `low`** — with `preserve_thinking` on by default.
@@ -106,6 +108,15 @@ Sources: [[research/sources/qwen3-8-max-a-new-bar-for-coding-and-cowork]] (Qwen 
 - **The comparison set stops at Opus 4.8 — Opus 5 is absent from both tables**, though its system card is dated 2026-07-24 ([[research/sources/claude-opus-5-system-card]]). Any "matches Anthropic's best" reading is measuring against the predecessor. Also note **footnote 1: "Fable5 results may involve fallbacks"** — the same safeguard-routing caveat Moonshot flagged.
 - **Nine benchmark rows are in-house and unreproducible** (`QwenSWEBench`, `QwenQoderBench`, `QwenReactBench`, `QwenSVGBench`, `CoWorkBench`, `QwenBlenderBench`, `QwenVisualOffice`, `RecreationBench`, E-Commerce Bench). **No independent benchmark or hands-on review of 3.8 is captured** — every number here is Alibaba's.
 - **Predecessor, still citable:** **Qwen3.7-Max** (May 19, 2026) — SWE-Bench Verified 80.4, GPQA Diamond 92.4, AA Intelligence Index 56.6, 1M context, $2.50 / $7.50 per MTok. Qwen's own table puts 3.7-Max far below 3.8-Max across the board (e.g. FrontierSWE 40.7 → 73.5), which is the generational-gain claim in its most concrete form.
+
+## GLM-5.3 (Z.ai) — open-weights, carrying new data points on the closed frontier
+
+Source: [[research/sources/glm-5-3-frontier-coding-with-emergent-cyber-capabilities]] (launch post, 2026-08-14; claimed, vendor-run). Full treatment in [[research/references/open-weights-landscape-2026]]. It earns a mention here because Z.ai's table is the first capture this cycle with **Terminal Bench 3.0** rows and a three-benchmark cyber suite for the closed models:
+
+- **Terminal Bench 3.0 (Claude Code harness, avg@3):** GPT-5.6 Sol **34.6** > Fable 5 **33.7** > GLM-5.3 28.3 > Opus 4.8 21.1 > Kimi K3 17.4. All from Z.ai's own runs; nobody else has published TB3.0 numbers yet.
+- **Cyber:** the post attributes ExploitBench **78.0** and ExploitGym **181/247** to **Mythos 5** (table column labelled "Fable 5 (w/ fallback)"), with GPT-5.6 Sol at 76.5 and **216/293** — on exploitation the closed frontier keeps the lead the GPT-5.6 card described ("better at finding than exploiting"). Note the post's body calls Mythos 5 the ExploitGym leader while its own table's Sol column is higher; cite the table.
+- **The Fable-5-fallback caveat now appears in a third vendor's table** ("Fable 5 (w/ fallback)") after Qwen's and Moonshot's equivalent footnotes — the safeguard-routing contamination of third-party comparisons is becoming a standard footnote.
+- **Weights promised within two weeks of launch** (~2026-08-28), gated on safety evaluation — the cyber-capability story is explicitly the reason. GLM-5.3 is otherwise a post-training-only update on the GLM-5.2 base.
 
 ## Naming note (important for a lay audience)
 

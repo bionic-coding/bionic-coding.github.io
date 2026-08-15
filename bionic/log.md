@@ -2,6 +2,26 @@
 
 _Append-only. Newest first._
 
+## [2026-08-15] ingest | qwen3p8-max-fireworks-model-page
+
+Fireworks model page at fireworks/qwen3p8-max — capture anomaly recorded: the URL serves the Qwen3.8-2.4T-A95B open-weights listing ($2.00/$0.25/$6.00 per MTok, 262k context, created 8/12/2026), not a separate Qwen3.8-Max listing. Raw: research/raw/2026-08-15/qwen3p8-max-fireworks-model-page/. Synthesis: research/references/open-weights-landscape-2026.md (Qwen section hosting bullet) and research/references/frontier-models-2026.md (Qwen3.8-Max section hosting bullet). Host spec fields.
+
+## [2026-08-15] ingest | qwen3-8-2-4t-a95b-open-weights-release
+
+Qwen3.8-2.4T-A95B — Hugging Face model card: the Qwen3.8 open-weights release (live by capture date; custom `qwen3.8-max` license; text-only, thinking always on; architecture disclosed). Raw: research/raw/2026-08-15/qwen3-8-2-4t-a95b-open-weights-release/. Synthesis: research/references/open-weights-landscape-2026.md (Qwen section rewritten — weights shipped, license resolved-with-caveat, two open questions closed, licensing observation updated) and research/references/frontier-models-2026.md (Qwen3.8-Max section updated).
+
+## [2026-08-15] ingest | deepseek-v4-pro-0813-fireworks-model-page
+
+DeepSeek-V4-Pro-0813 — Fireworks model page ($1.32/$0.044/$3.96 per MTok, 1040k context, created 8/13/2026). Raw: research/raw/2026-08-15/deepseek-v4-pro-0813-fireworks-model-page/. Synthesis: research/references/open-weights-landscape-2026.md (DeepSeek section hosting bullet; pricing observation updated). Host spec fields; 1.6T vs HF 1.7T flagged unresolved.
+
+## [2026-08-15] ingest | deepseek-v4-pro-0813-model-card
+
+DeepSeek-V4-Pro-0813 — Hugging Face model card (official release, MIT, 1.7T params, DSpark speculative decoding). Raw: research/raw/2026-08-15/deepseek-v4-pro-0813-model-card/. Synthesis: research/references/open-weights-landscape-2026.md (new DeepSeek-V4-Pro-0813 section + open question on active-param count / technical report). All benchmark figures vendor claims.
+
+## [2026-08-15] ingest | glm-5-3-frontier-coding-with-emergent-cyber-capabilities
+
+GLM-5.3: Frontier Coding with Emergent Cyber Capabilities (Z.ai launch blog, 2026-08-14). URL serves a JS SPA shell — text extracted verbatim from the page's own JS bundle (preserved in raw). Raw: research/raw/2026-08-15/glm-5-3-frontier-coding-with-emergent-cyber-capabilities/. Synthesis: research/references/open-weights-landscape-2026.md (new GLM-5.3 section, trust ladder, open question), research/references/frontier-models-2026.md (new GLM-5.3 data-points section). All figures vendor claims.
+
 ## [2026-08-15] garden | morning note 2026-08-15 (3 headlines, 4 artifacts)
 
 Note: [[garden/2026-08-15]]. Headlines: publication boundary (CHANGELOG.md published; V7 oracle unwired), link-annotation decay across four issues, open-weights + pricing news. Artifacts: branch `garden/exclude-changelog-from-build`; `bionic/inbox/gardener-news-muse-glimmer.md`; `bionic/inbox/gardener-news-sonnet5-price-hold.md`; `bionic/inbox/gardener-idea-publication-boundary-gate.md`.

@@ -37,7 +37,7 @@ I deleted Zed's vendored Claude adapter and let Zed re-download a clean copy:
 rm -rf ~/Library/Application\ Support/Zed/external_agents/registry/npx/claude-acp/
 ```
 
-Restart Zed and open a new Claude thread. Zed re-fetches the adapter, and the fresh copy is authorized by Gatekeeper and runs without the kill.
+After a restart, Zed fetches a new copy of the adapter and the fresh copy is authorized by Gatekeeper.
 
 If you're still having issues after this step, keep reading. Otherwise you can stop here, you're done.
 

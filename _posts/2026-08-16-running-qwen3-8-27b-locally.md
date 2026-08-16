@@ -6,13 +6,7 @@ description: A look at running the Qwen3.8-27B locally with Q8/Q6/Q4 and differe
 tags: [local-models, qwen]
 ---
 
-Qwen3.8 a 27B multimodal model that runs on a laptop. In my testing I was typically getting more than 20 tok/sec which felt fast enough for development. 
-
-It seemed impressive for the size. Full details below.
-
-## About Qwen3.8-27B 
-
-Qwen3.8-27B is a dense, multimodal model that Alibaba's Qwen team released two days ago:
+Qwen3.8-27B is impressive for its size and in my testing I was typically getting more than 20 tok/sec which felt fast enough for development.
 
 - **27.8B parameters:** dense (not a mixture-of-experts).
 - **262,144-token native context:** extensible toward 1M.

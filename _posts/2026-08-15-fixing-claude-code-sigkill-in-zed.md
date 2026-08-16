@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Fixing Claude Code crashing in Zed"
+title: "Claude Code terminated in Zed"
 date: 2026-08-15
-description: "After upgrading to macOS Golden Gate, gatekeeper kept killing the Claude Code binary."
+description: "After upgrading to macOS Golden Gate, Gatekeeper kept killing the Claude Code binary."
 tags: [claude-code, zed]
 ---
 
@@ -22,16 +22,21 @@ After searching (and failing to find) a solution, I started digging into logs an
 
 It turned out to be Gatekeeper killing the process... but I had to go digging to find this out.
 
-`dev: open acp logs` shows the JSON-RPC communication between Zed and the agent.
+If you `cmd-shift-p` you can run the command `dev: open acp logs` which showed the JSON-RPC communication between Zed and the agent.
 
+There were two entries:
 - `initialize` succeeded
-- `session/new` failed (Either the compiled Claude Code binary, or an MCP server it spawns.)
+- `session/new` failed
 
-That pointed straight at the binary, not the wrapper. And the lack of details or messages in the logs pointed to Gatekeeper killing the process.
+And no useful logs or error messages. Which is very much charateristic of Gatekeeper killing a process that isn't signed correctly.
 
-## The fix that worked for me
+## The Fix
 
-I deleted Zed's vendored Claude adapter and let Zed re-download a clean copy:
+THe key trick is to know that Zed installs and manages it's own Claude ACP package (unless you give it a path env var) so you just need to know what the path is to clear out the bad install. In this case it's:
+
+`~/Library/Application\ Support/Zed/external_agents/registry/npx/claude-acp/`
+
+So I deleted Zed's vendored Claude adapter and let Zed re-download a clean copy:
 
 ```sh
 rm -rf ~/Library/Application\ Support/Zed/external_agents/registry/npx/claude-acp/
@@ -39,9 +44,11 @@ rm -rf ~/Library/Application\ Support/Zed/external_agents/registry/npx/claude-ac
 
 After a restart, Zed fetches a new copy of the adapter and the fresh copy is authorized by Gatekeeper.
 
-If you're still having issues after this step, keep reading. Otherwise you can stop here, you're done.
+That should fix the problem for most people. 
 
-## Digging into how Zed's Claude Agent is built
+If somehow it didn't fix it for you, don't worry: I've included the other things I tried before realizing it was just Gatekeeper...
+
+## Digging Zed's Claude Agent Integration
 
 Here's how I traced through things as I tried to figure out what was causing the crash.
 

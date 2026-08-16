@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Running Qwen3.8-27B. Locally"
+title: "Running Qwen3.8-27B Locally"
 date: 2026-08-16
 description: "[AUTHOR: one scannable sentence — what the piece is: running the 27B multimodal Qwen locally across Q8/Q6/Q4, and what it costs in RAM.]"
 tags: [local-models, qwen]

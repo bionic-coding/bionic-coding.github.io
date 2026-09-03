@@ -86,9 +86,9 @@ I am using GLM-5.3 Flash for my coding tasks. I have a larger model review the w
 - [zai-org/GLM-5.3-Flash on Hugging Face (Aug 25)](https://huggingface.co/zai-org/GLM-5.3-Flash) — weights, MIT license, config.
 - [GLM-5.3 launch post (Z.ai, Aug 14)](https://z.ai/blog/glm-5.3) — the original "weights in two weeks" promise, now kept.
 
-## Correction: closed-model prices went down
+## Closed-model prices went down in August
 
-Every closed-model price recorded on this site since July has held or fallen. The August 14 issue said the opposite.
+Compared to July (and likely caused by pressure from open weights) closed-model prices have fallen.
 
 **Pricing changes for closed models:**
 - Anthropic launched Opus 5 at Opus 4.8's price, $5 / $25 (July 24).

@@ -79,8 +79,7 @@ Z.ai shipped the GLM-5.3 weights on August 25, then a new GLM-5.3 Flash on Augus
 - OpenRouter's API record, not the page, is the price source: [GLM 5.3 Flash](https://openrouter.ai/z-ai/glm-5.3-flash) and [Qwen3.8 Flash](https://openrouter.ai/qwen/qwen3.8-flash).
 - GLM-5.3 Flash's self-reported DeepSWE score (63.4) matches its position on Google's DeepSWE cost chart in the Gemini post above.
 
-<!-- OPTIONAL one-line take. -->
-*My take: `<one line>`.*
+I am using GLM-5.3 Flash for my coding tasks. I have a larger model review the work. So far, it's been a great experience.
 
 **More info:**
 - [**GLM-5.3-Flash launch post** (Z.ai, Aug 26)](https://z.ai/blog/glm-5.3-flash) — the vendor table and the Chinese-chips claim; the page is a JavaScript app, so it may not load without scripts.

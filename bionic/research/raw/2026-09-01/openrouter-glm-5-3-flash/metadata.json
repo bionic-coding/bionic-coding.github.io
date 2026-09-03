@@ -1,0 +1,14 @@
+{
+  "url": "https://openrouter.ai/z-ai/glm-5.3-flash",
+  "title": "GLM 5.3 Flash - API Pricing & Benchmarks | OpenRouter",
+  "author": "z-ai",
+  "published_date": null,
+  "description": "GLM-5.3-Flash is a native multimodal model from Z.ai. $0.075 per million input tokens, $0.25 per million output tokens. 1,310,720 token context window, maximum output of 131,072 tokens. Higher uptime with 22 providers. Includes independent benchmarks from Artificial Analysis.",
+  "extracted_at": "2026-09-01T18:55:40.078142+00:00",
+  "images_downloaded": 28,
+  "word_count": 1098,
+  "char_count": 9144,
+  "thin_content": false,
+  "final_url": "https://openrouter.ai/z-ai/glm-5.3-flash",
+  "extraction_success": true
+}

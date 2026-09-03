@@ -2,6 +2,118 @@
 
 _Append-only. Newest first._
 
+## [2026-09-03] refresh | gpt-5-6-pricing — OpenAI cut GPT-5.6 prices; Sol $4 / $20 promotional
+
+Refreshed while cross-checking Google's Gemini 3.8 Flash comparison table, which priced GPT-5.6 Sol at $4 / $20 against the wiki's $5 / $30. Fetched `platform.openai.com/docs/pricing` (curl with a browser user agent; `web-to-markdown` was not used). New raw: research/raw/2026-09-03/gpt-5-6-pricing/ (`source.html`, tag-stripped `extracted.md`); the July paste kept under `previous_captures`. Page now lists Sol $4 / $20, Terra $2 / $12, Luna $0.20 / $1.20 (short context; long context double) with "GPT-5.6 Sol's promotional pricing is available at least through November 21, 2026." `source_url` filled (was null), `last_source_check` 2026-09-03. Source page rewritten with a current-prices table, a July-vs-September delta table, and the original paste preserved. Synthesis: research/references/frontier-models-2026.md GPT-5.6 pricing bullet gained an update line; the price-direction note now counts five hold-or-cut moves across Anthropic, OpenAI, and Google.
+
+## [2026-09-03] ingest | meta-muse-spark-1-3
+
+Meta Superintelligence Labs launch post "Introducing Muse Spark 1.3" (2026-09-02), user-supplied URL for the This Week in AI draft. Raw: research/raw/2026-09-03/meta-muse-spark-1-3/ (extracted.md, five images, plus the linked four-page evaluation-methodology PDF fetched separately). The 11-row benchmark scorecard is an image; transcribed by reading it (Muse Spark 1.3 max vs 1.2 xhigh vs GPT-5.6 Sol max vs Opus 5 max). Synthesis: research/references/frontier-models-2026.md, new "Meta — Muse Spark 1.3" section; research/references/open-weights-landscape-2026.md Muse Glimmer section gained an update note that Meta now names a Muse Spark open-weights release on its roadmap. Cross-vendor check against Google's same-day table: Opus 5 DeepSWE 74.0 and GDPVal 1824 match; Opus 5 Terminal-Bench 2.1 differs (86.7 vs 89.1). Vendor-run; no pricing, no context or cutoff figures.
+
+## [2026-09-03] ingest | gemini-3-8-flash
+
+Google launch post "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber" (The Keyword, 2026-09-02), user-supplied URL for the This Week in AI draft. Raw: research/raw/2026-09-03/gemini-3-8-flash/ (extracted.md, 20 images, plus `gemini-api-pricing.html` fetched from ai.google.dev to verify the price). The 14-row comparison table is an image; transcribed by reading it. Pricing verified: $0.75 / $3.75 through 2026-12-31, $1.50 / $7.50 from 2027-01-01, identical schedule to 3.7 Flash. Synthesis: research/references/frontier-models-2026.md, new "Google — Gemini 3.8 Flash" section (first Google entry in the file), scope note and frontmatter updated (sources 26, tags +google +meta +gemini +muse-spark). Contradiction found and resolved: the table's GPT-5.6 Sol $4 / $20 disagreed with the wiki's July $5 / $30; OpenAI's live page confirms the cut (see the `refresh` entry above). DeepSWE cost-chart readings are approximate and marked so.
+
+## [2026-09-03] schema | refresh bionic/CLAUDE.md from the crux 3.5.0 template
+
+Re-rendered `bionic/CLAUDE.md` from `~/.claude/plugins/cache/crux/crux/3.5.0/templates/CLAUDE.md.tmpl` (`{{repo_name}}` → bionic-coding, `{{today}}` → 2026-09-03), replacing the 2026-07-31 render from the 1.8.0 template. The 3.5.0 template already carries the schema-ladder and `.bionic.yml` relocation corrections the July render had to patch by hand, so those local edits are dropped. Two local deltas remain: the one leftover `<tree>` literal (§7, the `"4"` rung) resolved to `bionic/invariants/checks/`, and the ADR-0044 citation in §14 preserved. New sections now present: §11.C (cycle tiers and `patch` blast radius), §11.D (ADR body content rule), §17 (observations concern), and the `governs` row in §11.A, which clears the CHK-ADR-1a warning from the 2026-09-01 audit. `manifest.yml` untouched: `observations` and `arch` stay unenabled (opt-in for existing trees per §17 / §4).
+
+## [2026-09-01] audit | 0 broken, 0 drift fixed, 7 warnings
+
+Full vault walk at `schema_version: "5"`, docs_dir `bionic` (`.bionic.yml`, `source: ".bionic.yml"`), against installed crux 3.5.0. No repo-level BROKEN findings and no auto-fixes applied — nothing in the tree needed repair.
+
+**Clean:** CHK-CFG-1/2/3/4 (one tree, bare artifact prefix throughout, no `(type, NNNN)` collisions); CHK-SCHEMA-1 (`"5"`); CHK-INBOX-1/2/3 (inbox present and empty, `research/new/` absent); CHK-MI-1/2/3 (every enabled concern has a section, all counts exact, `_Last updated: 2026-09-01_`); CHK-LOG-1..4 (105 headings, all in-enum, all reverse-chronological); CHK-RES-1..10 (41 sources, 6 synthesis pages, 41 raw dirs each referenced exactly once, registry 9 columns and 41 rows, 177 research wiki-links all resolving); CHK-ADR-1..12 (6 ADRs, contiguous 0000-0005, keyset matches §11.A exactly, ADR-0004↔ADR-0005 supersession bidirectional, `next_number: 6`); CHK-BR (4 briefs, no ADR cites a draft); CHK-JR-1..5 (7 entries across 2 months, index counts and per-category breakdowns exact, all links resolve); CHK-PB-1..12 + CHK-PB-SCHEMA/BIND/ABANDON/CYCLE (PB-0001 and both runs validate against the 3.5.0 schemas; `book_content_hash` recomputes identical on both runs — the CHK-PB-BIND mismatch left open by the 2026-07-30 audit is resolved); CHK-CAT-1..6 (59 skills = 59 catalog entries, no drift, no validation errors); CHK-DOCTRINE-1 (0 domains); governs coverage (cohort size 0). CHK-INV-* vacuously clean: invariants enabled, 0 pins, `checks: []`. CHK-ARCH-*, CHK-CODE-*, CHK-OBS-* silent (concerns not enabled, trees absent). CHK-ADR-SPEC inert (`adr.spec_rule_from` not set).
+
+**Drift (2), recommend-only, NOT applied.** Two regenerated-artifact projections that crux 3.5.0 enrolls have never been generated in this tree: `summarize-adrs.py --dry-run` reports `bionic/adrs/summaries/{_meta.json,implementation-map.md,resolver.json,rule-table.md}` missing, and `compile-doctrine.py --dry-run` reports `bionic/adrs/doctrine/{_meta.json,index.md}` missing. Both project from ADR `governs` blocks, which no ADR here carries (governs cohort is empty), so both would produce empty projections. Per the audit contract these are recommended, never auto-regenerated.
+
+**Warnings (7).** (1) CHK-ADR-1a: the 3.5.0 `templates/ADR-template.md` keyset carries `governs`; this tree's §11.A does not list it. Root cause is broader — `bionic/CLAUDE.md` was last rendered from the crux 1.8.0 template (see the 2026-07-31 entry) and lacks §11.C (cycle tiers / patch blast radius), §11.D (ADR body content rule), §17 (observations concern), and the `governs` row. (2) `bionic/adrs/lineage.md` still carries a dangling `[[adrs/ADR-0016-add-link-adr-graph-skill]]` — hard-coded at `scripts/generate-lineage.py:80` in crux 3.5.0, unchanged since first reported 2026-08-25; it names the plugin's own ADR and re-dangles on every regenerate, so it is not fixable here. (3) 12 dangling `[[inbox/gardener-*]]` links across 7 garden morning notes and `log.md`, all pointing at items `process-inbox` relocated to `bionic/inbox/_dispatched/<date>/`; both surfaces are append-only, so these stay as historical references. (4) 3 dangling `[[_lessons/*]]` links (`mcp`, `skills`, `sharing-agents-and-skills`) from garden notes and two research concepts pages — proposed Jekyll lessons that do not exist yet; they point outside the docs tree. (5) CHK-RES-11: 3 `> [contradiction]` markers in 2 files (`research/sources/state-of-open-source-local-llms-july-2026.md` x2, `research/references/open-weights-landscape-2026.md` x1); 0 unresolved / source-updated / refresh-failed; 39 `## Capture gaps` sections. (6) 2 source pages carry no `## Capture gaps` section: `research/sources/bionic-coding-manifesto.md` and `research/sources/qwen3-8-2-4t-a95b-open-weights-release.md`. (7) `bionic/index.md` delegates its Research, Journal, and Promptbooks sections to the concern indexes (`See [[research/index]].`) rather than inlining the per-page bullets the §5 template sketches. Applied consistently across three concerns, heading counts exact, and consistent with §5's own closing sentence that the file is a rollup while each concern index carries the authoritative detail — left as-is.
+
+**Pending user decision:** none. The two drift items and warnings 1-4 all need a decision about whether to adopt 3.5.0 contracts in this tree; nothing is blocking.
+
+## [2026-09-01] cleanup-campsite | 0 open (0 P1, 0 P2, 0 P3), 1 closed, 0 dismissed
+
+No open findings. Closed: `cleanup-CLN-ADR-1-ADR-0005`, because rule `CLN-ADR-1` was retired in crux 3.5.0 (carried five runs, never actioned; the ADR itself is unchanged). Every other implemented rule reported clean or skipped on its existence gate; August 2026 sits exactly at the `CLN-JR-2` floor (2 journal entries, 42 ops). `## What's next` section removed from `bionic/index.md` since N = 0. See [[whats_next]].
+
+## [2026-09-01] ingest | openrouter-kimi-k3
+
+OpenRouter model page — MoonshotAI: Kimi K3, user-supplied URL, one of five OpenRouter pages for the author's current open-model working set. Raw: research/raw/2026-09-01/openrouter-kimi-k3/ (page capture plus `api.json` from `/api/v1/models`). Synthesis: research/references/open-weights-landscape-2026.md (shared serving-snapshot section and comparison table). Kimi K3 on OpenRouter: $3 / $15 list across 17 providers, 943,718-token max output, per-provider GPQA spread 67–93%. Side finding via Hub API: `moonshotai/Kimi-K3` exists, ungated, 2.78M downloads, license tag `other` — the K3 weights open question is marked resolved for availability, still open for license terms. Rolling page, `static: false`.
+
+## [2026-09-01] ingest | openrouter-qwen3-8-flash
+
+OpenRouter model page — Qwen: Qwen3.8 Flash, user-supplied URL, one of five OpenRouter pages for the author's current open-model working set. Raw: research/raw/2026-09-01/openrouter-qwen3-8-flash/ (page capture plus `api.json` from `/api/v1/models`). Synthesis: research/references/open-weights-landscape-2026.md (shared serving-snapshot section and comparison table). Qwen3.8 Flash on OpenRouter: new model to the wiki, released 2026-08-26, $0.15 / $0.47, text+image+video in, single provider. HF repo `Qwen/Qwen3.8-Flash-Next` created 2026-08-24, license tag `other` (not captured). Rolling page, `static: false`.
+
+## [2026-09-01] ingest | openrouter-glm-5-3-flash
+
+OpenRouter model page — Z.ai: GLM 5.3 Flash, user-supplied URL, one of five OpenRouter pages for the author's current open-model working set. Raw: research/raw/2026-09-01/openrouter-glm-5-3-flash/ (page capture plus `api.json` from `/api/v1/models`). Synthesis: research/references/open-weights-landscape-2026.md (shared serving-snapshot section and comparison table). GLM 5.3 Flash on OpenRouter: $0.15 / $0.50 list, 50% promotion through 2026-09-09, 22 providers, 1.38T tokens from Hermes Agent in week one. Listed context 1,310,720 exceeds the model config's 1,048,576; synthesis says cite the config. Rolling page, `static: false`.
+
+## [2026-09-01] ingest | openrouter-glm-5-3
+
+OpenRouter model page — Z.ai: GLM 5.3, user-supplied URL, one of five OpenRouter pages for the author's current open-model working set. Raw: research/raw/2026-09-01/openrouter-glm-5-3/ (page capture plus `api.json` from `/api/v1/models`). Synthesis: research/references/open-weights-landscape-2026.md (shared serving-snapshot section and comparison table). GLM 5.3 on OpenRouter: first captured API price for GLM-5.3, $1.40 / $4.40, cache read $0.26, 22 providers, released 2026-08-18. Rolling page, `static: false`.
+
+## [2026-09-01] ingest | openrouter-qwen3-8-2-4t-a95b
+
+OpenRouter model page — Qwen: Qwen3.8 2.4T A95B, user-supplied URL, one of five OpenRouter pages for the author's current open-model working set. Raw: research/raw/2026-09-01/openrouter-qwen3-8-2-4t-a95b/ (page capture plus `api.json` from `/api/v1/models`). Synthesis: research/references/open-weights-landscape-2026.md (shared serving-snapshot section and comparison table). Qwen3.8 2.4T A95B on OpenRouter: $2 / $6 at 5 of 7 providers, 262,144 max output, text only, Exacto benchmarks vary 84–91% GPQA by provider. Rolling page, `static: false`.
+
+## [2026-09-01] ingest | glm-5-3-flash-model-card
+
+Hugging Face model card for zai-org/GLM-5.3-Flash, user-supplied URL. Raw: research/raw/2026-09-01/glm-5-3-flash-model-card/ (card, three images, plus fetched `LICENSE`, `config.json`, Hub API record). Synthesis: research/references/open-weights-landscape-2026.md (shared GLM-5.3-Flash section). Closes the blog's gaps: MIT license, 1,048,576-token context, 45 layers (34 linear + 11 sparse attention), repo created 2026-08-25. Side finding via Hub API and raw LICENSE fetch: zai-org/GLM-5.3 weights also shipped 2026-08-25, under a custom "GLM-5.3 License" (MIT text plus a security-review clause for Model-as-a-Service operators above US$10B revenue), not MIT — the 5.3 open question is marked resolved; the 5.3 card itself remains uncaptured. Benchmark figure transcribed from the image; matches the blog's table data.
+
+## [2026-09-01] ingest | glm-5-3-flash
+
+Z.ai launch post "GLM-5.3-Flash: Frontier Intelligence, Flash Cost" (2026-08-26), user-supplied URL. Raw: research/raw/2026-09-01/glm-5-3-flash/. Capture note: the page is a JavaScript app; `web-to-markdown` and a rendering fetch both returned empty bodies, so the article was reconstructed in order from string literals in the page's JS bundle (saved in raw). Three benchmark tables recovered as data; four figures not captured. Synthesis: research/references/open-weights-landscape-2026.md (new section; GLM-5.3 header and license paragraph updated). Vendor-run numbers marked as such; "approaching Opus 4.8" survives the table, comparison set is Opus 4.8 not Opus 5.
+
+## [2026-09-01] ingest | claude-fable-5-1-migration-guide
+
+Claude Platform docs, "Migrating to Claude Fable 5.1 and Claude Mythos 5.1" (release-day page, user paste plus same-day fetch). Raw: research/raw/2026-09-01/claude-fable-5-1-migration-guide/. Synthesis: research/references/frontier-models-2026.md (new Fable 5.1 section, shared with the two sibling captures). Operational detail behind the what's-new page: the append-only history requirement, the three-step history check, fallback targets Opus 4.8 and Opus 5, and the Opus 5 deltas (2× per-token price, 30-day retention, not on Priority Tier). Multi-language code groups reduced to Python in the source page; full set in the raw capture. Dispatched from inbox by `process-inbox`.
+
+## [2026-09-01] ingest | claude-fable-5-1-whats-new
+
+Claude Platform docs, "What's new in Claude Fable 5.1" (release-day page, user paste plus same-day fetch). Raw: research/raw/2026-09-01/claude-fable-5-1-whats-new/. Synthesis: research/references/frontier-models-2026.md (new Fable 5.1 section). Three breaking changes, five additive features, seven vendor-documented behavior differences; content provenance (statistical text watermark on all Fable 5.1 output, C2PA on media) noted as relevant to BRIEF-wire-the-publication-boundary-oracle-into-ci. Capability claims carry no benchmarks and are marked claimed-not-verified. Dispatched from inbox by `process-inbox`.
+
+## [2026-09-01] ingest | claude-fable-5-1-overview
+
+Claude Platform docs, "Claude Fable 5.1" model overview (release-day page, user paste plus same-day fetch). Raw: research/raw/2026-09-01/claude-fable-5-1-overview/. Synthesis: research/references/frontier-models-2026.md (new Fable 5.1 section; Fable 5 section marked superseded; naming note updated). Fable 5.1 released 2026-09-01 at Fable 5's $10 / $50 with cache reads cut to $0.25 per MTok; the vendor lineup table re-confirms Sonnet 5 at $2 / $10 and adds knowledge cutoffs. Source inconsistency flagged: the page's table footnote says cache reads cost 10% of input, its own pricing table says 2.5%. No contradiction with existing pages. Dispatched from inbox by `process-inbox`.
+
+## [2026-08-25] brief | scaffolded BRIEF-wire-the-publication-boundary-oracle-into-ci
+
+"Wire the publication-boundary oracle into CI" — bionic/briefs/BRIEF-wire-the-publication-boundary-oracle-into-ci.md, status: draft. Scaffold only; the body is the author's to write. Dispatched by owner decision after this session's inbox pass held the item back as `unsure` between `adr` and `brief`; owner chose `brief`. Reference material preserved at bionic/inbox/_dispatched/2026-08-25/gardener-idea-publication-boundary-gate.md — verified diagnosis, four open design questions (which oracle, count vs allowlist, where it runs, fail vs warn). Becomes an ADR once those are answered.
+
+## [2026-08-25] audit | 1 broken (upstream), 2 drift fixed, 1 warning
+
+Full vault walk at `schema_version: "5"`, docs_dir `bionic` (`.bionic.yml`). **Drift fixed (2):** `bionic/adrs/index.md` regenerated by `generate-adr-index.py` (dropped the non-canonical `_Last updated:_` line, added the `## Archived (0)` section, picked up ADR-0000's `process` tag that the hand-maintained table had dropped); `bionic/adrs/lineage.md` created by `generate-lineage.py` — the file was missing entirely (6 ADRs, 1 supersedes edge, 0 amends, 4 topic clusters). Both are regenerated artifacts per CLAUDE.md §4; all three regenerator dry-runs now report no drift. **Broken (1), NOT a repo defect:** the freshly generated `lineage.md` header carries a wiki-link to `ADR-0016-add-link-adr-graph-skill`, hard-coded at `scripts/generate-lineage.py:80` in crux 2.0.1 — it names the *plugin's own* ADR, which does not exist in this project. It re-dangles on every regenerate, so it is not editable here; fix belongs upstream. **Warning (1) — since cleared:** CHK-INBOX-3 reported 1 item pending at scan time (`gardener-idea-publication-boundary-gate.md`, held back as `unsure` between `adr` and `brief`); the owner chose `brief` and it was dispatched after the walk. The inbox is now empty. Clean: CHK-SCHEMA-1, CHK-CFG-1/3, CHK-RES-1..10 (31 sources, 6 synthesis pages, no orphan or shared raw captures, registry 9 columns and 31 rows), CHK-ADR-1..9, CHK-BR, CHK-LOG-1..4, CHK-JR-1..5, CHK-MI-1..3, CHK-PB. CHK-INV silent: invariants enabled, ledger empty (0 pins), `bionic/invariants/checks/` absent — vacuously clean. CHK-RES-11: 3 contradiction/unresolved markers and 29 `## Capture gaps` sections across research pages.
+
+## [2026-08-25] cleanup-campsite | 1 open (0 P1, 1 P2, 0 P3), 0 closed, 0 dismissed
+
+No P1 findings. The single open id is `cleanup-CLN-ADR-1-ADR-0005`, carried unchanged for a fifth consecutive run; it ages out on 2026-09-13. Every other implemented rule reported clean or skipped on its existence gate. See [[whats_next]].
+
+## [2026-08-25] brief | scaffolded BRIEF-a-third-content-stream-field-notes
+
+"A third content stream: what to do about field notes" — bionic/briefs/BRIEF-a-third-content-stream-field-notes.md, status: draft. Scaffold only; the body is the author's to write. Reference material is the night gardener's drop, preserved at bionic/inbox/_dispatched/2026-08-25/gardener-idea-field-notes-stream.md (four options, cheapest first). Anything past option A touches ADR-0005 and wants an ADR after this brief.
+
+## [2026-08-25] ingest | snyk-toxicskills-agent-skills-audit
+
+Snyk "ToxicSkills" audit of 3,984 agent skills (published 2026-02-05). Raw: research/raw/2026-08-25/snyk-toxicskills-agent-skills-audit/. Synthesis: new page research/concepts/agent-skill-supply-chain-security.md. Corrects the drop that requested it: the post's own title ("Prompt Injection in 36%") misstates its body — 36.82% is any-severity, 13.4% is critical, prompt injection is 2.6% of the corpus and 91% of the 76 confirmed-malicious samples. February measurement of an ecosystem the post says grew 10x in weeks; re-check before publishing. Suggested `_lessons/sharing-agents-and-skills` edit (a scan-step bullet) is scaffolded, not written — author's prose. Attacker payloads summarized, not reproduced; the mcp-scan technical report PDF was not captured.
+
+## [2026-08-25] ingest | claude-platform-release-notes
+
+Claude Platform release notes, a rolling page (static: false); window 2026-07-24 to 2026-08-20 transcribed, earlier entries left in the raw capture. Raw: research/raw/2026-08-25/claude-platform-release-notes/. Synthesis: research/references/frontier-models-2026.md (new platform-and-pricing section). Verifies the drop's claim against the primary: the Sonnet 5 increase to $3/$15 on 2026-09-01 was cancelled and $2/$10 is now standard (note dated 2026-08-10). Contradiction flagged, not resolved: the lede of _posts/2026-08-14-this-week-in-ai.md argues open weights win because closed-model costs "keep increasing" — four days before that post published. Editorial call is the author's. Also closes the Opus 5 pricing/spec flag the system card left open ($5/$25, 1M context default and max, 128k output, thinking on by default).
+
+## [2026-08-25] ingest | muse-glimmer-open-agentic-model
+
+Meta Superintelligence Labs' Muse Glimmer (2026-08-10): 30B, Apache 2.0, local-agent focus. Raw: research/raw/2026-08-25/muse-glimmer-open-agentic-model/. Synthesis: research/references/open-weights-landscape-2026.md (new section). Resolves the naming question the drop left open: Muse Glimmer is the released open-weights model, Muse Spark is the closed teacher it was distilled from — the CNBC framing ("open the weights for Muse Spark 1.2") is the misread. Capture gap: both benchmark tables are figure images, so no numbers were captured; the linked methodology report would need a second ingest.
+
+## [2026-08-25] ingest | mcp-spec-2026-07-28-changelog
+
+MCP specification revision 2026-07-28 changelog, read in full. Raw: research/raw/2026-08-25/mcp-spec-2026-07-28-changelog/. Synthesis: new page research/concepts/model-context-protocol.md. Sessions and the initialize handshake removed, server/discover now mandatory, SSE resumability gone; Roots, Sampling, and Logging deprecated under a new twelve-month lifecycle policy. Lesson-impact check recorded: _lessons/mcp teaches Tools, Resources, and Prompts, all untouched — no edit needed, `updated: 2026-07-17` stands. Two ecosystem-response claims (Google 2026-08-05, Microsoft C# SDK v2.0) carried forward as unverified; neither was fetched.
+
+## [2026-08-18] garden | morning note 2026-08-18 (3 headlines, 4 artifacts)
+
+Ten owner commits since `daeef0d`, two posts shipped, five research sources ingested. Note: [[garden/2026-08-18]]. Artifacts: three inbox drops (`gardener-news-mcp-2026-07-28-spec`, `gardener-news-agent-skill-scanning`, `gardener-idea-field-notes-stream`) and the branch `garden/fix-live-post-typos`.
+
+## [2026-08-18] cleanup-campsite | 1 open (0 P1, 1 P2, 0 P3), 0 closed, 0 dismissed
+
+No P1 findings. The single open id is `cleanup-CLN-ADR-1-ADR-0005`, carried unchanged from the 2026-08-15 run. See [[whats_next]].
+
 ## [2026-08-15] ingest | qwen3p8-max-fireworks-model-page
 
 Fireworks model page at fireworks/qwen3p8-max — capture anomaly recorded: the URL serves the Qwen3.8-2.4T-A95B open-weights listing ($2.00/$0.25/$6.00 per MTok, 262k context, created 8/12/2026), not a separate Qwen3.8-Max listing. Raw: research/raw/2026-08-15/qwen3p8-max-fireworks-model-page/. Synthesis: research/references/open-weights-landscape-2026.md (Qwen section hosting bullet) and research/references/frontier-models-2026.md (Qwen3.8-Max section hosting bullet). Host spec fields.

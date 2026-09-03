@@ -13,7 +13,7 @@ when **you** remove its `(proposed)` marker. That edit is the acceptance gate.
 | OpenAI News | https://openai.com/news | gpt, models, api, releases | — | (proposed) |
 | Google DeepMind Blog | https://deepmind.google/discover/blog/ | gemini, research, releases | — | (proposed) |
 | Simon Willison's Weblog | https://simonwillison.net/ | llm, practical, tools, hands-on | 2026-08-15 | accepted 2026-07-20 |
-| Model Context Protocol | https://modelcontextprotocol.io/ | mcp, tools, protocol | 2026-08-15 | accepted 2026-07-20 |
+| Model Context Protocol | https://modelcontextprotocol.io/ | mcp, tools, protocol | 2026-08-18 | accepted 2026-07-20 |
 | Hacker News | https://news.ycombinator.com/ | ecosystem, launches, discussion | — | (proposed) |
 | Latent Space | https://www.latent.space/ | ai-engineering, interviews, analysis | — | (proposed) |
 | Ars Technica AI | https://arstechnica.com/ai/ | news, analysis, policy | — | (proposed) |

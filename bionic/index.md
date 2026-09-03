@@ -1,12 +1,8 @@
 # docs/bionic-coding
 
-_Last updated: 2026-08-15_
+_Last updated: 2026-09-03_
 
-## What's next (1)
-
-_1 open suggestion (P1: 0, P2: 1, P3: 0) — see [[whats_next]]._
-
-## Research (27 sources, 4 synthesis pages)
+## Research (43 sources, 6 synthesis pages)
 
 See [[research/index]].
 
@@ -21,10 +17,12 @@ See [[research/index]].
 | [[adrs/ADR-0001-use-jekyll-4-4-with-ruby-pinned-to-4-0-5]] | Use Jekyll 4.4 with Ruby pinned to 4.0.5 | Accepted | 2026-07-08 |
 | [[adrs/ADR-0000-record-architecture-decisions]] | Record architectural decisions as ADRs | Accepted | 2026-07-07 |
 
-## Briefs (2)
+## Briefs (4)
 
+- [[briefs/BRIEF-a-third-content-stream-field-notes]] — `draft` — `updated_at: 2026-08-25`
 - [[briefs/BRIEF-teaching-regular-people-ai-content-plan]] — `published` — `updated_at: 2026-07-11`
 - [[briefs/BRIEF-this-week-in-ai-format]] — `published` — `updated_at: 2026-07-17`
+- [[briefs/BRIEF-wire-the-publication-boundary-oracle-into-ci]] — `draft` — `updated_at: 2026-08-25`
 
 ## Journal (2 months)
 

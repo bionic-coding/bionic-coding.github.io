@@ -1,0 +1,14 @@
+{
+  "url": "https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/",
+  "title": "Snyk Finds Prompt Injection in 36%, 1467 Malicious Payloads in a ToxicSkills Study of Agent Skills Supply Chain Compromise | Snyk",
+  "author": null,
+  "published_date": "2026-02-05T00:00-05:00",
+  "description": "Snyk\u2019s ToxicSkills research reveals 36% of AI agent skills contain security flaws, including 1,467 vulnerable skills and active malicious payloads targeting OpenClaw, Claude Code, and Cursor users.",
+  "extracted_at": "2026-08-25T17:34:36.548871+00:00",
+  "images_downloaded": 10,
+  "word_count": 3410,
+  "char_count": 27205,
+  "thin_content": false,
+  "final_url": "https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/",
+  "extraction_success": true
+}

@@ -1,0 +1,14 @@
+{
+  "url": "https://openrouter.ai/qwen/qwen3.8-flash",
+  "title": "Qwen3.8 Flash - API Pricing & Providers | OpenRouter",
+  "author": "qwen",
+  "published_date": null,
+  "description": "Qwen3.8 Flash is a multimodal reasoning model from Alibaba. $0.15 per million input tokens, $0.47 per million output tokens. 1,000,000 token context window, maximum output of 131,072 tokens.",
+  "extracted_at": "2026-09-01T18:55:44.176645+00:00",
+  "images_downloaded": 7,
+  "word_count": 743,
+  "char_count": 6039,
+  "thin_content": false,
+  "final_url": "https://openrouter.ai/qwen/qwen3.8-flash",
+  "extraction_success": true
+}

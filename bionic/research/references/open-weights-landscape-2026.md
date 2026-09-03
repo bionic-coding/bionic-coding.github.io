@@ -2,9 +2,9 @@
 title: "Open-Weights Models — 2026 Landscape"
 slug: open-weights-landscape-2026
 type: references
-tags: [open-weights, local-llms, licensing, benchmarks, apple-silicon, claimed-vs-verified]
-sources: [state-of-open-source-local-llms-july-2026, willison-kimi-k3, willison-inkling, raschka-notable-open-weight-models, qwen3-8-open-weight-announcement, kimi-k3-technical-report, kimi-k3-docs, qwen3-8-max-preview-fact-sheet, qwen3-8-max-a-new-bar-for-coding-and-cowork, qwen3-8-max-qwencloud-model-page, glm-5-3-frontier-coding-with-emergent-cyber-capabilities, deepseek-v4-pro-0813-model-card, deepseek-v4-pro-0813-fireworks-model-page, qwen3-8-2-4t-a95b-open-weights-release, qwen3p8-max-fireworks-model-page]
-last_reviewed: 2026-08-15
+tags: [open-weights, local-llms, licensing, benchmarks, apple-silicon, claimed-vs-verified, small-models]
+sources: [state-of-open-source-local-llms-july-2026, willison-kimi-k3, willison-inkling, raschka-notable-open-weight-models, qwen3-8-open-weight-announcement, kimi-k3-technical-report, kimi-k3-docs, qwen3-8-max-preview-fact-sheet, qwen3-8-max-a-new-bar-for-coding-and-cowork, qwen3-8-max-qwencloud-model-page, glm-5-3-frontier-coding-with-emergent-cyber-capabilities, deepseek-v4-pro-0813-model-card, deepseek-v4-pro-0813-fireworks-model-page, qwen3-8-2-4t-a95b-open-weights-release, qwen3p8-max-fireworks-model-page, muse-glimmer-open-agentic-model, glm-5-3-flash, glm-5-3-flash-model-card, openrouter-qwen3-8-2-4t-a95b, openrouter-glm-5-3, openrouter-glm-5-3-flash, openrouter-qwen3-8-flash, openrouter-kimi-k3]
+last_reviewed: 2026-09-01
 ---
 
 # Open-Weights Models — 2026 Landscape
@@ -25,7 +25,9 @@ Sorted by how much weight a claim from each deserves:
 6. **News reports of vendor announcements** — [[research/sources/qwen3-8-open-weight-announcement]]. Repeats a claim; adds no measurement.
 7. **Vendor tweets** — the July Qwen 3.8 "second only to Fable 5" claim. Citable as a claim only, and now superseded by the launch post's own table (below).
 
-## GLM-5.3 (Z.ai / Zhipu) — launched 14 August; weights promised within two weeks
+## GLM-5.3 (Z.ai / Zhipu) — launched 14 August; weights shipped 25 August
+
+> **Update 2026-09-01.** The weights did ship: `zai-org/GLM-5.3` and `zai-org/GLM-5.3-BF16` were created on Hugging Face on **2026-08-25** (Hub API check during the GLM-5.3-Flash ingest, not a captured card), and the repository's `LICENSE` file opens "GLM-5.3 License". That is **not MIT**: a custom permissive license, MIT-shaped, with one added clause — a "Model as a Service" operator whose group revenue exceeds **US$10 billion over any 12 months** must pass Z.AI's security review before commercial use (Hub tag `license:other`; text saved in the Flash raw capture as `GLM-5.3-LICENSE.txt`). Ingest the GLM-5.3 card before citing anything beyond "downloadable, custom permissive license". The same day brought a second model, **GLM-5.3-Flash** — next section.
 
 Source: [[research/sources/glm-5-3-frontier-coding-with-emergent-cyber-capabilities]] (launch post, 2026-08-14). **Every number below is a vendor claim from Z.ai's own runs** — but the post states a harness and parameters for every row in its footnotes, which puts it on trust-ladder rung 3.
 
@@ -39,18 +41,51 @@ Source: [[research/sources/glm-5-3-frontier-coding-with-emergent-cyber-capabilit
 - **Cross-vendor corroboration — the best this week's captures offer:** Z.ai's rows for DeepSeek-V4-Pro-0813 (TB2.1 87.9, DeepSWE 62.7, CyberGym 83.3) and Qwen3.8-Max (TB2.1 86.6, DeepSWE 56.6) **exactly match what DeepSeek and Qwen publish for themselves**. Three vendors' tables agreeing on shared rows is the closest thing to verification available. (Harness-dependent rows still diverge: Fable 5's TB2.1 is 88 in Z.ai's Claude Code run, 84.6 in Qwen's Terminus-2 figure.)
 - **API changes:** thinking is now always-on (`thinking.type: "disabled"` removed — breaking migration), effort levels `low`/`high`/`max` with `max` default. GLM Coding Plan moved to a points-based quota with 50% off-peak pricing (peak 14:00–18:00 UTC+8 weekdays).
 
+## GLM-5.3-Flash (Z.ai / Zhipu) — open weights, MIT, natively multimodal, 25–26 August
+
+Sources: [[research/sources/glm-5-3-flash]] (launch post, 2026-08-26; page is a JavaScript app, text reconstructed from its bundle) and [[research/sources/glm-5-3-flash-model-card]] (Hugging Face card plus the repo's `LICENSE` and `config.json`, captured 2026-09-01). Benchmarks are **vendor-run** with a stated harness per row (trust-ladder rung 3); the architecture facts below come from the shipped `config.json`, which is as verified as an open-weights spec gets.
+
+- **What it is:** a **new base model**, not a GLM-5.3 post-train — **320B total / 18B active**, the first natively multimodal GLM-5 model, a 30T-token multimodal corpus. Z.ai's pitch: GLM-5.2-beating results "at one-tenth the price," "approaching Claude Opus 4.8 on coding and agentic benchmarks." Trialled anonymously as `ox-alpha` on OpenCode and OpenRouter before launch.
+- **Verified from the repo:** **MIT license** (plain MIT, unlike the full GLM-5.3, which carries a custom license — see the update note above), **1,048,576-token context**, **45 layers: 34 linear-attention + 11 sparse-attention** (the "hybrid" the blog describes, with the sparse layers using a DeepSeek-style indexer plus Z.ai's IndexPool compression), 8 experts per token, a vision tower. Repo created 2026-08-25.
+- **The efficiency claim, in the vendor's own numbers:** vs GLM-5.3, **3.0× less attention compute and a 4.4× smaller KV cache**; vs GLM-4.5, half the active parameters (18B vs 32B) and half the layers (45 vs 92) at similar total size. Z.ai concedes the KV cache is "still slightly larger than Kimi-K3 and DeepSeek-V4-Flash."
+- **Benchmarks (Z.ai's table, six models, all rows vendor-run):** GLM-5.3-Flash **beats GLM-5.2 everywhere it is measured** (DeepSWE 63.4 vs 46.2, AutomationBench 48.8 vs 26.2, GDPval-AA v2 1773 vs 1504). Against **Opus 4.8** it is ahead on DeepSWE (63.4 vs 58.0), Toolathlon (78.4 vs 76.2), AutomationBench (48.8 vs 41.0), GDPval-AA v2 (1773 vs 1582) and every vision row except CharXiv; behind on Terminal Bench 2.1 (84.3 vs 85.0), NL2Repo (56.3 vs 69.7), HLE w/ tools (55.3 vs 57.9), Agents' Last Exam (26.3 vs 27.0). **GPT-5.6 Terra leads the coding rows** (TB2.1 87.4, DeepSWE 69.6) and **Gemini 3.7 Flash leads AutomationBench (52.3) and the video/vision rows** (BabyVision 70.9, MVBench 82.2). The "approaching Opus 4.8" framing survives the table; a "beats Opus 4.8" framing would not. Note the comparison set is **Opus 4.8, not Opus 5** — the Opus 5 card ([[research/sources/claude-opus-5-system-card]]) is a July source Z.ai could have used.
+- **Cost claim:** Artificial Analysis Intelligence Index v4.1.1 score **57 at $0.045 per task (discounted)** — Z.ai's reading of AA's chart, not captured from AA. No per-token API price appears in either source; "one-tenth the price" is relative to GLM-5.2. Compare the DeepSeek and Qwen rows above before repeating a cheapest-model claim.
+- **The part worth a column paragraph:** the whole launch week was served **on Chinese AI chips**, with a claimed 3× serving speedup and "per-token cost comparable to mainstream NVIDIA GPUs," and Z.ai says a GLM-5.3-powered agent helped write the serving kernels. Single-source, unaudited — but it is the first open-weights launch in this file to make the hardware the story.
+- **Visual coding loop:** the model renders its output, inspects it, and revises (slides, frontends, games). Vendor examples only, no benchmark of the loop itself — the vision rows above are the nearest evidence.
+- **Runs locally in principle:** SGLang, vLLM, TokenSpeed, Transformers, KTransformers, Unsloth recipes; 80 quantizations and 441k downloads in the first week per the Hub. 320B total parameters still means a multi-GPU or large-unified-memory machine; nothing here measures Apple Silicon.
+
 ## DeepSeek-V4-Pro-0813 (DeepSeek) — official release, MIT, 13 August
 
 Source: [[research/sources/deepseek-v4-pro-0813-model-card]] (HF model card, release dated 2026-08-13 by name suffix). All benchmark figures vendor-run (DeepSeek Harness, `max` effort) — claimed, not independently verified.
 
 - **The official release of DeepSeek-V4-Pro**, superseding the preview, "with greatly enhanced agentic capabilities and performance improvements that are especially pronounced in production environments." Built on the preview structure **with a DSpark speculative decoding module attached** — the draft weights come from the same checkpoint (no separate draft model; one flag in vLLM or SGLang enables it).
-- **MIT license** — stated twice on the page. The most permissive license among this week's three releases (Qwen went custom; GLM-5.3's is unnamed).
+- **MIT license** — stated twice on the page. The most permissive license among this week's three releases (Qwen went custom; GLM-5.3's was unnamed at the time — since published as a custom license, see the GLM sections above).
 - **Scale: 1.7T params** (HF spec field only — the card never states it in prose). **Active-parameter count is not disclosed on the card**; the uncaptured technical report (arXiv 2606.19348, "DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence") is where that lives. Context likewise: only the paper title's "Million-Token" and a recommended **384K max output** at high/max effort.
 - **DeepSeek's own verdict: "broadly competitive with the strongest proprietary models available."** Their table is more precise: V4-Pro **beats** Opus 4.8 and Fable 5 on CyberGym (83.3 vs 78.3 / 83.1), AutomationBench (31.8 vs 27.2 / 29.1), and is 0.1 pt behind K3 on Terminal Bench 2.1 (87.9 vs 88.3). It **trails** Fable 5 on HLE (42.7/60.0 vs 53.3/63.0) and DeepSWE (62.7 vs 70.0), and Opus 4.8 on NL2Repo (61.5 vs 69.7) and DSBench-Hard (67.2 vs 71.7). The preview→official jump is the big number: DeepSWE 12.8 → 62.7, CyberGym 52.7 → 83.3, TB2.1 72.1 → 87.9.
 - **Three reasoning-effort levels — `low`, `high`, `max`** — same shape as Qwen3.8's and GLM-5.3's; the single-"max" era (K3) is now the exception.
 - **Cross-vendor corroboration:** Z.ai's GLM-5.3 table (captured the same day) reproduces DeepSeek's self-reported TB2.1 87.9, DeepSWE 62.7, and CyberGym 83.3 exactly.
 - **Serving recipe:** a single **4×GB300 node** with vLLM (fp8 KV cache, expert parallel, DSpark with 7 speculative tokens); SGLang cookbook variant with mxfp4. 19,945 HF downloads in the first month; six community quantizations already listed.
 - **Third-party hosting (Fireworks, [[research/sources/deepseek-v4-pro-0813-fireworks-model-page]]):** serverless at **$1.32 / $0.044 / $3.96 per MTok** (input / cached input / output), **1040k context**, function calling and LoRA fine-tuning supported, listing created 8/13/2026. That is **the cheapest frontier-scale serving captured in this wiki so far** — under Qwen3.8-Max's $2 / $6 and K3's $3 / $15 on both input and output. Its spec field says **1.6T** params against the HF card's 1.7T — an unresolved host-vs-lab discrepancy. The 1040k figure is also the first explicit V4-Pro context number captured.
+
+## Muse Glimmer (Meta Superintelligence Labs) — Apache 2.0, shipped 10 August
+
+Source: [[research/sources/muse-glimmer-open-agentic-model]] (Meta research blog, 2026-08-10, read in full 2026-08-25). Trust-ladder rung 3 — a vendor launch post; unlike the others on this page it carries **no textual benchmark table**, only figure images.
+
+**The odd one out on this page, and that is the point.** Every other entry here is frontier-scale — 1.7T to 2.8T parameters, served from someone else's datacenter even when the weights are "open." Muse Glimmer is **30B**, **Apache 2.0**, and designed from the start to run on the reader's own laptop.
+
+- **30 billion parameters, Apache 2.0.** The most permissive license on this page, matching DeepSeek's MIT for practical purposes and beating Qwen's custom `qwen3.8-max` terms outright.
+- **Distilled, not trained from scratch.** Pre-training was **logit distillation from Muse Spark's outputs** — Muse Spark is the larger closed teacher. Mid-training added longer-context agent-heavy data; post-training combined SFT with on-policy distillation and RL.
+- **The memory arithmetic is stated, which is rare.** At full precision a 30B model needs **over 55 GB**. Meta quantizes to ~4-bit, putting the language model **under 20 GB** and leaving headroom for KV cache, the perception encoder, and the speculative-decoding drafter inside a **24 GB or 32 GB envelope**. Claimed "minimal to no degradation" on agentic tasks — vendor claim, no numbers given.
+- **Speculative decoding ships with it.** A DFlash-based drafter, quantized versions provided. Claimed speedups: **3.1× on RTX 5090, 1.8× on M5 Max, 1.5× on M4 Max**, at identical output quality.
+- **Multimodal in, text out**, via a dedicated perception encoder; 100+ languages; controllable reasoning effort — the same effort ladder that Qwen3.8, GLM-5.3, and DeepSeek-V4-Pro all adopted this season.
+- **Benchmarks: claimed, and not capturable.** The post says it performs strongly against **Gemma4-31B and Qwen3.6-27B** in its size class, and names the suites (DeepSearch QA, MCP-Atlas, 𝛕-Bench, SWE-Bench). **The numbers live in figure images and were not captured.** The linked methodology report is the primary for anything quantitative.
+
+> **[claimed-vs-verified] The naming question is settled — the popular version is wrong.**
+> Second-hand coverage of this release split two ways: most outlets named the model **Muse Glimmer**, while a CNBC report described Zuckerberg saying Meta would open the weights for **Muse Spark 1.2**. Reading the primary resolves it. **Muse Glimmer is the released open-weights model. Muse Spark is the closed teacher model it was distilled from** — the post says so directly: "We trained Muse Glimmer on Muse Spark's outputs using logit distillation." The two are not the same model and only one of them is downloadable.
+>
+> **Update 2026-09-03.** Meta shipped **Muse Spark 1.3** (closed; Muse Code and the Meta Model API only) and its launch post lists "the Muse Spark open weights release" on the roadmap, with no version or date ([[research/sources/meta-muse-spark-1-3]], details in [[research/references/frontier-models-2026]]). The rule above holds until weights land.
+
+**Why it matters to this wiki's through-line.** The open-vs-closed argument the column has been running rests on price direction, and price direction just moved the wrong way for that argument (see the Sonnet 5 hold in [[research/references/frontier-models-2026]]). Muse Glimmer is the stronger form of the same argument: a capable agentic model that runs on hardware the author already owns, under a license that cannot be revoked. That is a **control-and-locality** claim, not a unit-cost claim, and it does not depend on anyone's pricing page.
 
 ## Kimi K3 (Moonshot) — the spec conflict, resolved
 
@@ -172,9 +207,32 @@ The practically useful claims, if they hold:
 - **Frontier models are all server-class.** GLM 5.2, DeepSeek R3, Llama 5 405B, Kimi K3 — none run usefully on consumer hardware. Llama 5 405B dense needs ~150 GB even at Q2 and manages ~5 tok/s on a 192 GB M4 Ultra.
 - **The pattern to watch:** ship a cluster-scale flagship, then distil an "Air"-class variant that fits a high-RAM Mac. GLM 5.2 did both on the same day.
 
+## The author's working set on OpenRouter — serving snapshot, 2026-09-01
+
+Sources: five OpenRouter model pages plus their `/api/v1/models` records, all captured 2026-09-01 — [[research/sources/openrouter-qwen3-8-2-4t-a95b]], [[research/sources/openrouter-glm-5-3]], [[research/sources/openrouter-glm-5-3-flash]], [[research/sources/openrouter-qwen3-8-flash]], [[research/sources/openrouter-kimi-k3]]. These are the open-weights models the author is using day to day as of 2026-09-01, alongside Claude Fable 5.1, Opus 4.8, and Sonnet 5 on the closed side ([[research/references/frontier-models-2026]]). OpenRouter pages are **rolling dashboards** — the prices below are list prices in the API record on the capture date; provider tables, discounts, and app rankings move daily.
+
+| Model (OpenRouter id) | Released | List price in / out per MTok | Cache read | Context | Max output | Input | Providers | Top apps by traffic |
+|---|---|---|---|---|---|---|---|---|
+| Qwen3.8 2.4T A95B (`qwen/qwen3.8-2.4t-a95b`) | 2026-08-12 | **$2 / $6** | $0.25 | 1,048,576 | 262,144 | text | 7 | pi, Hermes Agent, omp |
+| GLM 5.3 (`z-ai/glm-5.3`) | 2026-08-18 | **$1.40 / $4.40** (10% off at some providers) | $0.26 | 1,310,720 | 131,072 | text | 22 | Hermes Agent, Claude Code, omp |
+| GLM 5.3 Flash (`z-ai/glm-5.3-flash`) | 2026-08-26 | **$0.15 / $0.50 list; $0.075 / $0.25 at 50% off through 2026-09-09 16:00 UTC** | $0.03 ($0.015 discounted) | 1,310,720 | 131,072 | text + image + video | 22 | Hermes Agent, Claude Code, Cline |
+| Qwen3.8 Flash (`qwen/qwen3.8-flash`) | 2026-08-26 | **$0.15 / $0.47** | $0.016 | 1,000,000 | 131,072 | text + image + video | 1 (Alibaba Cloud Int.) | Hermes Agent, pi, omp |
+| Kimi K3 (`moonshotai/kimi-k3`) | 2026-07-16 | **$3 / $15** (Makora $2.55 / $12.75 lowest) | $0.30 | 1,048,576 | 943,718 | text + image + video | 17 | Hermes Agent, Claude Code, pi |
+
+What the snapshot adds to the sections above:
+
+- **First captured API price for GLM-5.3: $1.40 / $4.40.** That is below Qwen3.8-Max's $2 / $6 and Kimi K3's $3 / $15, and above DeepSeek-V4-Pro-0813's $1.32 / $3.96 on Fireworks. Z.ai's own endpoint is one of 22 providers at the same list price; DeepInfra undercuts on cache reads ($0.12).
+- **GLM-5.3-Flash is the cheapest model in this file by an order of magnitude**: $0.15 / $0.50 list, half that on promotion until 2026-09-09. The blog's "one-tenth the price" of GLM-5.2 is now checkable against a posted number. Note the promotional pricing has an end date; the list price is the durable comparison.
+- **Qwen3.8 Flash is new to this file.** A multimodal model (text, image, video in) at $0.15 / $0.47, single-provider on OpenRouter (Alibaba's own cloud), weights at `Qwen/Qwen3.8-Flash-Next` on Hugging Face (repo created 2026-08-24, Hub license tag `license:other` — the custom Qwen license pattern again; not captured). It launched the same day as GLM-5.3-Flash and at almost the same price. Two Chinese labs shipped a sub-$0.50 multimodal "Flash" model on 2026-08-26.
+- **Kimi K3 is the expensive one, and the market prices it that way.** $3 / $15 list, seventeen providers, none below Makora's $2.55 / $12.75; "Fast" tiers go to $4.50 / $22.50 and $6 / $22.50. Its 943,718-token max output is an outlier (every other model here caps near 131k or 262k).
+- **✅ Kimi K3 weights are downloadable — API-verified, not card-captured.** OpenRouter links `moonshotai/Kimi-K3`; the Hub API reports the repo (created 2026-06-13, before the July announcement), not gated, **2.78M downloads**, license tag `license:other`. So the open question below is resolved for "downloadable" and still open for "under what terms".
+- **Context lengths: OpenRouter lists GLM-5.3 and GLM-5.3-Flash at 1,310,720 tokens**, above the 1,048,576 in the Flash model's own `config.json`. The `top_provider.context_length` field says 1,048,576. Cite the config, treat 1.31M as a provider-specific extension.
+- **Traffic tells you what these models are for.** Hermes Agent and Claude Code (via OpenRouter) top the app list for four of the five; every top-five app on every page is a coding agent. GLM-5.3-Flash is already at 1.38T tokens from Hermes Agent alone in its first week. These are agent-harness models, and the pages say so without anyone claiming it.
+- **Per-provider benchmark scores vary by 20+ points on the same weights** (Kimi K3 GPQA Diamond: 93.5% on Fireworks US, 67.3% on Wafer). OpenRouter's "Exacto" routing exists because of this. Any benchmark number for an open model is a number for a specific serving stack, which is the same caveat this file attaches to vendor tables, now visible from the buyer's side.
+
 ## Cross-cutting observations
 
-**Permissive licensing is the default — with one new exception.** MIT or Apache 2.0 covers 9 of LLMCheck's top 10; Inkling is Apache 2.0; K3 is MIT; DeepSeek-V4-Pro-0813 is MIT. The outliers were Meta's Llama 5 license and Cohere's CC-BY-NC — and now **Qwen3.8's custom `qwen3.8-max` license**, the first restrictive-looking entry of this release wave (text uncaptured; terms unknown). GLM-5.3's license is still unnamed pending its weights drop.
+**Permissive licensing is the default — with one new exception.** MIT or Apache 2.0 covers 9 of LLMCheck's top 10; Inkling is Apache 2.0; K3 is MIT; DeepSeek-V4-Pro-0813 is MIT. The outliers were Meta's Llama 5 license and Cohere's CC-BY-NC — and now **Qwen3.8's custom `qwen3.8-max` license**, the first restrictive-looking entry of this release wave (text uncaptured; terms unknown). GLM-5.3-Flash ships under plain **MIT**; the full **GLM-5.3 carries a custom "GLM-5.3 License"** — MIT text plus a security-review clause for Model-as-a-Service operators above US$10B revenue (both verified from the repositories' `LICENSE` files, 2026-09-01). Two Z.ai models, same week, two licenses.
 
 **1M context is the spec-sheet floor.** Claimed across Qwen 4.1, Gemma 4.5, GLM 5.2, DeepSeek R3, Laguna S 2.1, and Kimi K3. Six months ago 256K was the ceiling. Differentiation has moved to retrieval accuracy at depth, which none of these sources measures.
 
@@ -189,8 +247,8 @@ The practically useful claims, if they hold:
 ## Open questions
 
 - **What is DeepSeek-V4-Pro's active-parameter count and context length?** Not on the model card. The technical report arXiv 2606.19348 is the obvious next capture — it would also close the 1.7T (HF) vs 1.6T (Fireworks listing) spec-field discrepancy.
-- **Do GLM-5.3's weights ship by ~28 August 2026?** Promised "in two weeks after launch, once safety evaluation and hardening are complete." Check `huggingface.co/THUDM` / Z.ai before describing 5.3 as downloadable — and check the license (5.2 was MIT; 5.3 unnamed).
-- **Did Kimi K3's weights ship by 27 July 2026?** No captured source confirms it. Check `huggingface.co/moonshotai` before making any claim about downloadable K3.
+- **✅ Resolved (2026-09-01) — GLM-5.3's weights shipped, under a custom license.** `zai-org/GLM-5.3` created on Hugging Face 2026-08-25, three days before the promised date; `LICENSE` is the "GLM-5.3 License" (MIT-shaped plus a >US$10B Model-as-a-Service security-review clause), Hub tag `license:other`. Verified by Hub API and raw-file fetch during the GLM-5.3-Flash ingest; the 5.3 card itself is still uncaptured and is the cheapest next ingest.
+- **✅ Resolved (2026-09-01) — Kimi K3's weights are on Hugging Face.** `moonshotai/Kimi-K3` exists, ungated, with 2.78M downloads (Hub API check during the OpenRouter ingest; the card itself is uncaptured). The license question directly below is still open — the Hub tag is `license:other`.
 - **What license do the K3 weights carry?** The technical report links the repo but never names a license. LLMCheck says MIT — a source with a demonstrated K3 error.
 - **✅ Resolved (2026-08-03) — Qwen3.8-Max's active parameter count, context window, and pricing.** 95B active of 2.4T; 1M context; $2 / $6 per MTok. See the section above.
 - **✅ Resolved (2026-08-15) — Qwen3.8's weights shipped.** `Qwen/Qwen3.8-2.4T-A95B` is live on Hugging Face (6,381 downloads in the first days). See the Qwen3.8 section.

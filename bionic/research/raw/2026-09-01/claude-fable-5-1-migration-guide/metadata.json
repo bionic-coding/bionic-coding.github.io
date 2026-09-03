@@ -1,0 +1,14 @@
+{
+  "url": "https://platform.claude.com/docs/en/models/fable-5-1/migration-guide",
+  "title": "Migrating to Claude Fable 5.1 and Claude Mythos 5.1 - Claude Platform Docs",
+  "author": null,
+  "published_date": null,
+  "description": "Migrate to Claude Fable 5.1 and Claude Mythos 5.1 from Claude Fable 5, Claude Mythos 5, Claude Opus 5, or Claude Opus 4.8: model IDs, breaking changes, and migration checklists.",
+  "extracted_at": "2026-09-01T18:35:32.363534+00:00",
+  "images_downloaded": 0,
+  "word_count": 5067,
+  "char_count": 46352,
+  "thin_content": false,
+  "final_url": "https://platform.claude.com/docs/en/models/fable-5-1/migration-guide",
+  "extraction_success": true
+}

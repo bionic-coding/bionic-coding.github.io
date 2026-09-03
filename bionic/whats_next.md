@@ -1,36 +1,35 @@
 ---
-generated_at: 2026-08-15T18:08:49Z
+generated_at: 2026-09-01T19:01:46Z
 generator: cleanup
-generator_version: "1.8.2"
-scan_findings: 1
-suggestions_open: 1
+generator_version: "3.5.0"
+scan_findings: 0
+suggestions_open: 0
 suggestions_dismissed_carried: 0
 dismissed: []
 ---
 
 # What's next
 
-_Generated 2026-08-15 12:08 by `cleanup-campsite` v1.8.2. **Body regenerated end-to-end on every run; only the `dismissed:` frontmatter list persists.** Hand-edits below the frontmatter are blown away. To dismiss a suggestion, move its `id:` into the `dismissed:` frontmatter list with a `reason:`._
+_Generated 2026-09-01 19:01 by `cleanup-campsite` v3.5.0. **Body regenerated end-to-end on every run; only the `dismissed:` frontmatter list persists.** Hand-edits below the frontmatter are blown away. To dismiss a suggestion, move its `id:` into the `dismissed:` frontmatter list with a `reason:`._
 
-## Open suggestions (1)
+## Open suggestions (0)
 
-### 1. [P2] ADR-0005 not referenced in human-facing docs
-- **id:** `cleanup-CLN-ADR-1-ADR-0005`
-- **category:** adr-review
-- **severity:** P2
-- **finding:** `ADR-0005` (Accepted 2026-08-14) is not mentioned by id in `README.md` or `USER_GUIDE.md`. No ADR id appears in any human-facing doc. This is the same shape as the four ADR-0000..0003 findings that just aged out of the 30-day window — the pattern recurs on every acceptance because the repo has never cross-linked decisions into its human-facing docs.
-- **source:** scan rule `CLN-ADR-1` against `bionic/adrs/index.md`, `README.md`, `USER_GUIDE.md`
-- **proposed action:** ADR-0005 governs the homepage and the five-item top nav — the most user-visible decision on the site. Mention `[[adrs/ADR-0005-serve-a-landing-homepage-and-a-five-item-top-nav]]` in `USER_GUIDE.md` where navigation and page structure are described, or dismiss this id if README/ADR cross-linking is not a goal for a content site. Dismissing once ends the recurrence for this id only; the next accepted ADR raises a fresh one.
-- **refs:** [[adrs/ADR-0005-serve-a-landing-homepage-and-a-five-item-top-nav]]
+_No open suggestions. Every implemented rule reported clean or skipped on its existence gate._
 
 ## Recently closed (since last run)
 
-- ~~`cleanup-CLN-ADR-1-ADR-0000`~~ — addressed 2026-08-15 (condition no longer reproduces). Accepted 2026-07-07, now outside the rule's 30-day window.
-- ~~`cleanup-CLN-ADR-1-ADR-0001`~~ — addressed 2026-08-15 (condition no longer reproduces). Accepted 2026-07-08, now outside the 30-day window.
-- ~~`cleanup-CLN-ADR-1-ADR-0002`~~ — addressed 2026-08-15 (condition no longer reproduces). Accepted 2026-07-08, now outside the 30-day window.
-- ~~`cleanup-CLN-ADR-1-ADR-0003`~~ — addressed 2026-08-15 (condition no longer reproduces). Accepted 2026-07-08, now outside the 30-day window.
-- ~~`cleanup-CLN-ADR-1-ADR-0004`~~ — addressed 2026-08-15 (condition no longer reproduces). ADR-0004 is `Superseded` as of 2026-08-14; the rule scopes to `Accepted` ADRs only.
-- ~~`cleanup-CLN-ADR-3-ADR-0004-docs-research-raw-2026-07-07-bionic-coding-manifesto-manifesto-md`~~ — addressed 2026-08-15 (condition no longer reproduces). Closed by supersession, not by repair: ADR-0004 left `Accepted` status, so CLN-ADR-3 no longer scans it. The `docs/research/...` prose path it cites is still stale text inside a superseded decision, which is the correct resting place for it — superseded bodies are historical records.
-- ~~`cleanup-CLN-ADR-3-ADR-0004-docs-research-sources-bionic-coding-manifesto-md`~~ — addressed 2026-08-15 (condition no longer reproduces). Same cause as the entry above.
+- ~~`cleanup-CLN-ADR-1-ADR-0005`~~ — closed 2026-09-01 (rule `CLN-ADR-1` was retired in crux 3.5.0; its standing findings closed with it. The ADR is unchanged and correctly Accepted).
 
-_Four of these closed by the calendar, three by [[adrs/ADR-0005-serve-a-landing-homepage-and-a-five-item-top-nav]] superseding ADR-0004. Only one is a fresh finding._
+## Rules that reported clean
+
+Recorded so a future run can tell "checked and clean" from "never checked":
+
+- `CLN-ADR-2` — no ADR sits in `Proposed` (six ADRs: five Accepted, one Superseded).
+- `CLN-ADR-4` — no phantom `ADR-NNNN` reference in `README.md` or `CLAUDE.md`; no `USER_GUIDE.md` in this repo.
+- `CLN-PB-1` … `CLN-PB-4` — `bionic/promptbooks/active/` is empty; PB-0001 is archived and both of its run snapshots are `.yaml`, so the duplicate-heading rule is a no-op.
+- `CLN-JR-1` — no `adr`/`promptbook`/`schema` op with `accept`/`archived`/`migration` in the last 7 days. The last seven days carried 10 `ingest` ops only.
+- `CLN-JR-2` — two closed months. July 2026: 5 journal entries against 52 log ops. August 2026: 2 journal entries against 42 log ops, which meets the rule's floor of 2 exactly. Not flagged, but August is one entry away from thin; a reflective entry on the August research pass (Fable 5.1, GLM-5.3-Flash, the OpenRouter working set) would be well placed.
+- `CLN-AUD-1` — last `audit` op ran 2026-08-25, 7 days ago, inside the 14-day window. `audit-docs` runs immediately after this scan regardless.
+- `CLN-RETRO-1` — 1 book archived against a threshold of 5. No retrospective is due.
+- `CLN-WN-1` — the `dismissed:` list is empty; nothing to prune.
+- `CLN-PJ-1a` … `CLN-PJ-2`, `CLN-FG-1`, `CLN-FG-2`, `CLN-TMPL-1` — skipped by their existence gates. This repo is a Jekyll site: no plugin manifest, no forge log, no parity manifest.

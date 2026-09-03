@@ -1,0 +1,14 @@
+{
+  "url": "https://openrouter.ai/moonshotai/kimi-k3",
+  "title": "Kimi K3 - API Pricing & Benchmarks | OpenRouter",
+  "author": "moonshotai",
+  "published_date": null,
+  "description": "Kimi K3 is a 2.8T parameter open-weight multimodal reasoning model from Moonshot AI. $2.55 per million input tokens, $12.75 per million output tokens. 1,048,576 token context window, maximum output of 1,048,576 tokens. Higher uptime with 14 providers. Includes independent benchmarks from Artificial Analysis.",
+  "extracted_at": "2026-09-01T18:55:46.322488+00:00",
+  "images_downloaded": 20,
+  "word_count": 1070,
+  "char_count": 8698,
+  "thin_content": false,
+  "final_url": "https://openrouter.ai/moonshotai/kimi-k3",
+  "extraction_success": true
+}

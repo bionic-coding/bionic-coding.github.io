@@ -1,0 +1,14 @@
+{
+  "url": "https://openrouter.ai/z-ai/glm-5.3",
+  "title": "GLM 5.3 - API Pricing & Benchmarks | OpenRouter",
+  "author": "z-ai",
+  "published_date": null,
+  "description": "GLM-5.3 is a large-scale reasoning model from Z.ai, built for complex software engineering and long-horizon agent tasks. $1.17 per million input tokens, $3.96 per million output tokens. 1,310,720 token context window, maximum output of 1,048,576 tokens. Higher uptime with 22 providers. Includes independent benchmarks from Artificial Analysis.",
+  "extracted_at": "2026-09-01T18:55:36.166595+00:00",
+  "images_downloaded": 28,
+  "word_count": 1059,
+  "char_count": 8658,
+  "thin_content": false,
+  "final_url": "https://openrouter.ai/z-ai/glm-5.3",
+  "extraction_success": true
+}

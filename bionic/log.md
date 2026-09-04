@@ -2,6 +2,30 @@
 
 _Append-only. Newest first._
 
+## [2026-09-03] garden | morning note 2026-09-03 (2 headlines, 2 artifacts)
+
+Reviewed three owner commits and today’s uncommitted research. Both production build variants passed; publication inventory 30/30. Cleanup found no open suggestions. Added two inbox suggestions; dispatch deferred. See [[garden/2026-09-03]].
+
+## [2026-09-03] cleanup-campsite | 0 open (0 P1, 0 P2, 0 P3), 0 closed, 0 dismissed
+
+All applicable scans are clear. One archived book is below the retrospective threshold of five. See [[whats_next]].
+
+## [2026-09-03] ingest | dwarkesh-rise-and-fall-of-agent-civilizations
+
+Dwarkesh Patel, "The Rise and Fall of Agent Civilizations" (2026-08-29), user-supplied URL to accompany the GPT-6 Astra ingest. Raw: research/raw/2026-09-03/dwarkesh-rise-and-fall-of-agent-civilizations/ (web-to-markdown; source.html, avatar image). Substack chrome stripped, body verbatim. Synthesis: new page research/concepts/hugging-face-incident-2026.md (three-wave timeline, OpenAI's stated changes, tensions between accounts, Learn-tree implications). Secondary source; the OpenAI, METR/Redwood, and Hugging Face primary reports it cites are flagged as follow-up ingests.
+
+## [2026-09-03] ingest | openai-path-to-astra
+
+OpenAI, "Path to Astra: critical capabilities and frontier safeguards" (2026-09-01), user-supplied URL. openai.com returns 403 to web-to-markdown and curl; captured through the Playwright browser: research/raw/2026-09-03/openai-path-to-astra/ (source.html rendered DOM, extracted.txt main text, source.url). Two charts captured as captions only. Synthesis: research/references/frontier-models-2026.md new "OpenAI — GPT-6 Astra" section (cyber Critical designation, training pause, honeypot 56%); research/concepts/hugging-face-incident-2026.md "What OpenAI says it changed".
+
+## [2026-09-03] ingest | gpt-6-astra-model-page
+
+OpenAI API model page for gpt-6-astra, user-supplied URL. Raw: research/raw/2026-09-03/gpt-6-astra-model-page/ (web-to-markdown; source.html, logo png). static: false, a rolling pricing/limits page. Synthesis: research/references/frontier-models-2026.md GPT-6 Astra section, specs and pricing bullets ($10 / $50, cached $1, writes $12.50, 272K long-context surcharge, 1,050,000 context, 128K output, Apr 30 2026 cutoff, no fine-tuning); price-direction addendum in the Fable 5.1 section; naming note gained a GPT-6 line.
+
+## [2026-09-03] ingest | gpt-6-astra-announcement
+
+OpenAI, "GPT-6 Astra: A new generation of intelligence" (2026-09-03), user-supplied URL. Captured launch day through the Playwright browser (openai.com 403s scripted fetches): research/raw/2026-09-03/gpt-6-astra-announcement/ (source.html 3.4 MB rendered DOM, extracted.txt, source.url). Eight benchmark tables transcribed in full; bar charts and videos captured as captions. Synthesis: research/references/frontier-models-2026.md new "OpenAI — GPT-6 Astra" section (table read whole, cross-vendor checks, the 98% vs 97.6% FrontierMath inconsistency, Mythos-sourced Fable cells, monitorability asterisk) plus scope-note and naming-note updates; research/concepts/hugging-face-incident-2026.md (honeypot 48% vs 0%, deployment friction). Contradiction noted inside the section, not against an existing page: the 48% (launch post) vs 56% (Sept 1 post) Sol honeypot figure.
+
 ## [2026-09-03] refresh | gpt-5-6-pricing — OpenAI cut GPT-5.6 prices; Sol $4 / $20 promotional
 
 Refreshed while cross-checking Google's Gemini 3.8 Flash comparison table, which priced GPT-5.6 Sol at $4 / $20 against the wiki's $5 / $30. Fetched `platform.openai.com/docs/pricing` (curl with a browser user agent; `web-to-markdown` was not used). New raw: research/raw/2026-09-03/gpt-5-6-pricing/ (`source.html`, tag-stripped `extracted.md`); the July paste kept under `previous_captures`. Page now lists Sol $4 / $20, Terra $2 / $12, Luna $0.20 / $1.20 (short context; long context double) with "GPT-5.6 Sol's promotional pricing is available at least through November 21, 2026." `source_url` filled (was null), `last_source_check` 2026-09-03. Source page rewritten with a current-prices table, a July-vs-September delta table, and the original paste preserved. Synthesis: research/references/frontier-models-2026.md GPT-5.6 pricing bullet gained an update line; the price-direction note now counts five hold-or-cut moves across Anthropic, OpenAI, and Google.

@@ -2,7 +2,7 @@
 
 _Last updated: 2026-09-03_
 
-## Research (43 sources, 6 synthesis pages)
+## Research (47 sources, 7 synthesis pages)
 
 See [[research/index]].
 

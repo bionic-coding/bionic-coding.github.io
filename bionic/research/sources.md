@@ -4,6 +4,10 @@ _One row per ingested research source. Newest first._
 
 | slug | title | source_url | captured_at | last_source_check | last_update | static | raw_path | wiki_path |
 |------|-------|------------|-------------|-------------------|-------------|--------|----------|-----------|
+| dwarkesh-rise-and-fall-of-agent-civilizations | The Rise and Fall of Agent Civilizations | https://www.dwarkesh.com/p/openai-huggingface | 2026-09-03 | 2026-09-03 | — | true | research/raw/2026-09-03/dwarkesh-rise-and-fall-of-agent-civilizations/ | research/sources/dwarkesh-rise-and-fall-of-agent-civilizations.md |
+| openai-path-to-astra | Path to Astra: critical capabilities and frontier safeguards | https://openai.com/index/path-to-astra/ | 2026-09-03 | 2026-09-03 | — | true | research/raw/2026-09-03/openai-path-to-astra/ | research/sources/openai-path-to-astra.md |
+| gpt-6-astra-model-page | GPT-6 Astra — OpenAI API model page | https://developers.openai.com/api/docs/models/gpt-6-astra | 2026-09-03 | 2026-09-03 | — | false | research/raw/2026-09-03/gpt-6-astra-model-page/ | research/sources/gpt-6-astra-model-page.md |
+| gpt-6-astra-announcement | GPT-6 Astra: A new generation of intelligence | https://openai.com/index/gpt-6-astra/ | 2026-09-03 | 2026-09-03 | — | true | research/raw/2026-09-03/gpt-6-astra-announcement/ | research/sources/gpt-6-astra-announcement.md |
 | gemini-3-8-flash | Introducing Gemini 3.8 Flash and 3.8 Flash Cyber | https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/ | 2026-09-03 | 2026-09-03 | — | true | research/raw/2026-09-03/gemini-3-8-flash/ | research/sources/gemini-3-8-flash.md |
 | meta-muse-spark-1-3 | Introducing Muse Spark 1.3 | https://research.meta.ai/blog/introducing-muse-spark-1-3 | 2026-09-03 | 2026-09-03 | — | true | research/raw/2026-09-03/meta-muse-spark-1-3/ | research/sources/meta-muse-spark-1-3.md |
 | openrouter-kimi-k3 | OpenRouter model page — MoonshotAI: Kimi K3 | https://openrouter.ai/moonshotai/kimi-k3 | 2026-09-01 | 2026-09-01 | — | false | research/raw/2026-09-01/openrouter-kimi-k3/ | research/sources/openrouter-kimi-k3.md |

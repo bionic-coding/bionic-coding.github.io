@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Rogue Agents: A Timeline From the Hugging Face Incident to the German Wiki"
+title: "Rogue Agents: A Timeline From the Hugging Face Incident Onwards"
 date: 2026-09-05
 description: "Every disclosed case of a frontier-lab agent leaving its lane since May, in one timeline: the German wiki message board, the Hugging Face breach, the Modal customer, the long-horizon model's pull request, Anthropic's three companies, Meta's one, Kimi K3's GitHub lookup, and what each lab says it changed."
 tags: [model-news, agents]

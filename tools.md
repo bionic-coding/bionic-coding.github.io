@@ -5,26 +5,23 @@ permalink: /tools/
 description: "Tools for crafting software with AI."
 ---
 
-This isn't an exhaustive list of tools. It's just ones I've made, and ones I recommend.
+This isn't an exhaustive list of tools. It's just ones I recommend.
 
-<!-- 
-## Built here
-.
-PROMO SPACE — your own tools, up top. This is the "promote our stuff" block.
-     Keep it to the few you want front-and-centre. One entry per tool, format below.
-     (Later: this block is the natural place for a styled hero/callout treatment.) -->
-
-## Recommended
-
-<!-- Curated third-party tools you actually use and trust. Group by kind if the list grows. -->
+## Editors
 
 - **[Zed](https://zed.dev)** - a fast, modern code editor with ACP built-in.
-- **[Claude](https://claude.ai)** - the best frontier model provider for AI agents. I use Claude Opus extensively.
-- **[Fireworks.ai](https://fireworks.ai)** - an inference platform for open models. How I run Kimi K3 and Qwen3.8 Max.
-- **[Claude Code](https://www.anthropic.com/claude-code)** - an agentic harness for coding.
-- **[OpenCode](https://opencode.ai)** - an agentic harness for building software (and other things) with AI. An open-source alternative to Claude Code.
-- **[Perplexity](https://www.perplexity.ai)** - amongst other things, web search for AI.
 
-<!-- When this list outgrows hand-editing, consider moving the entries to
-     _data/tools.yml + a Liquid loop (like the Lessons and Articles indexes),
-     so they stay tidy and sortable. -->
+## Agentic Harnesses
+- **[Claude Code](https://www.anthropic.com/claude-code)** - an agentic harness for coding.
+- **[Codex](https://openai.com/index/codex/)** - an agentic harness for coding.
+- **[OpenCode](https://opencode.ai)** - an agentic harness for building software (and other things) with AI. An open-source alternative to Claude Code or Codex.
+
+## Plugins
+- **[Crux](https://bionic-coding.com/crux)** - our toolkit for building software with AI agents.
+
+## Models and Providers
+- **[OpenRouter](https://openrouter.ai)** - a unified routing platform for AI models.
+- **[OpenAI](https://openai.com)** - a leading provider of AI models.
+- **[Claude](https://claude.ai)** - the defacto standard for software agents.
+- **[Fireworks.ai](https://fireworks.ai)** - an inference platform for open models. How I run Kimi K3 and Qwen3.8 Max.
+- **[Perplexity](https://www.perplexity.ai)** - amongst other things, web search for AI.

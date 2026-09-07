@@ -8,6 +8,8 @@ description: "Project memory and workflows for agentic coding harnesses."
 
 Crux gives agentic coding harnesses a shared project memory in a `bionic/` folder inside the repo. Your coding agent can find it, update it, and check it for drift. Decisions, research, the work journal, plans, and the invariants that must stay true all live there. Your coding agent does the bookkeeping. You provide the objectives.
 
+**[Crux on GitHub](https://github.com/bionic-coding/crux)**
+
 Everything runs locally. There is no server, no account, and no background service. Crux is skills, scripts, role agents, and your repository.
 
 ## What it keeps

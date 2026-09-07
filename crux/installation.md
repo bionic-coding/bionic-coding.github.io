@@ -5,6 +5,8 @@ permalink: /crux/installation/
 description: "Install crux in Claude Code, Codex, or OpenCode."
 ---
 
+**[Access the Crux repository on GitHub](https://github.com/bionic-coding/crux)**
+
 ## Requirements
 
 - A supported agentic coding harness: [Claude Code](https://claude.ai/code), [Codex](https://openai.com/codex/), or [OpenCode](https://opencode.ai/). The OpenCode integration currently targets V2 (`opencode2`).

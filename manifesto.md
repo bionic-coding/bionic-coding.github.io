@@ -3,7 +3,7 @@ layout: page
 title: "The Bionic Coding Manifesto"
 nav_label: Manifesto
 permalink: /manifesto/
-description: "Durable intent, disposable code."
+description: "Building Agenticly with Durable Intent."
 ---
 
 ## Introduction

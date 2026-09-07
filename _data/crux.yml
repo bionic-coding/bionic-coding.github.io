@@ -1,0 +1,13 @@
+# The CRUX section, in reading order. Drives the series nav and the prev/next
+# pager rendered by _layouts/crux.html. `url` must match each page's permalink.
+pages:
+  - title: What crux is
+    url: /crux/
+  - title: Installation
+    url: /crux/installation/
+  - title: Setup
+    url: /crux/setup/
+  - title: Reference
+    url: /crux/reference/
+  - title: In practice
+    url: /crux/in-practice/

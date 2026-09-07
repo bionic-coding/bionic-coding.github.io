@@ -6,15 +6,18 @@ layout: default
     <h1 class="hero-title">{{ page.hero_title | default: site.description | strip_newlines }}</h1>
     {%- if page.hero_lede -%}<p class="hero-lede">{{ page.hero_lede }}</p>{%- endif -%}
     <p class="home-actions">
-      <a href="{{ '/learn/' | relative_url }}">Start learning →</a>
+      <a href="{{ '/crux/' | relative_url }}">Explore crux →</a>
       <a href="{{ '/articles/' | relative_url }}">Read the articles →</a>
+      <a href="{{ '/learn/' | relative_url }}">Learn the basics →</a>
     </p>
   </section>
 
-  {%- if page.manifesto_quote -%}
-  <section class="manifesto-callout">
-    <blockquote class="pull-quote">{{ page.manifesto_quote }}</blockquote>
-    <a class="callout-link" href="{{ '/manifesto/' | relative_url }}">Read the manifesto →</a>
+  {%- if page.crux_blurb -%}
+  <section class="home-block">
+    <h2 class="block-head">Bionic Tools</h2>
+    <h3 class="block-item-title"><a href="{{ '/crux/' | relative_url }}">Crux</a></h3>
+    <p class="home-blurb">{{ page.crux_blurb }}</p>
+    <a class="block-more" href="{{ '/crux/' | relative_url }}">Explore crux →</a>
   </section>
   {%- endif -%}
 
@@ -52,6 +55,13 @@ layout: default
       {%- endfor -%}
     </ul>
     <a class="block-more" href="{{ '/learn/' | relative_url }}">All lessons →</a>
+  </section>
+  {%- endif -%}
+
+  {%- if page.manifesto_quote -%}
+  <section class="manifesto-callout">
+    <blockquote class="pull-quote">{{ page.manifesto_quote }}</blockquote>
+    <a class="callout-link" href="{{ '/manifesto/' | relative_url }}">Read the manifesto →</a>
   </section>
   {%- endif -%}
 </div>

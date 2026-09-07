@@ -1,6 +1,6 @@
 # The Bionic Coding Manifesto
 
-### Durable intent, disposable code.
+### Building Agenticly with Durable Intent.
 
 ---
 

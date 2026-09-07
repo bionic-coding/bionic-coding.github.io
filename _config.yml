@@ -20,7 +20,7 @@
 
 title: Bionic Coding
 description: >- # this means to ignore newlines until "baseurl:"
-  Durable intent, disposable code.
+  Building Agenticly with Durable Intent.
 baseurl: "" # site is served at the domain root
 url: "https://bionic-coding.com"
 github_username: bionic-coding
@@ -66,8 +66,10 @@ defaults:
 # source file path exactly; a stale or mismatched entry silently drops that
 # page from the nav (this broke the About link — see ADR-0005). A page can
 # override its nav text with `nav_label` in its own frontmatter.
+# The manifesto gave up its slot to CRUX on 2026-09-07; it stays at /manifesto/
+# and is linked from the homepage callout.
 header_pages:
-  - manifesto.md
+  - crux/index.md
   - articles.md
   - learn.md
   - tools.md

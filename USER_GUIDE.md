@@ -327,7 +327,7 @@ You're in a fresh repo with `docs/` just initialized. To start using it:
 
 ## Plugin and schema
 
-This project uses `crux` docs `schema_version 3`. The plugin installs via the Claude Code marketplace (`/plugin marketplace add idyll/crux`, then `/plugin install crux@crux`); update with the same commands. After upgrading, run `audit-docs --migrate` if the tree is on an older schema_version.
+This project uses `crux` docs `schema_version 3`. The plugin installs via the Claude Code marketplace (`/plugin marketplace add bionic-coding/crux`, then `/plugin install crux@crux`); update with the same commands. After upgrading, run `audit-docs --migrate` if the tree is on an older schema_version.
 
 When the plugin's schema changes, run *"audit docs --migrate"* to bring `docs/` up to date.
 

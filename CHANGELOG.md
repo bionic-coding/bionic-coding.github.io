@@ -4,6 +4,15 @@ Notable changes to the bionic-coding.com site.
 
 ## [Unreleased]
 
+### Added
+
+- A five-page CRUX section (`/crux/`, `/crux/installation/`, `/crux/setup/`,
+  `/crux/reference/`, `/crux/in-practice/`) with a `crux` layout that renders a series
+  nav and a prev/next pager from `_data/crux.yml`. CRUX takes the manifesto's
+  top-nav slot; the manifesto stays at `/manifesto/`.
+- Homepage: a Crux block (`crux_blurb` in `index.md`) above Latest articles, and
+  the manifesto callout moved to the bottom of the page.
+
 ### Fixed
 
 - Mobile nav (≤46rem): the menu card renders as an out-of-flow overlay, so the page no

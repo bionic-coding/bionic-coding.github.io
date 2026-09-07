@@ -1,0 +1,41 @@
+---
+layout: default
+---
+{%- comment -%}
+Wraps the four-page CRUX section. Identical to `page`, plus a series nav
+(driven by _data/crux.yml) above the prose and a prev/next pager below it.
+{%- endcomment -%}
+{%- assign pages = site.data.crux.pages -%}
+{%- assign prev = nil -%}
+{%- assign next = nil -%}
+{%- for item in pages -%}
+  {%- if item.url == page.url -%}
+    {%- assign i = forloop.index0 -%}
+    {%- if i > 0 -%}{%- assign j = i | minus: 1 -%}{%- assign prev = pages[j] -%}{%- endif -%}
+    {%- unless forloop.last -%}{%- assign j = i | plus: 1 -%}{%- assign next = pages[j] -%}{%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+<article class="page">
+  <header class="page-header">
+    <h1 class="page-title">{{ page.title }}</h1>
+    {%- if page.description -%}<p class="page-subtitle">{{ page.description }}</p>{%- endif -%}
+  </header>
+  <nav class="series-nav" aria-label="CRUX pages">
+    {%- for item in pages -%}
+      {%- if item.url == page.url -%}
+      <a href="{{ item.url | relative_url }}" aria-current="page">{{ item.title }}</a>
+      {%- else -%}
+      <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+      {%- endif -%}
+    {%- endfor -%}
+  </nav>
+  <div class="prose">
+    {{ content }}
+  </div>
+  {%- if prev or next -%}
+  <nav class="series-pager" aria-label="Previous and next">
+    {%- if prev -%}<a class="pager-prev" href="{{ prev.url | relative_url }}">← {{ prev.title }}</a>{%- else -%}<span></span>{%- endif -%}
+    {%- if next -%}<a class="pager-next" href="{{ next.url | relative_url }}">{{ next.title }} →</a>{%- endif -%}
+  </nav>
+  {%- endif -%}
+</article>

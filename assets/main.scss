@@ -463,8 +463,9 @@ a:hover {
 }
 
 .manifesto-callout {
-  padding: 1.75rem 0;
+  padding: 3.5rem 0 0 0;
   border-top: 1px solid var(--rule);
+  border-bottom: none !important;
   border-bottom: 1px solid var(--rule);
 }
 .pull-quote {
@@ -538,6 +539,28 @@ a:hover {
 }
 .home-empty {
   color: var(--muted);
+}
+/* Item title inside a home block that has prose instead of a list (the Crux block). */
+.block-item-title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.block-item-title a {
+  color: inherit;
+}
+.block-item-title a:hover {
+  color: var(--accent);
+}
+.home-blurb {
+  margin: 0 0 1.25rem;
+  max-width: 36rem;
+  color: var(--ink);
+  font-size: 1.08rem;
+  line-height: 1.55;
 }
 
 /* ============================================================
@@ -636,6 +659,58 @@ a:hover {
   padding: 0.1em 0.4em;
   vertical-align: middle;
   margin-left: 0.4rem;
+}
+
+/* ============================================================
+   CRUX section — series nav (top) and prev/next pager (bottom).
+   Rendered by _layouts/crux.html from _data/crux.yml.
+   ============================================================ */
+.series-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  margin: -1rem 0 2.25rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--rule);
+}
+.series-nav a {
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.series-nav a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.series-nav a[aria-current="page"] {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+.series-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+}
+.series-pager a {
+  color: var(--ink);
+}
+.series-pager a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.series-pager .pager-next {
+  margin-left: auto;
+  text-align: right;
 }
 
 /* ============================================================

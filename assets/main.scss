@@ -434,6 +434,13 @@ a:hover {
 .home section {
   margin: 0 0 3.5rem;
 }
+/* Hairline separator above every homepage section after the hero. The
+   manifesto callout used to carry its own borders; this one rule now
+   divides all the sections the same way. */
+.home section + section {
+  padding-top: 3.5rem;
+  border-top: 1px solid var(--rule);
+}
 .hero {
   padding-top: 3.5rem;
 }
@@ -463,10 +470,7 @@ a:hover {
 }
 
 .manifesto-callout {
-  padding: 3.5rem 0 0 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: none !important;
-  border-bottom: 1px solid var(--rule);
+  padding: 0;
 }
 .pull-quote {
   margin: 0;

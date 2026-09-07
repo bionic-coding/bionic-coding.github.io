@@ -12,15 +12,6 @@ layout: default
     </p>
   </section>
 
-  {%- if page.crux_blurb -%}
-  <section class="home-block">
-    <h2 class="block-head">Bionic Tools</h2>
-    <h3 class="block-item-title"><a href="{{ '/crux/' | relative_url }}">Crux</a></h3>
-    <p class="home-blurb">{{ page.crux_blurb }}</p>
-    <a class="block-more" href="{{ '/crux/' | relative_url }}">Explore crux →</a>
-  </section>
-  {%- endif -%}
-
   <section class="home-block">
     <h2 class="block-head">Latest articles</h2>
     {%- if site.posts.size > 0 -%}
@@ -62,6 +53,15 @@ layout: default
   <section class="manifesto-callout">
     <blockquote class="pull-quote">{{ page.manifesto_quote }}</blockquote>
     <a class="callout-link" href="{{ '/manifesto/' | relative_url }}">Read the manifesto →</a>
+  </section>
+  {%- endif -%}
+
+  {%- if page.crux_blurb -%}
+  <section class="home-block">
+    <h2 class="block-head">Bionic Tools</h2>
+    <h3 class="block-item-title"><a href="{{ '/crux/' | relative_url }}">Crux</a></h3>
+    <p class="home-blurb">{{ page.crux_blurb }}</p>
+    <a class="block-more" href="{{ '/crux/' | relative_url }}">Explore crux →</a>
   </section>
   {%- endif -%}
 </div>

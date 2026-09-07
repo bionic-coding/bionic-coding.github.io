@@ -10,8 +10,8 @@ Notable changes to the bionic-coding.com site.
   `/crux/reference/`, `/crux/in-practice/`) with a `crux` layout that renders a series
   nav and a prev/next pager from `_data/crux.yml`. CRUX takes the manifesto's
   top-nav slot; the manifesto stays at `/manifesto/`.
-- Homepage: a Crux block (`crux_blurb` in `index.md`) above Latest articles, and
-  the manifesto callout moved to the bottom of the page.
+- Homepage: a "Bionic Tools" block introducing Crux (`crux_blurb` in `index.md`) at
+  the bottom of the page, below the manifesto callout, and an "Explore crux →" hero link.
 
 ### Fixed
 

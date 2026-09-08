@@ -2,7 +2,7 @@
 layout: post
 title: "This Week in AI — September 3, 2026"
 date: 2026-09-03
-description: "Claude Fable 5.1 ships at the same price, Google's Gemini 3.8 Flash undercuts closed models at $0.75 a million tokens, Meta's Muse Spark 1.3 arrives with open weights promised, GLM-5.3 and two new Flash-class open models land, and closed-model prices went down, not up."
+description: "Claude Fable 5.1, Gemini 3.8 Flash, Meta Muse Spark 1.3, GLM-5.3, two open Flash models, and a month of falling model prices."
 tags: [model-news, weekly]
 ---
 
@@ -20,8 +20,7 @@ Anthropic released Claude Fable 5.1 on September 1 at Fable 5's price, $10 in an
 
 **Oh, and don't forget the Watermark:** every text output from Fable 5.1 carries Anthropic's statistical watermark, on every platform. Anthropic says it adds no tokens or hidden characters and carries nothing about you. Anthropic also documents, against its own model, that 5.1 is "more likely to reproduce passages of the source without marking them as quotations" when summarizing.
 
-From my usage this week, so far so good. It definetly feels like a step up from Fable 5.0 which I stopped using because
-the output didn't justify the premium pricing.
+From my usage this week, so far so good. It definitely feels like a step up from Fable 5.0, which I stopped using because the output didn't justify the premium pricing.
 
 **More info:**
 - [**Claude Fable 5.1 overview** (Anthropic docs)](https://platform.claude.com/docs/en/models/fable-5-1/overview) — specs, pricing, lineup table; the primary source for everything above.
@@ -40,7 +39,7 @@ Google shipped Gemini 3.8 Flash and a defenders-only Gemini 3.8 Flash Cyber on S
 
 **Flash Cyber** is the same base model with looser cyber mitigations, available only through Google's new Fairwind Program for governments, critical-infrastructure operators, and software maintainers. Google says it prioritized patching over exploitation; the one external number is CWE-Bench patching at 47.2% against an unnamed leader's 47.8%.
 
-This all sounds promising but it's so much more expensive thatn GLM 5.3 Flash that I am not even sure I want to even try it.
+This all sounds promising, but it's so much more expensive than GLM 5.3 Flash that I'm not sure I want to try it.
 
 **More info:**
 - [**Introducing Gemini 3.8 Flash and 3.8 Flash Cyber** (Google, Sep 02)](https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/) — the launch post; the comparison table is an image.
@@ -58,7 +57,7 @@ Meta released Muse Spark 1.3 on September 2, a closed model you get only through
 
 **Behavior claims, unverified but worth quoting:** asks clarifying questions when a prompt is ambiguous, "confirms before taking consequential actions," and used about 20% fewer tool calls and 25% fewer tokens than 1.2 in Meta's internal coding comparisons. No pricing anywhere in the post.
 
-Meta and Goolge have been at the back of the pack for a while. I'm hoping this means we are going to start seeing them catch up.
+Meta and Google have been at the back of the pack for a while. I'm hoping this means we are going to start seeing them catch up.
 
 **More info:**
 - [**Introducing Muse Spark 1.3** (Meta, Sep 02)](https://research.meta.ai/blog/introducing-muse-spark-1-3) — the launch post and scorecard.
@@ -108,6 +107,6 @@ Honestly, I don't think they have a choice. Good open models are driving prices 
 ## What I'm actually using
 
 These days I am running Fable 5.1 for planning and research. It's expensive to pay for tokens so I am using a Max plan.
-Crux allows me to flip between Claude Code and Opencode2 easily so I will often plan in Claude Code and then switch to Opencode2 for execution.
+Crux allows me to move between Claude Code and OpenCode 2 easily, so I often plan in Claude Code and then switch to OpenCode 2 for execution.
 
 When running coding tasks I will drive with Qwen3.8 2.4T A95B (1M) and run several subagents where the supervisor is GLM 5.3 but the code is written by GLM 5.3 Flash.

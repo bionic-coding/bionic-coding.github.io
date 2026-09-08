@@ -6,11 +6,11 @@ description: "I've given up on Opus 5"
 tags: [model-news, weekly]
 ---
 
-After a day of using Opus 5 I suspected something was up. A couple days in I have rolled back to Opus 4.8 and I'm running mostly running Kimi K3 + Opencode.
+After a day of using Opus 5 I suspected something was up. A couple days in I rolled back to Opus 4.8, and I'm mostly running Kimi K3 with OpenCode.
 
-## I Switched from Claude Code to Kimi K3 + Opencode
+## I Switched from Claude Code to Kimi K3 + OpenCode
 
-Burried in the Opus 5 system card are these little gems:
+Buried in the Opus 5 system card are these little gems:
 
 > Claude Opus 5 is more accurate than Opus 4.8 but hallucinates slightly more claims of a factual nature. When pushed by the user on something it knows to be incorrect, Claude Opus 5 resorts to agreeing with the user more than Sonnet 5 and Mythos Preview, but less than all other recent models.
 
@@ -20,11 +20,11 @@ and
 > 
 > - Overconfident and unsupported claims, sometimes from model-fabricated data, often followed by theatrical retractions;
 
-About half way through last week I started hitting issues similar to the ones described above. I'd ask for a review of some information and end up with inconsistent or contradictory results. Eventually I reverted the model back to Opus 4.8 and was shocked at how much better the response was.
+About halfway through last week I started hitting issues similar to the ones described above. I'd ask for a review of some information and end up with inconsistent or contradictory results. Eventually I reverted the model to Opus 4.8 and was shocked at how much better the response was.
 
-I contemplated forcing a downgrade in Claude Code, but I'd heard great things about Kimi K3. I had been keeping Crux in a spot where I could run it in Opencode so I cut over to using it with Kimi K3.
+I contemplated forcing a downgrade in Claude Code, but I'd heard great things about Kimi K3. I had been keeping Crux in a spot where I could run it in OpenCode, so I cut over to using it with Kimi K3.
 
-I had it review the previous two weeks worth of work and the results were damning. 
+I had it review the previous two weeks' worth of work, and the results were damning.
 
 To be clear, I don't run everything through K3. It's a primary driver that reports to me and ensures that the process that I've laid out is being followed. There are tasks that run through about a dozen different models as part of the workflow. 
 

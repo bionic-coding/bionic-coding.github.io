@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Introducing crux"
+title: "Introducing Crux"
 date: 2026-09-07
-description: "The toolkit that gives agentic coding harnesses a project memory: decisions, research, plans, and invariants kept in the repo across sessions and models. What it is, why I built it, and how to start."
+description: "Meet Crux: an open-source project memory for agentic coding harnesses, built around durable objectives, decisions, research, plans, and invariants."
 tags: [crux, agentic-coding]
 ---
 

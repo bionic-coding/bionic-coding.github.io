@@ -26,4 +26,28 @@ its raw outline — links to it stay alive, no TODOs leak to the live site.
     <p class="lesson-soon"><strong>Coming soon.</strong> This lesson is still being written — check back before long.</p>
   </div>
   {%- endif -%}
+
+  {%- if show_full -%}
+    {%- assign ordered_lessons = site.lessons | sort: "order" -%}
+    {%- assign previous_lesson = nil -%}
+    {%- assign next_lesson = nil -%}
+    {%- assign found_current = false -%}
+    {%- for lesson in ordered_lessons -%}
+      {%- if found_current == false -%}
+        {%- if lesson.url == page.url -%}
+          {%- assign found_current = true -%}
+        {%- else -%}
+          {%- assign previous_lesson = lesson -%}
+        {%- endif -%}
+      {%- elsif next_lesson == nil -%}
+        {%- assign next_lesson = lesson -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if previous_lesson or next_lesson -%}
+    <nav class="series-pager lesson-pager" aria-label="Lesson navigation">
+      {%- if previous_lesson -%}<a class="pager-prev" href="{{ previous_lesson.url | relative_url }}">← Previous: {{ previous_lesson.title }}</a>{%- endif -%}
+      {%- if next_lesson -%}<a class="pager-next" href="{{ next_lesson.url | relative_url }}">Next: {{ next_lesson.title }} →</a>{%- endif -%}
+    </nav>
+    {%- endif -%}
+  {%- endif -%}
 </article>

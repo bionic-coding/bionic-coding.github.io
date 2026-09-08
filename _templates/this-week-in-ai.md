@@ -4,6 +4,9 @@ title: "This Week in AI — <Month DD, YYYY>"
 date: <YYYY-MM-DD>
 description: "<one sentence that names each story in plain language — the scannable teaser>"
 tags: [model-news, weekly]
+# Add these only when the article changes after publication:
+# updated: <YYYY-MM-DD>
+# correction: "<what changed, why, and the date of the correction>"
 ---
 
 <!--
@@ -23,6 +26,7 @@ tags: [model-news, weekly]
   .
   Rules of the road:
     - Scaffold only lives here; you write the sentences (scaffold, don't generate).
+    - Give every story an evidence-status line using the labels below.
     - Mark what's *claimed* (the vendor's words) vs. what's *verified*.
     - Correct the popular misread when there is one.
     - Links are dated receipts. Perishable is fine — this is a snapshot in time,
@@ -36,7 +40,17 @@ tags: [model-news, weekly]
 <!-- One line: what happened, in plain language. -->
 `<what happened>`
 
-<!-- Substance: a paragraph or two. Separate claimed from verified. -->
+<!--
+  REQUIRED evidence status — choose the best label and keep the wording exact:
+    Verified — confirmed by a primary source or direct evidence.
+    Claimed — asserted by a vendor or interested party; not independently checked.
+    Reported — attributed to credible outside reporting that you cannot verify directly.
+    Rumor — unconfirmed; include only when the uncertainty itself matters.
+  If a story mixes categories, list more than one on separate lines.
+-->
+**Evidence status:** **`<Verified | Claimed | Reported | Rumor>`** — `<one-sentence basis>`
+
+<!-- Substance: a paragraph or two. Keep the evidence categories distinct. -->
 `<substance>`
 
 <!-- OPTIONAL evidence module — use for receipt-heavy stories; delete otherwise. -->

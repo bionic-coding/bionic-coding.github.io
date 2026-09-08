@@ -2,7 +2,7 @@
 layout: post
 title: "Astra Lands, Qwen Refreshes Max, and What September Still Holds"
 date: 2026-09-04
-description: "OpenAI's GPT-6 Astra ships with impressive results, Alibaba's Qwen3.8-Max-0902 doubles its terminal scores at the same $2 / $6 with no new weights, and what to expect for the rest of September."
+description: "OpenAI launches GPT-6 Astra, Alibaba refreshes Qwen3.8-Max at the same price, and September's model-release calendar takes shape."
 tags: [model-news]
 ---
 

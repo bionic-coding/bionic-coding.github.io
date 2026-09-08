@@ -2,7 +2,7 @@
 layout: post
 title: "This Week in AI — July 17, 2026"
 date: 2026-07-17
-description: "The week's model news for people who don't have time to follow it: Kimi goes open at frontier scale, coding agents behaving badly, a Grok data scare, and why I'm still on Opus."
+description: "Kimi goes open at frontier scale, coding agents behave badly, Grok raises a data concern, and I explain why I'm still using Opus."
 tags: [model-news, weekly]
 ---
 

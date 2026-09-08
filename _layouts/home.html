@@ -6,11 +6,23 @@ layout: default
     <h1 class="hero-title">{{ page.hero_title | default: site.description | strip_newlines }}</h1>
     {%- if page.hero_lede -%}<p class="hero-lede">{{ page.hero_lede }}</p>{%- endif -%}
     <p class="home-actions">
-      <a href="{{ '/crux/' | relative_url }}">Explore crux →</a>
+      <a href="{{ '/crux/' | relative_url }}">Explore Crux →</a>
       <a href="{{ '/articles/' | relative_url }}">Read the articles →</a>
       <a href="{{ '/learn/' | relative_url }}">Learn the basics →</a>
     </p>
   </section>
+
+  {%- if page.crux_blurb -%}
+  <section class="home-block home-crux">
+    <h2 class="block-head">Build with Crux</h2>
+    <h3 class="block-item-title"><a href="{{ '/crux/' | relative_url }}">Give your project a durable memory</a></h3>
+    <p class="home-blurb">{{ page.crux_blurb }}</p>
+    <p class="block-actions">
+      <a class="block-more" href="{{ '/crux/' | relative_url }}">Explore Crux →</a>
+      <a class="block-more" href="{{ '/crux/installation/' | relative_url }}">Install Crux →</a>
+    </p>
+  </section>
+  {%- endif -%}
 
   <section class="home-block">
     <h2 class="block-head">Latest articles</h2>
@@ -56,12 +68,4 @@ layout: default
   </section>
   {%- endif -%}
 
-  {%- if page.crux_blurb -%}
-  <section class="home-block">
-    <h2 class="block-head">Bionic Tools</h2>
-    <h3 class="block-item-title"><a href="{{ '/crux/' | relative_url }}">Crux</a></h3>
-    <p class="home-blurb">{{ page.crux_blurb }}</p>
-    <a class="block-more" href="{{ '/crux/' | relative_url }}">Explore crux →</a>
-  </section>
-  {%- endif -%}
 </div>

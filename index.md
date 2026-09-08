@@ -1,14 +1,13 @@
 ---
 layout: home
 hero_title: "Building Agenticly<br/>with Durable Intent."
-hero_lede: "A practical guide to building software with AI."
+hero_lede: "Practical AI guidance for software builders: learn the basics, follow the industry, and build with agents without giving up control."
 manifesto_quote: "The code was never the thing worth preserving..."
-# Homepage invitation to the CRUX section. Drafted 2026-09-07; rewrite in your voice.
 crux_blurb: >-
-  Crux works with an agentic harness like Opencode, Codex or Claude Code. 
-  Crux gives your project a memory that lives in the repo: the objective, 
-  the decisions, the research, the plans, and the invariants.
-  All paired with a team of agents that work together to achieve your goals.
+  Crux works with agentic harnesses such as OpenCode, Codex, and Claude Code.
+  It gives your project a memory that lives in the repository: objectives,
+  decisions, research, plans, and invariants. A team of specialized agents
+  uses that shared context to help you move from an idea to verified work.
 featured_lessons:
   - markdown
   - glossary

@@ -4,8 +4,17 @@ layout: default
 <article class="page post">
   <header class="page-header">
     <h1 class="page-title">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %-d, %Y' }}</time></p>
+    <p class="post-meta">
+      By {{ page.author | default: site.author }} · Published <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %-d, %Y' }}</time>
+      {%- if page.updated %} · Updated <time datetime="{{ page.updated | date_to_xmlschema }}">{{ page.updated | date: '%B %-d, %Y' }}</time>{% endif -%}
+    </p>
+    {%- if page.tags.size > 0 -%}
+    <p class="post-tags" aria-label="Tags">{%- for tag in page.tags -%}<span class="index-tag">{{ tag | replace: '-', ' ' }}</span>{%- endfor -%}</p>
+    {%- endif -%}
   </header>
+  {%- if page.correction -%}
+  <aside class="post-correction" aria-label="Correction"><strong>Correction:</strong> {{ page.correction }}</aside>
+  {%- endif -%}
   <div class="prose">
     {{ content }}
   </div>

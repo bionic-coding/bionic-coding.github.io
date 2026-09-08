@@ -3,7 +3,7 @@ title: Samples
 order: 9
 summary: "Copy-paste examples you can run today."
 status: published
-updated: 2026-07-17
+updated: 2026-09-07
 ---
 
 Every other lesson explains an idea. This one is a **shelf** — copy-paste examples you can lift and run: a prompt, a skill, a whole agent setup. Take one, swap in your details, and go. This page is the label on the shelf: what a sample is, what each one promises, and how to use one without getting burned.
@@ -14,7 +14,7 @@ A sample is something you can **copy and actually run**, not just read about. Fo
 
 - A **prompt** — a single reusable instruction ([Prompting and Evals]({{ "/learn/prompting-and-evals/" | relative_url }})).
 - A **skill** — a packaged capability with its tools ([Skills]({{ "/learn/skills/" | relative_url }})).
-- An **agent setup** — a configured agent and the tools it's wired to ([Agents]({{ "/learn/agents/" | relative_url }}) / [Agentic Harnesses]({{ "/learn/agentic-harnesses/" | relative_url }})).
+- An **agent task or setup** — a bounded assignment, plus the tools and permissions it needs ([Agents]({{ "/learn/agents/" | relative_url }}) / [Agentic Harnesses]({{ "/learn/agentic-harnesses/" | relative_url }})).
 - An **eval or template** — a grading rubric or a fill-in-the-blanks structure.
 
 The bar for the shelf: each one carries enough to *use* it — what it's for, what it needs, and what a working run looks like. A clever prompt with no context isn't a sample; it's a riddle.
@@ -63,7 +63,9 @@ Two ends of the range live here:
 - **Basic** — a single, self-contained prompt you paste into any chat. No tools to set up, and low-risk as long as you don't paste anything sensitive.
 - **Advanced** — a multi-tool agent setup: a [harness]({{ "/learn/agentic-harnesses/" | relative_url }}), a couple of [MCP]({{ "/learn/mcp/" | relative_url }}) servers, a skill or two, wired together to do real work.
 
-The shelf grows over time, and every entry — basic or advanced — carries the format and the safety label above, so a beginner can start at the shallow end and wade deeper only when they're ready. Here's what a basic one looks like, filled in:
+The shelf grows over time, and every entry — basic or advanced — carries the format and the safety label above, so a beginner can start at the shallow end and wade deeper only when they're ready.
+
+### 1. Meeting-notes tidier — prompt
 
 > **Title:** Meeting-notes tidier
 > **Purpose:** Turn messy meeting notes into a clean summary with action items.
@@ -86,6 +88,143 @@ The shelf grows over time, and every entry — basic or advanced — carries the
 > **License & attribution:** public-domain example — use and adapt freely, no credit needed.
 
 Copy it, drop in your notes, and you've just used your first sample.
+
+### 2. Source-check a claim — prompt
+
+**Purpose:** Find the strongest available evidence for a factual claim and show where uncertainty remains.
+
+**Prerequisites:** A chat app with web access. No API key or local tools are required.
+
+**Safety:** read-only · uses web search · the claim and any context you paste go to the chat provider · do not include private or identifying information.
+
+**The artifact:**
+
+```text
+Check this claim: <paste the claim>
+
+Find the best available primary source. If no primary source is available, use
+two independent, credible secondary sources. Report:
+
+1. Verdict: supported, contradicted, mixed, or not enough evidence.
+2. Evidence: the specific facts that support the verdict.
+3. Limits: what the sources do not establish.
+4. Sources: direct links, publisher names, and publication dates.
+
+Separate verified facts from vendor claims, outside reporting, and your own
+inference. Do not turn an absence of evidence into proof that the claim is false.
+```
+
+**Expected output:** a verdict followed by short evidence, limits, and source sections. Every material fact should lead back to a link.
+
+**Troubleshooting:** if the answer cites search-result snippets, ask it to open the sources and cite the underlying pages. If sources disagree, keep the verdict “mixed” and explain the disagreement.
+
+**License & attribution:** public-domain example — use and adapt freely, no credit needed.
+
+### 3. Change explainer — skill
+
+**Purpose:** Give a coding agent a reusable way to explain a proposed change before it edits anything.
+
+**Prerequisites:** An agentic harness that supports Markdown instruction or skill files. The installation folder and activation command vary by harness.
+
+**Safety:** read-only by instruction · needs permission to read the repository and its diff · no network or secrets · verify that your harness does not grant write tools automatically.
+
+**The artifact:** save this as `SKILL.md` in the skill location used by your harness.
+
+```markdown
+---
+name: explain-change
+description: Explain a proposed code change before implementation.
+---
+
+# Explain a change
+
+When asked to explain a proposed change:
+
+1. Read the relevant code and tests.
+2. State the current behavior in plain language.
+3. Identify the smallest files or modules likely to change.
+4. Describe the new behavior and one important tradeoff.
+5. List the checks that would prove the change works.
+
+Do not edit files, install dependencies, or run commands that change state.
+Distinguish facts observed in the repository from recommendations.
+```
+
+**Expected output:** a short explanation of current behavior, likely change points, the main tradeoff, and a verification list. No files should change.
+
+**Troubleshooting:** if the agent starts editing, stop it and remove write tools for this run. If the skill does not activate, check your harness's skill directory and front-matter requirements.
+
+**License & attribution:** public-domain example — use and adapt freely, no credit needed.
+
+### 4. Read-only repository tour — agent task
+
+**Purpose:** Let a coding agent orient a newcomer to an unfamiliar project without modifying it.
+
+**Prerequisites:** A coding harness opened at the repository root, with search and file-read tools. Git is helpful but optional.
+
+**Safety:** read-only by instruction · repository contents may be sent to the model provider · no network, write, shell-mutation, or secret access is needed · use a clean working tree if you want an easy way to confirm that nothing changed.
+
+**The artifact:**
+
+```text
+Act as a read-only guide to this repository. Do not edit files, install
+dependencies, or run commands that change state.
+
+Answer these questions from the repository itself:
+
+1. What does this project do, and who is it for?
+2. Where does execution begin?
+3. Which five files or directories should a newcomer understand first?
+4. How do tests, builds, and local development run?
+5. What important conventions or warnings appear in repository instructions?
+
+For every answer, cite the file path that supports it. Mark any inference as an
+inference. End with a ten-minute reading order for a new contributor.
+```
+
+**Expected output:** a concise project map with file references and a reading order. `git status --short` should show no new changes afterward.
+
+**Troubleshooting:** if the response is generic, ask for a file citation after every claim. If the repository is large, point the agent at the main application directory and ask it to ignore generated or vendored files.
+
+**License & attribution:** public-domain example — use and adapt freely, no credit needed.
+
+### 5. Answer-quality check — eval rubric
+
+**Purpose:** Grade an AI answer consistently before you rely on or publish it.
+
+**Prerequisites:** The original request, the answer, and any sources or acceptance criteria. You can apply the rubric yourself or give it to a second model.
+
+**Safety:** read-only · no tools required · anything you paste into a hosted model goes to that provider · remove confidential material first.
+
+**The artifact:**
+
+```text
+Grade the answer from 0 to 2 on each criterion:
+
+- Correctness: 0 = material errors; 1 = uncertain or partly correct; 2 = supported.
+- Completeness: 0 = misses the task; 1 = misses a useful part; 2 = covers it.
+- Evidence: 0 = unsupported claims; 1 = partial support; 2 = traceable support.
+- Clarity: 0 = hard to use; 1 = needs editing; 2 = direct and understandable.
+- Restraint: 0 = invents or overclaims; 1 = some excess; 2 = states limits.
+
+Return the five scores, one sentence of evidence for each, and the single most
+important revision. Do not rewrite the answer unless asked.
+
+Original request:
+<paste request>
+
+Answer to grade:
+<paste answer>
+
+Sources or acceptance criteria:
+<paste them, or write "none provided">
+```
+
+**Expected output:** five scores out of two, a reason for each, and one prioritized revision. A low Evidence score should stay low when no sources or acceptance criteria are provided.
+
+**Troubleshooting:** if the grader gives high scores without examples, require it to quote or point to the part of the answer that earned each score. For important work, compare the model's grading with your own.
+
+**License & attribution:** public-domain example — use and adapt freely, no credit needed.
 
 ## Contribute a sample
 

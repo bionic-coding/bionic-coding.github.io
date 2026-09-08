@@ -1,0 +1,19 @@
+---
+layout: null
+permalink: /sitemap.xml
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {%- assign documents = site.pages | concat: site.posts | concat: site.lessons -%}
+  {%- for document in documents -%}
+    {%- unless document.sitemap == false or document.url == '/404.html' or document.url == '/feed.xml' or document.url contains '/assets/' -%}
+  <url>
+    <loc>{{ document.url | absolute_url }}</loc>
+    {%- if document.updated or document.date %}
+    <lastmod>{{ document.updated | default: document.date | date_to_xmlschema }}</lastmod>
+    {%- endif %}
+  </url>
+    {%- endunless -%}
+  {%- endfor -%}
+</urlset>

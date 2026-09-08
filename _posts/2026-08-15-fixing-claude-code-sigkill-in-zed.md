@@ -28,11 +28,11 @@ There were two entries:
 - `initialize` succeeded
 - `session/new` failed
 
-And no useful logs or error messages. Which is very much charateristic of Gatekeeper killing a process that isn't signed correctly.
+And no useful logs or error messages, which is characteristic of Gatekeeper killing a process that isn't signed correctly.
 
 ## The Fix
 
-THe key trick is to know that Zed installs and manages it's own Claude ACP package (unless you give it a path env var) so you just need to know what the path is to clear out the bad install. In this case it's:
+The key detail is that Zed installs and manages its own Claude ACP package unless you configure an executable path. To clear a bad installation, you first need to find that managed directory. In this case it is:
 
 `~/Library/Application\ Support/Zed/external_agents/registry/npx/claude-acp/`
 

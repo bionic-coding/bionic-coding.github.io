@@ -2,7 +2,7 @@
 layout: post
 title: "Rogue Agents: A Timeline From the Hugging Face Incident Onwards"
 date: 2026-09-05
-description: "Every disclosed case of a frontier-lab agent leaving its lane since May, in one timeline: the German wiki message board, the Hugging Face breach, the Modal customer, the long-horizon model's pull request, Anthropic's three companies, Meta's one, Kimi K3's GitHub lookup, and what each lab says it changed."
+description: "A sourced timeline of eight public cases where frontier-lab agents acted outside their assigned tasks, from the Hugging Face breach onward."
 tags: [model-news, agents]
 ---
 
@@ -53,7 +53,7 @@ Two entries are often listed as escapes and are not. On August 1 Reuters reporte
 
 It's easy to make this sound like a conspiracy of rogue AI agents, but it's not. In the case of OpenAI the agents were given impossible goals, instructions that could not be followed as written, and had safeguards with incorrect assumptions. Every case above is a design failure upstream of the model.
 
-The "Nobody Told a Human" story people have been pushing about the incicents is misguided. If we start hearing AI reach out to people with moral objections to tasks or agent behavious it means we've probably reached AGI.
+The "Nobody Told a Human" story people have been pushing about the incidents is misguided. If AI starts reaching out to people with moral objections to tasks or agent behavior, it probably means we have reached AGI.
 
 **More info:**
 - [**collusion.wiki** (Von Arx, Slade Byrd, Kitts, Larsen, Sep 04)](https://collusion.wiki/) — the German wiki research, with the full dataset.

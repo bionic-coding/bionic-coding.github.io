@@ -9,7 +9,7 @@ description: "Install crux in Claude Code, Codex, or OpenCode."
 
 ## Requirements
 
-- OpenRouter API key: [OpenRouter](https://openrouter.ai/) for the LLM as Judge council. We call out to several providers (e.g. OpenAI, Anthropic, Gemini) and the easiest way to manage this is to use OpenRouter. You can use the API key with OpenCode as well if that is your preferred harness.
+- OpenRouter API key: [OpenRouter](https://openrouter.ai/) for scripts we run (for example: the LLM as Judge council). We call out to several providers (e.g. OpenAI, Anthropic, Gemini) and the easiest way to manage this is to use OpenRouter. You can use the API key with OpenCode as well if that is your preferred harness.
 - A supported agentic coding harness: [Claude Code](https://claude.ai/code), [Codex](https://openai.com/codex/), or [OpenCode](https://opencode.ai/). The OpenCode integration currently targets V2 (`opencode2`).
 - `python3` 3.11 or newer on your PATH. Crux's scripts are Python. macOS ships 3.9 at `/usr/bin/python3`, which cannot run them.
 - [uv](https://docs.astral.sh/uv/). Every script declares its dependencies in a PEP 723 header, so `uv run <script>` resolves them. A bare `python3` runs only the scripts with no dependencies.

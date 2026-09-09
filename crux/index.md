@@ -12,9 +12,11 @@ Crux gives agentic coding harnesses a shared project memory in a `bionic/` folde
 
 Everything runs locally. There is no server, no account, and no background service. Crux is skills, scripts, role agents, and your repository.
 
-## What it keeps
+## Crux Manages Knowledge and History
 
-The tree has seven concerns, plus two derived surfaces that new repos get by default.
+The tree has seven primary areas of knowledge it maintains, plus two derived surfaces that new repos get by default.
+This was initially inspired by the [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) by Karpathy
+but with a focus on software engineering practices.
 
 | Folder | What lives there | Who writes it |
 |---|---|---|
@@ -30,7 +32,7 @@ The tree has seven concerns, plus two derived surfaces that new repos get by def
 
 Two rules hold the tree together. Anything regenerated is never edited by hand, because the next run overwrites it. Anything accepted is never edited afterward, because the record is the point. To change an accepted decision, you write a new one that supersedes it.
 
-## How you drive it
+## Using Crux in your Project
 
 Once Crux is installed, its skills respond to the same plain phrases in each supported harness. You say what you want, and the harness routes the request to the matching skill.
 
@@ -42,7 +44,7 @@ Once Crux is installed, its skills respond to the same plain phrases in each sup
 
 The [reference]({{ "/crux/reference/" | relative_url }}) has the full list.
 
-## Agents with fences
+## Agents With Guiderails
 
 Crux ships ten role agents that operate the skills. It projects the same roles into each supported harness's native format. Each role has tool permissions that enforce its boundaries. The librarian answers questions and cannot write. The reviewer reads a diff and cannot edit it. The developer builds one unit and cannot delegate. The historian owns every write under `bionic/` and cannot touch source code. The separation is structural, not a matter of instructions.
 

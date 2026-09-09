@@ -60,7 +60,7 @@ A tree that predates a concern opts in by adding its name to `concerns_enabled`,
 
 ## Give it something to work with
 
-The fastest way to a useful tree is the inbox.
+Run things through the inbox. This allows the agents to store and maintain their own knowledge.
 
 1. Drop your existing design notes, specs, PDFs, or chat exports into `bionic/inbox/`.
 2. For web sources, paste URLs one per line into `bionic/inbox/urls.md`. Add `(static)` after a URL to exclude it from refresh checks.

@@ -35,6 +35,10 @@ artifact_prefix: ""
 - **`docs_dir`** relocates the tree, for example to `docs/` or `meta/docs/`. It is repo-root-relative, with no absolute paths and no `..`.
 - **`artifact_prefix`** brands artifact ids so they are distinguishable across repos. With `artifact_prefix: "CRX"`, a new record is `CRX-ADR-0012`. Existing records are never renamed.
 
+> [!IMPORTANT]
+> Decide both values before you say "init docs". Ids are allocated with whatever prefix is in place, and
+> existing records are never renamed.
+
 To use a non-default location, copy the template to the repo root and edit it **before** you say "init docs":
 
 ```sh
@@ -85,4 +89,4 @@ Both passes propose. Neither can accept its own findings.
 
 ## Next
 
-[Reference]({{ "/crux/reference/" | relative_url }}): what to say, which workflow to pick, and the habits that keep the tree honest.
+[Reference]({{ "/crux/reference/" | relative_url }}): what to say, which workflow to pick, and good habits.

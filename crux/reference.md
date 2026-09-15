@@ -2,14 +2,14 @@
 layout: crux
 title: Reference
 permalink: /crux/reference/
-description: "What to say, which workflow to pick, and the habits that keep the tree honest."
+description: "What to say, which workflow to pick, and good habits."
 ---
 
 ## What to say
 
-Every skill is triggered by a phrase. Say it in a sentence, and your coding agent selects the matching skill.
+Each skill declares the phrases it answers to. Say one in a sentence and your coding agent routes the request to the matching skill. These are trigger phrases, not commands. No phrase selects a skill deterministically, and none of them is a slash command.
 
-| Say this | Crux will |
+| Ask for | Crux will |
 |---|---|
 | **"Start a cycle for X"** | Assemble a tracked plan that takes X from decision to reviewed code. The main entry point. |
 | "Advance" / "next prompt" | Move the active cycle or promptbook forward one prompt |
@@ -25,7 +25,9 @@ Every skill is triggered by a phrase. Say it in a sentence, and your coding agen
 | "Audit docs" | Run the integrity checks and fix the safe drift |
 | "What's next" | Scan the tree's process state and write a prioritized list to `bionic/whats_next.md` |
 | "What does X do?" / "Why did we choose Y?" | Search the tree and answer with citations |
-| "Have the reviewer check the diff" | Dispatch a named agent directly |
+| "Have this change independently reviewed" | Commission a review from a role that did not author the change |
+
+You can also name a role directly; most of them declare their own trigger phrases. Ask for the outcome instead and your coding agent supplies the role's context. It also commissions review from whoever assigned the work, never from the author. [Using Crux]({{ "/crux/team/" | relative_url }}) covers all ten roles.
 
 ## Which workflow for a change
 
@@ -36,7 +38,9 @@ crux has four ways to drive a change, in decreasing rigor. The choice is about t
 - **A small, reversible fix** with a footprint you can name up front takes a **patch** ("patch this"). Five phases, one prompt each. You declare the paths it may touch; archival checks the run against them using git.
 - **A defect whose failing test you can name now** takes **fix-directly** ("just fix it"). No plan, no council. A failing test first, the smallest green change, one commit, one journal entry.
 
-Every cycle has a three-round escalation built in. If a review loop has not converged after three tries, the run stops and puts the stuck decision in front of you.
+> [!NOTE]
+> Every cycle has a three-round escalation built in. If a review loop has not converged after three tries, the
+> run stops and puts the stuck decision in front of you.
 
 ## Habits that keep the tree honest
 
@@ -66,7 +70,11 @@ A sequence you would otherwise give your coding agent prompt by prompt belongs i
 
 ### 6. Ask; do not hand-edit
 
-When you spot a stale page, a contradiction, or a broken link, ask crux to fix it. Hand edits to managed files slip past audits and desynchronize the counters and indexes that the whole tree relies on. Your sense that something looks off is the intended trigger.
+When you spot a stale page, a contradiction, or a broken link, ask crux to fix it. Your sense that something looks off is the intended trigger.
+
+> [!WARNING]
+> Hand edits to managed files slip past audits and desynchronize the counters and indexes that the whole tree
+> relies on.
 
 ## When something looks wrong
 
@@ -82,4 +90,4 @@ When you spot a stale page, a contradiction, or a broken link, ask crux to fix i
 
 ## Next
 
-[In practice]({{ "/crux/in-practice/" | relative_url }}): how this site is built with it.
+The [catalog]({{ "/crux/catalog/" | relative_url }}) is the full inventory: every role and every skill, generated from the crux source.

@@ -5,12 +5,12 @@ permalink: /crux/installation/
 description: "Install crux in Claude Code, Codex, or OpenCode."
 ---
 
-**[Access the Crux repository on GitHub](https://github.com/bionic-coding/crux)**
+> [!NOTE] _Just want the source?_ **[Get Crux on GitHub](https://github.com/bionic-coding/crux)**
 
 ## Requirements
 
 - OpenRouter API key: [OpenRouter](https://openrouter.ai/) for scripts we run (for example: the LLM as Judge council). We call out to several providers (e.g. OpenAI, Anthropic, Gemini) and the easiest way to manage this is to use OpenRouter. You can use the API key with OpenCode as well if that is your preferred harness.
-- A supported agentic coding harness: [Claude Code](https://claude.ai/code), [Codex](https://openai.com/codex/), or [OpenCode](https://opencode.ai/). The OpenCode integration currently targets V2 (`opencode2`).
+- A supported agentic coding harness: [Claude Code](https://claude.ai/code), [Codex](https://openai.com/codex/), or [OpenCode](https://opencode.ai/). The OpenCode integration targets OpenCode V2, 2.0.3 or newer, where the command is `opencode`.
 - `python3` 3.11 or newer on your PATH. Crux's scripts are Python. macOS ships 3.9 at `/usr/bin/python3`, which cannot run them.
 - [uv](https://docs.astral.sh/uv/). Every script declares its dependencies in a PEP 723 header, so `uv run <script>` resolves them. A bare `python3` runs only the scripts with no dependencies.
 
@@ -55,16 +55,18 @@ To upgrade, repeat the marketplace and plugin commands, then restart Codex and r
 
 ### OpenCode
 
-There is no OpenCode marketplace package yet. OpenCode support is a manual, preview-grade setup against a public clone of the repo, and it targets OpenCode V2 (`opencode2`). The outline:
+There is no OpenCode marketplace package yet. OpenCode support is a manual, preview-grade setup against a public clone of the repo, and it targets OpenCode V2. The outline:
 
 1. Clone the repo to a permanent path, such as `~/.local/share/crux`. The config uses absolute paths, so moving the clone later breaks the setup.
 2. Generate the OpenCode agent tree with `uv run python3 crux/scripts/generate-opencode-agents.py` from inside the clone.
 3. Add the clone's `crux/skills` directory, as an absolute path, to the `skills` array in `~/.config/opencode/opencode.json`.
 4. Symlink every generated agent from `opencode/agents/*.md` into `~/.config/opencode/agents/`.
 5. Quit and restart the OpenCode host. It loads config once at startup.
-6. Verify with `opencode2 debug agents`, which should list the ten crux roles.
+6. Verify with `opencode debug agents`, which should list the ten crux roles.
 
-Run step 2 again after every `git pull`. The agent tree is generated and not tracked by git. An upgrade updates its source but leaves the old projection in place until you regenerate it.
+> [!IMPORTANT]
+> Run step 2 again after every `git pull`. The agent tree is generated and not tracked by git, so an upgrade
+> updates its source but leaves the old projection in place until you regenerate it.
 
 The README's [OpenCode section](https://github.com/bionic-coding/crux#opencode-manual-setup) has the exact commands, the config snippet, and the caveat about V1 dropping the `deny` rules from the V2 agent files.
 

@@ -1,0 +1,19 @@
+{%- comment -%}
+Renders a role's `learning.handoff` as a sentence.
+
+Eight of the ten handoffs are subjectless verb phrases ("Assigns developer
+units…", "May ask the historian…"). Two are already full sentences ("The
+coordinator commissions…"). Give the fragments the subject they are missing;
+leave the sentences alone.
+
+Usage: {% include crux-handoff.html t=role.learning.handoff %}
+{%- endcomment -%}
+{%- assign first = include.t | slice: 0, 4 -%}
+{%- if first == "The " or first == "It m" or first == "Its " -%}
+{%- include crux-text.html t=include.t -%}
+{%- else -%}
+{%- assign head = include.t | slice: 0, 1 | downcase -%}
+{%- assign tail = include.t | slice: 1, 500 -%}
+{%- assign joined = head | append: tail | prepend: "It " -%}
+{%- include crux-text.html t=joined -%}
+{%- endif -%}

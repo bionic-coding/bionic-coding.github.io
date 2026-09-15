@@ -36,7 +36,7 @@ It's lighter and faster but doesn't come with the same scrutiny as a full dev cy
 
 ## 5. Schedule the night gardener
 
-Setup a scheduled job to have the Night Gardener "tend the garden" automatically.
+Setup a scheduled job to have the Night Gardener "tend the garden" automatically. Crux does not install the schedule; you do.
 
 I've been delighted several times by what its come up with.
 

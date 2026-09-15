@@ -1,0 +1,25 @@
+{%- comment -%}
+Renders one skill from _data/crux_catalog.json as a disclosure entry.
+  include.s     — the skill record
+  include.badge — audience badge text
+  include.class — badge modifier class
+  include.cat   — "true" to print the source category (used by the advanced list)
+
+Every catalog string passes through `escape`. Trigger and example text contains
+placeholders such as `<id>` and `<topic>`; unescaped, a browser parses those as
+unknown tags and drops them from the page.
+{%- endcomment -%}
+{%- assign s = include.s -%}
+{%- comment -%}
+The exporter fills `learning.note` with the audience definition when a skill has
+no note of its own, so 41 of 60 would otherwise repeat a sentence the legend
+already states. Render the line only for the 19 that say something specific.
+{%- endcomment -%}
+{%- assign defs = site.data.crux_catalog.audience_definitions -%}
+{%- case s.learning.audience -%}
+{%- when 'human_request' -%}{%- assign adef = defs.human_request -%}
+{%- when 'explicit_human' -%}{%- assign adef = defs.explicit_human -%}
+{%- when 'workflow_support' -%}{%- assign adef = defs.workflow_support -%}
+{%- else -%}{%- assign adef = defs.agent_internal -%}
+{%- endcase -%}
+<details class="cat-item"><summary><code>{{ s.id | escape }}</code><span class="badge {{ include.class }}">{{ include.badge | escape }}</span><span class="cat-desc">{{ s.description | escape }}</span></summary><div class="cat-body">{% if s.learning.example_requests.size > 0 %}<p><span class="cat-label">Sounds like</span>{% for ex in s.learning.example_requests %}“{{ ex | escape }}”{% unless forloop.last %} · {% endunless %}{% endfor %}</p>{% endif %}{% if s.learning.note and s.learning.note != adef %}<p><span class="cat-label">Guidance</span>{{ s.learning.note | escape }}</p>{% endif %}{% if s.triggers.size > 0 %}<p><span class="cat-label">Declared triggers</span>{% for t in s.triggers %}{{ t | escape }}{% unless forloop.last %} · {% endunless %}{% endfor %}</p>{% endif %}<p><span class="cat-label">Declared</span>{% if s.declared_invocation.disable_model_invocation == true %}Model invocation disabled; a person invokes it.{% elsif s.declared_invocation.user_invocable == false %}Not user-invocable.{% else %}Invocation flags undeclared; undeclared is not forbidden.{% endif %}{% if include.cat %} Category: {{ s.category | escape }}.{% endif %} Risk: {{ s.risk_level | escape }}.{% if s.declared_by_agents.size > 0 %} Bound to: {% for a in s.declared_by_agents %}{{ a | escape }}{% unless forloop.last %}, {% endunless %}{% endfor %}.{% endif %}</p></div></details>

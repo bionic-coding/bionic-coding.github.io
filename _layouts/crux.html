@@ -2,7 +2,7 @@
 layout: default
 ---
 {%- comment -%}
-Wraps the four-page CRUX section. Identical to `page`, plus a series nav
+Wraps the CRUX section, in the reading order set by _data/crux.yml. Identical to `page`, plus a series nav
 (driven by _data/crux.yml) above the prose and a prev/next pager below it.
 {%- endcomment -%}
 {%- assign pages = site.data.crux.pages -%}
@@ -29,7 +29,7 @@ Wraps the four-page CRUX section. Identical to `page`, plus a series nav
       {%- endif -%}
     {%- endfor -%}
   </nav>
-  <div class="prose">
+  <div class="prose crux-prose">
     {{ content }}
   </div>
   {%- if prev or next -%}

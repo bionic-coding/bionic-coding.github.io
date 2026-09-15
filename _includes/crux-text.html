@@ -1,0 +1,23 @@
+{%- comment -%}
+Renders one editorial string from _data/crux_catalog.json as page prose.
+
+Two jobs, in one place so no call site can skip either:
+  1. Escape it. The payload carries `<id>`/`<topic>` placeholders, and an
+     unescaped one is parsed as an unknown tag and vanishes from the page.
+  2. Apply the site's naming lock. The catalog says "the main assistant" and
+     uses bare "agent" for a role; this site says "your coding agent" and
+     "role". These are pure terminology swaps — they change no meaning.
+
+Teaching changes belong in _tools/crux-catalog/crux-learning-catalog-guide.json
+followed by a refresh, not here. This is only vocabulary.
+
+Usage: {% include crux-text.html t=role.learning.when %}
+{%- endcomment -%}
+{{- include.t | escape
+  | replace: "the main assistant", "your coding agent"
+  | replace: "another agent", "another role"
+  | replace: "An agent needs", "A role needs"
+  | replace: "the agent doing the work", "the role doing the work"
+  | replace: "The agent must not", "The skill must not"
+  | replace: "not a separate teammate", "not a role of its own"
+-}}

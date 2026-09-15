@@ -1,13 +1,18 @@
 # The CRUX section, in reading order. Drives the series nav and the prev/next
 # pager rendered by _layouts/crux.html. `url` must match each page's permalink.
+# `title` here is the short tab label; each page keeps its own longer `title`.
 pages:
-  - title: What crux is
+  - title: About crux
     url: /crux/
-  - title: Installation
+  - title: Install
     url: /crux/installation/
   - title: Setup
     url: /crux/setup/
+  - title: Using Crux
+    url: /crux/team/
   - title: Reference
     url: /crux/reference/
-  - title: In practice
+  - title: Catalog
+    url: /crux/catalog/
+  - title: Tips
     url: /crux/in-practice/

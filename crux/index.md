@@ -8,8 +8,6 @@ description: "Project memory and workflows for agentic coding harnesses."
 
 Crux gives agentic coding harnesses a shared project memory in a `bionic/` folder inside the repo. Your coding agent can find it, update it, and check it for drift. Decisions, research, the work journal, plans, and the invariants that must stay true all live there. Your coding agent does the bookkeeping. You provide the objectives.
 
-**[Crux on GitHub](https://github.com/bionic-coding/crux)**
-
 Everything runs locally. There is no server, no account, and no background service. Crux is skills, scripts, role agents, and your repository.
 
 ## Crux Manages Knowledge and History
@@ -42,14 +40,18 @@ Once Crux is installed, its skills respond to the same plain phrases in each sup
 - **"Start a cycle for X"** assembles a tracked plan that takes a feature from decision to reviewed code.
 - **"Audit docs"** checks the whole tree for broken links, stale counts, and missing rows, and fixes the safe ones.
 
-The [reference]({{ "/crux/reference/" | relative_url }}) has the full list.
+[Using Crux]({{ "/crux/team/" | relative_url }}) covers how to ask for these. The [catalog]({{ "/crux/catalog/" | relative_url }}) has the full list.
 
 ## Agents With Guiderails
 
-Crux ships ten role agents that operate the skills. It projects the same roles into each supported harness's native format. Each role has tool permissions that enforce its boundaries. The librarian answers questions and cannot write. The reviewer reads a diff and cannot edit it. The developer builds one unit and cannot delegate. The historian owns every write under `bionic/` and cannot touch source code. The separation is structural, not a matter of instructions.
+Crux ships ten role agents that operate the skills. It projects the same roles into each supported harness's native format. Each role has a tool list that bounds it. The librarian answers questions and has no tool that writes. The reviewer reads a diff and has no tool that edits it. The developer builds one unit and has no tool that delegates. For those three the separation is structural, not a matter of instructions. The historian owns every write under `bionic/` by its instructions rather than its tool list, and what a harness enforces depends on the harness.
+
+You address the roles; they run the skills. Two of the ten are where you start: the brainstormer when you are exploring an idea, the commander when a plan is approved and ready to run. The night gardener runs when you ask for a pass or schedule one. The other seven are reached through the first two. [Using Crux]({{ "/crux/team/" | relative_url }}) covers that working relationship: where to start, what each specialist returns, and which judgments stay yours.
 
 This site's own `bionic/` tree is maintained by Crux. [In practice]({{ "/crux/in-practice/" | relative_url }}) shows how.
 
 ## Next
 
 Start with [Installation]({{ "/crux/installation/" | relative_url }}) to add crux to Claude Code, Codex, or OpenCode. Then follow [Setup]({{ "/crux/setup/" | relative_url }}) to initialize it in a project.
+
+**[Crux on GitHub](https://github.com/bionic-coding/crux)**

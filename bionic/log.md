@@ -2,6 +2,15 @@
 
 _Append-only. Newest first._
 
+## [2026-09-15] journal | implementation: Built /crux/team/ and /crux/catalog/ from the crux learning-catalog package
+
+Entry in `bionic/journal/2026-09.md` at 14:45. Refs: [[adrs/ADR-0003-ship-a-custom-presentation-layer-over-minima]]
+
+## [2026-09-15] lint | check-drift (4 clean / 4 drift / 3 broken / 3 crash / 3 n/a)
+
+Plugin-capability verification pass on crux 3.15.0. Regenerate with `summarize-adrs.py`, `compile-doctrine.py`, `generate-journal-index.py`, and `derive-arch.py --docs-dir bionic`.
+`generate-adr-index.py` crashes on `import yaml` — it is the only regenerator in the roster missing a PEP 723 dependency header, so `uv run` gives it a bare interpreter. The other two crashes and the three broken gates target the plugin's own authoring checkout and cannot run from a consuming repo.
+
 ## [2026-09-03] garden | morning note 2026-09-03 (2 headlines, 2 artifacts)
 
 Reviewed three owner commits and today’s uncommitted research. Both production build variants passed; publication inventory 30/30. Cleanup found no open suggestions. Added two inbox suggestions; dispatch deferred. See [[garden/2026-09-03]].

@@ -781,6 +781,169 @@ a:hover {
 }
 
 /* ============================================================
+   CRUX catalog — badge legend, role/skill disclosure entries.
+   Rendered by crux/catalog.md from _data/crux_catalog.json.
+   ============================================================ */
+.badge {
+  display: inline-block;
+  flex: none;
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.15em 0.45em;
+  color: var(--muted);
+}
+.badge-entry,
+.badge-ask {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--rule));
+}
+.badge-explicit {
+  color: #b45309;
+  border-color: color-mix(in srgb, #b45309 45%, var(--rule));
+}
+@media (prefers-color-scheme: dark) {
+  .badge-explicit {
+    color: #fbbf24;
+    border-color: color-mix(in srgb, #fbbf24 45%, var(--rule));
+  }
+}
+
+/* Wide reference tables scroll inside the text column instead of pushing the
+   whole page sideways at phone widths. Scoped to the CRUX section, whose pages
+   carry three-column tables.
+
+   `display: block` sounds like it would override `.prose table { width: 100% }`
+   at every width. Measured on /crux/team/ at 320, 375, 414, 600, 736, 820, 1024
+   and 1440px: the table matches the text column exactly at every one of them,
+   and scrolls internally only at 414px and below, where the cells can no longer
+   compress. Page-level horizontal overflow is 0 at all eight. */
+.crux-prose table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.cat-roles,
+.cat-skills {
+  margin: 1.4rem 0 2rem;
+  border-top: 1px solid var(--rule);
+}
+.prose .cat-item {
+  border-bottom: 1px solid var(--rule);
+}
+.prose .cat-item > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.6rem;
+  /* 44px tap target on touch screens. */
+  min-height: 44px;
+  padding: 0.6rem 0.2rem;
+  cursor: pointer;
+  list-style: none;
+}
+.prose .cat-item > summary::-webkit-details-marker {
+  display: none;
+}
+.prose .cat-item > summary::before {
+  content: "+";
+  flex: none;
+  width: 1ch;
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.prose .cat-item[open] > summary::before {
+  content: "\2212"; /* minus */
+}
+.prose .cat-item > summary:hover {
+  background: var(--surface);
+}
+.prose .cat-item > summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.prose .cat-item > summary > code {
+  flex: none;
+  background: none;
+  padding: 0;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.cat-desc {
+  flex: 1 1 14rem;
+  min-width: 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+.cat-body {
+  padding: 0.2rem 0 1.1rem 2ch;
+}
+.prose .cat-body p {
+  margin: 0 0 0.6rem;
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+.prose .cat-body p:last-child {
+  margin-bottom: 0;
+}
+/* Request journeys on the "Working with the team" page. */
+.journeys {
+  margin: 1.4rem 0 2rem;
+}
+.prose .journey {
+  margin: 0 0 1.3rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--rule);
+}
+.prose .journey-ask {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.prose .journey-chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.7rem;
+  margin: 0 0 0.35rem;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+.journey-label {
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+.prose .journey-note {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.cat-label {
+  display: block;
+  font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+/* ============================================================
    Footer
    ============================================================ */
 .site-footer {

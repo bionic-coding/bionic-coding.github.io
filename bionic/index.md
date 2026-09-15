@@ -1,6 +1,6 @@
 # docs/bionic-coding
 
-_Last updated: 2026-09-03_
+_Last updated: 2026-09-15_
 
 ## Research (47 sources, 7 synthesis pages)
 
@@ -24,7 +24,7 @@ See [[research/index]].
 - [[briefs/BRIEF-this-week-in-ai-format]] — `published` — `updated_at: 2026-07-17`
 - [[briefs/BRIEF-wire-the-publication-boundary-oracle-into-ci]] — `draft` — `updated_at: 2026-08-25`
 
-## Journal (2 months)
+## Journal (3 months)
 
 See [[journal/index]].
 

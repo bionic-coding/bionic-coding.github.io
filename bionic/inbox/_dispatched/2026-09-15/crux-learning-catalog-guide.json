@@ -1,0 +1,455 @@
+{
+  "format_version": "1",
+  "title": "How to work with the crux team",
+  "editorial_status": "draft_for_blog_ingestion",
+  "basis": "Source-derived facts plus explicitly labeled teaching recommendations; not a change to Crux's runtime contracts.",
+  "teaching_model": {
+    "agent": "A role with responsibilities, context, and tool boundaries.",
+    "skill": "A reusable procedure a role or the main assistant follows; not a separate teammate.",
+    "human_job": "State the outcome, evidence, constraints, and permissions; make the judgments reserved for the owner.",
+    "default_entry_points": [
+      "brainstormer",
+      "commander"
+    ],
+    "scheduled_entry_points": [
+      "night-gardener"
+    ],
+    "specialist_policy": "Teach delegation by default for the other seven roles. This is teaching guidance, not a claim that direct requests are disabled.",
+    "skill_policy": "Many skills remain user-facing capabilities. People can ask for an outcome in plain language without selecting every specialist.",
+    "small_change_policy": "Do not require the commander or a promptbook for every task. Let the assistant choose the smallest applicable workflow.",
+    "authorization": "Objectives guide choices but do not grant permission for more work. A skill request is not blanket permission to publish or sign off."
+  },
+  "roles": {
+    "brainstormer": {
+      "audience": "human_entry_point",
+      "purpose": "Explore an idea before choosing what to build.",
+      "when": "You have a problem or idea, but have not chosen an approach.",
+      "ask": "Help me explore ways to improve our onboarding before we decide what to build.",
+      "provide": [
+        "Problem and intended users",
+        "Relevant constraints",
+        "What remains uncertain"
+      ],
+      "expect": [
+        "Options with tradeoffs",
+        "A recommendation and open questions",
+        "A captured session for the historian to file"
+      ],
+      "avoid": [
+        "Asking it to implement code",
+        "Assuming its conversation was saved automatically"
+      ],
+      "handoff": "The caller asks the historian to file the session, then the architect to record a decision when appropriate.",
+      "source_sections": [
+        "Method (drive the `whiteboarding` skill)",
+        "Hand-off"
+      ]
+    },
+    "commander": {
+      "audience": "human_entry_point",
+      "purpose": "Coordinate an approved promptbook through completion.",
+      "when": "A plan exists and you want the team to execute it with its gates.",
+      "ask": "Run the approved promptbook to completion. Preserve its constraints and stop at its named escalation points.",
+      "provide": [
+        "Approved book or plan path",
+        "Desired outcome and evidence",
+        "Constraints and authorization boundaries"
+      ],
+      "expect": [
+        "Specialist assignments",
+        "Progress through the run's gates",
+        "Evidence-backed completion or a named stop"
+      ],
+      "avoid": [
+        "Expecting it to edit files or implement code itself",
+        "Treating permission to run a plan as permission to publish"
+      ],
+      "handoff": "Delegates decisions, implementation, review, retrieval, and documentation to their owners.",
+      "source_sections": [
+        "How you operate",
+        "Commissioning reviews, and reading what comes back"
+      ]
+    },
+    "night-gardener": {
+      "audience": "scheduled_or_explicit",
+      "purpose": "Notice opportunities and leave a grounded morning note.",
+      "when": "You want a strategic night pass after project activity, or have deliberately scheduled one.",
+      "ask": "Tend the garden and leave a morning note grounded in our objectives.",
+      "provide": [
+        "Project objectives",
+        "Current project context",
+        "Owner-configured preferences and any approved schedule"
+      ],
+      "expect": [
+        "A morning note and linked artifacts when the turn gate permits",
+        "A silent skip when only its own artifacts changed"
+      ],
+      "avoid": [
+        "Using it as the default feature implementer",
+        "Expecting automatic publication, external messages, or schedule installation"
+      ],
+      "handoff": "May ask the historian, librarian, and wayfinder for bounded help. The owner reviews proposed follow-up work.",
+      "source_sections": [
+        "The turn gate (first act, every night)",
+        "Hard lines (embedded — every one non-negotiable)"
+      ]
+    },
+    "architect": {
+      "audience": "delegated_specialist",
+      "purpose": "Turn a chosen direction into a decision and an executable plan.",
+      "when": "The team needs an architectural decision, plan, or decision review.",
+      "request_via": "Tell the main assistant what you want decided or planned; let the coordinator assign the architect.",
+      "provide": [
+        "Exploration or problem statement",
+        "Current architecture and constraints",
+        "Outcome and acceptance evidence"
+      ],
+      "expect": [
+        "A Proposed ADR or plan",
+        "Alternatives and consequences",
+        "Findings against objectives when reviewing decisions"
+      ],
+      "avoid": [
+        "Asking it to implement production code",
+        "Letting the drafting architect accept its own ADR"
+      ],
+      "handoff": "The coordinator commissions a fresh architect for acceptance after council review, and a dev-lead for implementation.",
+      "source_sections": [
+        "What you do",
+        "Guardrails"
+      ]
+    },
+    "dev-lead": {
+      "audience": "delegated_specialist",
+      "purpose": "Lead implementation and integrate independent work units.",
+      "when": "An approved change needs working, tested code.",
+      "request_via": "Ask the coordinator to implement the approved plan; it assigns the dev-lead.",
+      "provide": [
+        "Approved specification or plan",
+        "Outcome, evidence, and constraints",
+        "Scope and integration boundaries"
+      ],
+      "expect": [
+        "Integrated code and tests",
+        "Evidence dispositions",
+        "Review-ready results"
+      ],
+      "avoid": [
+        "Manually dispatching developers around the lead",
+        "Letting the lead commission review of its own integration"
+      ],
+      "handoff": "Assigns developer units and their independent reviews. Its caller commissions review of the lead's own work.",
+      "source_sections": [
+        "Carrying the assignment across the fan-out",
+        "Fan-out discipline (the one sanctioned re-delegation)"
+      ]
+    },
+    "developer": {
+      "audience": "delegated_specialist",
+      "purpose": "Implement one bounded unit and its tests.",
+      "when": "A dev-lead has isolated an implementation unit.",
+      "request_via": "Let the dev-lead assign the unit rather than treating the developer as the whole project team.",
+      "provide": [
+        "Owned files and work unit",
+        "Relevant specification",
+        "Outcome, evidence, and constraints"
+      ],
+      "expect": [
+        "Code and tests",
+        "DONE, DONE_WITH_CONCERNS, NEEDS_CONTEXT, or BLOCKED",
+        "Verified, contradicted, or unobserved evidence items"
+      ],
+      "avoid": [
+        "Asking it to re-delegate",
+        "Treating DONE as proof of every user outcome",
+        "Asking it to approve its own work"
+      ],
+      "handoff": "Returns to the dev-lead, which arranges review and integration.",
+      "source_sections": [
+        "Reporting back",
+        "Before you write the first test"
+      ]
+    },
+    "reviewer": {
+      "audience": "delegated_specialist",
+      "purpose": "Independently judge the assigned outcome and the change.",
+      "when": "Work by another agent is ready for verification.",
+      "request_via": "Ask the coordinator for independent review of the change, not self-approval by its author.",
+      "provide": [
+        "The original assignment",
+        "The work product or diff",
+        "The author's completion report"
+      ],
+      "expect": [
+        "Ranked findings",
+        "Evidence-backed verdict",
+        "Explicit unobserved claims"
+      ],
+      "avoid": [
+        "Asking it to fix the change while reviewing",
+        "Letting the author commission its own review"
+      ],
+      "handoff": "Reports to the delegator that commissioned the work. The implementer handles fixes.",
+      "source_sections": [
+        "Who commissions you, and what you are given",
+        "Reporting"
+      ]
+    },
+    "historian": {
+      "audience": "delegated_specialist",
+      "purpose": "Preserve work in the documentation tree through its owning skills.",
+      "when": "The team needs filing, journal entries, run records, documentation maintenance, or archival.",
+      "request_via": "Say what should be saved or maintained; let the main assistant dispatch the historian.",
+      "provide": [
+        "The content or result to preserve",
+        "Destination and context",
+        "What the write must leave unchanged"
+      ],
+      "expect": [
+        "Durable records",
+        "Required indexes and operation logs",
+        "Paths and limitations in the handoff"
+      ],
+      "avoid": [
+        "Asking it to implement source code",
+        "Bypassing inbox processing to file a brainstormer's session"
+      ],
+      "handoff": "Receives content from other roles and files it through the appropriate skill.",
+      "source_sections": [
+        "What you do (always via the owning skill, never raw freehand)",
+        "The write you were dispatched to make arrives as an assignment"
+      ]
+    },
+    "librarian": {
+      "audience": "delegated_specialist",
+      "purpose": "Retrieve recorded project knowledge with citations.",
+      "when": "A question can be answered from the project's documentation tree.",
+      "request_via": "Ask the main assistant the question, such as why a decision was made; it can dispatch the librarian.",
+      "provide": [
+        "A concrete question",
+        "Relevant project scope"
+      ],
+      "expect": [
+        "A distilled answer with document paths",
+        "An explicit gap when the tree does not answer"
+      ],
+      "avoid": [
+        "Asking it to invent missing facts",
+        "Asking it to make new architectural decisions or write records"
+      ],
+      "handoff": "Returns facts to its caller; requests for judgment belong to the architect and writes to the historian.",
+      "source_sections": [
+        "How you work",
+        "Boundaries"
+      ]
+    },
+    "wayfinder": {
+      "audience": "delegated_specialist",
+      "purpose": "Assess a large or uncertain source before it fills the caller's context.",
+      "when": "An agent needs to triage a file, corpus, or external source.",
+      "request_via": "Let the agent doing the work delegate source triage with a specific purpose.",
+      "provide": [
+        "Source paths or explicitly named external sources",
+        "The question or fitness criterion"
+      ],
+      "expect": [
+        "A fit, unfit, or partial verdict",
+        "A condensed digest with source locations",
+        "Unobserved parts of the request"
+      ],
+      "avoid": [
+        "Asking it to run commands or change files",
+        "Passing local private text into outbound searches",
+        "Using it instead of the librarian for ordinary recorded-fact lookup"
+      ],
+      "handoff": "Returns a digest to its caller; the caller decides what to read or do next.",
+      "source_sections": [
+        "What you return (never raw dumps)",
+        "Security disciplines (load-bearing)"
+      ]
+    }
+  },
+  "categories": {
+    "planning": [
+      "author-promptbook",
+      "author-runbook",
+      "dev-cycle",
+      "fix-directly",
+      "iterate",
+      "patch-cycle",
+      "run-promptbook",
+      "archive-promptbook",
+      "migrate-promptbooks",
+      "task-planner",
+      "visualize-run-progress",
+      "whiteboarding"
+    ],
+    "documentation": [
+      "audit-docs",
+      "check-drift",
+      "cleanup-campsite",
+      "compile-doctrine",
+      "derive-arch",
+      "extract-code-docs",
+      "verify-code-docs",
+      "init-docs",
+      "query-docs",
+      "log-work",
+      "link-adr-graph",
+      "prose-review"
+    ],
+    "research": [
+      "ingest-research",
+      "process-inbox",
+      "refresh-research-sources",
+      "refresh-research-synthesis",
+      "read-news"
+    ],
+    "decisions": [
+      "propose-adr",
+      "transition-adr",
+      "propose-brief",
+      "transition-brief",
+      "propose-observation",
+      "transition-observation",
+      "recover-decisions",
+      "transition-decision",
+      "recover-invariants",
+      "transition-invariant",
+      "review-decisions",
+      "backfill-signoff",
+      "reconcile-signoff",
+      "survey-sheet",
+      "survey-signoff"
+    ],
+    "collaboration": [
+      "agent-identity",
+      "council",
+      "run-adr-council",
+      "srde",
+      "semantic-bridge",
+      "forge-skill",
+      "retrospective",
+      "tend-garden"
+    ],
+    "runtime": [
+      "install-docs-skills",
+      "install-codex-agents",
+      "install-opencode-agents",
+      "install-runtime",
+      "escalate-arch-runtime",
+      "call-llm",
+      "serve-llm",
+      "trace-runtime-ops"
+    ]
+  },
+  "skill_audience_overrides": {
+    "propose-observation": "explicit_human",
+    "council": "workflow_support",
+    "run-adr-council": "workflow_support",
+    "srde": "workflow_support",
+    "task-planner": "workflow_support"
+  },
+  "skill_notes": {
+    "run-promptbook": "This skill changes run state; the commander orchestrates the whole run. For status questions use visualize-run-progress.",
+    "visualize-run-progress": "Status questions do not authorize advancement. Optional artifact output is distinct from a read-only status answer.",
+    "derive-arch": "Regeneration writes generated architecture files. Ask query-docs to explain the current architecture without rebuilding it.",
+    "link-adr-graph": "Generating a lineage artifact is different from asking what supersedes what; route the question to query-docs.",
+    "query-docs": "Questions about current architecture or decision relationships are retrieval, not permission to regenerate.",
+    "check-drift": "Does not regenerate outputs. Check the selected version's workflow for operation-log side effects before describing the whole invocation as write-free.",
+    "audit-docs": "May repair safe drift; it is not interchangeable with a non-regenerating drift check.",
+    "review-decisions": "Produces findings and review records, but does not enact the findings.",
+    "refresh-research-synthesis": "Rewriting synthesis requires explicit per-page approval.",
+    "escalate-arch-runtime": "Explicit human request and the skill's separate consent conditions are required. Never an automatic remedy for failed static extraction.",
+    "propose-observation": "The body contract requires human invocation even though the frontmatter does not declare disable-model-invocation.",
+    "transition-adr": "Acceptance requires the appropriate decision process; a drafting architect cannot accept its own decision.",
+    "propose-brief": "Scaffold-only by default; the documented whiteboarding-session intake path is a distinct exception.",
+    "srde": "Dissent resolution is bounded by the workflow's escalation rules; it is not unlimited authority to continue.",
+    "tend-garden": "The owner establishes any schedule. The role must pass its turn gate and may not push, merge, or send externally.",
+    "survey-sheet": "A human-invoked scaffold, not a sign-off; leaves verdicts and rationale for the human.",
+    "survey-signoff": "The human supplies and confirms verdicts. The agent must not invent approval.",
+    "reconcile-signoff": "The human supplies the verdict and rationale for one pairing; do not batch-sign.",
+    "backfill-signoff": "Owner sign-off is required. Presentation of this skill is not delegated approval."
+  },
+  "audience_definitions": {
+    "human_request": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required.",
+    "explicit_human": "A deliberate human invocation is required by a declared flag or body contract. Use the harness's supported explicit invocation path.",
+    "agent_internal": "Team/runtime support; omit from beginner call-to-action lists.",
+    "workflow_support": "Normally reached inside a workflow; advanced users may request it where its contract allows."
+  },
+  "journeys": [
+    {
+      "id": "explore_then_build",
+      "user_request": "Help me explore this idea before we build it.",
+      "roles": [
+        "brainstormer",
+        "historian",
+        "architect",
+        "commander",
+        "dev-lead",
+        "developer",
+        "reviewer"
+      ],
+      "note": "This is a conceptual handoff, not a requirement to use every role for every change. The caller coordinates leaf-role handoffs."
+    },
+    {
+      "id": "execute_approved_plan",
+      "user_request": "Run the approved promptbook.",
+      "roles": [
+        "commander",
+        "dev-lead",
+        "developer",
+        "reviewer",
+        "historian"
+      ],
+      "note": "The commander commissions review of the lead's own integration; the lead commissions reviews of developer units."
+    },
+    {
+      "id": "ask_a_question",
+      "user_request": "Summarize the current architecture.",
+      "roles": [
+        "librarian"
+      ],
+      "skills": [
+        "query-docs"
+      ],
+      "note": "Answer from records; do not turn a question into regeneration."
+    },
+    {
+      "id": "small_fix",
+      "user_request": "Fix this bounded defect directly; do not change any contracts.",
+      "skills": [
+        "fix-directly"
+      ],
+      "note": "The sizing test still applies. No book or council when the task qualifies."
+    },
+    {
+      "id": "night_pass",
+      "user_request": "Tend the garden.",
+      "roles": [
+        "night-gardener"
+      ],
+      "skills": [
+        "tend-garden"
+      ],
+      "note": "The turn gate may legitimately produce no output. Suggestions do not authorize publication."
+    }
+  ],
+  "handoff_template": {
+    "outcome": "What improves for the affected user?",
+    "evidence": "What would demonstrate that outcome?",
+    "constraint": "What must remain true?",
+    "objectives": "Resolved objectives path plus relevant mission/goals or an instruction to read them.",
+    "inputs": "Exact source paths, work scope, and prior approved decisions.",
+    "report": "Separate verified, contradicted, and unobserved claims."
+  },
+  "publication_notes": [
+    "Do not present seven specialist roles as seven more buttons the beginner must learn.",
+    "Separate source-declared invocation flags from recommended audiences; enforcement differs across harnesses.",
+    "Do not promise that trigger phrases deterministically select a skill.",
+    "Declared role skill lists are associations, not a complete call graph or a guarantee a skill can run under every role's tool limits.",
+    "Source model aliases are configuration details, not fixed recommendations about vendors or models.",
+    "Confirm public release availability before linking a beta-version source or presenting its features as officially released."
+  ],
+  "reviewed_plugin_version": "3.16.1"
+}

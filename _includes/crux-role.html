@@ -1,0 +1,12 @@
+{%- comment -%}
+Renders one role from _data/crux_catalog.json as a disclosure entry.
+  include.role  — the agent record
+  include.badge — audience badge text
+  include.class — badge modifier class
+
+`learning.*` is this site's editorial guidance; `declared.*` and `runtime_names`
+are copied from the crux source. The two are labeled differently on purpose.
+Every catalog string passes through `escape`.
+{%- endcomment -%}
+{%- assign role = include.role -%}
+<details class="cat-item"><summary><code>{{ role.id | escape }}</code><span class="badge {{ include.class }}">{{ include.badge | escape }}</span><span class="cat-desc">{{ role.learning.purpose | escape }}</span></summary><div class="cat-body"><p><span class="cat-label">Guidance</span>{% if role.learning.ask %}Ask for it like this — “{{ role.learning.ask | escape }}”{% else %}{{ role.learning.request_via | escape | replace: "the main assistant", "your coding agent" }}{% endif %}</p><p><span class="cat-label">It returns</span>{% for e in role.learning.expect %}{{ e | escape }}. {% endfor %}</p><p><span class="cat-label">Avoid</span>{% for e in role.learning.avoid %}{{ e | escape }}. {% endfor %}</p><p><span class="cat-label">Then</span>{% include crux-handoff.html t=role.learning.handoff %}</p><p><span class="cat-label">Declared</span>Tools: {{ role.declared.tools | escape }}.{% if role.declared.delegate_targets.size > 0 %} Delegates to: {% for t in role.declared.delegate_targets %}{{ t | escape }}{% unless forloop.last %}, {% endunless %}{% endfor %}.{% endif %}{% if role.declared.skills.size > 0 %} Declared skills: {% for t in role.declared.skills %}{{ t | escape }}{% unless forloop.last %}, {% endunless %}{% endfor %}.{% endif %}</p><p><span class="cat-label">Called</span>{{ role.runtime_names.claude_code | escape }} in Claude Code, {{ role.runtime_names.codex | escape }} in Codex, {{ role.runtime_names.opencode | escape }} in OpenCode.</p></div></details>

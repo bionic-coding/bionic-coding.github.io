@@ -1,6 +1,6 @@
 ---
 title: Leveraging AI
-order: 10
+order: 11
 summary: "How to use AI for ambitious work without surrendering judgment."
 status: published
 updated: 2026-09-07

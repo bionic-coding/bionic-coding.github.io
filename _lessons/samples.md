@@ -1,6 +1,6 @@
 ---
 title: Samples
-order: 9
+order: 10
 summary: "Copy-paste examples you can run today."
 status: published
 updated: 2026-09-07

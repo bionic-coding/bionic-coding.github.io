@@ -1,9 +1,9 @@
 ---
 title: Glossary
-order: 11
+order: 12
 summary: "Plain-language definitions of the words AI people throw around."
 status: published
-updated: 2026-07-18
+updated: 2026-09-15
 ---
 
 The vocabulary of modern AI, one or two sentences each, no math required. Terms are alphabetical. Where a word has its own lesson, there's a link to it.
@@ -24,7 +24,7 @@ The vocabulary of modern AI, one or two sentences each, no math required. Terms 
 
 **Chain-of-thought** – When a model works through a problem in steps before committing to an answer, the way you might use scratch paper. It tends to help on multi-step problems. When a product shows you this "thinking," it's often a summary or a tidied-up trace, not a literal window into how the model works.
 
-**Context window** – How much text a model can take in for a single reply: your prompt, the conversation so far, any documents or tool results, and the answer it's writing. It's measured in **tokens**. Go past the limit and something has to give: the app trims or summarizes older material, fetches only the relevant parts, or returns an error. The model doesn't quietly remember past its window; the app decides what fits. See [Search, Knowledge, and RAG]({{ '/learn/search-knowledge-and-rag/' | relative_url }}).
+**Context window** – How much text a model can take in for a single reply: your prompt, the conversation so far, any documents or tool results, and the answer it's writing. It's measured in **tokens**. Go past the limit and something has to give: the app trims or summarizes older material, fetches only the relevant parts, or returns an error. The model doesn't quietly remember past its window; the app decides what fits. See [Context Management]({{ '/learn/context-management/' | relative_url }}) and [Search, Knowledge, and RAG]({{ '/learn/search-knowledge-and-rag/' | relative_url }}).
 
 **Diffusion** – The method behind many current image and video generators. The model starts from random noise and cleans it up in steps until a picture appears that fits your prompt. It's a different technique from the next-word prediction that language models use.
 
@@ -71,6 +71,8 @@ The vocabulary of modern AI, one or two sentences each, no math required. Terms 
 **RAG (retrieval-augmented generation)** – A way to let a model answer from specific material rather than only what it learned in training. The system searches a source — your documents, a database, sometimes the web — pulls the relevant passages, and drops them into the prompt. It's an open-book test, not extra training, so RAG does not change the model or teach it your data. See [Search, Knowledge, and RAG]({{ '/learn/search-knowledge-and-rag/' | relative_url }}).
 
 **Reasoning** – A model spending extra effort before it answers: planning, working through steps, or checking itself, sometimes in hidden intermediate steps you never see. "Reasoning models" are tuned to do more of this, which helps on hard problems but costs more time and money. More reasoning is not a guarantee of a correct answer. The visible, step-by-step version is **chain-of-thought** — though what a product shows you is often a summary, not the model's actual internal steps.
+
+**RSI (recursive self-improvement)** – A loop where AI helps build a better AI, which can then help build an even better one. This could speed up progress, but it doesn't mean a chatbot learns or upgrades itself every time you talk to it.
 
 **Skill** – A packaged capability an **agent** can pick up and reuse: instructions plus, often, the specific tools it's allowed to call. Think of it as a saved way of doing one job. See [Skills]({{ '/learn/skills/' | relative_url }}).
 

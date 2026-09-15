@@ -2,7 +2,7 @@
 layout: default
 ---
 {%- comment -%}
-Wraps the CRUX section, in the reading order set by _data/crux.yml. Identical to `page`, plus a series nav
+Wraps the Crux section, in the reading order set by _data/crux.yml. Identical to `page`, plus a series nav
 (driven by _data/crux.yml) above the prose and a prev/next pager below it.
 {%- endcomment -%}
 {%- assign pages = site.data.crux.pages -%}
@@ -20,7 +20,7 @@ Wraps the CRUX section, in the reading order set by _data/crux.yml. Identical to
     <h1 class="page-title">{{ page.title }}</h1>
     {%- if page.description -%}<p class="page-subtitle">{{ page.description }}</p>{%- endif -%}
   </header>
-  <nav class="series-nav" aria-label="CRUX pages">
+  <nav class="series-nav" aria-label="Crux pages">
     {%- for item in pages -%}
       {%- if item.url == page.url -%}
       <a href="{{ item.url | relative_url }}" aria-current="page">{{ item.title }}</a>

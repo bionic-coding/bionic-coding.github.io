@@ -31,7 +31,7 @@ You can also name a role directly; most of them declare their own trigger phrase
 
 ## Which workflow for a change
 
-crux has four ways to drive a change, in decreasing rigor. The choice is about the size and kind of the change, not its urgency.
+Crux has four ways to drive a change, in decreasing rigor. The choice is about the size and kind of the change, not its urgency.
 
 - **Net-new or architectural work** takes a **cycle** ("start a cycle for X"). A decision is recorded as an ADR and reviewed by a multi-model council, implemented, then independently reviewed. Thirteen prompts minimum.
 - **A fix to something that exists** takes **iterate** ("iterate on X"). Same council and review, but a verify module that reproduces and root-causes the problem replaces the ADR. If the council finds the fix is architectural after all, it stops and routes you to a cycle.
@@ -66,11 +66,11 @@ A sequence you would otherwise give your coding agent prompt by prompt belongs i
 
 ### 5. Read the schema before deep work
 
-`bionic/CLAUDE.md` is the operational schema that crux's skills and role agents read. The filename remains for compatibility, but its rules apply in every supported harness. When you wonder whether a coding agent should write somewhere, that file has the answer.
+`bionic/CLAUDE.md` is the operational schema that Crux's skills and role agents read. The filename remains for compatibility, but its rules apply in every supported harness. When you wonder whether a coding agent should write somewhere, that file has the answer.
 
 ### 6. Ask; do not hand-edit
 
-When you spot a stale page, a contradiction, or a broken link, ask crux to fix it. Your sense that something looks off is the intended trigger.
+When you spot a stale page, a contradiction, or a broken link, ask Crux to fix it. Your sense that something looks off is the intended trigger.
 
 > [!WARNING]
 > Hand edits to managed files slip past audits and desynchronize the counters and indexes that the whole tree
@@ -80,7 +80,7 @@ When you spot a stale page, a contradiction, or a broken link, ask crux to fix i
 
 | Symptom | Try this |
 |---|---|
-| "Where did crux put X?" | Read `bionic/index.md`, then the concern's own index |
+| "Where did Crux put X?" | Read `bionic/index.md`, then the concern's own index |
 | `bionic/code/` is stale | "Extract code docs" regenerates it fully |
 | An accepted ADR is wrong | Write a new ADR that supersedes it |
 | A research page contradicts itself | "Refresh synthesis" walks you through the reconciliation |
@@ -90,4 +90,4 @@ When you spot a stale page, a contradiction, or a broken link, ask crux to fix i
 
 ## Next
 
-The [catalog]({{ "/crux/catalog/" | relative_url }}) is the full inventory: every role and every skill, generated from the crux source.
+The [catalog]({{ "/crux/catalog/" | relative_url }}) is the full inventory: every role and every skill, generated from the Crux source.

@@ -8,7 +8,7 @@
 #       last_checked: <ISO date>|null
 #
 # The check→pin mapping is derived/regenerable; last_result/last_checked are
-# authored data (crux is not a test runner). Never fabricate a `pass`.
+# authored data (Crux is not a test runner). Never fabricate a `pass`.
 #
 # Scaffold-only: no checks have been mined yet. Populated by `recover-invariants`
 # under the human-ratify gate (bionic/CLAUDE.md §15.3) — it never sets `ratified`.

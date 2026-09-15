@@ -1,0 +1,6 @@
+{%- comment -%}
+Display product naming in catalog descriptions and natural-language examples.
+Only standalone prose words are normalized; source fields and command tokens
+remain untouched. Do not use this include for commands or verbatim triggers.
+{%- endcomment -%}
+{{- include.text | prepend: ' ' | append: ' ' | replace: ' crux ', ' Crux ' | replace: " crux's ", " Crux's " | strip | escape -}}

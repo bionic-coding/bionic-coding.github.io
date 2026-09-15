@@ -67,7 +67,7 @@ defaults:
 # source file path exactly; a stale or mismatched entry silently drops that
 # page from the nav (this broke the About link — see ADR-0005). A page can
 # override its nav text with `nav_label` in its own frontmatter.
-# The manifesto gave up its slot to CRUX on 2026-09-07; it stays at /manifesto/
+# The manifesto gave up its slot to Crux on 2026-09-07; it stays at /manifesto/
 # and is linked from the homepage callout.
 header_pages:
   - crux/index.md

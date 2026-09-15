@@ -1,6 +1,6 @@
 # Working with `docs/` in bionic-coding
 
-This project keeps its documentation in `docs/` – six concerns maintained by the `crux` Claude Code plugin. **You do not write these docs by hand.** You curate, decide, and discuss. Claude does the bookkeeping.
+This project keeps its documentation in `docs/` – six concerns maintained by the Crux Claude Code plugin. **You do not write these docs by hand.** You curate, decide, and discuss. Claude does the bookkeeping.
 
 This guide is for humans. If you are an LLM agent picking up this repo, read `docs/CLAUDE.md` — that's the operational schema.
 
@@ -8,7 +8,7 @@ This guide is for humans. If you are an LLM agent picking up this repo, read `do
 
 ## At a glance (the 30,000ft view)
 
-crux turns a `./docs/` folder into a maintained knowledge base that you and Claude share. There are four moving parts:
+Crux turns a `./docs/` folder into a maintained knowledge base that you and Claude share. There are four moving parts:
 
 1. **The `docs/` tree — six concerns.** Code docs, research wiki, ADRs, briefs, work journal, promptbooks. You curate and decide; Claude does the bookkeeping. → [The six concerns](#the-six-concerns)
 2. **Skills — natural language, no slash commands.** "propose an ADR", "process inbox", "audit docs", "start a cycle", "forge a skill". Each is triggered by a phrase routed through the skill's description. → [What to say to Claude](#what-to-say-to-claude)
@@ -65,7 +65,7 @@ You read the wiki. Claude writes it.
 
 ## The agent layer
 
-As of **v0.7.0**, crux also ships nine **agents** — Claude Code subagents that operate the skills above, each with a `tools` allowlist that enforces its role:
+As of **v0.7.0**, Crux also ships nine **agents** — Claude Code subagents that operate the skills above, each with a `tools` allowlist that enforces its role:
 
 | Agent | Reach for it when you want… | Bounded so it cannot… |
 |---|---|---|
@@ -173,7 +173,7 @@ Everything Claude does is backed by Python under the plugin's `scripts/` directo
 
 > **Dependency resolution for shipped scripts (PEP 723).** Shipped scripts whose documented invocation is `uv run …` carry PEP 723 inline metadata; on first use, `uv` resolves those dependencies — **unpinned by hash** — from *your configured uv index* (cached afterwards). Hermetic or locked-down environments should pre-provision the declared dependencies themselves rather than letting first use touch the network; for stricter reproducibility pin resolution with `uv run --exclude-newer <date>` (or the `UV_EXCLUDE_NEWER` environment variable). `uv` itself is a prerequisite for those invocations — without it the command fails at the shell (`command not found`); install it from https://docs.astral.sh/uv/.
 
-**Release tooling** (`promote-changelog.py`, `build-skill-zips.py`) packages and versions the plugin itself — used by crux's own release workflow, not something you run in a downstream project.
+**Release tooling** (`promote-changelog.py`, `build-skill-zips.py`) packages and versions the plugin itself — used by Crux's own release workflow, not something you run in a downstream project.
 
 **The multi-model substrate** lives under the plugin's `scripts/crux/` directory: the LLM router (`call-llm`), the multi-model `council`, `srde`, the tracer, and the identity / knowledge / task-planning modules that power the agent layer. These need API keys (next section) and run under `uv` (Python ≥3.10, per each script's PEP 723 header); `serve-llm` exposes the router over HTTP for non-Python clients. The **`forge-skill` capability-gap loop** (below) is a prose workflow — it needs no API keys of its own.
 
@@ -187,7 +187,7 @@ The **`crux-env` CLI** keeps your API keys outside any repo — its own section 
 
 ## Working with secrets and API keys
 
-`~/.crux/` is your per-user secrets home, outside any repo. One file (`~/.crux/env`) holds all API keys for every project on your machine that uses crux. The keys never leave your machine and never live in git.
+`~/.crux/` is your per-user secrets home, outside any repo. One file (`~/.crux/env`) holds all API keys for every project on your machine that uses Crux. The keys never leave your machine and never live in git.
 
 You manage it with the `crux-env` CLI. The commands below are the whole interface.
 
@@ -304,7 +304,7 @@ If something feels wrong (a contradiction, a stale page, a missing source), say 
 
 You're in a fresh repo with `docs/` just initialized. To start using it:
 
-1. **Capture today's intent as an ADR.** Say: *"Propose an ADR explaining why we're using crux for this project."* You'll review, then *"Accept ADR-NNNN"* (using the number it was assigned).
+1. **Capture today's intent as an ADR.** Say: *"Propose an ADR explaining why we're using Crux for this project."* You'll review, then *"Accept ADR-NNNN"* (using the number it was assigned).
 2. **Capture the planning material.** Drop your existing design notes / specs / chat exports into `docs/inbox/` and say *"Process inbox."*
 3. **Plan the first chunk of work.** Say: *"New promptbook for <thing>."* Co-author the prompt list. Then *"Run it."*
 4. **Journal at end of day.** Say: *"Log today's work — `<one line summary>`."*
@@ -327,7 +327,7 @@ You're in a fresh repo with `docs/` just initialized. To start using it:
 
 ## Plugin and schema
 
-This project uses `crux` docs `schema_version 3`. The plugin installs via the Claude Code marketplace (`/plugin marketplace add bionic-coding/crux`, then `/plugin install crux@crux`); update with the same commands. After upgrading, run `audit-docs --migrate` if the tree is on an older schema_version.
+This project uses Crux docs `schema_version 3`. The plugin installs via the Claude Code marketplace (`/plugin marketplace add bionic-coding/crux`, then `/plugin install crux@crux`); update with the same commands. After upgrading, run `audit-docs --migrate` if the tree is on an older schema_version.
 
 When the plugin's schema changes, run *"audit docs --migrate"* to bring `docs/` up to date.
 

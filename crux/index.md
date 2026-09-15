@@ -1,7 +1,7 @@
 ---
 layout: crux
-title: CRUX
-nav_label: CRUX
+title: Crux
+nav_label: Crux
 permalink: /crux/
 description: "Project memory and workflows for agentic coding harnesses."
 ---
@@ -52,6 +52,6 @@ This site's own `bionic/` tree is maintained by Crux. [In practice]({{ "/crux/in
 
 ## Next
 
-Start with [Installation]({{ "/crux/installation/" | relative_url }}) to add crux to Claude Code, Codex, or OpenCode. Then follow [Setup]({{ "/crux/setup/" | relative_url }}) to initialize it in a project.
+Start with [Installation]({{ "/crux/installation/" | relative_url }}) to add Crux to Claude Code, Codex, or OpenCode. Then follow [Setup]({{ "/crux/setup/" | relative_url }}) to initialize it in a project.
 
 **[Crux on GitHub](https://github.com/bionic-coding/crux)**

@@ -27,9 +27,9 @@ Curious non-experts who are willing to try things. Not researchers, not total no
 - The goal is writing that does not read as machine-generated. Avoid the tells (e.g. "load bearing," "delve," tidy rule-of-three cadences, reflexive em-dashes).
 - The prose is the human part; the scaffold is the disposable part. Same idea as the manifesto.
 
-## Sourcing: facts and references, all through crux
+## Sourcing: facts and references, all through Crux
 - Every claim gets a fact and a reference. No unsourced assertions.
-- **All research runs through crux:** `ingest-research` captures the source; the page cites its `docs/research/sources/<slug>`.
+- **All research runs through Crux:** `ingest-research` captures the source; the page cites its `docs/research/sources/<slug>`.
 - Each article and lesson has a `## References` section. Citations get added in the research pass, after the scaffold.
 
 ## Freshness
@@ -37,7 +37,7 @@ Curious non-experts who are willing to try things. Not researchers, not total no
 - **Weekly review.** Once a week, comb through recent articles and every lesson, check claims against current reality, fix what's stale, and bump `updated:`. _(To settle: the checklist, who runs it, how it's triggered.)_
 
 ## Ideation
-- New post ideas come from the crux night gardener (`tend-garden`) — it watches what shipped and what's moving, and proposes topics.
+- New post ideas come from the Crux night gardener (`tend-garden`) — it watches what shipped and what's moving, and proposes topics.
 
 ## Launch scope
 - **Lessons: 7-9.** Have 8 scaffolded: Glossary, Markdown, Prompting & Evals, Agents & Skills, Agentic Harnesses, Sharing Agents & Skills, Wikis/Knowledge/RAG, Samples.

@@ -1,4 +1,4 @@
-# crux catalog — refresh procedure
+# Crux catalog — refresh procedure
 
 `_data/crux_catalog.json` powers `/crux/team/` and `/crux/catalog/`. It is **generated**.
 Never hand-edit it: the next refresh overwrites the edit, and `--check` fails in the meantime.
@@ -7,19 +7,25 @@ Files here:
 
 | File | Role |
 | --- | --- |
-| `crux-learning-catalog-export.py` | the exporter; reads a crux source checkout, writes JSON to stdout |
+| `crux-learning-catalog-export.py` | the exporter; reads a Crux source checkout, writes JSON to stdout |
 | `crux-learning-catalog-guide.json` | editorial guidance — categories, role teaching, skill notes, audience overrides |
 | `crux-learning-catalog-instructions.md` | the original handoff, kept as the authoritative long form |
 
 Teaching changes go in the guide, never in the payload. `_tools/` starts with an underscore,
 so Jekyll never copies it into `_site/`.
 
-Use this catalog for product claims about crux. Use `bionic/CLAUDE.md` for this repository's
+Product prose uses **Crux**; the command and identifiers use `crux`. Imported descriptions,
+triggers, and examples retain their exact source spelling in the payload. The
+`crux-product-prose.html` include capitalizes standalone product names when displaying
+descriptions and example requests. Declared triggers render verbatim, and source digests
+still describe the unchanged plugin files.
+
+Use this catalog for product claims about Crux. Use `bionic/CLAUDE.md` for this repository's
 documentation operations — it predates this snapshot and carries older skill-contract details.
 
 ## Refresh
 
-The exporter needs a clean crux source checkout. `--plugin-root` is the `crux/` directory
+The exporter needs a clean Crux source checkout. `--plugin-root` is the `crux/` directory
 **inside** the authoring repo, not the repo root. The guide resolves as a sibling of the
 script, so no `--guide` flag is needed while both live here.
 
@@ -58,7 +64,7 @@ checkout instead and `source.revision` records that checkout's HEAD, which diffe
 two clones of the same version and makes `--check` exit 1 on a payload that is otherwise
 identical. Read such a failure by diffing, not by trusting the exit code.
 
-Verified on 2026-09-15 against crux 3.16.1: the published payload's `agents`, `skills`, `counts`,
+Verified on 2026-09-15 against Crux 3.16.1: the published payload's `agents`, `skills`, `counts`,
 `teaching_model`, `audience_definitions`, `journeys`, `handoff_template` and `publication_notes`
 are byte-identical to a fresh export, and `manifest_sha256`, `guide_sha256` and `exporter_sha256`
 all match. That is the confirmation that these pages describe the released version.
@@ -75,10 +81,10 @@ check `grep -rEi 'sha256|SKILL\.md|/Users/' _site/crux/` exists for that reason.
 - **A version it has not been told about.** It aborts when `plugin.json`'s version differs from
   the guide's `reviewed_plugin_version`. Bump that field after rereading the contracts, never to
   unblock a refresh.
-- **A dirty plugin subtree.** Commit the crux checkout first.
+- **A dirty plugin subtree.** Commit the Crux checkout first.
 - **Incomplete editorial coverage.** Every skill must sit in exactly one guide category, every
   role must have guidance, and every `skill_notes` and `skill_audience_overrides` key must
-  name a real skill. A new crux skill cannot publish until someone writes its category. That is
+  name a real skill. A new Crux skill cannot publish until someone writes its category. That is
   the design.
 
 ## What the pages compute rather than state
@@ -89,5 +95,5 @@ pages by itself.
 
 ## Not wired into CI
 
-`.github/workflows/jekyll.yml` has no crux checkout and no `uv`. Step 4 is a manual pre-publish
+`.github/workflows/jekyll.yml` has no Crux checkout and no `uv`. Step 4 is a manual pre-publish
 check, not a build step.

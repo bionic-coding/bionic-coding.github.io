@@ -1,8 +1,8 @@
 ---
 layout: crux
-title: Installing crux
+title: Installing Crux
 permalink: /crux/installation/
-description: "Install crux in Claude Code, Codex, or OpenCode."
+description: "Install Crux in Claude Code, Codex, or OpenCode."
 ---
 
 > [!NOTE] _Just want the source?_ **[Get Crux on GitHub](https://github.com/bionic-coding/crux)**
@@ -24,14 +24,14 @@ Crux provides the same skills and ten role agents in each supported harness. The
 
 ### Claude Code
 
-crux installs through the Claude Code plugin marketplace. In any Claude Code session, run two slash commands:
+Crux installs through the Claude Code plugin marketplace. In any Claude Code session, run two slash commands:
 
 ```
 /plugin marketplace add bionic-coding/crux
 /plugin install crux@crux
 ```
 
-The first command adds the marketplace, which is named `crux`. The second installs crux from it. Restart Claude Code so the skills and role agents register.
+The first command adds the marketplace, which is named `crux`. The second installs Crux from it. Restart Claude Code so the skills and role agents register.
 
 To upgrade, update the marketplace and run the install command again:
 
@@ -42,7 +42,7 @@ To upgrade, update the marketplace and run the install command again:
 
 ### Codex
 
-Codex installs crux through its plugin marketplace:
+Codex installs Crux through its plugin marketplace:
 
 ```text
 codex plugin marketplace add bionic-coding/crux
@@ -62,7 +62,7 @@ There is no OpenCode marketplace package yet. OpenCode support is a manual, prev
 3. Add the clone's `crux/skills` directory, as an absolute path, to the `skills` array in `~/.config/opencode/opencode.json`.
 4. Symlink every generated agent from `opencode/agents/*.md` into `~/.config/opencode/agents/`.
 5. Quit and restart the OpenCode host. It loads config once at startup.
-6. Verify with `opencode debug agents`, which should list the ten crux roles.
+6. Verify with `opencode debug agents`, which should list the ten Crux roles.
 
 > [!IMPORTANT]
 > Run step 2 again after every `git pull`. The agent tree is generated and not tracked by git, so an upgrade
@@ -86,7 +86,7 @@ python3 "${CRUX_ROOT}/scripts/crux-env.py" init
 python3 "${CRUX_ROOT}/scripts/crux-env.py" set OPENROUTER_API_KEY sk-or-...
 ```
 
-Set `CRUX_ROOT` to the installed crux directory or the `crux/` directory in a source checkout. Claude Code exposes its installed directory as `${CLAUDE_PLUGIN_ROOT}`. The key name is logged; the value never is. Core documentation workflows need no API key.
+Set `CRUX_ROOT` to the installed Crux directory or the `crux/` directory in a source checkout. Claude Code exposes its installed directory as `${CLAUDE_PLUGIN_ROOT}`. The key name is logged; the value never is. Core documentation workflows need no API key.
 
 ## Next
 

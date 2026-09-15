@@ -1,6 +1,6 @@
 # Crux learning catalog — blog intake
 
-This four-file package is a draft handoff for the Bionic Coding site's crux section.
+This four-file package is a draft handoff for the Bionic Coding site's Crux section.
 It teaches how to work with the team, not how to memorize sixty skill commands.
 It does not publish pages, install agents, or change Crux's contracts.
 
@@ -16,7 +16,7 @@ The inbox has no concern index to update. No public page or existing blog record
 
 ## Editorial assignment
 
-Build an outcome-led guide for the crux section. Lead with two entry points:
+Build an outcome-led guide for the Crux section. Lead with two entry points:
 
 1. **Brainstormer:** explore an idea before deciding what to build.
 2. **Commander:** run an approved plan and coordinate its specialists.

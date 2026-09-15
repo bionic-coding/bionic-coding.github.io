@@ -1,6 +1,6 @@
 {
   "format_version": "1",
-  "title": "How to work with the crux team",
+  "title": "How to work with the Crux team",
   "editorial_status": "draft_for_blog_ingestion",
   "source": {
     "plugin_version": "3.16.1",
@@ -8,7 +8,7 @@
     "revision": null,
     "git_state": "not_available",
     "manifest_sha256": "87f72d0a4a82e3716470a5f05e2bba05d2635a87bbb192585bc540d74e086b58",
-    "guide_sha256": "779041df7c2e71acba4d235f2aa51854c95267ebfb588f605a50ea72f2eb3489",
+    "guide_sha256": "e0e45a6a469dae35818d9a7bd26eb6277efebf3402694775c13c708af36196a5",
     "exporter_sha256": "d693414202bb00caadfa990b3a1781b13e8e4109722785499eabfd55463a46cb",
     "release_channel": "not_verified_by_exporter",
     "path_base": "plugin root; source paths are relative to the plugin, not the blog"

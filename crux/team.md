@@ -16,7 +16,7 @@ specialist_order:
 {% assign cat = site.data.crux_catalog %}
 Crux installs {{ cat.counts.agents }} roles and {{ cat.counts.skills }} skills. You do not need to learn all {{ cat.counts.skills }}. You need to know where to start, what to ask for, and which judgments stay yours.
 
-This page teaches the working relationship. The [catalog]({{ "/crux/catalog/" | relative_url }}) lists every role and every skill, generated from the crux source.
+This page teaches the working relationship. The [catalog]({{ "/crux/catalog/" | relative_url }}) lists every role and every skill, generated from the Crux source.
 
 ## Using Crux
 

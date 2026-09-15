@@ -9,7 +9,7 @@ a plain-language AI field guide ("Lessons"), and a weekly-ish news column ("Arti
 There is no application code: this repo is content, Liquid templates, and one stylesheet.
 
 See `bionic/CLAUDE.md` for documentation operations — the `bionic/` tree is maintained by the
-`crux` Claude Code plugin and has its own ownership rules.
+Crux Claude Code plugin and has its own ownership rules.
 
 ## Commands
 
@@ -37,6 +37,10 @@ Publishing is a file move, nothing else. A lesson can *also* be soft-drafted in 
 frontmatter `status` is not `published`, so links stay alive and unfinished prose never leaks.
 
 ## Content conventions
+
+**Crux naming.** Use **Crux** for the product's proper name. Use lowercase `crux`
+for the executable command. Preserve the spelling of paths, URLs, package names,
+plugin IDs, and code identifiers.
 
 **Posts** (`_posts/`) — `layout: post`, `title`, `date`, `description` (the scannable teaser
 used on the homepage and index), `tags`. The recurring column has a template at

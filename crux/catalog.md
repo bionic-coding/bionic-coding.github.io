@@ -2,7 +2,7 @@
 layout: crux
 title: Catalog
 permalink: /crux/catalog/
-description: "Every role and every skill, generated from the crux source."
+description: "Every role and every skill, generated from the Crux source."
 updated: 2026-09-15
 role_order:
   - brainstormer
@@ -33,15 +33,15 @@ categories:
     blurb: "Multi-model review, dissent resolution, retrospectives, and the night pass."
   - id: runtime
     title: Runtime and installation
-    blurb: "Installing crux into a harness and instrumenting how it runs."
+    blurb: "Installing Crux into a harness and instrumenting how it runs."
 ---
 
 {% assign cat = site.data.crux_catalog %}
 {% assign roles = cat.agents %}
 {% assign skills = cat.skills %}
-This is the full inventory: {{ roles.size }} roles and {{ skills.size }} skills, generated from crux {{ cat.source.plugin_version | escape }}. [Using Crux]({{ "/crux/team/" | relative_url }}) is the page to read first. This one is for looking things up.
+This is the full inventory: {{ roles.size }} roles and {{ skills.size }} skills, generated from Crux {{ cat.source.plugin_version | escape }}. [Using Crux]({{ "/crux/team/" | relative_url }}) is the page to read first. This one is for looking things up.
 
-Descriptions, declared triggers, tool lists, and invocation flags are copied from the crux source. Everything under a **Guidance** label is editorial: it says how we recommend you work, not what the software enforces. Nothing here was observed at runtime.
+Descriptions, declared triggers, tool lists, and invocation flags are copied from the Crux source. Descriptions and example requests display the product name as Crux; declared triggers retain their source spelling. Everything under a **Guidance** label is editorial: it says how we recommend you work, not what the software enforces. Nothing here was observed at runtime.
 
 ## How to read a badge
 

@@ -44,4 +44,4 @@ Right now it's only available in their [ZCode](https://zcode.z.ai/en) or a subsc
 ## What I'm actually using
 I've been running Kimi K3 with OpenCode as my primary driver this week while calling into other models for coding tasks.
 
-It is every bit as capable as Claude Opus 4.8 and Claude Code with my crux tooling.
+It is every bit as capable as Claude Opus 4.8 and Claude Code with my Crux tooling.

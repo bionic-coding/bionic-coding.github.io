@@ -37,7 +37,7 @@ Two rules hold it together. Anything regenerated is never edited by hand. Anythi
 
 ## What it feels like to use
 
-Once crux is installed, every skill is triggered by the same plain phrase in each supported harness.
+Once Crux is installed, every skill is triggered by the same plain phrase in each supported harness.
 
 - **"Process inbox."** Drop a PDF, a URL, a half-formed decision, or a stray idea into `bionic/inbox/` and say it. Your coding agent classifies each item and proposes where to file it. After your approval, it files the item. Web sources get dated raw captures and summaries that separate the sources' claims from verified facts.
 - **"Propose an ADR for X."** Your coding agent writes the decision record and leaves it as Proposed. You accept it, and from then on the body is frozen.
@@ -49,7 +49,7 @@ Under the phrases are ten role agents. Crux projects the same roles into each su
 
 ## Getting started
 
-Install crux for your harness, then restart it. Claude Code and Codex use their respective plugin marketplaces. OpenCode currently uses a manual setup.
+Install Crux for your harness, then restart it. Claude Code and Codex use their respective plugin marketplaces. OpenCode currently uses a manual setup.
 
 Then, in a project, say **"init docs"**. That bootstraps the folder, writes the operational schema your coding agent reads in each session, and records the first decision: that this project records decisions. Crux's scripts require Python 3.11 or newer and `uv`.
 

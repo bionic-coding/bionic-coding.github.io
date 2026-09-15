@@ -5,22 +5,22 @@ permalink: /crux/setup/
 description: "Bootstrap the tree, then choose its conventions."
 ---
 
-Installation adds crux to your agentic coding harness. Setup happens once per project, and it starts with two words.
+Installation adds Crux to your agentic coding harness. Setup happens once per project, and it starts with two words.
 
 ## Bootstrap the tree
 
-Open the project in your crux-enabled harness and say:
+Open the project in your Crux-enabled harness and say:
 
 > **init docs**
 
 That creates the `bionic/` tree with every concern scaffolded, plus four files worth knowing about:
 
-- **`bionic/CLAUDE.md`** is the operational schema. The filename remains for compatibility, but crux uses it in every supported harness. It tells your coding agent what lives where and who may write it. Skim its first seven sections once.
+- **`bionic/CLAUDE.md`** is the operational schema. The filename remains for compatibility, but Crux uses it in every supported harness. It tells your coding agent what lives where and who may write it. Skim its first seven sections once.
 - **`bionic/manifest.yml`** records the schema version, the enabled concerns, and which code-doc extractors run.
 - **`bionic/adrs/ADR-0000-record-architecture-decisions.md`** is the first decision: that this project records decisions.
 - **`.bionic.yml`** at the repo root records where the tree lives.
 
-Crux's skills and role agents already point to the operational schema. To load it before a crux workflow starts, link to `bionic/CLAUDE.md` from your harness's project-instruction file. In Claude Code, `init docs` adds that link when the repo already has a root `CLAUDE.md`.
+Crux's skills and role agents already point to the operational schema. To load it before a Crux workflow starts, link to `bionic/CLAUDE.md` from your harness's project-instruction file. In Claude Code, `init docs` adds that link when the repo already has a root `CLAUDE.md`.
 
 ## Choose the conventions first
 
@@ -46,7 +46,7 @@ CRUX_ROOT=/path/to/crux
 cp "${CRUX_ROOT}/templates/bionic-yml.tmpl" .bionic.yml
 ```
 
-Set `CRUX_ROOT` to the installed crux directory or the `crux/` directory in a source checkout.
+Set `CRUX_ROOT` to the installed Crux directory or the `crux/` directory in a source checkout.
 
 `init docs` writes the file when it is absent and merges one you already committed. Validation fails loud: a malformed `.bionic.yml` makes every consumer exit 1 with the error rather than fall back to defaults.
 
@@ -72,13 +72,13 @@ Run things through the inbox. This allows the agents to store and maintain their
 
 ## The first day
 
-1. **Record why you are here.** Say "Propose an ADR explaining why we're using crux for this project." Review it, then "Accept ADR-0001."
+1. **Record why you are here.** Say "Propose an ADR explaining why we're using Crux for this project." Review it, then "Accept ADR-0001."
 2. **File the planning material** through the inbox, as above.
 3. **Plan the first chunk of work.** Say "New promptbook for X", co-author the prompt list, then "Run it."
 4. **Journal at the end of the day.** Say "Log today's work" with a one-line summary.
 5. **Audit after the first ten writes.** Say "Audit docs" and confirm nothing has drifted.
 
-## Adopting crux in an existing project
+## Adopting Crux in an existing project
 
 Nothing has to be written down before you start. `init docs` scaffolds an empty tree, and two machine passes mine what the code already encodes:
 

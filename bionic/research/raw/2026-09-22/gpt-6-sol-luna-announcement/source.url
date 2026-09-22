@@ -1,0 +1,3 @@
+https://openai.com/index/introducing-gpt-6-sol-and-luna/
+# Note: openai.com returns 403 to plain/scripted fetches. This capture is a headless-Chrome
+# DOM render of the rendered page (saved as source.html), not a raw HTTP fetch.

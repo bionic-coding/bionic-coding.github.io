@@ -2,6 +2,106 @@
 
 _Append-only. Newest first._
 
+## [2026-09-22] ingest | openrouter-mimo-v2-6-pro
+
+OpenRouter, "Xiaomi: MiMo-V2.6-Pro" serving page (JS-rendered; captured via a headless-Chrome DOM render supplied through the inbox, plus the matching `/api/v1/models` JSON for the three V2.6 variants).
+Raw: `research/raw/2026-09-22/openrouter-mimo-v2-6-pro/` (source.html, models-api.json, source.url noting the render method).
+Synthesis: `research/references/open-weights-landscape-2026.md` — fills the architecture gap left by [[research/sources/mimo-v2-6]] (Pro >1T params; Flash 309B/15B MoE), first non-Xiaomi corroboration of the AA Intelligence Index claim (46.3 vs. Xiaomi's 46.32), full AA benchmark table and provider pricing/latency/uptime transcribed verbatim; flagged `> [contradiction]` on UltraSpeed's speed multiplier (OpenRouter's "roughly 10x" vs. Xiaomi's "up to 20x"). Indexes and registry updated; no new category.
+Inbox: both dropped files (`openrouter-mimo-v2-6-pro.rendered.html`, `openrouter-mimo-v2-6-models-api.json`) moved into the raw capture and dispatched pointers written to `inbox/_dispatched/2026-09-22/`.
+
+## [2026-09-22] ingest | using-gpt-6
+
+OpenAI's "Using GPT-6" model-guidance page (`static: false`, user-pasted-and-confirmed source). Captured via the clean `.md` export (curl 200, ~165-166 lines).
+Raw: `research/raw/2026-09-22/using-gpt-6/` (`source.md`, `source.html`, `source.url`). No inbox dispatch — not an inbox item.
+Synthesis: `research/references/frontier-models-2026.md` — the GPT-6 Sol/Luna section gains positioning quotes, new API features (async tool calling, mid-turn steering, `configuration_update`, misalignment monitoring), limitations, and Astra behavior notes. **The standing `[contradiction]` (GPT-6 "no Sol/Terra/Luna split" vs. Sol/Luna's existence) is now marked RESOLVED**: OpenAI's own guide states the family is "GPT-6 Astra, GPT-6 Sol, and GPT-6 Luna." GPT-6 Terra remains absent from every OpenAI source captured. Also updated `research/concepts/agent-skill-supply-chain-security.md` with a new section distinguishing the guide's "audit skills for unintended behavioral steering" caution from that page's malicious-skill supply-chain focus (`sources:` 1→2, `last_reviewed` bumped).
+
+## [2026-09-22] brief | scaffolded BRIEF-measure-the-cost-of-an-accepted-change
+
+"Measure the cost of an accepted change in the current coding workflow" — bionic/briefs/BRIEF-measure-the-cost-of-an-accepted-change.md, status: draft. Scaffold only; the body is the author's to write. Dispatched by process-inbox from the night gardener's 2026-09-03 research suggestion, held back earlier today as `unsure` between `brief` and a research idea page; filed as a brief on the owner's instruction to process the remaining inbox. Reference material preserved at bionic/inbox/_dispatched/2026-09-22/gardener-research-cost-per-accepted-change.md (question, three-task comparison design, fields to record).
+
+## [2026-09-22] ingest | gpt-6-sol-luna-announcement
+
+OpenAI's "Introducing GPT-6 Sol and Luna" launch post (`static: true`, author OpenAI). Dispatched from `docs/inbox/introducing-gpt-6-sol-and-luna.rendered.html` — a headless-Chrome DOM render the coordinator saved because `openai.com` returns 403 to plain/scripted fetches; no publish date found anywhere in the captured DOM.
+Raw: `research/raw/2026-09-22/gpt-6-sol-luna-announcement/` (`source.html` = the rendered DOM, `source.url`, `extracted.txt`). Dispatch pointer: `inbox/_dispatched/2026-09-22/introducing-gpt-6-sol-and-luna.rendered.html.pointer`.
+Synthesis: `research/references/frontier-models-2026.md` — expanded the "GPT-6 Sol and GPT-6 Luna" section with the announcement's benchmark claims (AutomationBench, Agents' Last Exam, DeepSWE, OSWorld vs Opus 5/Fable 5.1), availability, and caching notes. **Contradiction partially reconciled, not resolved**: the announcement confirms Sol/Luna as a later expansion of GPT-6 rather than evidence the 2026-09-03 "no Sol/Terra/Luna split" claim was false when made — but GPT-6 Terra is still absent from every source captured to date.
+
+## [2026-09-22] ingest | openai-models-index
+
+OpenAI's API models index (`developers.openai.com/api/docs/models`, `static: false`). Captured via the clean `.md` export (`.md` appended to the page URL) plus an HTML+screenshot capture for the images.
+Raw: `research/raw/2026-09-22/openai-models-index/`.
+Synthesis: `research/references/frontier-models-2026.md` (new "GPT-6 Sol and GPT-6 Luna" section, sourced alongside the two model pages below). Index still recommends GPT-6 Astra / GPT-5.6 Terra / GPT-5.6 Luna, not the new GPT-6 Sol/Luna pages. No new category.
+
+## [2026-09-22] ingest | gpt-6-luna
+
+OpenAI's GPT-6 Luna API model doc page (`static: false`). Captured via the clean `.md` export.
+Raw: `research/raw/2026-09-22/gpt-6-luna/`.
+Synthesis: `research/references/frontier-models-2026.md` (same new section as gpt-6-sol, below). No benchmarks or announcement post found for this model.
+
+## [2026-09-22] ingest | gpt-6-sol
+
+OpenAI's GPT-6 Sol API model doc page (`static: false`). Captured via the clean `.md` export.
+Raw: `research/raw/2026-09-22/gpt-6-sol/`.
+Synthesis: `research/references/frontier-models-2026.md` — new "GPT-6 Sol and GPT-6 Luna" section. **Contradiction flagged**, not resolved: the existing GPT-6 Astra section states "one model, one name... No Sol / Terra / Luna split this generation," which these two doc pages now contradict.
+
+## [2026-09-22] ingest | mimo-v2-6
+
+Xiaomi, "Introducing MiMo-V2.6 series" (launch article). First fetch of the canonical landing URL `mimo.xiaomi.com/mimo-v2-6` returned thin/degraded content (JS-hydrated shell, word_count 0) and was abandoned without filing a stub; re-fetched the static `/article` route (~1,868 words) and set it as `source_url`, noting the canonical landing URL in the source page.
+Raw: `research/raw/2026-09-22/mimo-v2-6/`; also saved `bench.js` (the companion JS data file populating the article's client-rendered benchmark appendix) and transcribed its full table verbatim into the source page. HuggingFace collection + technical-report PDF links recorded as pointers only, not ingested.
+Synthesis: `research/references/open-weights-landscape-2026.md` (new MiMo-V2.6 section + open question on license/architecture); `research/concepts/recursive-self-improvement.md` (new section on MiMo's RSI-as-RL-scaling framing, three-source synthesis). No prior MiMo entries in the wiki; no contradiction found. Indexes and registry updated; no new category.
+
+## [2026-09-22] ingest | claude-opus-5-5-product-page
+
+Anthropic, "Claude Opus" (evergreen product page, `static: false`).
+Raw: `research/raw/2026-09-22/claude-opus-5-5-product-page/`; 24 images downloaded, not individually described.
+Synthesis: `research/references/frontier-models-2026.md`; new Opus 5.5 section, availability/pricing confirmation, and a flagged internal inconsistency (page's own hero still reads "Claude Opus 4.8"). Indexes and registry updated; no new category.
+
+## [2026-09-22] ingest | claude-opus-5-5-announcement
+
+Anthropic, "Claude Opus 5.5" (announcement post, 2026-09-22).
+Raw: `research/raw/2026-09-22/claude-opus-5-5-announcement/`; HTML preserved; large testimonial/example-transcript blocks paraphrased rather than reproduced in full.
+Synthesis: `research/references/frontier-models-2026.md`; pricing, model id, benchmark table, safeguards, and self-reported limitations captured verbatim. Indexes and registry updated; no new category.
+
+## [2026-09-22] ingest | googles-double-blind-evaluation-pilot
+
+William Isaac, Sol Messing and Kristian Lum, "Piloting the world's first double-blind AI evaluations" (Google DeepMind, 2026-08-27).
+Raw: `research/raw/2026-09-22/googles-double-blind-evaluation-pilot/`; full article captured (word_count 603), 3 images downloaded. Original night-gardener drop (`docs/inbox/gardener-news-double-blind-evaluations.md`) preserved alongside as provenance.
+Synthesis: `research/concepts/llm-evaluation.md`; new section on benchmark contamination distinct from judge-scoring bias. Indexes and registry updated; no new category.
+
+## [2026-09-22] ingest | claude-opus-5-5-system-card
+
+Anthropic, "System Card: Claude Opus 5.5" (dated 2026-09-22, ~230pp).
+Raw: `research/raw/2026-09-22/claude-opus-5-5-system-card/`; 17MB PDF dropped in inbox, moved to raw capture as `source.pdf`, full text extracted via `pdftotext -layout` (7,630 lines) to `extracted.md`. Citable sections (RSP/CB-1/CB-2 determination, alignment/welfare findings, benchmark table, limitations) transcribed verbatim; remainder listed under `## Capture gaps`.
+Synthesis: `research/references/frontier-models-2026.md`; new Opus 5.5 section. Indexes and registry updated; no new category.
+
+## [2026-09-17] ingest | typesafe-introduction
+
+“Introduction - TypeSafe AI” (undated rolling documentation).
+Raw: `research/raw/2026-09-17/typesafe-introduction/`; HTML and source URL preserved, navigation removed and heading formatting restored in readable source.
+Synthesis: `research/concepts/composable-machine-native-ai.md`; Choice, Score, Noul, independent questions, and code composition. Introduction only; linked documentation not crawled. Indexes and registry updated.
+
+## [2026-09-17] ingest | introducing-system-one-models-and-jev
+
+Diogo Almeida, “Introducing System One Models & Jev” (2026-09-15).
+Raw: `research/raw/2026-09-17/introducing-system-one-models-and-jev/`; HTML, four PNGs, capture notes; all seven FAQ answers recovered from embedded page data. Videos not downloaded.
+Synthesis: `research/concepts/composable-machine-native-ai.md`; launch specifications, vendor evaluation caveats, and schema guarantees versus semantic correctness. Indexes and registry updated; no new category.
+
+## [2026-09-17] ingest | typesafe-manifesto
+
+TypeSafe AI, “Composable AI: Build Prod, Not God” (undated rolling manifesto).
+Raw: `research/raw/2026-09-17/typesafe-manifesto/`; HTML and two images preserved, responsive duplicate text removed from readable source, all seven appendix entries retained.
+Synthesis: new `research/concepts/composable-machine-native-ai.md`; separates company thesis and economic aspiration from evidence. Indexes and registry updated.
+
+## [2026-09-17] ingest | glm-built-its-inference-infrastructure
+
+Z.ai, “Toward Recursive Self-Improvement: How GLM Built Its Own Inference Infrastructure” (2026-09-17).
+Raw: `research/raw/2026-09-17/glm-built-its-inference-infrastructure/`; user-pasted rendered HTML transcribed once to Markdown, four figures downloaded, failed URL shell preserved separately with provenance notes.
+Synthesis: `research/concepts/recursive-self-improvement.md`; vendor-reported performance, human responsibilities, dense feedback, and the distinction from autonomous successor training.
+Updated research index, source registry, and master rollup. No contradictions flagged; no new category. Downloads original unchanged.
+
+## [2026-09-16] ingest | dream-rsi-recursive-self-improvement-through-evolving-worlds
+
+Tong Zheng et al., "Dream-RSI: Recursive Self-Improvement through Evolving Worlds" (arXiv v1, 2026-09-14), user-supplied URL. Raw: `research/raw/2026-09-16/dream-rsi-recursive-self-improvement-through-evolving-worlds/` (rendered HTML, two figures, and full extracted Markdown). Synthesis: new `research/concepts/recursive-self-improvement.md`; the paper improves exploration-policy code only, while the underlying coding agent, evaluator, models, and interfaces remain fixed. Its results are authors' reported experiments, and replay only evaluates recorded discovery history.
+
 ## [2026-09-15] journal | implementation: Built /crux/team/ and /crux/catalog/ from the crux learning-catalog package
 
 Entry in `bionic/journal/2026-09.md` at 14:45. Refs: [[adrs/ADR-0003-ship-a-custom-presentation-layer-over-minima]]

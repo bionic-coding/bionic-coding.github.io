@@ -1,0 +1,5 @@
+https://openrouter.ai/xiaomi/mimo-v2.6-pro
+NOTE: source.html is a headless-Chrome DOM render (the page is JS-rendered; a plain
+fetch would return an empty shell). Captured 2026-09-22.
+models-api.json: https://openrouter.ai/api/v1/models — fetched 2026-09-22; contains
+the three MiMo-V2.6 variant records (Pro, Flash, Pro-UltraSpeed).

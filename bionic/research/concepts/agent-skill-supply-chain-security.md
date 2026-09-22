@@ -3,8 +3,8 @@ title: "Agent skills as a software supply chain — the security picture"
 slug: agent-skill-supply-chain-security
 type: concepts
 tags: [security, agent-skills, prompt-injection, supply-chain, scanning, claimed-vs-verified]
-sources: [snyk-toxicskills-agent-skills-audit]
-last_reviewed: 2026-08-25
+sources: [snyk-toxicskills-agent-skills-audit, using-gpt-6]
+last_reviewed: 2026-09-22
 ---
 
 # Agent skills as a software supply chain
@@ -68,6 +68,12 @@ What exists as of this review:
 ## Possible post
 
 "How to tell if a shared AI skill is safe" — Learn-adjacent field note, natural checklist shape, and a number in the lede. Related: [[briefs/BRIEF-teaching-regular-people-ai-content-plan]].
+
+## Related but distinct: unintended behavioral steering, not malicious content
+
+Source: [[research/sources/using-gpt-6]] (OpenAI's "Using GPT-6" model guide, 2026-09-22). This page's whole subject is a skill or instruction file being a deliberate attack surface. OpenAI's guide names a second, narrower risk that sits beside it: a **legitimate, non-malicious** skill or `AGENTS.md` file can still steer a model's behavior unintentionally, just by containing unclear or conflicting guidance. GPT-6 Astra is specifically flagged as "more sensitive to instructions contained in skills and other files" than prior models, and OpenAI **"strongly recommend[s]" auditing skills and other files accessible to the model for instructions that could influence its behavior** — a vendor-issued caution about behavioral drift, not about credential theft or exfiltration.
+
+**Why this doesn't fold into the numbers above.** Snyk's 36.82%/13.4%/2.6% figures measure a corpus for security flaws — injected instructions an attacker planted, code that exfiltrates, secrets left hardcoded. OpenAI's caution here is about a skill's author's *own* ambiguous wording confusing an increasingly instruction-sensitive model. The mitigation is also different: a security scanner (`mcp-scan`, etc.) looks for attacker-shaped content; auditing for behavioral steering means a human re-reading a skill's prose for unclear priority between "the user asked X" and "the skill says Y" — the guide even supplies a sample prompt for making that priority explicit ("The user's instructions take precedence over guidelines provided in a skill"). Not merged into the "Installing safely" checklist above for that reason; noted here as an adjacent, model-behavior concern rather than a supply-chain one.
 
 ## Not captured
 

@@ -44,7 +44,7 @@ Honestly this is pretty frustrating given the way Astra can chew through tokens.
 
 **More info:**
 
-- [**About ChatGPT Pro tiers** (OpenAI Help Center, checked Sep 15)](https://help.openai.com/en/articles/9793128-what-is-chatgpt-pro/) — dates the pause September 10 and explains its scope, cancellations, and upgrades.
+- [**About ChatGPT Pro tiers** (OpenAI Help Center)](https://help.openai.com/en/articles/9793128-what-is-chatgpt-pro/) — dates the pause September 10 and explains its scope, cancellations, and upgrades.
 - [Tibo Sottiaux's announcement (Sep 10)](https://x.com/thsottiaux/status/2098113585683808624) — OpenAI's capacity explanation; [a mirror of the announcement](https://zamantika.com/de/thsottiaux/status/2098113585683808624) supplied the text because X did not load during research.
 - [Astra Lands, Qwen Refreshes Max, and What September Still Holds (Sep 04)]({{ "/2026/09/04/astra-lands-qwen-refreshes-max.html" | relative_url }}) — the launch assessment this follows up on.
 
@@ -63,8 +63,8 @@ curl -fsSL https://opencode.ai/v2/install | bash
 **More info:**
 
 - [**OpenCode 2 Docs**](https://opencode.ai/v2/docs)
-- [**OpenCode v2.0.3** (GitHub, Sep 12)](https://github.com/anomalyco/opencode/releases/tag/v2.0.3) — the version tag; no detailed release notes were available during research.
-- [OpenCode changelog (checked Sep 15)](https://opencode.ai/changelog) — the separately maintained 1.x release history.
+- [**OpenCode v2.0.3** (GitHub)](https://github.com/anomalyco/opencode/releases/tag/v2.0.3) — the version tag; no detailed release notes were available during research.
+- [OpenCode changelog](https://opencode.ai/changelog) — the separately maintained 1.x release history.
 
 ## What I'm actually using
 

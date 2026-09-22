@@ -3,8 +3,8 @@ title: "LLM Evaluation & LLM-as-a-Judge"
 slug: llm-evaluation
 type: concepts
 tags: [evals, llm-as-judge, evaluation, bias, council]
-sources: [judging-llm-as-a-judge-mt-bench, llm-as-a-judge-evidently-guide]
-last_reviewed: 2026-07-14
+sources: [judging-llm-as-a-judge-mt-bench, llm-as-a-judge-evidently-guide, googles-double-blind-evaluation-pilot]
+last_reviewed: 2026-09-22
 ---
 
 # LLM Evaluation & LLM-as-a-Judge
@@ -33,6 +33,24 @@ Zheng et al. document three biases in LLM judges ([[research/sources/judging-llm
 - **Self-enhancement bias** — favoring text from the judge's own model/family.
 
 Plus limited reasoning ability. These are the load-bearing citation for the lesson's council note.
+
+## A different failure mode: benchmark contamination, and protecting the test itself
+
+The biases above concern how a judge scores output it can already see. A separate problem
+is whether the model being tested has already seen the test — **benchmark contamination**.
+Google DeepMind's August 2026 pilot frames this the same way a leaked exam would: "if a
+model has already seen the test questions... the results can only be trusted to an extent"
+([[research/sources/googles-double-blind-evaluation-pilot]]).
+
+Their proposed fix is a **double-blind evaluation**: run the frontier model against a third
+party's confidential test set inside a cryptographically verified enclave (Confidential
+Computing), so neither side can see the other's private material — "the evaluator cannot
+see the Gemini model weights, and Google cannot see the evaluator's test prompts." This is
+a protocol claim about the evaluation *pipeline*, not a claim about any model's actual
+safety or capability — worth keeping distinct from the scoring-bias discussion above. It's a
+first-party pilot announcement (partners: Singapore AI Safety Institute, OpenMined, AVERI,
+MLCommons) with the technical report not yet reviewed here; the model tested is
+unspecified beyond "a Gemini Flash Lite model."
 
 ## Mitigation: juries / councils, and verify before scaling
 

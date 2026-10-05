@@ -2,6 +2,100 @@
 
 _Append-only. Newest first._
 
+## [2026-09-30] ingest | gemini-models
+
+Gemini — Google DeepMind. Captured the rolling model page featuring Argon; full 19-row benchmark table normalized from HTML, preserving the GraphWalks rowspan values.
+Raw: `research/raw/2026-09-30/gemini-models/`.
+Synthesis: `research/references/this-week-in-ai-september-29-research.md`, `research/references/frontier-models-2026.md`.
+Recorded vendor comparison limits and missing methodology capture; source remains refreshable. No model trial or article edit performed.
+Indexes and registry updated; no new category.
+
+## [2026-09-30] ingest | gemini-4-argon
+
+Gemini 4 Argon: our next era of frontier intelligence. HTTP capture preserves article wording and downloaded charts; on-page heading used instead of abbreviated metadata title.
+Raw: `research/raw/2026-09-30/gemini-4-argon/`.
+Synthesis: `research/references/this-week-in-ai-september-29-research.md`, `research/references/frontier-models-2026.md`.
+Recorded restricted rollout, introductory-price footnote, output/context distinction, and vendor-claim limits; no model trial or article edit performed.
+Indexes and registry updated; no new category.
+
+## [2026-09-29] ingest | fireworks-serverless-pricing
+
+Serverless Pricing. Preserved HTTP/Markdown capture, source wording, and inbox owner context.
+Raw: `research/raw/2026-09-29/fireworks-serverless-pricing/`.
+Synthesis: `research/references/this-week-in-ai-september-29-research.md`, `research/references/open-weights-landscape-2026.md`.
+Confirms identical Ember/K3 token rates; no paid evaluation performed.
+Indexes and registry updated; no new category.
+
+## [2026-09-29] ingest | introducing-ember-1
+
+Introducing Ember-1. Preserved HTTP/Markdown capture, source wording, and inbox owner context.
+Raw: `research/raw/2026-09-29/introducing-ember-1/`.
+Synthesis: `research/references/this-week-in-ai-september-29-research.md`, `research/references/open-weights-landscape-2026.md`.
+Flagged the dated K3 effort discrepancy; no claim of independent replication or Ember weight release. Serving-page probe was too short for source ingestion; separate official pricing source supplies current rates.
+Indexes and registry updated; no new category.
+
+## [2026-09-29] ingest | september-29-frontier-rollup
+
+Linked the eight newly ingested Sol 6.1 and Sonnet 5.5 sources into `research/references/frontier-models-2026.md`; source list 37→45. Added a dated update while preserving the earlier release snapshots.
+Completed `research/references/this-week-in-ai-september-29-research.md` with published-price comparison, benchmark conditions, migration details, and drafting checks. No post draft authored.
+Research index updated; raw captures remain unchanged.
+
+## [2026-09-29] ingest | claude-sonnet-5-5-system-card
+
+System Card: Claude Sonnet 5.5. Capture: user-supplied-pdf; source wording preserved.
+Raw: `research/raw/2026-09-29/claude-sonnet-5-5-system-card/`.
+Synthesis: `research/references/this-week-in-ai-september-29-research.md`. Indexes and source registry updated; no new category.
+Inbox intake authorized by the owner's request to process these releases before drafting. Capture limitations are recorded on the source page.
+
+## [2026-09-29] ingest | claude-sonnet-5-5-migration-guide
+
+Migrating to Claude Sonnet 5.5. Capture: official-markdown; source wording preserved.
+Raw: `research/raw/2026-09-29/claude-sonnet-5-5-migration-guide/`.
+Synthesis: `research/references/this-week-in-ai-september-29-research.md`. Indexes and source registry updated; no new category.
+Inbox intake authorized by the owner's request to process these releases before drafting. Capture limitations are recorded on the source page.
+
+## [2026-09-29] ingest | claude-sonnet-5-5-overview
+
+Claude Sonnet 5.5 overview. Capture: official-markdown; source wording preserved.
+Raw: `research/raw/2026-09-29/claude-sonnet-5-5-overview/`.
+Synthesis: `research/references/this-week-in-ai-september-29-research.md`. Indexes and source registry updated; no new category.
+Inbox intake authorized by the owner's request to process these releases before drafting. Capture limitations are recorded on the source page.
+
+## [2026-09-29] ingest | introducing-claude-sonnet-5-5
+
+Introducing Claude Sonnet 5.5. Capture: http-html; source wording preserved.
+Raw: `research/raw/2026-09-29/introducing-claude-sonnet-5-5/`.
+Synthesis: `research/references/this-week-in-ai-september-29-research.md`. Indexes and source registry updated; no new category.
+Inbox intake authorized by the owner's request to process these releases before drafting. Capture limitations are recorded on the source page.
+
+## [2026-09-29] ingest | gpt-6-1-sol-system-card-addendum
+
+Addendum to GPT-6 Astra System Card: GPT-6.1 Sol. Capture: http-html; source wording preserved.
+Raw: `research/raw/2026-09-29/gpt-6-1-sol-system-card-addendum/`.
+Synthesis: `research/references/this-week-in-ai-september-29-research.md`. Indexes and source registry updated; no new category.
+Inbox intake authorized by the owner's request to process these releases before drafting. Capture limitations are recorded on the source page.
+
+## [2026-09-29] ingest | gpt-6-1-sol-model
+
+GPT-6.1 Sol. Capture: official-markdown; source wording preserved.
+Raw: `research/raw/2026-09-29/gpt-6-1-sol-model/`.
+Synthesis: `research/references/this-week-in-ai-september-29-research.md`. Indexes and source registry updated; no new category.
+Inbox intake authorized by the owner's request to process these releases before drafting. Capture limitations are recorded on the source page.
+
+## [2026-09-29] ingest | using-gpt-6-1-sol
+
+Using GPT-6 — GPT-6.1 Sol update. Capture: official-markdown; source wording preserved.
+Raw: `research/raw/2026-09-29/using-gpt-6-1-sol/`.
+Synthesis: `research/references/this-week-in-ai-september-29-research.md`. Indexes and source registry updated; no new category.
+Inbox intake authorized by the owner's request to process these releases before drafting. Capture limitations are recorded on the source page.
+
+## [2026-09-29] ingest | introducing-gpt-6-1-sol
+
+Introducing GPT-6.1 Sol. Capture: web-reader; source wording preserved.
+Raw: `research/raw/2026-09-29/introducing-gpt-6-1-sol/`.
+Synthesis: `research/references/this-week-in-ai-september-29-research.md`. Indexes and source registry updated; no new category.
+Inbox intake authorized by the owner's request to process these releases before drafting. Capture limitations are recorded on the source page.
+
 ## [2026-09-22] ingest | openrouter-mimo-v2-6-pro
 
 OpenRouter, "Xiaomi: MiMo-V2.6-Pro" serving page (JS-rendered; captured via a headless-Chrome DOM render supplied through the inbox, plus the matching `/api/v1/models` JSON for the three V2.6 variants).

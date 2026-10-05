@@ -1,0 +1,14 @@
+{
+  "url": "https://fireworks.ai/models/fireworks/ember-1",
+  "title": "Ember-1 API & Playground | Fireworks AI",
+  "author": null,
+  "published_date": null,
+  "description": "Ember-1 is a specialized model from Fireworks. Built on Kimi K3, it produces shorter reasoning traces, using approximately 40% fewer tokens while maintaining comparable quality across our evaluations.",
+  "extracted_at": "2026-09-29T19:03:35.494867+00:00",
+  "images_downloaded": 1,
+  "word_count": 152,
+  "char_count": 1339,
+  "thin_content": true,
+  "final_url": "https://fireworks.ai/models/fireworks/ember-1",
+  "extraction_success": true
+}

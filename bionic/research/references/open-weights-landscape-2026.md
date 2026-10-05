@@ -3,8 +3,8 @@ title: "Open-Weights Models — 2026 Landscape"
 slug: open-weights-landscape-2026
 type: references
 tags: [open-weights, local-llms, licensing, benchmarks, apple-silicon, claimed-vs-verified, small-models]
-sources: [state-of-open-source-local-llms-july-2026, willison-kimi-k3, willison-inkling, raschka-notable-open-weight-models, qwen3-8-open-weight-announcement, kimi-k3-technical-report, kimi-k3-docs, qwen3-8-max-preview-fact-sheet, qwen3-8-max-a-new-bar-for-coding-and-cowork, qwen3-8-max-qwencloud-model-page, glm-5-3-frontier-coding-with-emergent-cyber-capabilities, deepseek-v4-pro-0813-model-card, deepseek-v4-pro-0813-fireworks-model-page, qwen3-8-2-4t-a95b-open-weights-release, qwen3p8-max-fireworks-model-page, muse-glimmer-open-agentic-model, glm-5-3-flash, glm-5-3-flash-model-card, openrouter-qwen3-8-2-4t-a95b, openrouter-glm-5-3, openrouter-glm-5-3-flash, openrouter-qwen3-8-flash, openrouter-kimi-k3, mimo-v2-6, openrouter-mimo-v2-6-pro]
-last_reviewed: 2026-09-22
+sources: [state-of-open-source-local-llms-july-2026, willison-kimi-k3, willison-inkling, raschka-notable-open-weight-models, qwen3-8-open-weight-announcement, kimi-k3-technical-report, kimi-k3-docs, qwen3-8-max-preview-fact-sheet, qwen3-8-max-a-new-bar-for-coding-and-cowork, qwen3-8-max-qwencloud-model-page, glm-5-3-frontier-coding-with-emergent-cyber-capabilities, deepseek-v4-pro-0813-model-card, deepseek-v4-pro-0813-fireworks-model-page, qwen3-8-2-4t-a95b-open-weights-release, qwen3p8-max-fireworks-model-page, muse-glimmer-open-agentic-model, glm-5-3-flash, glm-5-3-flash-model-card, openrouter-qwen3-8-2-4t-a95b, openrouter-glm-5-3, openrouter-glm-5-3-flash, openrouter-qwen3-8-flash, openrouter-kimi-k3, mimo-v2-6, openrouter-mimo-v2-6-pro, introducing-ember-1, fireworks-serverless-pricing]
+last_reviewed: 2026-09-29
 ---
 
 # Open-Weights Models — 2026 Landscape
@@ -133,6 +133,14 @@ Source: [[research/sources/muse-glimmer-open-agentic-model]] (Meta research blog
 - Token counts suggest an **~85-token hidden system prompt** (prompting "hi" counted 86 tokens). Willison flags this as an inference, and the model refused to leak it.
 
 **Did the weights ship on time?** Unresolved. Raschka, writing **26 July**, still says "everyone is waiting for the Kimi K3 and Ling 3.0 weights to land on the model hub any day now" — one day before Moonshot's own deadline. No captured source confirms the release. **Check the Hugging Face repo before writing that K3 weights are available.**
+
+## Ember-1 (Fireworks) — K3 efficiency preview, September 23
+
+A trained K3 derivative targeting shorter reasoning. Fireworks reports similar quality with fewer tokens; the captured table includes small regressions. This fits the author's interest in revisiting K3's cost. Details: [[research/references/this-week-in-ai-september-29-research]]. No Ember weights or license are established here.
+
+Sources: [[research/sources/introducing-ember-1]], [[research/sources/fireworks-serverless-pricing]]. Standard Ember/K3 prices both remain $3/$0.30/$15 for input/cache/output per million tokens. The potential gain is fewer billed tokens.
+
+> [contradiction] The July account in [[research/sources/willison-kimi-k3]] describes K3 with only max effort. September's [[research/sources/introducing-ember-1]] evaluates K3 low/high/max. Provider support or model behavior may have changed. The earlier account is preserved; current portability of these settings is unresolved.
 
 ## Inkling (Thinking Machines Lab) — the US open-weights entrant
 

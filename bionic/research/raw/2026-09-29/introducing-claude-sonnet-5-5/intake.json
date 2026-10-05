@@ -1,0 +1,10 @@
+{
+  "slug": "introducing-claude-sonnet-5-5",
+  "url": "https://www.anthropic.com/claude-sonnet-5-5",
+  "title": "Introducing Claude Sonnet 5.5",
+  "source_date": "2026-09-28",
+  "author": "Anthropic",
+  "static": true,
+  "method": "http-html",
+  "gaps": "Interactive diagrams and animations were not rendered; see raw capture for downloaded images."
+}

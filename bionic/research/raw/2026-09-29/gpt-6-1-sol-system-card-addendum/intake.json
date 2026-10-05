@@ -1,0 +1,10 @@
+{
+  "slug": "gpt-6-1-sol-system-card-addendum",
+  "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+  "title": "Addendum to GPT-6 Astra System Card: GPT-6.1 Sol",
+  "source_date": "2026-09-29",
+  "author": "OpenAI",
+  "static": true,
+  "method": "http-html",
+  "gaps": "Interactive diagrams and animations were not rendered; see raw capture for downloaded images."
+}

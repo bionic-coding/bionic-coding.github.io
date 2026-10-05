@@ -1,0 +1,10 @@
+{
+  "slug": "gpt-6-1-sol-model",
+  "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+  "title": "GPT-6.1 Sol",
+  "source_date": null,
+  "author": "OpenAI",
+  "static": false,
+  "method": "official-markdown",
+  "gaps": "No text capture gaps identified in the official Markdown export."
+}

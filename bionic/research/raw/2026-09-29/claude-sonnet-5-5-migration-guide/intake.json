@@ -1,0 +1,10 @@
+{
+  "slug": "claude-sonnet-5-5-migration-guide",
+  "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/migration-guide",
+  "title": "Migrating to Claude Sonnet 5.5",
+  "source_date": null,
+  "author": "Anthropic",
+  "static": false,
+  "method": "official-markdown",
+  "gaps": "No text capture gaps identified in the official Markdown export."
+}

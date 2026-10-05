@@ -1,0 +1,14 @@
+{
+  "url": "https://www.anthropic.com/claude-sonnet-5-5",
+  "title": "Introducing Claude Sonnet 5.5 \\ Anthropic",
+  "author": "@AnthropicAI",
+  "published_date": null,
+  "description": "Claude Sonnet 5.5 is a clear upgrade over Claude Sonnet 5, runs 30%+ faster, and costs up to 30% less for most work.",
+  "extracted_at": "2026-09-29T18:36:26.882080+00:00",
+  "images_downloaded": 6,
+  "word_count": 2918,
+  "char_count": 19630,
+  "thin_content": false,
+  "final_url": "https://www.anthropic.com/claude-sonnet-5-5",
+  "extraction_success": true
+}

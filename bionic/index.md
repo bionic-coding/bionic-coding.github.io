@@ -1,8 +1,8 @@
 # docs/bionic-coding
 
-_Last updated: 2026-09-22_
+_Last updated: 2026-09-30_
 
-## Research (63 sources, 9 synthesis pages)
+## Research (75 sources, 10 synthesis pages)
 
 See [[research/index]].
 

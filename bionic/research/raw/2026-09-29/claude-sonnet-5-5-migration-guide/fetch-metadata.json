@@ -1,0 +1,13 @@
+{
+  "title": "Send a request to Claude Sonnet 5.5",
+  "author": null,
+  "published_date": null,
+  "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/migration-guide.md",
+  "content_type": "text/markdown; charset=utf-8",
+  "images_downloaded": 0,
+  "word_count": 5493,
+  "char_count": 55608,
+  "thin_content": false,
+  "final_url": "https://platform.claude.com/docs/en/models/sonnet-5-5/migration-guide.md",
+  "extraction_success": true
+}

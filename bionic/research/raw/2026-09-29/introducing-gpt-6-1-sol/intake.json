@@ -1,0 +1,10 @@
+{
+  "slug": "introducing-gpt-6-1-sol",
+  "url": "https://openai.com/index/introducing-gpt-6-1-sol/",
+  "title": "Introducing GPT-6.1 Sol",
+  "source_date": "2026-09-29",
+  "author": "OpenAI",
+  "static": true,
+  "method": "web-reader",
+  "gaps": "Reader text capture; original HTTP HTML and interactive charts are not preserved. Numerical claims in prose are captured; unreadable chart-only data is not inferred."
+}

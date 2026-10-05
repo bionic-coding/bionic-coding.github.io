@@ -3,6 +3,7 @@ layout: post
 title: "This Week in AI — September 22, 2026"
 date: 2026-09-22
 description: "So many models: Anthropic releases Opus 5.5, OpenAI adds GPT-6 Sol and Luna, Xiaomi opens MiMo-V2.6 weights..."
+tags: [model-news, weekly]
 ---
 
 Last week I wrote about calls to slow frontier AI development. This week brings new models from Anthropic, OpenAI, and Xiaomi, with lower prices across much of the lineup. I'm also interested in two smaller stories about how we put these models to work: giving agents better feedback, and putting bounded AI decisions inside ordinary software.

@@ -88,9 +88,13 @@ A role's declared skill list records which skills its own definition binds. It i
 
 ### {% include crux-text.html t=cat.teaching_model.skill %}
 
-{% assign everyday = skills | where_exp: "s", "s.learning.audience == 'human_request' or s.learning.audience == 'explicit_human'" %}
-{% assign advanced = skills | where_exp: "s", "s.learning.audience == 'workflow_support' or s.learning.audience == 'agent_internal'" %}
-{% assign plain = skills | where_exp: "s", "s.learning.audience == 'human_request'" %}{% assign selfinvoke = skills | where_exp: "s", "s.learning.audience == 'explicit_human'" %}{{ plain.size }} of these answer a plain-language request. {{ selfinvoke.size }} more are yours to invoke yourself. The remaining {{ advanced.size }} are listed under [Advanced and internal](#advanced-and-internal), because a newcomer never needs to name them.
+{% assign plain = skills | where_exp: "s", "s.learning.audience == 'human_request'" %}
+{% assign selfinvoke = skills | where_exp: "s", "s.learning.audience == 'explicit_human'" %}
+{% assign wsupport = skills | where_exp: "s", "s.learning.audience == 'workflow_support'" %}
+{% assign internal = skills | where_exp: "s", "s.learning.audience == 'agent_internal'" %}
+{% assign everyday = plain | concat: selfinvoke %}
+{% assign advanced = wsupport | concat: internal %}
+{{ plain.size }} of these answer a plain-language request. {{ selfinvoke.size }} more are yours to invoke yourself. The remaining {{ advanced.size }} are listed under [Advanced and internal](#advanced-and-internal), because a newcomer never needs to name them.
 
 {% for group in page.categories %}{% assign items = everyday | where: "category", group.id | sort: "id" %}
 ### {{ group.title }} — {{ items.size }} skills
@@ -109,7 +113,6 @@ A role's declared skill list records which skills its own definition binds. It i
 ### Advanced and internal — {{ advanced.size }} skills
 {: #advanced-and-internal}
 
-{% assign wsupport = advanced | where_exp: "s", "s.learning.audience == 'workflow_support'" %}{% assign internal = advanced | where_exp: "s", "s.learning.audience == 'agent_internal'" %}
 {{ wsupport.size }} of these are reached inside a workflow that already runs them. {{ internal.size }} are team plumbing. Neither group belongs in a newcomer's vocabulary. Both are listed so the inventory is complete.
 
 <div class="cat-skills">

@@ -41,13 +41,9 @@ categories:
 {% assign skills = cat.skills %}
 This is the full inventory: {{ roles.size }} roles and {{ skills.size }} skills, generated from Crux {{ cat.source.plugin_version | escape }}. [Using Crux]({{ "/crux/team/" | relative_url }}) is the page to read first. This one is for looking things up.
 
-Descriptions, declared triggers, tool lists, and invocation flags are copied from the Crux source. Descriptions and example requests display the product name as Crux; declared triggers retain their source spelling. Everything under a **Guidance** label is editorial: it says how we recommend you work, not what the software enforces. Nothing here was observed at runtime.
+Descriptions, declared triggers, tool lists, and invocation flags are copied from the Crux source. Descriptions and example requests display the product name as Crux; declared triggers retain their source spelling. Everything under a **Guidance** label is editorial: it says how we recommend you work, not what the software enforces.
 
-## How to read a badge
-
-### A badge is our recommendation about audience. The Declared line beneath it is the source metadata.
-
-| Badge | Means |
+| Badge | Description |
 |---|---|
 | **Ask for it** | {% include crux-text.html t=cat.audience_definitions.human_request %} |
 | **Human invocation** | {% include crux-text.html t=cat.audience_definitions.explicit_human %} |

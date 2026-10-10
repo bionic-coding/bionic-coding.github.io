@@ -1,8 +1,14 @@
 # Research index
 
-_Last updated: 2026-10-07_
+_Last updated: 2026-10-10_
 
-## Sources (78)
+## Sources (81)
+
+- [[research/sources/claude-code-mods-api]] — Commands, model calls, timers, session messaging, and API-mediated host access. — `2026-10-10` — #claude-code #mods
+
+- [[research/sources/claude-code-mods-events]] — Middleware ordering, tool permissions, request interception, and failure behavior. — `2026-10-10` — #claude-code #mods
+
+- [[research/sources/claude-code-mods-overview]] — JS/TS extensions inside Claude Code; interactive UI, event interception, platform matrix, and unsandboxed user-level access. — `2026-10-10` — #claude-code #mods
 
 - [[research/sources/claude-haiku-5-5-migration-guide]] — Rolling migration guide: ~30% tokenizer increase, adaptive thinking, sampling and prefill changes, account-bound reasoning, toolsets, and no Priority Tier. — `2026-10-07` — #anthropic #haiku-5-5
 
@@ -118,7 +124,9 @@ _Last updated: 2026-10-07_
 
 ## Decisions-context (0)
 
-## References (4)
+## References (5)
+
+- [[research/references/claude-code-mods]] — In-process Claude Code extensions: UI, event middleware, permissions, deployment limits, and sample-mod caveats — sources: 3 — `last_reviewed: 2026-10-10`
 
 - [[research/references/claude-haiku-5-5-research]] — Haiku 5.5 release research: pricing thresholds, effort settings, capability comparisons, and safety qualifications — sources: 3 — `last_reviewed: 2026-10-07`
 

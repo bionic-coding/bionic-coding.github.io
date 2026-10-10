@@ -4,6 +4,9 @@ _One row per ingested research source. Newest first._
 
 | slug | title | source_url | captured_at | last_source_check | last_update | static | raw_path | wiki_path |
 |------|-------|------------|-------------|-------------------|-------------|--------|----------|-----------|
+| claude-code-mods-api | Use the mods API | https://code.claude.com/docs/en/plugins/mods/api | 2026-10-10 | 2026-10-10 | — | false | research/raw/2026-10-10/claude-code-mods-api/ | research/sources/claude-code-mods-api.md |
+| claude-code-mods-events | React to events with a mod | https://code.claude.com/docs/en/plugins/mods/events | 2026-10-10 | 2026-10-10 | — | false | research/raw/2026-10-10/claude-code-mods-events/ | research/sources/claude-code-mods-events.md |
+| claude-code-mods-overview | Mods overview | https://code.claude.com/docs/en/plugins/mods/overview | 2026-10-10 | 2026-10-10 | — | false | research/raw/2026-10-10/claude-code-mods-overview/ | research/sources/claude-code-mods-overview.md |
 | claude-haiku-5-5-migration-guide | Claude Haiku 5.5 migration guide | https://platform.claude.com/docs/en/models/haiku-5-5/migration-guide | 2026-10-07 | 2026-10-07 | — | false | research/raw/2026-10-07/claude-haiku-5-5-migration-guide/ | research/sources/claude-haiku-5-5-migration-guide.md |
 | claude-haiku-5-5-system-card | System Card: Claude Haiku 5.5 | https://www.anthropic.com/claude-haiku-5-5-system-card | 2026-10-07 | 2026-10-07 | — | true | research/raw/2026-10-07/claude-haiku-5-5-system-card/ | research/sources/claude-haiku-5-5-system-card.md |
 | claude-haiku-5-5-announcement | Claude Haiku 5.5 | https://www.anthropic.com/claude-haiku-5-5 | 2026-10-07 | 2026-10-07 | — | true | research/raw/2026-10-07/claude-haiku-5-5-announcement/ | research/sources/claude-haiku-5-5-announcement.md |

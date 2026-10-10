@@ -2,6 +2,27 @@
 
 _Append-only. Newest first._
 
+## [2026-10-10] ingest | claude-code-mods-api
+
+Use the mods API. Commands, model calls, timers, session messaging, and API-mediated host access.
+Raw: `research/raw/2026-10-10/claude-code-mods-api/`.
+Synthesis: `research/references/claude-code-mods.md`. No mod installed or executed.
+Updated research index, master rollup, and source registry. No new category.
+
+## [2026-10-10] ingest | claude-code-mods-events
+
+React to events with a mod. Middleware ordering, tool permissions, request interception, and failure behavior.
+Raw: `research/raw/2026-10-10/claude-code-mods-events/`.
+Synthesis: `research/references/claude-code-mods.md`. No mod installed or executed.
+Updated research index, master rollup, and source registry. No new category.
+
+## [2026-10-10] ingest | claude-code-mods-overview
+
+Mods overview. JS/TS extensions inside Claude Code; interactive UI, event interception, platform matrix, and unsandboxed user-level access.
+Raw: `research/raw/2026-10-10/claude-code-mods-overview/`.
+Synthesis: `research/references/claude-code-mods.md`. No mod installed or executed.
+Updated research index, master rollup, and source registry. No new category.
+
 ## [2026-10-07] ingest | claude-haiku-5-5-migration-guide
 
 Claude Haiku 5.5 migration guide. Rolling migration guide: ~30% tokenizer increase, adaptive thinking, sampling and prefill changes, account-bound reasoning, toolsets, and no Priority Tier.

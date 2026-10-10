@@ -4,6 +4,9 @@ _One row per ingested research source. Newest first._
 
 | slug | title | source_url | captured_at | last_source_check | last_update | static | raw_path | wiki_path |
 |------|-------|------------|-------------|-------------------|-------------|--------|----------|-----------|
+| claude-haiku-5-5-migration-guide | Claude Haiku 5.5 migration guide | https://platform.claude.com/docs/en/models/haiku-5-5/migration-guide | 2026-10-07 | 2026-10-07 | — | false | research/raw/2026-10-07/claude-haiku-5-5-migration-guide/ | research/sources/claude-haiku-5-5-migration-guide.md |
+| claude-haiku-5-5-system-card | System Card: Claude Haiku 5.5 | https://www.anthropic.com/claude-haiku-5-5-system-card | 2026-10-07 | 2026-10-07 | — | true | research/raw/2026-10-07/claude-haiku-5-5-system-card/ | research/sources/claude-haiku-5-5-system-card.md |
+| claude-haiku-5-5-announcement | Claude Haiku 5.5 | https://www.anthropic.com/claude-haiku-5-5 | 2026-10-07 | 2026-10-07 | — | true | research/raw/2026-10-07/claude-haiku-5-5-announcement/ | research/sources/claude-haiku-5-5-announcement.md |
 | gemini-models | Gemini — Google DeepMind | https://deepmind.google/models/gemini/ | 2026-09-30 | 2026-09-30 | — | false | research/raw/2026-09-30/gemini-models/ | research/sources/gemini-models.md |
 | gemini-4-argon | Gemini 4 Argon: our next era of frontier intelligence | https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/ | 2026-09-30 | 2026-09-30 | — | true | research/raw/2026-09-30/gemini-4-argon/ | research/sources/gemini-4-argon.md |
 | fireworks-serverless-pricing | Serverless Pricing | https://docs.fireworks.ai/serverless/pricing | 2026-09-29 | 2026-09-29 | — | false | research/raw/2026-09-29/fireworks-serverless-pricing/ | research/sources/fireworks-serverless-pricing.md |

@@ -2,6 +2,27 @@
 
 _Append-only. Newest first._
 
+## [2026-10-07] ingest | claude-haiku-5-5-migration-guide
+
+Claude Haiku 5.5 migration guide. Rolling migration guide: ~30% tokenizer increase, adaptive thinking, sampling and prefill changes, account-bound reasoning, toolsets, and no Priority Tier.
+Raw: `research/raw/2026-10-07/claude-haiku-5-5-migration-guide/`.
+Synthesis: `research/references/claude-haiku-5-5-research.md`; dated release rollup added to `research/references/frontier-models-2026.md`. Capture limitations are declared on the source page.
+Updated research index, master rollup, and source registry. No new category.
+
+## [2026-10-07] ingest | claude-haiku-5-5-system-card
+
+System Card: Claude Haiku 5.5. 144-page user PDF preserved and extracted. Synthesis records effort costs, partial-vs-strict OSWorld scores, fallback confounds, and safety regressions.
+Raw: `research/raw/2026-10-07/claude-haiku-5-5-system-card/`.
+Synthesis: `research/references/claude-haiku-5-5-research.md`. Capture limitations are declared on the source page.
+Updated research index, master rollup, and source registry. No new category.
+
+## [2026-10-07] ingest | claude-haiku-5-5-announcement
+
+Claude Haiku 5.5. Launch pricing: $0.10/$0.50 up to 100K prompt tokens, fivefold rates above; Sonnet cache cut and API credits. Full tables preserved; interactive-chart extraction limits declared.
+Raw: `research/raw/2026-10-07/claude-haiku-5-5-announcement/`.
+Synthesis: `research/references/claude-haiku-5-5-research.md`. Capture limitations are declared on the source page.
+Updated research index, master rollup, and source registry. No new category.
+
 ## [2026-09-30] ingest | gemini-models
 
 Gemini — Google DeepMind. Captured the rolling model page featuring Argon; full 19-row benchmark table normalized from HTML, preserving the GraphWalks rowspan values.

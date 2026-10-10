@@ -3,7 +3,7 @@ title: Glossary
 order: 12
 summary: "Plain-language definitions of the words AI people throw around."
 status: published
-updated: 2026-09-15
+updated: 2026-10-10
 ---
 
 The vocabulary of modern AI, one or two sentences each, no math required. Terms are alphabetical. Where a word has its own lesson, there's a link to it.
@@ -82,6 +82,8 @@ The vocabulary of modern AI, one or two sentences each, no math required. Terms 
 
 **Synthetic code / synthetic prose** – Code or writing produced by an AI or **LLM**. The term is neutral by design: it names where the text came from, not how good it is. That's the difference from **slop** — synthetic output can be careful and excellent or lazy and wrong, so "synthetic" describes the origin while "slop" is a verdict on the result.
 
+**Synthetic intelligence** – This site's term for machine-made intelligence that can do some knowledge work, much as synthetic oil does the job we need it to do in a car. Its abundance can make it feel like superintelligence, but people still have to direct the work and judge the results.
+
 **Temperature** – A dial for how predictable or varied the output is. Low temperature gives more focused, consistent answers, which suits facts and code. High temperature gives looser, more surprising answers, which suits brainstorming. It makes output more or less predictable, not perfectly repeatable.
 
 **Token** – The unit a model reads and writes in, roughly a chunk of a word. "Cats" is one token; a longer word might be split into two. Models measure both their limits and their pricing in tokens, so tokens are what you're really paying for. A rough guide for English is about 750 words per 1,000 tokens; code and non-English languages often use more tokens per word, so fewer words fit in the same budget.
@@ -91,4 +93,4 @@ The vocabulary of modern AI, one or two sentences each, no math required. Terms 
 **Training data** – The material a model learns from. Its quality and coverage shape what the model knows and where it's weak, and a model generally knows nothing about events after its data was collected (its "cutoff"), unless the app feeds it newer information through browsing, tools, or **RAG**.
 
 ## References
-These are standard definitions; spot-check the fast-moving ones against a current source. Good anchors: the vendor glossaries (OpenAI, Anthropic, and the Google Machine Learning Glossary), one stable ML reference for the core terms, and product docs for the newer entries (**MCP**, tool calling).
+Most entries describe common usage; **synthetic intelligence** describes this site's framing. Spot-check the fast-moving terms against a current source. Good anchors: the vendor glossaries (OpenAI, Anthropic, and the Google Machine Learning Glossary), one stable ML reference for the core terms, and product docs for the newer entries (**MCP**, tool calling).

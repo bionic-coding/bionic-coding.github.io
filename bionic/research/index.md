@@ -2,7 +2,11 @@
 
 _Last updated: 2026-10-10_
 
-## Sources (81)
+## Sources (83)
+
+- [[research/sources/claude-code-mods-blast-radius]] — Official playground example: impact previews, confirmation UI, and explicit classifier/testing limitations. — `2026-10-10` — #claude-code #mods
+
+- [[research/sources/claude-code-mods-admin]] — Managed guard behavior, deny-rule boundaries, deployment identity, and policy failure modes. — `2026-10-10` — #claude-code #mods
 
 - [[research/sources/claude-code-mods-api]] — Commands, model calls, timers, session messaging, and API-mediated host access. — `2026-10-10` — #claude-code #mods
 
@@ -126,7 +130,7 @@ _Last updated: 2026-10-10_
 
 ## References (5)
 
-- [[research/references/claude-code-mods]] — In-process Claude Code extensions: UI, event middleware, permissions, deployment limits, and sample-mod caveats — sources: 3 — `last_reviewed: 2026-10-10`
+- [[research/references/claude-code-mods]] — In-process Claude Code extensions: UI, event middleware, permissions, deployment limits, and sample-mod caveats — sources: 5 — `last_reviewed: 2026-10-10`
 
 - [[research/references/claude-haiku-5-5-research]] — Haiku 5.5 release research: pricing thresholds, effort settings, capability comparisons, and safety qualifications — sources: 3 — `last_reviewed: 2026-10-07`
 

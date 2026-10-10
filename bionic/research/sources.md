@@ -4,6 +4,8 @@ _One row per ingested research source. Newest first._
 
 | slug | title | source_url | captured_at | last_source_check | last_update | static | raw_path | wiki_path |
 |------|-------|------------|-------------|-------------------|-------------|--------|----------|-----------|
+| claude-code-mods-blast-radius | Blast Radius sample mod | https://raw.githubusercontent.com/anthropics/claude-code-playground/main/claude-code/mods/blast-radius/README.md | 2026-10-10 | 2026-10-10 | — | false | research/raw/2026-10-10/claude-code-mods-blast-radius/ | research/sources/claude-code-mods-blast-radius.md |
+| claude-code-mods-admin | Manage mods for your organization | https://code.claude.com/docs/en/plugins/mods/admin | 2026-10-10 | 2026-10-10 | — | false | research/raw/2026-10-10/claude-code-mods-admin/ | research/sources/claude-code-mods-admin.md |
 | claude-code-mods-api | Use the mods API | https://code.claude.com/docs/en/plugins/mods/api | 2026-10-10 | 2026-10-10 | — | false | research/raw/2026-10-10/claude-code-mods-api/ | research/sources/claude-code-mods-api.md |
 | claude-code-mods-events | React to events with a mod | https://code.claude.com/docs/en/plugins/mods/events | 2026-10-10 | 2026-10-10 | — | false | research/raw/2026-10-10/claude-code-mods-events/ | research/sources/claude-code-mods-events.md |
 | claude-code-mods-overview | Mods overview | https://code.claude.com/docs/en/plugins/mods/overview | 2026-10-10 | 2026-10-10 | — | false | research/raw/2026-10-10/claude-code-mods-overview/ | research/sources/claude-code-mods-overview.md |

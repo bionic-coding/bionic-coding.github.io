@@ -12,6 +12,8 @@ sources:
 - claude-code-mods-overview
 - claude-code-mods-events
 - claude-code-mods-api
+- claude-code-mods-admin
+- claude-code-mods-blast-radius
 last_reviewed: '2026-10-10'
 ---
 
@@ -103,3 +105,31 @@ The hooks module cannot directly use Node APIs, filesystem/network globals, or n
 Some capabilities have higher version requirements than the overall mods minimum: cache block arrays require v2.1.292 and explicit `isDeferred: false` tool registration requires v2.1.293. Version-sensitive examples need checking against the installed runtime.
 
 Source: [[research/sources/claude-code-mods-api]].
+
+## Organization policy and the trust boundary
+
+The built-in `sec-default` guard normally loads for Team/Enterprise sign-ins or machines with managed settings. API-key and third-party-provider sessions need managed settings to get it. With the guard present, user mods cannot normally override deny rules or alter managed instructions, managed hooks, settings reads, or managed MCP definitions. Administrators can explicitly allow deny-rule overrides. Managed `PreToolUse` blocks remain final and rewritten calls are checked again.
+
+These tool controls do **not** constrain a mod's own filesystem and process APIs. For example, denying Claude's `Read(.env)` does not stop an installed mod reading that file through `$.fs.read` or a subprocess. Network restrictions on `$.http.fetch` likewise do not cover a program the mod launches. The practical trust boundary is the installed code's access as the user.
+
+`allowManagedModsOnly` under managed `pluginConfigs.cc-plugin-sec-default@builtin.options` refuses user mods while leaving ordinary settings hooks and other plugin components available. Merely enabling a remote-marketplace plugin in managed settings does not make its mod organization-managed. That classification requires a managed-enabled plugin loaded in place from an absolute-path local directory marketplace, with a relative plugin path. The directory hierarchy must be protected against user edits.
+
+A managed `prependPlugins` list replaces the default: administrators must include `sec-default@builtin` to retain the built-in guard. An earlier policy mod can refuse a later mod at registration based on its declared API calls, or intercept individual API events. Static validation enumerates capabilities without executing the mod; it does not establish that the code is safe.
+
+The built-in guard refuses user mods when it cannot read managed settings, and refuses an approved tool call if it cannot check deny rules. Custom policy mods have weaker lifecycle guarantees: hooks fail open unless given suitable error handlers, `--safe-mode` disables installed policy mods, and three hooks-worker crashes unload all non-built-in mods until reload/restart. This is a material limitation for mandatory organizational enforcement.
+
+**Documentation discrepancy:** the admin introduction says mods are on from v2.1.286, while the overview explicitly requires terminal v2.1.287 and Desktop's bundled v2.1.286. Prefer those surface-specific requirements; no release date was established.
+
+Source: [[research/sources/claude-code-mods-admin]].
+
+## Sample examined: Blast Radius
+
+Anthropic's playground README describes a mod that holds selected risky Bash calls, measures their likely effects using host utilities, and presents Proceed/Cancel controls. It makes no model calls. It queues overlapping holds, defaults focus to Cancel, and refuses on interruption or after ten minutes without an answer. This is an unsupported example, not an official product.
+
+The README explicitly limits detection to command patterns, rather than full shell parsing. Aliases, wrappers, scripts, and several indirect forms are missed. Only the first risky segment is measured; proceeding executes the whole command line. It watches Bash rather than other tools. Migration previews load project code before the user decides. Narrow-terminal UI can also conflict with another mod's above-prompt band.
+
+Its reported live tests preceded review fixes. Those fixes received Node tests with a stand-in runtime, but had not been rerun in a live Claude Code session. Force-push and migration cases were classifier-tested only. This supports using it as an illustrative design, not claiming complete protection or independently verified reliability.
+
+**Review scope:** read the sample README and its disclosed build/test history; did not audit its implementation, install it, or reproduce its tests.
+
+Source: [[research/sources/claude-code-mods-blast-radius]].

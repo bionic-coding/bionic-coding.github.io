@@ -2,6 +2,20 @@
 
 _Append-only. Newest first._
 
+## [2026-10-10] ingest | claude-code-mods-blast-radius
+
+Blast Radius sample mod. Official playground example: impact previews, confirmation UI, and explicit classifier/testing limitations.
+Raw: `research/raw/2026-10-10/claude-code-mods-blast-radius/`.
+Synthesis: `research/references/claude-code-mods.md`. No mod installed or executed.
+Updated research index, master rollup, and source registry. No new category.
+
+## [2026-10-10] ingest | claude-code-mods-admin
+
+Manage mods for your organization. Managed guard behavior, deny-rule boundaries, deployment identity, and policy failure modes.
+Raw: `research/raw/2026-10-10/claude-code-mods-admin/`.
+Synthesis: `research/references/claude-code-mods.md`. No mod installed or executed.
+Updated research index, master rollup, and source registry. No new category.
+
 ## [2026-10-10] ingest | claude-code-mods-api
 
 Use the mods API. Commands, model calls, timers, session messaging, and API-mediated host access.

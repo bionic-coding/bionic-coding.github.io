@@ -1,6 +1,11 @@
 # The Crux section, in reading order. Drives the series nav and the prev/next
 # pager rendered by _layouts/crux.html. `url` must match each page's permalink.
 # `title` here is the short tab label; each page keeps its own longer `title`.
+# Newest Crux tag on the public GitHub repository. The catalog's plugin_version can run
+# ahead of it while a release is in beta; crux/index.md shows both when they differ.
+# Check with: git ls-remote --tags https://github.com/bionic-coding/crux.git
+public_release: "4.5.1"
+
 pages:
   - title: About Crux
     url: /crux/

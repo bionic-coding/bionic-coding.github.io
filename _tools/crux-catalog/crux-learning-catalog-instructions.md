@@ -1,18 +1,18 @@
 # Crux learning catalog — blog intake
 
 This four-file package is a draft handoff for the Bionic Coding site's Crux section.
-It teaches how to work with the team, not how to memorize sixty skill commands.
+It teaches how to work with the team, not how to memorize skill commands.
 It does not publish pages, install agents, or change Crux's contracts.
 
 ## Files
 
-- `crux-learning-catalog.json`: complete ingestion payload, with 10 agents and 60 skills.
+- `crux-learning-catalog.json`: complete ingestion payload, with counts derived from the current source.
 - `crux-learning-catalog-guide.json`: editable teaching guidance and classifications.
 - `crux-learning-catalog-export.py`: regenerates the payload from that guide and a Crux source checkout.
 - `crux-learning-catalog-instructions.md`: this handoff.
 
 Keep these four files together when filing them from the inbox. Do not ingest the Python file as a research article.
-The inbox has no concern index to update. No public page or existing blog record was changed by this handoff.
+The inbox has no concern index to update. The exporter writes only its four package files; it does not change public pages.
 
 ## Editorial assignment
 
@@ -72,7 +72,7 @@ Preserve provenance and version labels. Render plain text safely; do not execute
 
 ## Source and publication boundary
 
-This snapshot describes Crux 3.16.1 from the source revision recorded in the payload.
+This snapshot describes the Crux version and source revision recorded in the payload.
 Each role and skill includes its source-file SHA-256.
 The exporter also records the manifest, guide, and exporter digests.
 Source paths are relative to the Crux plugin root; they are not paths within this blog.
@@ -82,9 +82,9 @@ Before publishing version-specific claims or source links, verify the official r
 Do not expose private repository URLs, local machine paths, private ADRs, or unreleased project records in public pages.
 The payload contains no private decision bodies or runtime secrets.
 
-The blog's existing `bionic/CLAUDE.md` predates this snapshot: it still has older skill-contract details and question-shaped regeneration triggers.
-Do not copy those into the new reference. Follow it for this repository's documentation operations, but use versioned Crux sources for product claims.
-Updating that local schema is separate work, not part of this package.
+A consuming project's local `bionic/AGENTS.md` can predate this snapshot.
+Follow it for that repository's documentation operations, but use versioned Crux sources for product claims.
+Updating a local schema is separate work, not part of this package.
 
 ## Refreshing without hand-maintaining derived data
 
@@ -115,3 +115,72 @@ Digest equality and JSON validity establish artifact consistency, not live routi
 - Independent review is commissioned by the delegator, not the author under review.
 - The site clearly distinguishes proposed editorial guidance, source contracts, and observed behavior.
 - Pages are previewed and reviewed before publication. This inbox handoff grants no permission to push or deploy.
+
+## Maintainer shortcut
+
+The canonical exporter lives at `tools/export-bionic-catalog.py` in the Crux authoring repository.
+Its editorial inputs live under `tools/bionic-catalog/`. The package copies are portable snapshots, not a second source of truth.
+When the blog edits teaching guidance, reconcile those changes into the canonical guide before replacing a handoff.
+
+From the Crux checkout, export with:
+
+```sh
+uv run tools/export-bionic-catalog.py --output-dir ../bionic-coding/bionic/inbox
+```
+
+Use `--dry-run` with that destination to compare without writing. Exit 1 means differences or validation findings.
+An identical export is a no-op. Differing existing package files require `--replace`; review local edits before using it.
+Unrelated inbox items remain untouched. The write is atomic per replacement file, not across the whole package.
+After an interrupted write, inspect the package and rerun with `--replace` to complete it.
+No automatic release hook is installed; run the exporter when a new handoff is wanted.
+
+## Refresh assignment: 3.16.1 to 4.5.1
+
+Update the existing manual, not only its searchable catalog. The receiving site's
+`_data/crux_catalog.json` currently describes 3.16.1. This handoff describes the
+4.5.1 source checkout; it does not attest public release availability.
+
+Preserve the site's capitalization of Crux and its outcome-led teaching model.
+Review these existing pages together: `crux/index.md`, `crux/installation.md`,
+`crux/setup.md`, `crux/team.md`, `crux/in-practice.md`, `crux/catalog.md`, and
+`crux/reference.md`. Reconcile `_tools/crux-catalog/` with this package and use
+the regenerated JSON for `_data/crux_catalog.json`. Preserve unrelated work.
+
+Cover these changes against the versioned source:
+
+- Cycles replace new promptbook authoring. Explain dev, iterate, refactor,
+  simplify, quick-fix, and release. Historical promptbooks remain readable.
+  Compatibility skill names route new work to cycles; they are not additional workflows.
+- Explain phases, pass limits, pause/resume, queue requests, and closed cycles.
+  Release has fixed beta and official step lists with no pass limit.
+- Explain IDRs separately from ADRs. New-policy ADR acceptance makes rules binding;
+  human acceptance is required by default unless council-only is configured.
+- Explain Lite, Standard, and Strict councils, architect agreement, and dissent.
+  Keep council approval distinct from independent implementation review.
+- Explain proportional scrutiny and shared test evidence. Reuse depends on matching
+  inputs and environment, not merely moving to a new phase or release.
+- Cover current authority versus historical decisions, clause-level migration,
+  and preservation of historical evidence.
+- Cover Claude Code, Codex, OpenCode, and OMP installation and role names.
+  The catalog's runtime_names map omits OMP; consult install-omp-agents and
+  the versioned OMP guide rather than treating that omission as lack of support.
+- Cover micro-crux, current init-docs behavior, and instruction migration.
+  Distinguish a standalone guide from the full plugin and its executable workflows.
+- Review the current council output-budget behavior where the manual documents
+  advanced configuration. Do not turn model-specific limits into beginner instructions.
+
+Use the catalog for inventory, descriptions, triggers, audiences and provenance.
+It is not a complete manual specification: consult each relevant SKILL.md and its
+references, the user guide, and harness installation guides at the recorded revision.
+Never apply the blog's older local documentation schema as the current product contract.
+Report unavailable sources as gaps instead of inventing behavior.
+
+Compare old and new catalog IDs. Remove obsolete current-feature cards while
+preserving useful historical links. Check page navigation, examples, source links,
+counts and cross-references. Preview the Jekyll build before publication.
+Keep beta-only claims visibly versioned until public availability is verified.
+This handoff authorizes no push or deployment.
+
+The handoff guide corrects stale release and council notes in the canonical export
+inputs. Reconcile these editorial corrections into the authoring repository after
+its active release verification finishes; those inputs were left unchanged here.

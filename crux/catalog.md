@@ -3,7 +3,7 @@ layout: crux
 title: Catalog
 permalink: /crux/catalog/
 description: "Every role and every skill, generated from the Crux source."
-updated: 2026-09-15
+updated: 2026-10-23
 role_order:
   - brainstormer
   - commander
@@ -18,7 +18,7 @@ role_order:
 categories:
   - id: planning
     title: Planning and running work
-    blurb: "Choosing a workflow, writing the plan, and moving a run through its gates."
+    blurb: "Starting, inspecting, and closing cycles. The older workflow names route to a cycle, and the promptbook skills serve historical runs."
   - id: decisions
     title: Decisions and records
     blurb: "Proposing, transitioning, and reviewing the records that hold the why."
@@ -33,7 +33,7 @@ categories:
     blurb: "Multi-model review, dissent resolution, retrospectives, and the night pass."
   - id: runtime
     title: Runtime and installation
-    blurb: "Installing Crux into a harness and instrumenting how it runs."
+    blurb: "Installing Crux and its role agents into a harness, and the model gateway its scripts call."
 ---
 
 {% assign cat = site.data.crux_catalog %}
@@ -118,6 +118,19 @@ A role's declared skill list records which skills its own definition binds. It i
 {% include crux-skill.html s=s badge=badge class="badge-workflow" cat=true %}
 {%- endfor -%}
 </div>
+
+## Retired skills
+
+Earlier versions of this catalog listed skills that no longer install. Their names no longer select a skill. Existing records they wrote stay in place.
+
+| Former skill | Current route |
+|---|---|
+| `review-decisions` | `migrate-adrs` ("review the decisions" still reaches it) |
+| `task-planner` | `whiteboarding` for exploration; a cycle for a tracked plan |
+| `author-runbook` | A cycle for tracked planning |
+| `visualize-run-progress` | `run-promptbook` status for historical runs; `cycle-status` for cycles |
+| `migrate-promptbooks` | The public `v3.23.2` release, for converting old Markdown promptbooks on a copy |
+| `trace-runtime-ops`, `semantic-bridge`, `agent-identity`, `serve-llm` | Python APIs and service notes shipped in the plugin's `box/` directory |
 
 ## Provenance
 

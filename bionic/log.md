@@ -2,6 +2,45 @@
 
 _Append-only. Newest first._
 
+## [2026-10-23] ingest | kimi-api-chat-pricing
+
+Model Inference Pricing Explanation - Kimi API Platform (rolling page); price tables recovered from the saved HTML's MDX payload.
+Raw: research/raw/2026-10-23/kimi-api-chat-pricing/
+Synthesis: research/references/open-weights-landscape-2026 (K3.1 Pro price line).
+
+## [2026-10-23] ingest | kimi-k3-1-pro
+
+Introducing Kimi K3.1 Pro (Moonshot, kimi.ai blog), captured with 8 images; overview chart transcribed into a table.
+Raw: research/raw/2026-10-23/kimi-k3-1-pro/
+Synthesis: research/references/open-weights-landscape-2026 (new K3.1 Pro section).
+
+## [2026-10-23] inbox | crux-learning-catalog-4-5-1
+
+Processed the four-file Crux catalog package (3.16.1 → 4.5.1) and moved it to `inbox/_dispatched/2026-10-23/`.
+Regenerated `_data/crux_catalog.json` from the released 4.5.1 plugin; `--check` passes and the payload matches the handoff except the nulled revision.
+Copied the exporter, guide, and handoff into `_tools/crux-catalog/` and updated the `/crux/` manual for cycles, IDRs, council modes, test evidence, ADR migration, OMP, and micro-crux.
+The manual treats 4.5.1 as the public release (`_data/crux.yml` `public_release: "4.5.1"`), so no beta note renders. Not committed or deployed.
+
+## [2026-10-13] brief | opencode-2-0-release
+
+Created `briefs/BRIEF-opencode-2-0-release.md` from the user's Anomaly announcement link.
+Checked V2 documentation for tools, service behavior, client and embedded SDK, Cloudflare hosting, and configuration/plugin migration.
+Recorded instruction discovery and LSP limitations, distinguished documented mechanisms from productivity claims, and updated the master brief rollup.
+No installation, upgrade, or hands-on evaluation performed.
+
+## [2026-10-13] brief | gemini-4-argon-release-cloud-guide
+
+Reviewed the Google Cloud developer guide supplied by the user and amended the release brief.
+Scoped Interactions API background long decode to the Developer API; documented Cloud GenerateContent's v1beta1 requirement and lack of Interactions long decode.
+Added Cloud request limits, SDK minimums, migration parameter restrictions, caching threshold, and continuation billing details.
+
+## [2026-10-13] brief | gemini-4-argon-release
+
+Created a researched draft brief at `briefs/BRIEF-gemini-4-argon-release.md` on the user's request.
+Checked current Google API specifications, pricing, app release notes, Antigravity access, model card, and Vals results.
+Separated September's announcement from October's availability, vendor reports from external benchmark evidence, and published results from proposed evaluation.
+Updated the master brief rollup. No hands-on model test performed.
+
 ## [2026-10-10] ingest | claude-code-mods-blast-radius
 
 Blast Radius sample mod. Official playground example: impact previews, confirmation UI, and explicit classifier/testing limitations.

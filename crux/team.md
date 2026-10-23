@@ -92,7 +92,7 @@ The first is that each role's tool list is the guardrail, and it binds only the 
 
 The second is that review has to be commissioned by whoever assigned the work, never by its author. When you hand each specialist its own instructions, you become the only thing holding that separation together.
 
-Below, **the coordinator** is your coding agent — or the commander, while a promptbook runs.
+Below, **the coordinator** is your coding agent — or the commander, while a cycle runs.
 
 {% assign known = "" | split: "" %}{% for id in page.specialist_order %}{% assign role = cat.agents | where: "id", id | first %}{% if role %}{% assign known = known | push: id %}
 #### {{ role.id }}
@@ -127,17 +127,18 @@ Notice how short the single-role journeys are. One question reaches one role. On
 
 ## Keep small work small
 
-### Not every task needs a commander or a promptbook. The smallest workflow that fits is the right one.
+### Not every task needs the full ceremony. The smallest cycle type that fits is the right one.
 
-Crux has four workflows of decreasing rigor — cycle, iterate, patch, and fix-directly. [Reference]({{ "/crux/reference/" | relative_url }}) explains how to choose between them. Nothing on this page adds a step to that choice.
+Every change runs as a cycle, and the type scales the cycle to the change: dev, iterate, refactor, simplify, quick-fix, or release. {% include crux-text.html t=cat.teaching_model.small_change_policy %} [Reference]({{ "/crux/reference/" | relative_url }}#which-cycle-for-a-change) explains how to choose. Nothing on this page adds a step to that choice.
 
-The commander exists for a plan that already has gates. It is not a toll booth every task passes through. A question is a question, and a typo is a typo.
+A question is not a change, and it needs no cycle at all. A question is a question, and a typo is a quick fix.
 
 ## What stays yours
 
 ### Some judgments are reserved for you, and for most of them a declared flag holds the line rather than an instruction.
 
-- **Accepting a decision.** The architect that drafted an ADR does not accept it. Acceptance runs through the decision process, with a different reader.
+- **Accepting a decision.** The architect that drafted an ADR does not accept it. A council approves the exact text, and acceptance then needs you, unless the project configured `council-only`.
+- **More passes.** A cycle that reaches its pass limit pauses. Extra passes need your approval, recorded on the cycle.
 - **Sign-off.** The survey, reconciliation, and backfill skills take the verdict and the rationale from you, one pairing at a time. The skill records what you said. It does not decide what you would have said.
 - **Ratifying an invariant.** A mined candidate stays an observation until you ratify it.
 - **Publishing.** Pushing, merging, deploying, and sending anything outward stay with you. A plan you approved is not a publication you approved.
@@ -152,7 +153,7 @@ The commander exists for a plan that already has gates. It is not a toll booth e
 |---|---|---|
 | "Summarize the current architecture" | An answer from the documentation tree, with citations | A regenerated architecture map |
 | "What supersedes ADR-0003?" | The lineage as recorded | A regenerated lineage graph |
-| "Where is the run?" | The current prompt and how to resume | A run moved forward a prompt |
+| "Cycle status" | The current phase, pass, tasks, and approval waits | A cycle moved forward a phase |
 | "Any drift?" | A drift report | Regenerated or repaired outputs |
 
 Every entry in the third column names a skill that its own request starts. "Audit docs" repairs the safe drift, and it is its own request. Retrieval is not permission to write, and a status answer is not permission to advance.
@@ -163,7 +164,7 @@ Every entry in the third column names a skill that its own request starts. "Audi
 
 **Trigger phrases are not commands.** The phrases in the catalog are copied from the skill definitions. They show you the shape of a request that matches. They are not slash commands, they do not carry across harnesses, and no phrase deterministically selects a skill.
 
-**Role names are identifiers, not proof.** The catalog records what each role is called in Claude Code, Codex, and OpenCode. A name there means the role is defined in the source, not that it is installed and callable in your session.
+**Role names are identifiers, not proof.** The catalog records what each role is called in Claude Code, Codex, and OpenCode; OMP uses the bare role name. A name there means the role is defined in the source, not that it is installed and callable in your session.
 
 **Tool limits are source contracts.** Every role's tool list comes from its definition. What a harness enforces depends on the harness and how you configured it.
 

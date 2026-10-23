@@ -28,11 +28,11 @@ what you are building. Approve it once it looks good and then proceed with the d
 
 This really helps lock down requirements for the build to ensure you get the best results.
 
-## 4. Make quick fixes with an iterate cycle
+## 4. Make quick fixes with a quick-fix cycle
 
-A full dev cycle might take hours, or even days. If you need a quick fix, use the iterate cycle.
+A full dev cycle might take hours, or even days. If you need a quick fix, use a quick-fix cycle.
 
-It's lighter and faster but doesn't come with the same scrutiny as a full dev cycle.
+It's lighter and faster: it skips the Plan phase and gets a single pass. It still tests and gets an independent review, just a slimmer one. For a minor change that needs a plan, use an iterate cycle.
 
 ## 5. Schedule the night gardener
 
@@ -45,7 +45,7 @@ I've been delighted several times by what its come up with.
 There are several tools intended to help maintain the health of a long-running project.
 
 You should clean up your campsite and audit your docs between cycles or at least every couple of days.
-Review your decisions weekly. Periodically run a retrospective.
+Review your decisions weekly with "migrate ADRs". Periodically run a retrospective.
 
 ## 7. Larger projects: split the repos
 
@@ -56,6 +56,6 @@ The planning repo is responsible for prompting the sub-repos and it drops notes 
 
 ## 8. Larger teams: customize the ADR numbering
 
-When several people propose ADRs, the numbers collide. Customize the numbering per repo or per team.
+When several people propose ADRs, the numbers collide. Customize the numbering per repo or per team with `artifact_prefix` in `.bionic.yml`.
 
 At some point I plan to release a tool to help with this where numbers can be centrally managed.

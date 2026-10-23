@@ -2,9 +2,9 @@
 title: "Open-Weights Models — 2026 Landscape"
 slug: open-weights-landscape-2026
 type: references
-tags: [open-weights, local-llms, licensing, benchmarks, apple-silicon, claimed-vs-verified, small-models]
-sources: [state-of-open-source-local-llms-july-2026, willison-kimi-k3, willison-inkling, raschka-notable-open-weight-models, qwen3-8-open-weight-announcement, kimi-k3-technical-report, kimi-k3-docs, qwen3-8-max-preview-fact-sheet, qwen3-8-max-a-new-bar-for-coding-and-cowork, qwen3-8-max-qwencloud-model-page, glm-5-3-frontier-coding-with-emergent-cyber-capabilities, deepseek-v4-pro-0813-model-card, deepseek-v4-pro-0813-fireworks-model-page, qwen3-8-2-4t-a95b-open-weights-release, qwen3p8-max-fireworks-model-page, muse-glimmer-open-agentic-model, glm-5-3-flash, glm-5-3-flash-model-card, openrouter-qwen3-8-2-4t-a95b, openrouter-glm-5-3, openrouter-glm-5-3-flash, openrouter-qwen3-8-flash, openrouter-kimi-k3, mimo-v2-6, openrouter-mimo-v2-6-pro, introducing-ember-1, fireworks-serverless-pricing]
-last_reviewed: 2026-09-29
+tags: [open-weights, kimi-k3-1, local-llms, licensing, benchmarks, apple-silicon, claimed-vs-verified, small-models]
+sources: [state-of-open-source-local-llms-july-2026, willison-kimi-k3, willison-inkling, raschka-notable-open-weight-models, qwen3-8-open-weight-announcement, kimi-k3-technical-report, kimi-k3-docs, qwen3-8-max-preview-fact-sheet, qwen3-8-max-a-new-bar-for-coding-and-cowork, qwen3-8-max-qwencloud-model-page, glm-5-3-frontier-coding-with-emergent-cyber-capabilities, deepseek-v4-pro-0813-model-card, deepseek-v4-pro-0813-fireworks-model-page, qwen3-8-2-4t-a95b-open-weights-release, qwen3p8-max-fireworks-model-page, muse-glimmer-open-agentic-model, glm-5-3-flash, glm-5-3-flash-model-card, openrouter-qwen3-8-2-4t-a95b, openrouter-glm-5-3, openrouter-glm-5-3-flash, openrouter-qwen3-8-flash, openrouter-kimi-k3, mimo-v2-6, openrouter-mimo-v2-6-pro, introducing-ember-1, fireworks-serverless-pricing, kimi-k3-1-pro, kimi-api-chat-pricing]
+last_reviewed: 2026-10-23
 ---
 
 # Open-Weights Models — 2026 Landscape
@@ -141,6 +141,22 @@ A trained K3 derivative targeting shorter reasoning. Fireworks reports similar q
 Sources: [[research/sources/introducing-ember-1]], [[research/sources/fireworks-serverless-pricing]]. Standard Ember/K3 prices both remain $3/$0.30/$15 for input/cache/output per million tokens. The potential gain is fewer billed tokens.
 
 > [contradiction] The July account in [[research/sources/willison-kimi-k3]] describes K3 with only max effort. September's [[research/sources/introducing-ember-1]] evaluates K3 low/high/max. Provider support or model behavior may have changed. The earlier account is preserved; current portability of these settings is unresolved.
+
+## Kimi K3.1 Pro (Moonshot) — October 23, weights promised by November 4
+
+Source: [[research/sources/kimi-k3-1-pro]]. Every number below is **vendor-reported**; no independent capture is in hand yet.
+
+- **What it is:** a post-trained version of K3 with "substantially larger post-training compute", described as Moonshot's "most capable 3T-class open-weight model to date", with a **1M-token context**. No parameter count is stated beyond "3T-class", so K3's 2.8T / 104B is the nearest captured figure, not a confirmed one.
+- **A second model, K3.1 Pro Highspeed**, claims 2-3× the speed of K3.1 Pro. API IDs: `kimi-k3.1-pro`, `kimi-k3.1-pro-highspeed`.
+- **Availability:** live on Kimi.ai, the apps, Kimi Work, Kimi Code, and the API on launch day. Enterprise access is off by default. Zero Data Retention is offered to API customers. **Full weights "by Nov 4, 2026".** The launch post states no license, so none is established here.
+- **Price ([[research/sources/kimi-api-chat-pricing]], checked October 23):** `kimi-k3.1-pro` costs **$2 / $10 per MTok** (input / output), with cached input at $0.20. That is **cheaper than K3's $3 / $15**. Highspeed costs $4 / $20, so double the price buys the claimed 2-3× speed. Cache writes are billed separately, at $2 for the 5-minute TTL and $4 for the 1-hour TTL, and caching is on by default. K2-series models close to new users on October 31 and retire by the end of December 2026.
+- **Coding against the frontier, in the vendor's chart:** Terminal-Bench 4.0 **65.7** against Opus 5.5's 66.4 and GPT-6 Astra's 58.2; SWE Marathon **51.7**, first in its panel. It trails on Terminal-Bench Science 0.1 (38.1 against GPT-6 Astra's 68.1 and Opus 5.5's 63.3), and on Moonshot's own internal long-horizon bench, GPT-6 Astra leads (66.5 to 61.2).
+- **Against the open field:** it leads DeepSeek-V4.1-Flash-1017 and GLM-5.3 on every panel in the chart. The open-weights-SOTA claim survives the vendor's table; a frontier-SOTA claim does not.
+- **Harness confound:** most K3.1 Pro coding and agentic scores were run in the **Claude Code harness**, while several competitor scores are copied from their own reports or leaderboards. Same model, different harnesses, different runs.
+- **Hallucination:** claim-level rate on the internal Hallu Bench Hard fell from 23.4% (K3) to 8.3% with tools. Moonshot labels it a stress test, not a daily-use error rate.
+- **Cybersecurity — the release-policy story.** Moonshot says it removed cyber-related data from mid-training and RL for the open-weight release. On its internal xdev-bench-hard (pass@3), the unfiltered checkpoint scores 90.5 and the released model 81.0, against K3's 33.3. Moonshot states two principles: open weights should not extend the absolute cyber frontier, and the cyber capability in open weights should rise progressively.
+
+Compare Gemini 4 Argon on Terminal-Bench 4.0 (57.4, Google-reported) in [[briefs/BRIEF-gemini-4-argon-release]]: K3.1 Pro's vendor number is higher, but the two come from different labs and harnesses.
 
 ## Inkling (Thinking Machines Lab) — the US open-weights entrant
 

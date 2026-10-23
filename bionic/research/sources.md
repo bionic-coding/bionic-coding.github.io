@@ -4,6 +4,8 @@ _One row per ingested research source. Newest first._
 
 | slug | title | source_url | captured_at | last_source_check | last_update | static | raw_path | wiki_path |
 |------|-------|------------|-------------|-------------------|-------------|--------|----------|-----------|
+| kimi-api-chat-pricing | Model Inference Pricing Explanation - Kimi API Platform | https://platform.kimi.ai/docs/pricing/chat | 2026-10-23 | 2026-10-23 | — | false | research/raw/2026-10-23/kimi-api-chat-pricing/ | research/sources/kimi-api-chat-pricing.md |
+| kimi-k3-1-pro | Introducing Kimi K3.1 Pro | https://www.kimi.ai/blog/kimi-k3-1-pro | 2026-10-23 | 2026-10-23 | — | true | research/raw/2026-10-23/kimi-k3-1-pro/ | research/sources/kimi-k3-1-pro.md |
 | claude-code-mods-blast-radius | Blast Radius sample mod | https://raw.githubusercontent.com/anthropics/claude-code-playground/main/claude-code/mods/blast-radius/README.md | 2026-10-10 | 2026-10-10 | — | false | research/raw/2026-10-10/claude-code-mods-blast-radius/ | research/sources/claude-code-mods-blast-radius.md |
 | claude-code-mods-admin | Manage mods for your organization | https://code.claude.com/docs/en/plugins/mods/admin | 2026-10-10 | 2026-10-10 | — | false | research/raw/2026-10-10/claude-code-mods-admin/ | research/sources/claude-code-mods-admin.md |
 | claude-code-mods-api | Use the mods API | https://code.claude.com/docs/en/plugins/mods/api | 2026-10-10 | 2026-10-10 | — | false | research/raw/2026-10-10/claude-code-mods-api/ | research/sources/claude-code-mods-api.md |

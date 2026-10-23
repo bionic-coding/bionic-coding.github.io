@@ -14,9 +14,9 @@
     "scheduled_entry_points": [
       "night-gardener"
     ],
-    "specialist_policy": "Teach delegation by default for the other seven roles. This is teaching guidance, not a claim that direct requests are disabled.",
+    "specialist_policy": "Route implementation through Commander and Dev Lead. Other workflows enter through their responsible lead; specialists receive scoped assignments.",
     "skill_policy": "Many skills remain user-facing capabilities. People can ask for an outcome in plain language without selecting every specialist.",
-    "small_change_policy": "Do not require the commander or a promptbook for every task. Let the assistant choose the smallest applicable workflow.",
+    "small_change_policy": "Choose the smallest applicable cycle type. Quick-fix omits Plan and keeps testing, independent review, and reflection slim.",
     "authorization": "Objectives guide choices but do not grant permission for more work. A skill request is not blanket permission to publish or sign off."
   },
   "roles": {
@@ -47,17 +47,17 @@
     },
     "commander": {
       "audience": "human_entry_point",
-      "purpose": "Coordinate an approved promptbook through completion.",
-      "when": "A plan exists and you want the team to execute it with its gates.",
-      "ask": "Run the approved promptbook to completion. Preserve its constraints and stop at its named escalation points.",
+      "purpose": "Coordinate an authorized cycle through completion.",
+      "when": "You want the team to plan or execute an authorized undertaking using the appropriate cycle type.",
+      "ask": "Run this cycle to completion within its scope and pass limit. Pause when progress stalls or approval is needed.",
       "provide": [
-        "Approved book or plan path",
+        "Cycle goal or approved cycle plan",
         "Desired outcome and evidence",
         "Constraints and authorization boundaries"
       ],
       "expect": [
         "Specialist assignments",
-        "Progress through the run's gates",
+        "Progress through phases, tasks, evidence, and bounded passes",
         "Evidence-backed completion or a named stop"
       ],
       "avoid": [
@@ -66,8 +66,9 @@
       ],
       "handoff": "Delegates decisions, implementation, review, retrieval, and documentation to their owners.",
       "source_sections": [
-        "How you operate",
-        "Commissioning reviews, and reading what comes back"
+        "Execution",
+        "Decisions and review",
+        "Testing and completion"
       ]
     },
     "night-gardener": {
@@ -111,9 +112,9 @@
       ],
       "avoid": [
         "Asking it to implement production code",
-        "Letting the drafting architect accept its own ADR"
+        "Treating a drafted ADR as accepted before its configured approval requirements are met"
       ],
-      "handoff": "The coordinator commissions a fresh architect for acceptance after council review, and a dev-lead for implementation.",
+      "handoff": "Council approves the exact proposed decision; ADR acceptance also needs human approval unless council-only is configured. The coordinator assigns implementation separately.",
       "source_sections": [
         "What you do",
         "Guardrails"
@@ -191,8 +192,9 @@
       ],
       "handoff": "Reports to the delegator that commissioned the work. The implementer handles fixes.",
       "source_sections": [
-        "Who commissions you, and what you are given",
-        "Reporting"
+        "Scrutiny",
+        "Findings and evidence",
+        "Report and boundaries"
       ]
     },
     "historian": {
@@ -271,17 +273,15 @@
   },
   "categories": {
     "planning": [
+      "cycle",
+      "cycle-status",
       "author-promptbook",
-      "author-runbook",
       "dev-cycle",
       "fix-directly",
       "iterate",
       "patch-cycle",
       "run-promptbook",
       "archive-promptbook",
-      "migrate-promptbooks",
-      "task-planner",
-      "visualize-run-progress",
       "whiteboarding"
     ],
     "documentation": [
@@ -296,7 +296,8 @@
       "query-docs",
       "log-work",
       "link-adr-graph",
-      "prose-review"
+      "prose-review",
+      "install-micro-crux"
     ],
     "research": [
       "ingest-research",
@@ -316,18 +317,16 @@
       "transition-decision",
       "recover-invariants",
       "transition-invariant",
-      "review-decisions",
+      "migrate-adrs",
       "backfill-signoff",
       "reconcile-signoff",
       "survey-sheet",
       "survey-signoff"
     ],
     "collaboration": [
-      "agent-identity",
       "council",
       "run-adr-council",
       "srde",
-      "semantic-bridge",
       "forge-skill",
       "retrospective",
       "tend-garden"
@@ -336,40 +335,45 @@
       "install-docs-skills",
       "install-codex-agents",
       "install-opencode-agents",
+      "install-omp-agents",
       "install-runtime",
       "escalate-arch-runtime",
-      "call-llm",
-      "serve-llm",
-      "trace-runtime-ops"
+      "call-llm"
     ]
   },
   "skill_audience_overrides": {
     "propose-observation": "explicit_human",
     "council": "workflow_support",
     "run-adr-council": "workflow_support",
-    "srde": "workflow_support",
-    "task-planner": "workflow_support"
+    "srde": "workflow_support"
   },
   "skill_notes": {
-    "run-promptbook": "This skill changes run state; the commander orchestrates the whole run. For status questions use visualize-run-progress.",
-    "visualize-run-progress": "Status questions do not authorize advancement. Optional artifact output is distinct from a read-only status answer.",
+    "run-promptbook": "Inspect or finish existing historical runs. New work uses cycle; completed runs cannot be repeated.",
     "derive-arch": "Regeneration writes generated architecture files. Ask query-docs to explain the current architecture without rebuilding it.",
     "link-adr-graph": "Generating a lineage artifact is different from asking what supersedes what; route the question to query-docs.",
     "query-docs": "Questions about current architecture or decision relationships are retrieval, not permission to regenerate.",
     "check-drift": "Does not regenerate outputs. Check the selected version's workflow for operation-log side effects before describing the whole invocation as write-free.",
-    "audit-docs": "May repair safe drift; it is not interchangeable with a non-regenerating drift check.",
-    "review-decisions": "Produces findings and review records, but does not enact the findings.",
+    "audit-docs": "May repair safe drift; it is not interchangeable with a non-regenerating drift check. Its migrate mode also consolidates tracked legacy instruction files into AGENTS.md independently of documentation schema migration. Where a scope holds both instruction families, the legacy file wins and the other file is kept byte for byte under a reported name; where a move is unsafe, that scope is left unchanged and the report names the next step.",
+    "init-docs": "Creates the new documentation tree's own AGENTS.md. It creates a repo-root AGENTS.md when the root holds no AGENTS.md or CLAUDE.md in any letter case. A CLAUDE.local.md does not block that create. It appends the pointer and the objectives block to an exact AGENTS.md, each where it is missing. It reports a repo-root CLAUDE.md or a case variant of AGENTS.md with its remedy instead of writing to it, and that remedy names audit-docs --migrate where the migration applies. It does not migrate an existing tree; an older tree schema uses the pinned public recovery release.",
+    "migrate-adrs": "Reviews historical clauses against objectives. Approved packages and validated publications change current authority while preserving history.",
     "refresh-research-synthesis": "Rewriting synthesis requires explicit per-page approval.",
     "escalate-arch-runtime": "Explicit human request and the skill's separate consent conditions are required. Never an automatic remedy for failed static extraction.",
     "propose-observation": "The body contract requires human invocation even though the frontmatter does not declare disable-model-invocation.",
-    "transition-adr": "Acceptance requires the appropriate decision process; a drafting architect cannot accept its own decision.",
+    "transition-adr": "New-policy acceptance requires council approval and human approval by default; adr.acceptance may explicitly be council-only. Acceptance makes rules binding. Historical provenance retains its original meaning.",
     "propose-brief": "Scaffold-only by default; the documented whiteboarding-session intake path is a distinct exception.",
     "srde": "Dissent resolution is bounded by the workflow's escalation rules; it is not unlimited authority to continue.",
     "tend-garden": "The owner establishes any schedule. The role must pass its turn gate and may not push, merge, or send externally.",
     "survey-sheet": "A human-invoked scaffold, not a sign-off; leaves verdicts and rationale for the human.",
     "survey-signoff": "The human supplies and confirms verdicts. The agent must not invent approval.",
     "reconcile-signoff": "The human supplies the verdict and rationale for one pairing; do not batch-sign.",
-    "backfill-signoff": "Owner sign-off is required. Presentation of this skill is not delegated approval."
+    "backfill-signoff": "Owner sign-off is required. Presentation of this skill is not delegated approval.",
+    "cycle": "One task-sized workflow: dev and refactor allow 7 passes, simplify 3, iterate 2, quick-fix 1. Initial attempts count. Release uses a fixed step list with no pass limit and no Plan, Review or Reflect phase. No prompt minimum; extra passes for other types require human approval. The queue preserves ordered follow-up work and its authorization boundaries.",
+    "author-promptbook": "Compatibility route for new work to cycle. Historical promptbook guidance remains available.",
+    "dev-cycle": "Compatibility entry point routing new work to the appropriate cycle type.",
+    "iterate": "Compatibility entry point routing new work to the appropriate cycle type.",
+    "patch-cycle": "Compatibility entry point routing new work to the appropriate cycle type.",
+    "fix-directly": "Compatibility entry point routing new work to the appropriate cycle type.",
+    "council": "Configured Lite, Standard or Strict review. Lite uses a native challenge and fresh final review with architect agreement. Standard requires two of three provider approvals and architect agreement addressing dissent. Strict requires all three approvals. Consultation approves no decision. Cycle-initiated ADR creation requires separate justification approval. New mode-aware decisions default to seven attempts and stop on stalled progress; historical reviews retain their policy."
   },
   "audience_definitions": {
     "human_request": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required.",
@@ -394,7 +398,7 @@
     },
     {
       "id": "execute_approved_plan",
-      "user_request": "Run the approved promptbook.",
+      "user_request": "Run the approved cycle.",
       "roles": [
         "commander",
         "dev-lead",
@@ -419,9 +423,9 @@
       "id": "small_fix",
       "user_request": "Fix this bounded defect directly; do not change any contracts.",
       "skills": [
-        "fix-directly"
+        "cycle"
       ],
-      "note": "The sizing test still applies. No book or council when the task qualifies."
+      "note": "Use quick-fix for a bounded correction: Build, Test, Review, Reflect, with one pass and proportional checks."
     },
     {
       "id": "night_pass",
@@ -447,9 +451,9 @@
     "Do not present seven specialist roles as seven more buttons the beginner must learn.",
     "Separate source-declared invocation flags from recommended audiences; enforcement differs across harnesses.",
     "Do not promise that trigger phrases deterministically select a skill.",
-    "Declared role skill lists are associations, not a complete call graph or a guarantee a skill can run under every role's tool limits.",
+    "The pairing gate checks each declared role skill against its harness envelope or a named lane. Report host-dependent residuals as unobserved; a restricted sandbox may prevent required Git writes.",
     "Source model aliases are configuration details, not fixed recommendations about vendors or models.",
     "Confirm public release availability before linking a beta-version source or presenting its features as officially released."
   ],
-  "reviewed_plugin_version": "3.16.1"
+  "reviewed_plugin_version": "4.5.1"
 }

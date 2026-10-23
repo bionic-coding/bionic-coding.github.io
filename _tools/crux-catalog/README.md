@@ -9,7 +9,7 @@ Files here:
 | --- | --- |
 | `crux-learning-catalog-export.py` | the exporter; reads a Crux source checkout, writes JSON to stdout |
 | `crux-learning-catalog-guide.json` | editorial guidance — categories, role teaching, skill notes, audience overrides |
-| `crux-learning-catalog-instructions.md` | the original handoff, kept as the authoritative long form |
+| `crux-learning-catalog-instructions.md` | the latest handoff, kept as the authoritative long form |
 
 Teaching changes go in the guide, never in the payload. `_tools/` starts with an underscore,
 so Jekyll never copies it into `_site/`.
@@ -25,9 +25,10 @@ documentation operations — it predates this snapshot and carries older skill-c
 
 ## Refresh
 
-The exporter needs a clean Crux source checkout. `--plugin-root` is the `crux/` directory
-**inside** the authoring repo, not the repo root. The guide resolves as a sibling of the
-script, so no `--guide` flag is needed while both live here.
+The exporter needs a Crux plugin directory. Always pass `--plugin-root`: its default assumes
+the script sits in a Crux checkout, which is not true here. The guide resolves as a sibling of the
+script, so no `--guide` flag is needed while both live here. The `--output-dir` mode writes an
+inbox handoff package; this site does not use it.
 
 ```sh
 cd _tools/crux-catalog
@@ -64,10 +65,11 @@ checkout instead and `source.revision` records that checkout's HEAD, which diffe
 two clones of the same version and makes `--check` exit 1 on a payload that is otherwise
 identical. Read such a failure by diffing, not by trusting the exit code.
 
-Verified on 2026-09-15 against Crux 3.16.1: the published payload's `agents`, `skills`, `counts`,
-`teaching_model`, `audience_definitions`, `journeys`, `handoff_template` and `publication_notes`
-are byte-identical to a fresh export, and `manifest_sha256`, `guide_sha256` and `exporter_sha256`
-all match. That is the confirmation that these pages describe the released version.
+Verified on 2026-10-23 against Crux 4.5.1, from `~/.claude/plugins/cache/crux/crux/4.5.1`:
+`--check _data/crux_catalog.json` exits 0. The inbox handoff's payload is identical except
+`source.revision` and `source.git_state`, which record the authoring checkout and are nulled
+here by design. 4.5.1 is a beta; the public repository's newest tag was v4.5.0 on that date.
+`_data/crux.yml` carries `public_release`, and `crux/index.md` shows a beta note while the two differ.
 
 ## What the published payload does not carry
 

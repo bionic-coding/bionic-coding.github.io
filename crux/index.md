@@ -10,9 +10,16 @@ Crux gives agentic coding harnesses a shared project memory in a `bionic/` folde
 
 Everything runs locally. There is no server, no account, and no background service. Crux is skills, scripts, role agents, and your repository.
 
+{% assign crux_version = site.data.crux_catalog.source.plugin_version %}{% assign public_version = site.data.crux.public_release %}
+{% if crux_version != public_version %}
+> [!NOTE]
+> This manual describes Crux {{ crux_version | escape }}, which is in beta. The newest public release is
+> {{ public_version | escape }}. Behavior that only the beta has is marked **{{ crux_version | escape }} beta** where it appears.
+{% endif %}
+
 ## Crux Manages Knowledge and History
 
-The tree has seven primary areas of knowledge it maintains, plus two derived surfaces that new repos get by default.
+The tree has seven primary areas of knowledge it maintains, plus two surfaces that new repos get by default. Cycle records live beside them.
 This was initially inspired by the [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) by Karpathy
 but with a focus on software engineering practices.
 
@@ -22,7 +29,8 @@ but with a focus on software engineering practices.
 | `bionic/research/` | Articles, papers, URLs, meeting notes, chat exports | You drop sources; your coding agent ingests |
 | `bionic/briefs/` | Pre-decision explorations | You write; your coding agent tracks |
 | `bionic/journal/` | A day-by-day record of the work | Your coding agent appends; you ask |
-| `bionic/promptbooks/` | Plans of prompts, with immutable run snapshots | Co-authored |
+| `bionic/cycles/` | One record per cycle: the plan, tasks, phase, pass count, evidence, and history | You agree the goal and plan; the cycle workflow writes the record |
+| `bionic/promptbooks/` | Historical plans and their run snapshots. New work uses cycles | Preserved as written |
 | `bionic/invariants/` | Statements of what must stay true, each backed by an executable check | Your coding agent proposes; you ratify |
 | `bionic/code/` | Docs extracted from source docstrings | Regenerated; never hand-edited |
 | `bionic/observations/` | What the code already does, each fact pinned to a `path:line-range` | You write; you ratify |
@@ -37,7 +45,7 @@ Once Crux is installed, its skills respond to the same plain phrases in each sup
 - **"Propose an ADR for X"** writes a decision record and leaves it for you to accept.
 - **"Process inbox"** sorts whatever you dropped into `bionic/inbox/` and files each item where it belongs.
 - **"What does X do?"** or **"Why did we choose Y?"** searches the tree and answers with citations.
-- **"Start a cycle for X"** assembles a tracked plan that takes a feature from decision to reviewed code.
+- **"Start a cycle for X"** opens one tracked cycle for the change. Its type sets the phases and the pass limit, from a full dev cycle down to a quick fix.
 - **"Audit docs"** checks the whole tree for broken links, stale counts, and missing rows, and fixes the safe ones.
 
 [Using Crux]({{ "/crux/team/" | relative_url }}) covers how to ask for these. The [catalog]({{ "/crux/catalog/" | relative_url }}) has the full list.
@@ -52,6 +60,6 @@ This site's own `bionic/` tree is maintained by Crux. [In practice]({{ "/crux/in
 
 ## Next
 
-Start with [Installation]({{ "/crux/installation/" | relative_url }}) to add Crux to Claude Code, Codex, or OpenCode. Then follow [Setup]({{ "/crux/setup/" | relative_url }}) to initialize it in a project.
+Start with [Installation]({{ "/crux/installation/" | relative_url }}) to add Crux to Claude Code, Codex, OpenCode, or OMP. Then follow [Setup]({{ "/crux/setup/" | relative_url }}) to initialize it in a project.
 
 **[Crux on GitHub](https://github.com/bionic-coding/crux)**

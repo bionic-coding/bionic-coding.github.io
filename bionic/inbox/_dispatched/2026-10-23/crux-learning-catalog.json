@@ -1,0 +1,2525 @@
+{
+  "format_version": "1",
+  "title": "How to work with the Crux team",
+  "editorial_status": "draft_for_blog_ingestion",
+  "source": {
+    "plugin_version": "4.5.1",
+    "skill_contract_schema_version": "4",
+    "revision": "9c1aa3321aaf4520c79bb4024181f7a3c732a3ec",
+    "git_state": "clean_plugin_subtree",
+    "manifest_sha256": "2cca7e39452f208e9085b0794cebb42f40ca26d4f306058c6656a11b7e20806a",
+    "guide_sha256": "ff92a78e00f5154b32666d5341b9e4bff901c899d1c42483d483551efe7ad5b5",
+    "exporter_sha256": "7ab3dee170b0a76b0aa213d9fc35a8a6989a25f27a2c7b2e0fa95ecbc950b384",
+    "release_channel": "not_verified_by_exporter",
+    "path_base": "plugin root; source paths are relative to the plugin, not the blog"
+  },
+  "counts": {
+    "agents": 10,
+    "skills": 56
+  },
+  "teaching_model": {
+    "agent": "A role with responsibilities, context, and tool boundaries.",
+    "skill": "A reusable procedure a role or the main assistant follows; not a separate teammate.",
+    "human_job": "State the outcome, evidence, constraints, and permissions; make the judgments reserved for the owner.",
+    "default_entry_points": [
+      "brainstormer",
+      "commander"
+    ],
+    "scheduled_entry_points": [
+      "night-gardener"
+    ],
+    "specialist_policy": "Route implementation through Commander and Dev Lead. Other workflows enter through their responsible lead; specialists receive scoped assignments.",
+    "skill_policy": "Many skills remain user-facing capabilities. People can ask for an outcome in plain language without selecting every specialist.",
+    "small_change_policy": "Choose the smallest applicable cycle type. Quick-fix omits Plan and keeps testing, independent review, and reflection slim.",
+    "authorization": "Objectives guide choices but do not grant permission for more work. A skill request is not blanket permission to publish or sign off."
+  },
+  "audience_definitions": {
+    "human_request": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required.",
+    "explicit_human": "A deliberate human invocation is required by a declared flag or body contract. Use the harness's supported explicit invocation path.",
+    "agent_internal": "Team/runtime support; omit from beginner call-to-action lists.",
+    "workflow_support": "Normally reached inside a workflow; advanced users may request it where its contract allows."
+  },
+  "journeys": [
+    {
+      "id": "explore_then_build",
+      "user_request": "Help me explore this idea before we build it.",
+      "roles": [
+        "brainstormer",
+        "historian",
+        "architect",
+        "commander",
+        "dev-lead",
+        "developer",
+        "reviewer"
+      ],
+      "note": "This is a conceptual handoff, not a requirement to use every role for every change. The caller coordinates leaf-role handoffs."
+    },
+    {
+      "id": "execute_approved_plan",
+      "user_request": "Run the approved cycle.",
+      "roles": [
+        "commander",
+        "dev-lead",
+        "developer",
+        "reviewer",
+        "historian"
+      ],
+      "note": "The commander commissions review of the lead's own integration; the lead commissions reviews of developer units."
+    },
+    {
+      "id": "ask_a_question",
+      "user_request": "Summarize the current architecture.",
+      "roles": [
+        "librarian"
+      ],
+      "skills": [
+        "query-docs"
+      ],
+      "note": "Answer from records; do not turn a question into regeneration."
+    },
+    {
+      "id": "small_fix",
+      "user_request": "Fix this bounded defect directly; do not change any contracts.",
+      "skills": [
+        "cycle"
+      ],
+      "note": "Use quick-fix for a bounded correction: Build, Test, Review, Reflect, with one pass and proportional checks."
+    },
+    {
+      "id": "night_pass",
+      "user_request": "Tend the garden.",
+      "roles": [
+        "night-gardener"
+      ],
+      "skills": [
+        "tend-garden"
+      ],
+      "note": "The turn gate may legitimately produce no output. Suggestions do not authorize publication."
+    }
+  ],
+  "handoff_template": {
+    "outcome": "What improves for the affected user?",
+    "evidence": "What would demonstrate that outcome?",
+    "constraint": "What must remain true?",
+    "objectives": "Resolved objectives path plus relevant mission/goals or an instruction to read them.",
+    "inputs": "Exact source paths, work scope, and prior approved decisions.",
+    "report": "Separate verified, contradicted, and unobserved claims."
+  },
+  "publication_notes": [
+    "Do not present seven specialist roles as seven more buttons the beginner must learn.",
+    "Separate source-declared invocation flags from recommended audiences; enforcement differs across harnesses.",
+    "Do not promise that trigger phrases deterministically select a skill.",
+    "The pairing gate checks each declared role skill against its harness envelope or a named lane. Report host-dependent residuals as unobserved; a restricted sandbox may prevent required Git writes.",
+    "Source model aliases are configuration details, not fixed recommendations about vendors or models.",
+    "Confirm public release availability before linking a beta-version source or presenting its features as officially released."
+  ],
+  "agents": [
+    {
+      "id": "architect",
+      "source": {
+        "path": "agents/architect.md",
+        "sha256": "3e3767e63b6c484a3bd43638fb32985b945774e325b120fa4a98e98ef0752778"
+      },
+      "declared": {
+        "description": "Use when the user says \"propose an ADR\", \"record this decision\", \"formalize this decision\", \"review this ADR\", \"accept ADR-NNNN\", \"draft a promptbook\", \"plan the build for X\", or \"design the architecture for X\".",
+        "tools": "Read, Grep, Glob, Edit, Write, Bash, Skill, WebSearch, WebFetch",
+        "skills": [
+          "propose-adr",
+          "transition-adr",
+          "migrate-adrs",
+          "council",
+          "srde",
+          "cycle",
+          "link-adr-graph",
+          "propose-brief",
+          "log-work",
+          "forge-skill"
+        ],
+        "delegate_targets": [],
+        "model_alias": "claude-opus-5-5",
+        "risk_level": "medium"
+      },
+      "runtime_names": {
+        "claude_code": "crux:architect",
+        "codex": "crux_architect",
+        "opencode": "architect"
+      },
+      "learning": {
+        "audience": "delegated_specialist",
+        "purpose": "Turn a chosen direction into a decision and an executable plan.",
+        "when": "The team needs an architectural decision, plan, or decision review.",
+        "request_via": "Tell the main assistant what you want decided or planned; let the coordinator assign the architect.",
+        "provide": [
+          "Exploration or problem statement",
+          "Current architecture and constraints",
+          "Outcome and acceptance evidence"
+        ],
+        "expect": [
+          "A Proposed ADR or plan",
+          "Alternatives and consequences",
+          "Findings against objectives when reviewing decisions"
+        ],
+        "avoid": [
+          "Asking it to implement production code",
+          "Treating a drafted ADR as accepted before its configured approval requirements are met"
+        ],
+        "handoff": "Council approves the exact proposed decision; ADR acceptance also needs human approval unless council-only is configured. The coordinator assigns implementation separately.",
+        "source_sections": [
+          "What you do",
+          "Guardrails"
+        ]
+      }
+    },
+    {
+      "id": "brainstormer",
+      "source": {
+        "path": "agents/brainstormer.md",
+        "sha256": "62f6ac5d8c8e354150560e59b27c8ba0187d0a73cfc18e20146ee90cb96f60a6"
+      },
+      "declared": {
+        "description": "Use when the user says \"brainstorm\", \"let's explore X\", \"whiteboard this\", \"I have an idea\", \"help me think through Y\", \"explore options for X before a decision\", or wants pre-decision exploration of a feature or change. Explores OPTIONS before a decision is made — distinct from the architect, who \"designs the architecture for X\" once an approach is chosen. Its caller first runs `authority-view.py state` and `retained-roots` and passes their output with the recent `git log` lines and, for an implementation question, the `implementation-decisions.py query` output.",
+        "tools": "Read, Grep, Glob, Skill, WebSearch, WebFetch",
+        "skills": [
+          "whiteboarding",
+          "query-docs",
+          "forge-skill"
+        ],
+        "delegate_targets": [],
+        "model_alias": "claude-opus-5-5",
+        "risk_level": "low"
+      },
+      "runtime_names": {
+        "claude_code": "crux:brainstormer",
+        "codex": "crux_brainstormer",
+        "opencode": "brainstormer"
+      },
+      "learning": {
+        "audience": "human_entry_point",
+        "purpose": "Explore an idea before choosing what to build.",
+        "when": "You have a problem or idea, but have not chosen an approach.",
+        "ask": "Help me explore ways to improve our onboarding before we decide what to build.",
+        "provide": [
+          "Problem and intended users",
+          "Relevant constraints",
+          "What remains uncertain"
+        ],
+        "expect": [
+          "Options with tradeoffs",
+          "A recommendation and open questions",
+          "A captured session for the historian to file"
+        ],
+        "avoid": [
+          "Asking it to implement code",
+          "Assuming its conversation was saved automatically"
+        ],
+        "handoff": "The caller asks the historian to file the session, then the architect to record a decision when appropriate.",
+        "source_sections": [
+          "Method (drive the `whiteboarding` skill)",
+          "Hand-off"
+        ]
+      }
+    },
+    {
+      "id": "commander",
+      "source": {
+        "path": "agents/commander.md",
+        "sha256": "7af873e8b8e4305703ee03cca2e200bd8f867992c18526f5d7bd561c0d142d0b"
+      },
+      "declared": {
+        "description": "Use when the user asks to start, execute, resume, or inspect a cycle, orchestrate a build, or finish an existing historical promptbook run.",
+        "tools": "Read, Grep, Glob, Agent(architect), Agent(brainstormer), Agent(dev-lead), Agent(historian), Agent(librarian), Agent(night-gardener), Agent(reviewer), Agent(wayfinder), Bash, Monitor, Skill, TodoWrite, SendMessage",
+        "skills": [
+          "cycle",
+          "run-promptbook",
+          "council",
+          "log-work"
+        ],
+        "delegate_targets": [
+          "architect",
+          "brainstormer",
+          "dev-lead",
+          "historian",
+          "librarian",
+          "night-gardener",
+          "reviewer",
+          "wayfinder"
+        ],
+        "model_alias": "claude-opus-5-5",
+        "risk_level": "medium"
+      },
+      "runtime_names": {
+        "claude_code": "crux:commander",
+        "codex": "crux_commander",
+        "opencode": "commander"
+      },
+      "learning": {
+        "audience": "human_entry_point",
+        "purpose": "Coordinate an authorized cycle through completion.",
+        "when": "You want the team to plan or execute an authorized undertaking using the appropriate cycle type.",
+        "ask": "Run this cycle to completion within its scope and pass limit. Pause when progress stalls or approval is needed.",
+        "provide": [
+          "Cycle goal or approved cycle plan",
+          "Desired outcome and evidence",
+          "Constraints and authorization boundaries"
+        ],
+        "expect": [
+          "Specialist assignments",
+          "Progress through phases, tasks, evidence, and bounded passes",
+          "Evidence-backed completion or a named stop"
+        ],
+        "avoid": [
+          "Expecting it to edit files or implement code itself",
+          "Treating permission to run a plan as permission to publish"
+        ],
+        "handoff": "Delegates decisions, implementation, review, retrieval, and documentation to their owners.",
+        "source_sections": [
+          "Execution",
+          "Decisions and review",
+          "Testing and completion"
+        ]
+      }
+    },
+    {
+      "id": "dev-lead",
+      "source": {
+        "path": "agents/dev-lead.md",
+        "sha256": "57408c22c1f080dad1a6ea41fa44001ed442d608d95c139a11277e743adf80e3"
+      },
+      "declared": {
+        "description": "Use when the user says \"implement this\", \"build the feature\", \"lead the development\", \"coordinate the dev work\", \"do the delicate refactor\", or an accepted ADR / plan needs to be turned into working, tested code.",
+        "tools": "Read, Grep, Glob, Edit, Write, Bash, Monitor, Agent(developer), Agent(historian), Agent(reviewer), Agent(wayfinder), Skill, TodoWrite, SendMessage",
+        "skills": [
+          "cycle",
+          "forge-skill",
+          "log-work"
+        ],
+        "delegate_targets": [
+          "developer",
+          "historian",
+          "reviewer",
+          "wayfinder"
+        ],
+        "model_alias": "claude-opus-5-5",
+        "risk_level": "high"
+      },
+      "runtime_names": {
+        "claude_code": "crux:dev-lead",
+        "codex": "crux_dev_lead",
+        "opencode": "dev-lead"
+      },
+      "learning": {
+        "audience": "delegated_specialist",
+        "purpose": "Lead implementation and integrate independent work units.",
+        "when": "An approved change needs working, tested code.",
+        "request_via": "Ask the coordinator to implement the approved plan; it assigns the dev-lead.",
+        "provide": [
+          "Approved specification or plan",
+          "Outcome, evidence, and constraints",
+          "Scope and integration boundaries"
+        ],
+        "expect": [
+          "Integrated code and tests",
+          "Evidence dispositions",
+          "Review-ready results"
+        ],
+        "avoid": [
+          "Manually dispatching developers around the lead",
+          "Letting the lead commission review of its own integration"
+        ],
+        "handoff": "Assigns developer units and their independent reviews. Its caller commissions review of the lead's own work.",
+        "source_sections": [
+          "Carrying the assignment across the fan-out",
+          "Fan-out discipline (the one sanctioned re-delegation)"
+        ]
+      }
+    },
+    {
+      "id": "developer",
+      "source": {
+        "path": "agents/developer.md",
+        "sha256": "d5f689131565da43f8b544fbf6e3c262ec3da3d9d41e574d3c48da050a699ad3"
+      },
+      "declared": {
+        "description": "Use when a single, scoped implementation unit needs to be built — typically dispatched by dev-lead with a specific work unit, the ADR, and its acceptance criteria (e.g. 'implement this unit', 'build this module', 'write this function and its tests').",
+        "tools": "Read, Grep, Glob, Edit, Write, Bash, Skill, TodoWrite",
+        "skills": [
+          "forge-skill",
+          "log-work"
+        ],
+        "delegate_targets": [],
+        "model_alias": "claude-sonnet-5-5",
+        "risk_level": "medium"
+      },
+      "runtime_names": {
+        "claude_code": "crux:developer",
+        "codex": "crux_developer",
+        "opencode": "developer"
+      },
+      "learning": {
+        "audience": "delegated_specialist",
+        "purpose": "Implement one bounded unit and its tests.",
+        "when": "A dev-lead has isolated an implementation unit.",
+        "request_via": "Let the dev-lead assign the unit rather than treating the developer as the whole project team.",
+        "provide": [
+          "Owned files and work unit",
+          "Relevant specification",
+          "Outcome, evidence, and constraints"
+        ],
+        "expect": [
+          "Code and tests",
+          "DONE, DONE_WITH_CONCERNS, NEEDS_CONTEXT, or BLOCKED",
+          "Verified, contradicted, or unobserved evidence items"
+        ],
+        "avoid": [
+          "Asking it to re-delegate",
+          "Treating DONE as proof of every user outcome",
+          "Asking it to approve its own work"
+        ],
+        "handoff": "Returns to the dev-lead, which arranges review and integration.",
+        "source_sections": [
+          "Reporting back",
+          "Before you write the first test"
+        ]
+      }
+    },
+    {
+      "id": "historian",
+      "source": {
+        "path": "agents/historian.md",
+        "sha256": "b5003052294eb886a7d9b51201664a74394dffa84f049fbf5448b6478459d402"
+      },
+      "declared": {
+        "description": "Use when the user says \"set up docs\", \"init docs\", \"audit the docs\", \"clean up the docs\", \"log this work\", \"journal this\", \"file this\", \"ingest this\", \"process the inbox\", \"regenerate code docs\", or \"archive the promptbook\". Session filing (a brainstormer's whiteboarding session) is reached by *dispatch* through the inbox → process-inbox pipeline, not by direct user invocation.",
+        "tools": "Read, Grep, Glob, Edit, Write, Bash, Skill, TodoWrite",
+        "skills": [
+          "cycle",
+          "init-docs",
+          "audit-docs",
+          "cleanup-campsite",
+          "link-adr-graph",
+          "check-drift",
+          "transition-adr",
+          "ingest-research",
+          "process-inbox",
+          "propose-adr",
+          "propose-brief",
+          "log-work",
+          "archive-promptbook",
+          "extract-code-docs",
+          "verify-code-docs",
+          "run-promptbook",
+          "forge-skill"
+        ],
+        "delegate_targets": [],
+        "model_alias": "claude-sonnet-5-5",
+        "risk_level": "medium"
+      },
+      "runtime_names": {
+        "claude_code": "crux:historian",
+        "codex": "crux_historian",
+        "opencode": "historian"
+      },
+      "learning": {
+        "audience": "delegated_specialist",
+        "purpose": "Preserve work in the documentation tree through its owning skills.",
+        "when": "The team needs filing, journal entries, run records, documentation maintenance, or archival.",
+        "request_via": "Say what should be saved or maintained; let the main assistant dispatch the historian.",
+        "provide": [
+          "The content or result to preserve",
+          "Destination and context",
+          "What the write must leave unchanged"
+        ],
+        "expect": [
+          "Durable records",
+          "Required indexes and operation logs",
+          "Paths and limitations in the handoff"
+        ],
+        "avoid": [
+          "Asking it to implement source code",
+          "Bypassing inbox processing to file a brainstormer's session"
+        ],
+        "handoff": "Receives content from other roles and files it through the appropriate skill.",
+        "source_sections": [
+          "What you do (always via the owning skill, never raw freehand)",
+          "The write you were dispatched to make arrives as an assignment"
+        ]
+      }
+    },
+    {
+      "id": "librarian",
+      "source": {
+        "path": "agents/librarian.md",
+        "sha256": "baaa05e8a53c1e6c9546191a9d0705d8e0a1942614f597e53ed1bc4f73c875b8"
+      },
+      "declared": {
+        "description": "Use when the user asks a question answerable from docs/ — \"what does X do?\", \"why did we choose Y?\", \"what's our plan for Z?\", \"what do we know about W?\", \"find the ADR about V\", \"where is U documented?\" — or another agent needs a fact retrieved mid-task.",
+        "tools": "Read, Grep, Glob, Bash, Skill",
+        "skills": [
+          "query-docs",
+          "forge-skill"
+        ],
+        "delegate_targets": [],
+        "model_alias": "claude-sonnet-5-5",
+        "risk_level": "low"
+      },
+      "runtime_names": {
+        "claude_code": "crux:librarian",
+        "codex": "crux_librarian",
+        "opencode": "librarian"
+      },
+      "learning": {
+        "audience": "delegated_specialist",
+        "purpose": "Retrieve recorded project knowledge with citations.",
+        "when": "A question can be answered from the project's documentation tree.",
+        "request_via": "Ask the main assistant the question, such as why a decision was made; it can dispatch the librarian.",
+        "provide": [
+          "A concrete question",
+          "Relevant project scope"
+        ],
+        "expect": [
+          "A distilled answer with document paths",
+          "An explicit gap when the tree does not answer"
+        ],
+        "avoid": [
+          "Asking it to invent missing facts",
+          "Asking it to make new architectural decisions or write records"
+        ],
+        "handoff": "Returns facts to its caller; requests for judgment belong to the architect and writes to the historian.",
+        "source_sections": [
+          "How you work",
+          "Boundaries"
+        ]
+      }
+    },
+    {
+      "id": "night-gardener",
+      "source": {
+        "path": "agents/night-gardener.md",
+        "sha256": "a1cc5da9ee7938193a42cf9a97731840e9962db81167e283929d06a411a564d4"
+      },
+      "declared": {
+        "description": "Use when the user says \"tend the garden\", \"night pass\", \"run the night gardener\", or \"morning note\", or when a scheduled overnight session starts. The night gardener is the generative and strategic overnight presence — she notices what shipped, names what's missing, thinks a quarter ahead, and writes a morning note. Distinct from cleanup-campsite (mechanical process scans), retrospective (skill harvest from friction), and audit-docs (graph integrity) — the gardener is generative and strategic — new ideas, improvement vectors, missing engineering substrate, research directions, and news that changes options.",
+        "tools": "Read, Grep, Glob, Edit, Write, Bash, Agent(historian), Agent(wayfinder), Agent(librarian), Skill, TodoWrite, WebSearch, WebFetch",
+        "skills": [
+          "tend-garden",
+          "cleanup-campsite",
+          "read-news",
+          "refresh-research-sources",
+          "retrospective",
+          "council",
+          "srde",
+          "whiteboarding",
+          "query-docs",
+          "prose-review",
+          "forge-skill",
+          "log-work"
+        ],
+        "delegate_targets": [
+          "historian",
+          "wayfinder",
+          "librarian"
+        ],
+        "model_alias": "claude-opus-5-5",
+        "risk_level": "high"
+      },
+      "runtime_names": {
+        "claude_code": "crux:night-gardener",
+        "codex": "crux_night_gardener",
+        "opencode": "night-gardener"
+      },
+      "learning": {
+        "audience": "scheduled_or_explicit",
+        "purpose": "Notice opportunities and leave a grounded morning note.",
+        "when": "You want a strategic night pass after project activity, or have deliberately scheduled one.",
+        "ask": "Tend the garden and leave a morning note grounded in our objectives.",
+        "provide": [
+          "Project objectives",
+          "Current project context",
+          "Owner-configured preferences and any approved schedule"
+        ],
+        "expect": [
+          "A morning note and linked artifacts when the turn gate permits",
+          "A silent skip when only its own artifacts changed"
+        ],
+        "avoid": [
+          "Using it as the default feature implementer",
+          "Expecting automatic publication, external messages, or schedule installation"
+        ],
+        "handoff": "May ask the historian, librarian, and wayfinder for bounded help. The owner reviews proposed follow-up work.",
+        "source_sections": [
+          "The turn gate (first act, every night)",
+          "Hard lines (embedded — every one non-negotiable)"
+        ]
+      }
+    },
+    {
+      "id": "reviewer",
+      "source": {
+        "path": "agents/reviewer.md",
+        "sha256": "b6cd745a4ba150044ead4ce88e452d7f10ef52d4c097e55c1360cb9ce62b89fa"
+      },
+      "declared": {
+        "description": "Use when the user says \"review this code\", \"review the diff\", \"verify this is correct\", \"is this ready to ship\", \"security review\", or a change authored by a *different* agent/session needs independent verification before it advances. Not for self-verifying your own work (that is the developer's own completion gate).",
+        "tools": "Read, Grep, Glob, Bash, Skill",
+        "skills": [
+          "prose-review",
+          "council",
+          "forge-skill"
+        ],
+        "delegate_targets": [],
+        "model_alias": "claude-opus-5-5",
+        "risk_level": "low"
+      },
+      "runtime_names": {
+        "claude_code": "crux:reviewer",
+        "codex": "crux_reviewer",
+        "opencode": "reviewer"
+      },
+      "learning": {
+        "audience": "delegated_specialist",
+        "purpose": "Independently judge the assigned outcome and the change.",
+        "when": "Work by another agent is ready for verification.",
+        "request_via": "Ask the coordinator for independent review of the change, not self-approval by its author.",
+        "provide": [
+          "The original assignment",
+          "The work product or diff",
+          "The author's completion report"
+        ],
+        "expect": [
+          "Ranked findings",
+          "Evidence-backed verdict",
+          "Explicit unobserved claims"
+        ],
+        "avoid": [
+          "Asking it to fix the change while reviewing",
+          "Letting the author commission its own review"
+        ],
+        "handoff": "Reports to the delegator that commissioned the work. The implementer handles fixes.",
+        "source_sections": [
+          "Scrutiny",
+          "Findings and evidence",
+          "Report and boundaries"
+        ]
+      }
+    },
+    {
+      "id": "wayfinder",
+      "source": {
+        "path": "agents/wayfinder.md",
+        "sha256": "0695e834dfbaeb32637a1e868bed2866932e5f00d4971cbe75d07492705d767a"
+      },
+      "declared": {
+        "description": "Use when an agent needs to read or evaluate large/uncertain or external data BEFORE spending context to consume it — \"wayfind this file/URL/corpus\", \"scope out this source\", \"is this source worth reading?\", \"summarize this\", \"search this for X\", \"go wayfind <domain>\" — or when a primary wants to preserve its context window by delegating a bulky or uncertain read. Returns a fitness verdict + a condensed digest, never the raw content. Distinct from the librarian (which answers recorded-fact questions from the docs/ tree); the wayfinder triages arbitrary/external data.",
+        "tools": "Read, Grep, Glob, WebFetch, WebSearch",
+        "skills": [],
+        "delegate_targets": [],
+        "model_alias": "claude-sonnet-5-5",
+        "risk_level": "medium"
+      },
+      "runtime_names": {
+        "claude_code": "crux:wayfinder",
+        "codex": "crux_wayfinder",
+        "opencode": "wayfinder"
+      },
+      "learning": {
+        "audience": "delegated_specialist",
+        "purpose": "Assess a large or uncertain source before it fills the caller's context.",
+        "when": "An agent needs to triage a file, corpus, or external source.",
+        "request_via": "Let the agent doing the work delegate source triage with a specific purpose.",
+        "provide": [
+          "Source paths or explicitly named external sources",
+          "The question or fitness criterion"
+        ],
+        "expect": [
+          "A fit, unfit, or partial verdict",
+          "A condensed digest with source locations",
+          "Unobserved parts of the request"
+        ],
+        "avoid": [
+          "Asking it to run commands or change files",
+          "Passing local private text into outbound searches",
+          "Using it instead of the librarian for ordinary recorded-fact lookup"
+        ],
+        "handoff": "Returns a digest to its caller; the caller decides what to read or do next.",
+        "source_sections": [
+          "What you return (never raw dumps)",
+          "Security disciplines (load-bearing)"
+        ]
+      }
+    }
+  ],
+  "skills": [
+    {
+      "id": "archive-promptbook",
+      "source": {
+        "path": "skills/archive-promptbook/SKILL.md",
+        "sha256": "ec00d81cb30efec86652ddd392654e17f0c36567be14187634a4ffe051e9aaea"
+      },
+      "description": "Archive a completed or abandoned historical promptbook; new cycles close without repeat runs.",
+      "category": "planning",
+      "triggers": [
+        "archive promptbook",
+        "archive PB-NNNN",
+        "this promptbook is finished",
+        "close out the book"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "historian"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "archive promptbook",
+          "archive PB-NNNN"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "audit-docs",
+      "source": {
+        "path": "skills/audit-docs/SKILL.md",
+        "sha256": "fd9265325c8c979cb673c3066fde8ebe2f1eb56c037038f1e2b6cf609afdf4da"
+      },
+      "description": "Audit documentation indexes, frontmatter, and links. Apply safe additive repairs; request confirmation for destructive changes.",
+      "category": "documentation",
+      "triggers": [
+        "audit docs",
+        "check docs",
+        "find drift",
+        "verify docs integrity"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "historian"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "audit docs",
+          "check docs"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "May repair safe drift; it is not interchangeable with a non-regenerating drift check. Its migrate mode also consolidates tracked legacy instruction files into AGENTS.md independently of documentation schema migration. Where a scope holds both instruction families, the legacy file wins and the other file is kept byte for byte under a reported name; where a move is unsafe, that scope is left unchanged and the report names the next step."
+      }
+    },
+    {
+      "id": "author-promptbook",
+      "source": {
+        "path": "skills/author-promptbook/SKILL.md",
+        "sha256": "cb61abb3f1ab344181347870d6bfe6aeda2a0083d2e9c32deef4a6e9fdd64df1"
+      },
+      "description": "Compatibility entry point that routes new tracked plans to cycle; preserves historical promptbook authoring documentation.",
+      "category": "planning",
+      "triggers": [
+        "new promptbook",
+        "draft a plan-of-prompts",
+        "formalize a workflow"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "new promptbook",
+          "draft a plan-of-prompts"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Compatibility route for new work to cycle. Historical promptbook guidance remains available."
+      }
+    },
+    {
+      "id": "backfill-signoff",
+      "source": {
+        "path": "skills/backfill-signoff/SKILL.md",
+        "sha256": "a11c17c65f85ff255028435e0bcccb7f0b5a09af3b36ed0a3538958b1a4c0256"
+      },
+      "description": "Obtain owner approval for a governs backfill batch, validate its receipts, and record sign-off. Refuse drifted or failing batches.",
+      "category": "decisions",
+      "triggers": [
+        "sign off backfill batch <id>",
+        "backfill sign-off",
+        "sign the backfill"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": true,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "explicit_human",
+        "example_requests": [
+          "sign off backfill batch <id>",
+          "backfill sign-off"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Owner sign-off is required. Presentation of this skill is not delegated approval."
+      }
+    },
+    {
+      "id": "call-llm",
+      "source": {
+        "path": "skills/call-llm/SKILL.md",
+        "sha256": "dfc35b7820bda8f516e29bb4b7638611f1dcefa108618fc26451d4ec5f58f08a"
+      },
+      "description": "Call external language models from crux code through its shared OpenRouter gateway and model configuration.",
+      "category": "runtime",
+      "triggers": [],
+      "declared_invocation": {
+        "user_invocable": false,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "medium",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "agent_internal",
+        "example_requests": [],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Team/runtime support; omit from beginner call-to-action lists."
+      }
+    },
+    {
+      "id": "check-drift",
+      "source": {
+        "path": "skills/check-drift/SKILL.md",
+        "sha256": "80a96704bcbc26313413e3d541b83016c62d7411cdd55e5574f5448fda63f61f"
+      },
+      "description": "Check enrolled regenerated outputs for drift without regenerating them. Report findings and name the relevant repair commands.",
+      "category": "documentation",
+      "triggers": [
+        "check drift",
+        "is the tree in sync",
+        "run the drift gates",
+        "any drift?",
+        "verify all regenerated outputs",
+        "pre-release drift check"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "historian"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "check drift",
+          "is the tree in sync"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Does not regenerate outputs. Check the selected version's workflow for operation-log side effects before describing the whole invocation as write-free."
+      }
+    },
+    {
+      "id": "cleanup-campsite",
+      "source": {
+        "path": "skills/cleanup-campsite/SKILL.md",
+        "sha256": "8cbe5a0dd56ae741b09889e189d7f655971b397cbcc1ab4c4922ee37e7603453"
+      },
+      "description": "Scan project process state and refresh prioritized next actions. Finds unfinished work, not documentation graph violations.",
+      "category": "documentation",
+      "triggers": [
+        "cleanup",
+        "hygiene check",
+        "what's next",
+        "clean up the docs",
+        "refresh whats_next"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "historian",
+        "night-gardener"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "cleanup",
+          "hygiene check"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "compile-doctrine",
+      "source": {
+        "path": "skills/compile-doctrine/SKILL.md",
+        "sha256": "15e0f4fffac5822182d8b188f3f6bd6d5ccb4c4f41443886cdf49bbc54b64131"
+      },
+      "description": "Regenerate doctrine from decision summaries and signed invariant reconciliations, or check its drift. Never edits sign-offs.",
+      "category": "documentation",
+      "triggers": [
+        "compile the doctrine",
+        "build the doctrine",
+        "regenerate the doctrine",
+        "refresh the doctrine",
+        "is the doctrine current",
+        "doctrine drift"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "compile the doctrine",
+          "build the doctrine"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "council",
+      "source": {
+        "path": "skills/council/SKILL.md",
+        "sha256": "5e2228350f87e7434409989f4d8706ad20e11e08d5c25b3a170493e8ebc2cad5"
+      },
+      "description": "Convene configured Lite, Standard or Strict council review; the owning writer records exact-subject approval evidence.",
+      "category": "collaboration",
+      "triggers": [
+        "run the council",
+        "convene the council",
+        "ask the council",
+        "get a multi-model opinion"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "medium",
+      "declared_by_agents": [
+        "architect",
+        "commander",
+        "night-gardener",
+        "reviewer"
+      ],
+      "learning": {
+        "audience": "workflow_support",
+        "example_requests": [],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Configured Lite, Standard or Strict review. Lite uses a native challenge and fresh final review with architect agreement. Standard requires two of three provider approvals and architect agreement addressing dissent. Strict requires all three approvals. Consultation approves no decision. Cycle-initiated ADR creation requires separate justification approval. New mode-aware decisions default to seven attempts and stop on stalled progress; historical reviews retain their policy."
+      }
+    },
+    {
+      "id": "cycle",
+      "source": {
+        "path": "skills/cycle/SKILL.md",
+        "sha256": "a921d9414676e104f298464c1c3622bb5fdb812a639c8f5e2343a6b5f53ef1f9"
+      },
+      "description": "Plan, execute, resume, inspect, or update one development cycle. Use for major changes, minor changes, quick fixes, refactoring, simplification, releases, and reconciling the cycle record.",
+      "category": "planning",
+      "triggers": [
+        "start a cycle",
+        "run the cycle",
+        "resume the cycle",
+        "cycle status",
+        "new dev cycle",
+        "iterate on this",
+        "quick fix",
+        "refactor this",
+        "simplify cycle",
+        "run a simplify cycle",
+        "simplify <area>",
+        "release cycle",
+        "update the cycle",
+        "reconcile the cycle record",
+        "add to the queue",
+        "show the queue",
+        "run the next item",
+        "run the next N items",
+        "run the queue"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "high",
+      "declared_by_agents": [
+        "architect",
+        "commander",
+        "dev-lead",
+        "historian"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "start a cycle",
+          "run the cycle"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "One task-sized workflow: dev and refactor allow 7 passes, simplify 3, iterate 2, quick-fix 1. Initial attempts count. Release uses a fixed step list with no pass limit and no Plan, Review or Reflect phase. No prompt minimum; extra passes for other types require human approval. The queue preserves ordered follow-up work and its authorization boundaries."
+      }
+    },
+    {
+      "id": "cycle-status",
+      "source": {
+        "path": "skills/cycle-status/SKILL.md",
+        "sha256": "f01ddefc258c99c0699c94bf608bd2069e04db5c874baa2fb17009366aa2d76f"
+      },
+      "description": "Show cycle progress without changing it: one cycle, every cycle, the JSON document, or a view that redraws in a second terminal.",
+      "category": "planning",
+      "triggers": [
+        "show cycle status",
+        "what's the status of CYC-NNNN",
+        "where are the cycles",
+        "list the cycles",
+        "watch the cycle",
+        "show the cycle dashboard"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "show cycle status",
+          "what's the status of CYC-NNNN"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "derive-arch",
+      "source": {
+        "path": "skills/derive-arch/SKILL.md",
+        "sha256": "fa2afa6d2f4188a536f18f4827df325027863ba85015368f89ba58e1dc63ad9a"
+      },
+      "description": "Regenerate the current architecture map from project sources, or check its drift. Replaces generated architecture files.",
+      "category": "documentation",
+      "triggers": [
+        "build the arch",
+        "build the arch directory",
+        "derive arch",
+        "regenerate the architecture",
+        "refresh the architecture map",
+        "rebuild the arch spine",
+        "update the arch"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "build the arch",
+          "build the arch directory"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Regeneration writes generated architecture files. Ask query-docs to explain the current architecture without rebuilding it."
+      }
+    },
+    {
+      "id": "dev-cycle",
+      "source": {
+        "path": "skills/dev-cycle/SKILL.md",
+        "sha256": "dadf59abd76d455597c7acf377aab01f1f74ce3906647aa90e5ae9d5c13222c0"
+      },
+      "description": "Compatibility alias: route dev-cycle requests to the unified cycle workflow with type dev.",
+      "category": "planning",
+      "triggers": [
+        "begin development cycle",
+        "cycle this feature",
+        "build a cycle promptbook",
+        "rigorous plan",
+        "do this the right way"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "begin development cycle",
+          "cycle this feature"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Compatibility entry point routing new work to the appropriate cycle type."
+      }
+    },
+    {
+      "id": "escalate-arch-runtime",
+      "source": {
+        "path": "skills/escalate-arch-runtime/SKILL.md",
+        "sha256": "c913709664e9ba1e3008e14e9f3fc17932dab424ad80a16b3ea0dae80981d7b5"
+      },
+      "description": "Only on explicit human request, run consent-gated Python introspection to recover routes or models missed by static extraction.",
+      "category": "runtime",
+      "triggers": [
+        "escalate the arch runtime",
+        "run the runtime arch introspection",
+        "recover the routes by running my app",
+        "introspect my FastAPI/Flask/Django app for arch"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": true,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "high",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "explicit_human",
+        "example_requests": [
+          "escalate the arch runtime",
+          "run the runtime arch introspection"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Explicit human request and the skill's separate consent conditions are required. Never an automatic remedy for failed static extraction."
+      }
+    },
+    {
+      "id": "extract-code-docs",
+      "source": {
+        "path": "skills/extract-code-docs/SKILL.md",
+        "sha256": "99e917c407c451ec4721781c0dfab12a769f7d189eceeba0fb3f39e24b1dd198"
+      },
+      "description": "Regenerate code documentation from source using language extractors. Replaces generated files, including manual edits.",
+      "category": "documentation",
+      "triggers": [
+        "extract docs",
+        "refresh code docs",
+        "regenerate code docs"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "historian"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "extract docs",
+          "refresh code docs"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "fix-directly",
+      "source": {
+        "path": "skills/fix-directly/SKILL.md",
+        "sha256": "5dae8828067dcd8f22b9e2be0f12b1aae7d8a380845fd650e9ec64e23c68b259"
+      },
+      "description": "Compatibility alias: route fix-directly requests to the unified cycle workflow with type quick-fix.",
+      "category": "planning",
+      "triggers": [
+        "just fix it",
+        "fix it directly",
+        "fix this directly",
+        "no book for this",
+        "this is small, skip the cycle",
+        "direct fix"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "just fix it",
+          "fix it directly"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Compatibility entry point routing new work to the appropriate cycle type."
+      }
+    },
+    {
+      "id": "forge-skill",
+      "source": {
+        "path": "skills/forge-skill/SKILL.md",
+        "sha256": "be333ced90e44a89eb3f3ccb3fd8596ea992fec37bf1d131a08b46b04f3b09da"
+      },
+      "description": "Create or revise a project-local skill to close a demonstrated capability gap, with research, self-testing, and a durable record.",
+      "category": "collaboration",
+      "triggers": [
+        "forge a skill",
+        "author a skill for this",
+        "build yourself the capability",
+        "close this capability gap",
+        "teach yourself to X"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "medium",
+      "declared_by_agents": [
+        "architect",
+        "brainstormer",
+        "dev-lead",
+        "developer",
+        "historian",
+        "librarian",
+        "night-gardener",
+        "reviewer"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "forge a skill",
+          "author a skill for this"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "ingest-research",
+      "source": {
+        "path": "skills/ingest-research/SKILL.md",
+        "sha256": "a280b046f5db82c66b822beebda0db2485888a93871cf7370059a223620a0b75"
+      },
+      "description": "File URLs or research inbox items into the research wiki, preserving source captures and updating synthesis and indexes.",
+      "category": "research",
+      "triggers": [
+        "ingest",
+        "file this",
+        "capture this",
+        "save this",
+        "paste a URL"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "historian"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "ingest",
+          "file this"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "init-docs",
+      "source": {
+        "path": "skills/init-docs/SKILL.md",
+        "sha256": "4f5fa7352affb9c7813a412763f2529737083859de17d5171c9849ca59f5f14f"
+      },
+      "description": "Initialize a repository's crux documentation tree and configuration while preserving existing configuration values.",
+      "category": "documentation",
+      "triggers": [
+        "init docs",
+        "set up docs",
+        "bootstrap documentation"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "historian"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "init docs",
+          "set up docs"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Creates the new documentation tree's own AGENTS.md. It creates a repo-root AGENTS.md when the root holds no AGENTS.md or CLAUDE.md in any letter case. A CLAUDE.local.md does not block that create. It appends the pointer and the objectives block to an exact AGENTS.md, each where it is missing. It reports a repo-root CLAUDE.md or a case variant of AGENTS.md with its remedy instead of writing to it, and that remedy names audit-docs --migrate where the migration applies. It does not migrate an existing tree; an older tree schema uses the pinned public recovery release."
+      }
+    },
+    {
+      "id": "install-codex-agents",
+      "source": {
+        "path": "skills/install-codex-agents/SKILL.md",
+        "sha256": "dc823563e4e804c28a591b14fcd4cbe6392f1b51063228b6955539c34cc5f9d0"
+      },
+      "description": "Install, refresh, or check crux's Codex role agents in the personal or specified project directory. Preserve conflicting roles.",
+      "category": "runtime",
+      "triggers": [
+        "install codex agents",
+        "install crux agents for codex",
+        "refresh the codex agents"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": true,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "medium",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "explicit_human",
+        "example_requests": [
+          "install codex agents",
+          "install crux agents for codex"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "A deliberate human invocation is required by a declared flag or body contract. Use the harness's supported explicit invocation path."
+      }
+    },
+    {
+      "id": "install-docs-skills",
+      "source": {
+        "path": "skills/install-docs-skills/SKILL.md",
+        "sha256": "c9356e052130d45fd33693e26610059d492e1aa11a8a4bff4e80bba4ada14b24"
+      },
+      "description": "Identify which Crux plugin version is active in this session; provide read-only Crux installation, upgrade, and schema guidance when requested.",
+      "category": "runtime",
+      "triggers": [
+        "which crux version is active",
+        "what crux plugin is loaded",
+        "install docs skills",
+        "add this plugin",
+        "set up crux",
+        "upgrade docs suite"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "which crux version is active",
+          "what crux plugin is loaded"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "install-micro-crux",
+      "source": {
+        "path": "skills/install-micro-crux/SKILL.md",
+        "sha256": "c51d52fe809e14cde846ca320a5d809dab842bfec44be3d6c28272a79d64768e"
+      },
+      "description": "Install or update the standalone micro-crux guide and its repository read instruction while preserving local edits.",
+      "category": "documentation",
+      "triggers": [
+        "install micro-crux",
+        "add micro-crux to this project",
+        "update micro-crux",
+        "install the standalone crux guide"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "medium",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "install micro-crux",
+          "add micro-crux to this project"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "install-omp-agents",
+      "source": {
+        "path": "skills/install-omp-agents/SKILL.md",
+        "sha256": "e65b513aec5726fcd30fab76a8e7fadfac1ed4a35a3c1af4120c17f7c4718bea"
+      },
+      "description": "Install, refresh, or check crux's OMP (Oh My Pi) role agents in the personal or specified project directory. Preserve conflicting roles.",
+      "category": "runtime",
+      "triggers": [
+        "install omp agents",
+        "install crux agents for omp",
+        "refresh the omp agents"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": true,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "medium",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "explicit_human",
+        "example_requests": [
+          "install omp agents",
+          "install crux agents for omp"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "A deliberate human invocation is required by a declared flag or body contract. Use the harness's supported explicit invocation path."
+      }
+    },
+    {
+      "id": "install-opencode-agents",
+      "source": {
+        "path": "skills/install-opencode-agents/SKILL.md",
+        "sha256": "1486e7fd6b1f9d8876cdb29eba2e9b2224fe245292818b6a6c2752558e0a9820"
+      },
+      "description": "Install or refresh crux's OpenCode role agents in a target project. Preserve conflicting roles unless replacement is authorized.",
+      "category": "runtime",
+      "triggers": [
+        "install opencode agents",
+        "install crux agents for opencode",
+        "refresh the opencode agents"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": true,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "medium",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "explicit_human",
+        "example_requests": [
+          "install opencode agents",
+          "install crux agents for opencode"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "A deliberate human invocation is required by a declared flag or body contract. Use the harness's supported explicit invocation path."
+      }
+    },
+    {
+      "id": "install-runtime",
+      "source": {
+        "path": "skills/install-runtime/SKILL.md",
+        "sha256": "61ca8b0f8fa6b1f23a338ae0d9b0e8f8aea30a5ec9be7b5b38343f8ad989e31d"
+      },
+      "description": "Deploy crux's Python agent-team runtime into another repository. Distinct from plugin installation and documentation initialization.",
+      "category": "runtime",
+      "triggers": [
+        "install the crux runtime",
+        "deploy the crux runtime",
+        "spawn crux into this repo",
+        "bootstrap the agent team"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": true,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "explicit_human",
+        "example_requests": [
+          "install the crux runtime",
+          "deploy the crux runtime"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "A deliberate human invocation is required by a declared flag or body contract. Use the harness's supported explicit invocation path."
+      }
+    },
+    {
+      "id": "iterate",
+      "source": {
+        "path": "skills/iterate/SKILL.md",
+        "sha256": "6a836a7c235068c7fe3d1f1a8c8151b90c7f149af04c2f9fde2baa5ed8e6d1e6"
+      },
+      "description": "Compatibility alias: route iterate requests to the unified cycle workflow with type iterate.",
+      "category": "planning",
+      "triggers": [
+        "iterate on X",
+        "start an iterate cycle",
+        "iterate-cycle for X",
+        "remediate X",
+        "fix X with rigor"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "iterate on X",
+          "start an iterate cycle"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Compatibility entry point routing new work to the appropriate cycle type."
+      }
+    },
+    {
+      "id": "link-adr-graph",
+      "source": {
+        "path": "skills/link-adr-graph/SKILL.md",
+        "sha256": "f52dae7f849c734e509b04299bbd216d2e1be8c2efd9a0ce805777da0450171b"
+      },
+      "description": "Regenerate the ADR lineage graph and table from supersedes and amends relationships. Does not modify decisions.",
+      "category": "documentation",
+      "triggers": [
+        "show ADR lineage",
+        "render ADR graph",
+        "ADR dependency graph"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "architect",
+        "historian"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "show ADR lineage",
+          "render ADR graph"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Generating a lineage artifact is different from asking what supersedes what; route the question to query-docs."
+      }
+    },
+    {
+      "id": "log-work",
+      "source": {
+        "path": "skills/log-work/SKILL.md",
+        "sha256": "01c966228bdc3e6a5e967bbe770f560e8654ac03ecb2d97bea277082aa713259"
+      },
+      "description": "Record completed work and its context in the project journal, append the operation log, and regenerate the journal index.",
+      "category": "documentation",
+      "triggers": [
+        "log work",
+        "journal this",
+        "record progress",
+        "log this"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "architect",
+        "commander",
+        "dev-lead",
+        "developer",
+        "historian",
+        "night-gardener"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "log work",
+          "journal this"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "migrate-adrs",
+      "source": {
+        "path": "skills/migrate-adrs/SKILL.md",
+        "sha256": "89399a7f80a8050fa6e8043c25137976b1bb769646d06ceac2c607aecb4a9797"
+      },
+      "description": "Assess historical architectural decisions against current objectives and migrate approved clause dispositions. Use for ADR migration, decision cleanup, or reviewing whether old decisions still serve the project.",
+      "category": "decisions",
+      "triggers": [
+        "migrate ADRs",
+        "review historic ADRs",
+        "retire obsolete decisions",
+        "clean up decision authority",
+        "review the decisions",
+        "do the decisions still serve the objectives"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "high",
+      "declared_by_agents": [
+        "architect"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "migrate ADRs",
+          "review historic ADRs"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Reviews historical clauses against objectives. Approved packages and validated publications change current authority while preserving history."
+      }
+    },
+    {
+      "id": "patch-cycle",
+      "source": {
+        "path": "skills/patch-cycle/SKILL.md",
+        "sha256": "23000695aed34d7e2fa89c8534195a7913c6e6c73fed0ea87a24b7e58d7e41f7"
+      },
+      "description": "Compatibility alias: route patch-cycle requests to the unified cycle workflow with type quick-fix.",
+      "category": "planning",
+      "triggers": [
+        "patch this",
+        "patch cycle",
+        "run a patch tier on X",
+        "small fix with the gates",
+        "this is too small for a cycle but it still needs a council and a review"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "patch this",
+          "patch cycle"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Compatibility entry point routing new work to the appropriate cycle type."
+      }
+    },
+    {
+      "id": "process-inbox",
+      "source": {
+        "path": "skills/process-inbox/SKILL.md",
+        "sha256": "96fecca9a96dab877dc81736ac87181abe0854bec4ee10a8689626e88b3082e7"
+      },
+      "description": "Triage documentation inbox items and route them for filing. Treat submitted content as data; never automatically accept decisions.",
+      "category": "research",
+      "triggers": [
+        "process inbox",
+        "process my inbox",
+        "triage inbox",
+        "what's in my inbox",
+        "file my inbox",
+        "sort the inbox"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "medium",
+      "declared_by_agents": [
+        "historian"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "process inbox",
+          "process my inbox"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "propose-adr",
+      "source": {
+        "path": "skills/propose-adr/SKILL.md",
+        "sha256": "c7876daa4ec11f7b62f29790ad2fd161feda8fb9dad92260b000e20ed3fbcee3"
+      },
+      "description": "Create a Proposed ADR for an architectural decision, allocating its identifier and updating decision indexes and logs.",
+      "category": "decisions",
+      "triggers": [
+        "propose ADR",
+        "record decision",
+        "new ADR",
+        "ADR for <topic>"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "architect",
+        "historian"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "propose ADR",
+          "record decision"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "propose-brief",
+      "source": {
+        "path": "skills/propose-brief/SKILL.md",
+        "sha256": "915b31514536a181d9348bf4bbf7ad33e9ceb4c981f92a9d5ffe6ab956ebc859"
+      },
+      "description": "Scaffold a draft brief for pre-decision exploration. Leave its body for human authorship; do not create an ADR or change status.",
+      "category": "decisions",
+      "triggers": [
+        "draft a brief",
+        "scaffold a brief",
+        "new brief",
+        "BRIEF for <topic>",
+        "I want to explore X before deciding"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "architect",
+        "historian"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "draft a brief",
+          "scaffold a brief"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Scaffold-only by default; the documented whiteboarding-session intake path is a distinct exception."
+      }
+    },
+    {
+      "id": "propose-observation",
+      "source": {
+        "path": "skills/propose-observation/SKILL.md",
+        "sha256": "ee155cf711b980904d4216984a3a17be0ce1e8325102bf251931061f60de120f"
+      },
+      "description": "Scaffold an observation of what code does, without making a decision. Leave its claim body for human authorship.",
+      "category": "decisions",
+      "triggers": [
+        "propose observation",
+        "record an observation",
+        "new OBS",
+        "observe this",
+        "record what the code does",
+        "this is observed not decided"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "explicit_human",
+        "example_requests": [
+          "propose observation",
+          "record an observation"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "The body contract requires human invocation even though the frontmatter does not declare disable-model-invocation."
+      }
+    },
+    {
+      "id": "prose-review",
+      "source": {
+        "path": "skills/prose-review/SKILL.md",
+        "sha256": "d5bc55c17dc6b6a968455363d97d4dd06838cd40d8ff145c32f0d42cb6e82ea5"
+      },
+      "description": "Review prose against the project's seven writing rules and propose concrete rewrites for violations.",
+      "category": "documentation",
+      "triggers": [
+        "review this prose",
+        "prose review",
+        "tighten this writing",
+        "check the writing rules",
+        "edit this text"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "night-gardener",
+        "reviewer"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "review this prose",
+          "prose review"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "query-docs",
+      "source": {
+        "path": "skills/query-docs/SKILL.md",
+        "sha256": "d3f09a9378f1c1a0c9b26434b004b284d5e4cccfaf756c9660061f5fc4a7b763"
+      },
+      "description": "Answer questions about project knowledge, decisions, plans, and current architecture from the documentation tree.",
+      "category": "documentation",
+      "triggers": [
+        "what does X do?",
+        "why did we choose Y?",
+        "what's our plan for Z?",
+        "what do we know about W?",
+        "compare X and Y",
+        "what's new since",
+        "summarize the current architecture",
+        "what's the current architecture",
+        "what supersedes what",
+        "how do the ADRs relate"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "brainstormer",
+        "librarian",
+        "night-gardener"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "what does X do?",
+          "why did we choose Y?"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Questions about current architecture or decision relationships are retrieval, not permission to regenerate."
+      }
+    },
+    {
+      "id": "read-news",
+      "source": {
+        "path": "skills/read-news/SKILL.md",
+        "sha256": "13e0136ae3c0d81c1217f7903710cf7465d83f23752052590a2aaf80358aec60"
+      },
+      "description": "Read ecosystem news relevant to the project, capture useful findings, and refresh selected research sources within a bounded budget.",
+      "category": "research",
+      "triggers": [
+        "read the news",
+        "news sweep",
+        "check the feeds",
+        "what's new in the ecosystem"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "medium",
+      "declared_by_agents": [
+        "night-gardener"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "read the news",
+          "news sweep"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "reconcile-signoff",
+      "source": {
+        "path": "skills/reconcile-signoff/SKILL.md",
+        "sha256": "27c4f7eb859f24e66aa7e6d6c75f96b3b1cab8e82cf6dc4e64cdf70df55882c3"
+      },
+      "description": "Record a human verdict on one invariant–rule reconciliation. Never choose the verdict or sign multiple pairings together.",
+      "category": "decisions",
+      "triggers": [
+        "sign off the reconciliation",
+        "reconcile INV-NNNN with ADR-NNNN",
+        "record the reconciliation verdict",
+        "this invariant is compatible with",
+        "mark the collision between"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": true,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "medium",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "explicit_human",
+        "example_requests": [
+          "sign off the reconciliation",
+          "reconcile INV-NNNN with ADR-NNNN"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "The human supplies the verdict and rationale for one pairing; do not batch-sign."
+      }
+    },
+    {
+      "id": "recover-decisions",
+      "source": {
+        "path": "skills/recover-decisions/SKILL.md",
+        "sha256": "49dd8d43bb9889cc59d9e8bb23330fd0bf8ae621dbcd09a6395e88cb679bad68"
+      },
+      "description": "Mine code for load-bearing decisions without governing ADRs. Record candidates for human disposition; never create ADRs.",
+      "category": "decisions",
+      "triggers": [
+        "recover decisions",
+        "mine decisions from the code",
+        "what load-bearing decisions have no ADR"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "recover decisions",
+          "mine decisions from the code"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "recover-invariants",
+      "source": {
+        "path": "skills/recover-invariants/SKILL.md",
+        "sha256": "487c2ce1a3cc5d0901120683c686a75887c91d798312551a068f57d28b4f6e69"
+      },
+      "description": "Mine code for candidate invariants and checks. Record them as observed, never ratified; human disposition is separate.",
+      "category": "decisions",
+      "triggers": [
+        "recover invariants",
+        "mine invariants",
+        "extract invariant candidates"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "medium",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "recover invariants",
+          "mine invariants"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "refresh-research-sources",
+      "source": {
+        "path": "skills/refresh-research-sources/SKILL.md",
+        "sha256": "eb729469a4a4b425c671424540aa598e5ee4f4a5e8ea4afb38c1939651a595dc"
+      },
+      "description": "Check research sources for upstream changes, preserve updated captures, and flag affected synthesis without rewriting it.",
+      "category": "research",
+      "triggers": [
+        "refresh sources",
+        "update from source",
+        "check for updates",
+        "find the old ones"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "night-gardener"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "refresh sources",
+          "update from source"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "refresh-research-synthesis",
+      "source": {
+        "path": "skills/refresh-research-synthesis/SKILL.md",
+        "sha256": "7807eb4d1c7c725fd4b4ee74052451c20d65ba09f40c0b1e1b26da2693d6845a"
+      },
+      "description": "Reconcile stale or flagged research synthesis with current sources. Apply changes only with explicit per-page approval.",
+      "category": "research",
+      "triggers": [
+        "refresh synthesis",
+        "reconcile pages",
+        "clear flags",
+        "review research",
+        "what synthesis pages are stale?",
+        "what needs reconciliation?"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "refresh synthesis",
+          "reconcile pages"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Rewriting synthesis requires explicit per-page approval."
+      }
+    },
+    {
+      "id": "retrospective",
+      "source": {
+        "path": "skills/retrospective/SKILL.md",
+        "sha256": "143fd00627f09b61d54e63de2289f973b901d27dacf842cc049f7a1bee659e12"
+      },
+      "description": "Review finished work for recurring friction, propose skill improvements, and build those approved through council review.",
+      "category": "collaboration",
+      "triggers": [
+        "run a retrospective",
+        "retro this",
+        "retro the last few cycles",
+        "harvest skills from recent work",
+        "what should we learn from the last few cycles",
+        "purposeful reflection"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "medium",
+      "declared_by_agents": [
+        "night-gardener"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "run a retrospective",
+          "retro this"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "run-adr-council",
+      "source": {
+        "path": "skills/run-adr-council/SKILL.md",
+        "sha256": "52bcd2314abb9ac474b4cdf868d4da883bd495ac22321c3e95b625db1c753547"
+      },
+      "description": "Review an exact ADR through its configured council mode; the owning writer records approval evidence.",
+      "category": "collaboration",
+      "triggers": [
+        "run the council on ADR-NNNN",
+        "council review ADR-NNNN",
+        "run-adr-council ADR-NNNN",
+        "council-check this ADR"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "medium",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "workflow_support",
+        "example_requests": [],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Normally reached inside a workflow; advanced users may request it where its contract allows."
+      }
+    },
+    {
+      "id": "run-promptbook",
+      "source": {
+        "path": "skills/run-promptbook/SKILL.md",
+        "sha256": "8a962f2f061b0018f2e3d005daa3a25a034e22da1eaf351b11bfce6353f92bc9"
+      },
+      "description": "Inspect, finish, or archive an existing historical promptbook run; route all new work to cycle.",
+      "category": "planning",
+      "triggers": [
+        "show the run",
+        "run promptbook",
+        "start promptbook",
+        "advance promptbook",
+        "next prompt",
+        "skip prompt",
+        "block on prompt",
+        "abandon this run",
+        "promptbook status",
+        "run status",
+        "visualize run progress",
+        "show run progress",
+        "how far along is PB-NNNN",
+        "progress of PB-NNNN",
+        "run progress bar/chart",
+        "where am I",
+        "where was I on PB-NNNN",
+        "resume my cycle",
+        "what's next on PB-NNNN",
+        "how do I pick this run back up",
+        "how do I resume"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "commander",
+        "historian"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "show the run",
+          "run promptbook"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Inspect or finish existing historical runs. New work uses cycle; completed runs cannot be repeated."
+      }
+    },
+    {
+      "id": "srde",
+      "source": {
+        "path": "skills/srde/SKILL.md",
+        "sha256": "e5de49aafb982785b41eaa2854c453693a1e406f2939dd4bfc20e1a6f669a814"
+      },
+      "description": "Resolve dissent from a multi-model council using shared context, existing probes, and structured analysis.",
+      "category": "collaboration",
+      "triggers": [
+        "resolve the dissent",
+        "run srde",
+        "resolve the council disagreement"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "architect",
+        "night-gardener"
+      ],
+      "learning": {
+        "audience": "workflow_support",
+        "example_requests": [],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "Dissent resolution is bounded by the workflow's escalation rules; it is not unlimited authority to continue."
+      }
+    },
+    {
+      "id": "survey-sheet",
+      "source": {
+        "path": "skills/survey-sheet/SKILL.md",
+        "sha256": "0e58839b916c65a6f7846072ebb5f40ce840fa91272f6a4d375fce863f8be6ef"
+      },
+      "description": "Scaffold a batch review sheet for observed candidates. Leave verdicts and rationales to the human; ratify nothing.",
+      "category": "decisions",
+      "triggers": [
+        "scaffold a survey sheet",
+        "start a batch review of observations",
+        "build the observation review sheet",
+        "survey the observed candidates",
+        "open a ratification batch",
+        "I want to review the observed candidates in one pass"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": true,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "explicit_human",
+        "example_requests": [
+          "scaffold a survey sheet",
+          "start a batch review of observations"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "A human-invoked scaffold, not a sign-off; leaves verdicts and rationale for the human."
+      }
+    },
+    {
+      "id": "survey-signoff",
+      "source": {
+        "path": "skills/survey-signoff/SKILL.md",
+        "sha256": "e996d39865659dcb343bd5c21ff83dfad7587066fab1627b4236f99c46ba6a66"
+      },
+      "description": "Publish one completed observation review batch after explicit human confirmation. Never author verdicts.",
+      "category": "decisions",
+      "triggers": [
+        "sign off the survey",
+        "sign the survey sheet",
+        "sign off SVY-NNNN",
+        "publish the batch",
+        "batch-ratify the observations",
+        "I have filled in the review sheet",
+        "finish the observation batch"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": true,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "medium",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "explicit_human",
+        "example_requests": [
+          "sign off the survey",
+          "sign the survey sheet"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "The human supplies and confirms verdicts. The agent must not invent approval."
+      }
+    },
+    {
+      "id": "tend-garden",
+      "source": {
+        "path": "skills/tend-garden/SKILL.md",
+        "sha256": "cc0c67c0ce3e7682f3cbdb0291e4d1f1ffff607e9ed1e54dfd92250f33a86d0d"
+      },
+      "description": "Run the night gardener's strategic pass over recent work, diagnostics, and news; develop ideas and write a morning note.",
+      "category": "collaboration",
+      "triggers": [
+        "tend the garden",
+        "run the night gardener",
+        "night pass",
+        "morning note"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "medium",
+      "declared_by_agents": [
+        "night-gardener"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "tend the garden",
+          "run the night gardener"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "The owner establishes any schedule. The role must pass its turn gate and may not push, merge, or send externally."
+      }
+    },
+    {
+      "id": "transition-adr",
+      "source": {
+        "path": "skills/transition-adr/SKILL.md",
+        "sha256": "faead6f7a7d81848493fce28c00bcf34aac3d2e3c8589be72a228cca5a470686"
+      },
+      "description": "Accept, deprecate, supersede, or retract an existing ADR, or promote in-run guidance on the owner's instruction (\"promote ADR-NNNN: rules N\"). Update status and relationships without changing its narrative body.",
+      "category": "decisions",
+      "triggers": [
+        "accept ADR-NNNN",
+        "deprecate ADR-NNNN",
+        "supersede ADR-NNNN with ADR-MMMM",
+        "retract ADR-NNNN",
+        "promote ADR-NNNN: rules N"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "architect",
+        "historian"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "accept ADR-NNNN",
+          "deprecate ADR-NNNN"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "New-policy acceptance requires council approval and human approval by default; adr.acceptance may explicitly be council-only. Acceptance makes rules binding. Historical provenance retains its original meaning."
+      }
+    },
+    {
+      "id": "transition-brief",
+      "source": {
+        "path": "skills/transition-brief/SKILL.md",
+        "sha256": "779a142c98c957c7ccdfeb341561c8c400358d88773bcf18d644ed3883551002"
+      },
+      "description": "Publish or abandon a draft brief, updating lifecycle metadata and indexes without changing its body.",
+      "category": "decisions",
+      "triggers": [
+        "publish brief",
+        "abandon brief",
+        "close out a brief",
+        "mark brief published",
+        "mark brief abandoned",
+        "transition BRIEF-<slug>"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": true,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "explicit_human",
+        "example_requests": [
+          "publish brief",
+          "abandon brief"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "A deliberate human invocation is required by a declared flag or body contract. Use the harness's supported explicit invocation path."
+      }
+    },
+    {
+      "id": "transition-decision",
+      "source": {
+        "path": "skills/transition-decision/SKILL.md",
+        "sha256": "ba324d1e44511bcac6b0da784a4990f2eac18134ccee25f70cc740b8ed2f6b70"
+      },
+      "description": "Apply a human ratify, reject, or defer verdict to a recovered decision candidate; ratification creates a Proposed ADR or observation.",
+      "category": "decisions",
+      "triggers": [
+        "ratify decision <id>",
+        "reject decision <id>",
+        "defer decision <id>",
+        "ratify decision <id> as observation"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": true,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "explicit_human",
+        "example_requests": [
+          "ratify decision <id>",
+          "reject decision <id>"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "A deliberate human invocation is required by a declared flag or body contract. Use the harness's supported explicit invocation path."
+      }
+    },
+    {
+      "id": "transition-invariant",
+      "source": {
+        "path": "skills/transition-invariant/SKILL.md",
+        "sha256": "833b6341454dd4b730f773bf678206fc8f16ff49ca063c59e57e639565255e8e"
+      },
+      "description": "Ratify, reject, or retire an invariant on human direction. Update lifecycle metadata without changing the invariant's body.",
+      "category": "decisions",
+      "triggers": [
+        "ratify invariant INV-NNNN",
+        "reject invariant INV-NNNN",
+        "retire invariant INV-NNNN",
+        "transition invariant"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": true,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "explicit_human",
+        "example_requests": [
+          "ratify invariant INV-NNNN",
+          "reject invariant INV-NNNN"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "A deliberate human invocation is required by a declared flag or body contract. Use the harness's supported explicit invocation path."
+      }
+    },
+    {
+      "id": "transition-observation",
+      "source": {
+        "path": "skills/transition-observation/SKILL.md",
+        "sha256": "523b6f3c86edfd0222135aaff87a37fb979da1d29abab8bb98c05ac4ae1235c0"
+      },
+      "description": "Apply a human disposition to an observation's lifecycle state without changing its claim or body.",
+      "category": "decisions",
+      "triggers": [
+        "ratify observation OBS-NNNN",
+        "reject observation OBS-NNNN",
+        "retire observation OBS-NNNN",
+        "mark observation OBS-NNNN decided",
+        "transition observation"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": true,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [],
+      "learning": {
+        "audience": "explicit_human",
+        "example_requests": [
+          "ratify observation OBS-NNNN",
+          "reject observation OBS-NNNN"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "A deliberate human invocation is required by a declared flag or body contract. Use the harness's supported explicit invocation path."
+      }
+    },
+    {
+      "id": "verify-code-docs",
+      "source": {
+        "path": "skills/verify-code-docs/SKILL.md",
+        "sha256": "3a0411bdb79ad07c87e1dcb95fb4b823ab6fd1daa58e62177fe2fc1e6aa41768"
+      },
+      "description": "Check generated code documentation against source and report drift without regenerating it.",
+      "category": "documentation",
+      "triggers": [
+        "verify docs",
+        "check code docs drift",
+        "are the code docs in sync?",
+        "lint docs"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "historian"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "verify docs",
+          "check code docs drift"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    },
+    {
+      "id": "whiteboarding",
+      "source": {
+        "path": "skills/whiteboarding/SKILL.md",
+        "sha256": "6fe94af0ef76fc81cddf54f9eb1a5446f2169c26ce20b5b78884284f9024884e"
+      },
+      "description": "Explore an idea through docs-informed dialogue before committing to a design. Capture the exploration for later filing as a brief.",
+      "category": "planning",
+      "triggers": [
+        "let's explore X",
+        "brainstorm",
+        "whiteboard this",
+        "help me think through Y",
+        "design X before we build it",
+        "I have an idea"
+      ],
+      "declared_invocation": {
+        "user_invocable": null,
+        "disable_model_invocation": null,
+        "note": "Null means undeclared, not forbidden. These flags originate in Claude Code; do not assume identical enforcement elsewhere."
+      },
+      "risk_level": "low",
+      "declared_by_agents": [
+        "brainstormer",
+        "night-gardener"
+      ],
+      "learning": {
+        "audience": "human_request",
+        "example_requests": [
+          "let's explore X",
+          "brainstorm"
+        ],
+        "example_status": "Source-declared phrases, not observed routing guarantees or universal command syntax.",
+        "note": "An outcome a person can request from the main assistant; naming or manually launching a specialist is not required."
+      }
+    }
+  ]
+}
